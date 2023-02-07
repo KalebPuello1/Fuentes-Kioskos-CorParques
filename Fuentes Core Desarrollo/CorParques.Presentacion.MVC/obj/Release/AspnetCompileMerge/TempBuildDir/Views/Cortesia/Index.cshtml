@@ -1,0 +1,41 @@
+﻿@model  IEnumerable<CorParques.Negocio.Entidades.UsuarioVisitante>
+@{
+    ViewBag.Title = "Cortesía";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+
+<h2>Gestión usuarios visitantes</h2>
+<br />
+<div id="Usuario Visitante">
+    <div class="x_content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="pull-left">
+                    <input type="button" id="btnRegistrarVisitante" class="btn btn-success" value="Registrar Visitante" onclick="BotonCrearUsuario()" />
+                </div>
+            </div>
+        </div>
+        <div id="listView">
+            @Html.Partial("_List", Model)
+        </div>
+    </div>  
+
+</div>
+
+
+
+@section Scripts{
+
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="~/Scripts/Cortesia.js"></script>
+    <script src="~/Scripts/General.js"></script>
+}
+

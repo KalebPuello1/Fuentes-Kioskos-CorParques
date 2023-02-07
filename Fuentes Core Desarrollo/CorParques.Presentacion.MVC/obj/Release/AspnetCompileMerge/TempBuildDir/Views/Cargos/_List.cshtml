@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Cargos>
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+    <thead>
+        <tr>
+            <th>Nombre Cargo</th>
+
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+                        string.Concat(item.Nombre))
+            </td>
+           
+
+
+            <td style="text-align:center; width:50px">
+                
+                    @if (item.IdEstado == 1)
+                    {
+                        <a class="lnkEditar" data-id="@item.IdCargo" href="javascript:void(0)" title="Editar"><b class="fa fa-pencil"></b></a>
+                    }
+            
+            </td>
+           
+        </tr>
+            }
+        }
+   
+
+    </tbody>
+</table>
+
+
+

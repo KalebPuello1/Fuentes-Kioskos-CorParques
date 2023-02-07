@@ -1,0 +1,68 @@
+﻿@*@model CorParques.Negocio.Entidades.ReporteFallaAtraccion*@
+
+@{
+    var ListaPuntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.ListaPuntos;
+    var ListaAreas = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.ListaAreas;
+}
+
+<form id="frmReporteFalla">
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="input-group date" id="datetimepickerIni">
+                <input type="text" class="form-control FInicial required" id="FInicial">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            @*<input class="form-control calendario" id="FInicial" maxlength="50" name="FechaIncidenteFinalDDMMAAAA" type="text" value="04/10/2017">*@
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Final</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="input-group date" id="datetimepickerFin">
+                <input type="text" class="form-control FFinnal required" id="FFinnal">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            @*<input class="form-control calendario" id="FFinnal" maxlength="50" name="FechaIncidenteFinalDDMMAAAA" type="text" value="04/10/2017">*@
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Atracción</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idPunto" id="idPunto">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.Puntos item in ListaPuntos)
+            {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Área</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idArea" id="idArea">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.TipoGeneral item in ListaAreas)
+            {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+        <a class="btn btn-success" id="btnGrid"> Vista Previa</a>
+        <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success"><i class="fa fa-file-excel-o"></i>Exportar a Excel</a>
+        <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+    </div>
+
+    <div class="row" id="div_grilla"></div>
+</form>

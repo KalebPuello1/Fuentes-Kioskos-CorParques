@@ -1,0 +1,96 @@
+﻿@model CorParques.Negocio.Entidades.ReporteRecoleccion
+@if (Model != null)
+{
+    if (Model.objReporteRecoleccion != null && Model.objReporteRecoleccion.Count() > 0)
+    {
+        <form id="frmList" method="post" action="@Url.Action("ExportarExcel","ReporteRecoleccion")">
+            <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Reporte Recoleccion</th>
+                        <th style="width: 100px">Tipo Recoleccion</th>
+                        <th style="width: 100px">Numero Recoleccion</th>
+                        <th style="width: 200px">Taquilla</th>
+                        <th style="width: 150px">Taquillero</th>
+                        <th style="width: 100px">Numero Aprobacion</th>
+                        <th style="width: 150px">Valor</th>
+                        <th style="width: 150px">Nombre Recolector</th>
+
+              
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.objReporteRecoleccion != null)
+                    {
+                        var intContador = 0;
+
+                        foreach (var item in Model.objReporteRecoleccion)
+                        {
+                            var fecha = Convert.ToDateTime(item.Fecha).ToString("dd/MM/yyyy");
+                            var Recoleccion = item.Recoleccion.ToString();
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Consecutivo)*@
+                            @String.Format("{0}", item.TipoRecoleccion)
+                            @Html.HiddenFor(modelItem => Recoleccion)
+                            <input type="hidden" name="objReporte[@intContador].IdFactura" value="@Recoleccion" id="@item.TipoRecoleccion">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => Recoleccion)
+                            @Html.HiddenFor(modelItem => item.IdRecoleccion)
+                            <input type="hidden" name="objReporte[@intContador].NumeroRecoleccion" value="@item.IdRecoleccion">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Punto)
+                            @Html.HiddenFor(modelItem => item.Punto)
+                            <input type="hidden" name="objReporte[@intContador].Taquilla" value="@item.Punto">
+                            <input type="hidden" name="objReporte[@intContador].IdPunto" value="@item.IdPunto">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Taquillero)
+                            @Html.HiddenFor(modelItem => item.Taquillero)
+                            <input type="hidden" name="objReporte[@intContador].Taquillero" value="@item.Taquillero">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroAprobacion)
+                            @Html.HiddenFor(modelItem => item.NumeroAprobacion)
+                            <input type="hidden" name="objReporte[@intContador].NumeroAprobacion" value="@item.NumeroAprobacion">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                            @Html.HiddenFor(modelItem => item.Total)
+                            <input type="hidden" name="objReporte[@intContador].Valor" value="@item.Total">
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreRecolector)
+                            @Html.HiddenFor(modelItem => item.NombreRecolector)
+                            <input type="hidden" name="objReporte[@intContador].NombreRecolector" value="@item.NombreRecolector">
+                            <input type="hidden" name="objReporte[@intContador].IdRecolector" value="@item.IdRecolector">
+                        </td>
+
+
+                        @*<td style="text-align:center; width:50px">
+            <a class="lnkDetail" data-id="@item.IdFactura" href="javascript:void(0)" title="Detalle"><b class="glyphicon glyphicon-eye-open"></b></a>
+            <a class="lnkPrint" data-id="@item.IdFactura" href="javascript:void(0)" title="Imprimir"><b class="glyphicon glyphicon-print"></b></a>
+        </td>*@
+                    </tr>
+                            intContador++;
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            <div style="text-align:right;">
+                @*<button type="button" class="btn btn-fill btn btn-success btn-wd btn-sm " id="btnExport">Exportar</button>*@
+                <a class="btn btn-app" id="btnExport">
+                    <i class="fa fa-file-excel-o"></i> Exportar
+                </a>
+            </div>
+        </form>
+    }
+}

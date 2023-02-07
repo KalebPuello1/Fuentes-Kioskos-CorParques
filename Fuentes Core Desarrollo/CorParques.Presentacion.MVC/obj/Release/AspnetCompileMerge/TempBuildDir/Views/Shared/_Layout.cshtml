@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corparques</title>
+    <!-- Bootstrap -->
+    @*<link href="~/Vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    <!-- Font Awesome -->
+    <link href="~/Vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/loader.css">
+    <link href="~/Content/sweetalert2.css" rel="stylesheet" />
+</head>
+<body class="nav-md" onload="real_time();" onunload="stop();" id="bodyGeneral" data-time="@(((System.Web.Configuration.SessionStateSection)System.Web.Configuration.WebConfigurationManager.GetSection("system.web/sessionState")).Timeout.TotalMinutes)">
+    <div class="loader-wrapper" id="loader-1">
+        <img src="~/Images/LOOP-MUNDO-AVENTURA_.gif" style="height: 196px; left: 50%; top: 50%; margin: -12vw 0 0 -18vw; position: absolute;" />
+
+        @*<div id="loader"></div>
+        <div id="loader2"></div>*@
+    </div>
+    @{ var usuarioAutenticado = (CorParques.Negocio.Entidades.Usuario)Session["UsuarioAutenticado"];}
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="@Url.Action("Index","Home")" class="site_title">
+                            <img src="~/Images/logo.png" alt="Corparques" style="height:50px" />
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <!-- sidebar menu <span class="fa fa-chevron-down"></span> -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+
+
+                                @foreach (var principal in usuarioAutenticado.ListaMenu.Where(x => x.IdPadre.Equals(null)).OrderBy(x => x.Orden))
+                                {
+                                    var hijos = usuarioAutenticado.ListaMenu.Where(x => x.IdPadre.Equals(principal.IdMenu)).OrderBy(x => x.Orden);
+                                    if (hijos.Count() > 0)
+                                    {
+                                        <li>
+                                            <a><i class="@principal.Clase"></i> @principal.Nombre <span class="fa sf-sub-indicator"></span></a>
+                                            <ul class="nav child_menu">
+                                                @foreach (var hijo in hijos)
+                                                {
+                                                    var nietos = usuarioAutenticado.ListaMenu.Where(x => x.IdPadre.Equals(hijo.IdMenu)).OrderBy(x => x.Orden);
+                                                    if (nietos.Count() > 0)
+                                                    {
+                                                        <li>
+                                                            <a><i class="@hijo.Clase"></i>@hijo.Nombre <span class="fa sf-sub-indicator"></span></a>
+                                                            <ul class="nav child_menu">
+                                                                @foreach (var nieto in nietos)
+                                                                {
+                                                                    <li><a href="@Url.Action("Index",nieto.Controlador)"><i class="@nieto.Clase"></i> @nieto.Nombre </a></li>
+                                                                }
+                                                            </ul>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li><a href="@Url.Action("Index", hijo.Controlador)"><i class="@hijo.Clase"></i>@hijo.Nombre</a></li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("Index",principal.Controlador)"><i class="@principal.Clase"></i> @principal.Nombre </a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i style="font-size: 22px; margin-right: 5px; color: #6D6E70;" class="fa fa-user"></i>Bienvenido
+                                    @string.Concat(usuarioAutenticado.Nombre, " ", usuarioAutenticado.Apellido, " !")
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    @*<li><a href="javascript:;"> Profile</a></li>*@                                    
+                                    <li><a onclick="CambioClave();">Cambiar contraseña</a><form id="frmCambioClave" action="@Url.Action("CambioClave","Cuenta")" method="POST"></form></li>
+                                    @*<li><a href="javascript:;">Help</a></li>*@
+                                    <li><a onclick="$('#frmLogOut').submit()"><i class="fa fa-sign-out pull-right"></i> Cerrar sesión</a><form id="frmLogOut" action="@Url.Action("LogOut","Cuenta")" method="POST"></form></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="alert alert-success alert-dismissible fade in alert-notification col-md-6 col-sm-6 col-xs-12 col-md-offset-6 col-sm-offset-6" role="alert">
+                            <button type="button" class="close close-alert" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4></h4> <p></p>
+                        </div>
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>@ViewBag.Title <small>@ViewBag.SubTitle</small></h2>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="x_content">
+                                <div class="dashboard-widget-content">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- top tiles -->
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    ® CORPARQUES | Desarrollado por <a target="_blank" href="http://www.softtek.com/">Softtek</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <div id="modalCRUD" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header btn-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="msjErrorModal">
+                    <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <label id="lbl_message_error">Error procesando la solicitud</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-url="" data-metod="" data-function="" id="btnSaveGeneric"><i class="fa fa-"></i>Guardar</button>
+                    <button type="button" style="display:none;" class="btn btn-success" data-url="" data-metod="" data-function="" id="btnSaveCustomizable"><i class="fa fa-"></i>Guardar</button>
+                    <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnCancelGeneric">Cancelar</button>
+                    <button type="button" class="btn btn-info" data-url="" data-metod="" data-function="" id="btnImprimirGeneric" style="display:none;">Imprimir</button>
+                    <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnVolverGeneric" style="display:none;">Volver</button>                    
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- jQuery -->
+    <script src="~/Vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    @*<script src="../vendors/fastclick/lib/fastclick.js"></script>*@
+    <!-- NProgress -->
+    @*<script src="../vendors/nprogress/nprogress.js"></script>*@
+    <!-- Chart.js -->
+    @*<script src="../vendors/Chart.js/dist/Chart.min.js"></script>*@
+    <!-- gauge.js -->
+    @*<script src="../vendors/gauge.js/dist/gauge.min.js"></script>*@
+    <!-- bootstrap-progressbar -->
+    @*<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>*@
+    <!-- iCheck -->
+    @*<script src="../vendors/iCheck/icheck.min.js"></script>*@
+    <!-- Skycons -->
+    @*<script src="../vendors/skycons/skycons.js"></script>*@
+    <!-- Flot -->
+    @*<script src="../vendors/Flot/jquery.flot.js"></script>
+        <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+        <script src="../vendors/Flot/jquery.flot.time.js"></script>
+        <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+        <script src="../vendors/Flot/jquery.flot.resize.js"></script>*@
+    <!-- Flot plugins -->
+    @*<script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+        <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+        <script src="../vendors/flot.curvedlines/curvedLines.js"></script>*@
+    <!-- DateJS -->
+    @*<script src="../vendors/DateJS/build/date.js"></script>*@
+    <!-- JQVMap -->
+    @*<script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+        <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>*@
+    <!-- bootstrap-daterangepicker -->
+    @*<script src="../vendors/moment/min/moment.min.js"></script>
+        <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>*@
+    <!-- Custom Theme Scripts -->
+    <script>
+        urlBase = "@Url.Action("test","test")";
+        urlBase = urlBase.replace("test/test", "");
+    </script>
+
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <script src="~/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    @*<script src="~/Scripts/moment-datetime.js"></script>*@
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/ControlSesion.js"></script>
+    <script src="~/Scripts/General.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/core_for_sweetAlert2.js"></script>
+    <script src="~/Scripts/sweetalert2.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        function cerrarSesion() {
+            $('#frmLogOut').submit();
+        }
+    </script>
+</body>
+</html>
+
+

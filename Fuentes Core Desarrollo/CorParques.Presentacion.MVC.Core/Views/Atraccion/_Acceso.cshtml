@@ -1,0 +1,85 @@
+﻿@*Se agrega ingreso manual*@
+@model CorParques.Negocio.Entidades.ConsultaCodigodeBarras
+
+@* BOTÓN INGRESAR [ ===> Manual <===] *@
+<div id="BtnIngresarManualA" class="form-group center" style="text-align:center;">
+    <a class="btn btn-primary btnDefault">Ingresar manual</a>
+</div>
+
+<form id="frmLoginA" action="" method="post" autocomplete="off">
+    <div class="form-group">
+
+        @* Número de contador *@
+        <div style="text-align:left;">
+            <div class="x_content h4 txtContador" id="div_AccesosDia"></div>
+        </div>
+
+        @* Texto de código de barras ocn campo de text vacio *@
+        <div style="text-align:center;" id="TextoCodigoBarras">
+            <label id="TextBoleta1" class="x_content h3">Acerque la boleta al lector de código de barras</label>
+            <label id="TextBoleta2" class="x_content h1">Ingreso atracción</label>
+            <input type="text" id="txt_CodigoBarras" placeholder="Acerque la boleta al lector de código de barras" autofocus maxlength="20" style="width:0px; height:0px; border:0px; background-color:transparent; top:10000px" />
+        </div>
+
+        <div style="position:absolute; right:0; width:150px; top:0;">
+            <img src="#" id="snapshot" style="display:none; width:150px;"></img>
+        </div>
+
+        @*NÚMERO CONTADOR Y ALERTA QUE APARECE DE PRIMERAS*@
+        @*<input type="hidden" id="hdf_ValidacionOperativaPunto" value="@ViewBag.ValidacionOperativa" />*@
+        <input type="hidden" id="hdf_ValidacionOperativaPunto" value="@Model.MensajeAcceso" />
+        <input type="hidden" id="hdf_NumeroAccesosDia" value="@Model.NumeroAccesosDia" />
+
+
+        @* IMAGENES SIMBOLO VERDE Y ROJO BIEN/MAL *@
+        <div class="row" id="Simbolos">
+            <div class="col-centered">
+                <div id="div_NoAcceso" style="display: none; text-align:center">
+                    <img src="~/Images/RedCircle.png" style="max-height:300px" />
+                </div>
+                <div id="div_Acceso" style="display: none; text-align:center">
+                    <img src="~/Images/GreenCircle.png" style="max-height:300px" />
+                </div>
+
+                <div id="div_Mensaje" style="display:none; text-align:center;" class="x_content h2"></div>
+
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@* ************************************************[ FORMULARIO LOGIN ATRACCIÓN MANUAL]***************************************************************************************************************************************************************************** *@
+
+
+<div id="FrmAtraccionManual" style="text-align:center;">
+
+    <form autocomplete="off">
+
+        <h1 style="text-align:center;">Manual</h1>
+        <h2 style="text-align:center;"></h2>
+
+        <div class="form-group">
+
+            <div class="col-md-6 col-sm-6 col-xs-12" style="text-align:center;">
+                <input onfocus="this.value=''" type="text" class="form-control required" id="txt_CodigoBarrasAM" name="" maxlength="15" placeholder="Digíte el número de atracción..." />
+            </div>
+
+        </div>
+
+        <div style="text-align:center;">
+            <a id="btnAceptarA" href="javascript:void(0)" class="btn btn-success">Aceptar</a>
+            <a id="btnCancelarA" href="javascript:void(0)" class="btn btn-danger">Cancelar</a>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="separator">
+            <div>
+                <h1></h1>
+                <p>©2017 Todos los derechos reservados. Corparques.</p>
+            </div>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.NotificacionAlerta>
+@{
+    ViewBag.Title = "Alertas de Recolección";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+<div class="row">
+    <div class="imagenMapa col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="punto @((item.Alerta != 0 ? (item.Alerta == 1 ? "activo" : item.Alerta == 2 ? "alertabase animacion" : "alertacorte animacion") : ""))" style="left:@(item.CordenadaX)px; top:@(item.CordenadaY)px" data-toggle='popover' data-html='true' data-title='@item.Nombre' data-content='<b>Nombre Taquillero: </b>@(item.NombreTaquillero)</br><b>Monto en caja: </b>@(item.TotalCaja.ToString("0:C0"))</br><b>Monto a recoger: </b>@(item.MontoRecaudo.ToString("0:C0"))'></div>
+        }
+    </div>
+    <div class="col-md-3">
+        <div><p><i class="fa fa-square puntoinactivo"></i>  Punto cerrado</p></div>
+        <div><p><i class="fa fa-square puntoactivo"></i>  Punto abierto</p></div>
+        <div><p><i class="fa fa-square puntobase"></i>  Punto para recoger base</p></div>
+        <div><p><i class="fa fa-square puntocorte"></i>  Punto para recoger corte</p></div>
+        <div><p><i class="fa fa-square puntodoble"></i>  Punto para recoger base y corte</p></div>
+    </div>
+</div>
+
+<div class="row">
+    <table cellspacing="0" id="puntos" class="table jambo_table display" width="100%"></table>
+</div>
+
+
+@section scripts{    
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script>
+        $(function () {
+            setPopover();
+            chat.client.clienteAlertas = function (data) {
+                $(".imagenMapa").empty();
+                $.each(data, function (i, v) {
+                    var clase = "";
+                    switch (v.Alerta) {
+                        case 1:
+                            clase = "activo";
+                            break;
+                        case 2:
+                            clase = "alertabase animacion";
+                            break;
+                        case 3:
+                            clase = "alertacorte animacion";
+                            break;
+                        case 4:
+                            clase = "alertadoble animacion";
+                            break;
+                    }
+                    $(".imagenMapa").append("<div class='punto " + clase + "' style='left:" + v.CordenadaX + "px; top:" + v.CordenadaY + "px' data-toggle='popover' data-html='true' data-title='" + v.Nombre + "' data-content='<b>Nombre Taquillero: </b>" + v.NombreTaquillero + "</br><b>Monto en caja: </b>" + FormatoMoneda(v.TotalCaja) + "</br><b>Monto a recoger: </b>" + FormatoMoneda(v.MontoRecaudo) + "'></div>")
+                });
+                setPopover();
+            };
+
+            chat.client.clienteAlertas = function (data) {
+                
+                $('#puntos').DataTable({
+                    destroy: true,
+                    searching: false,
+                    data: data,
+                    order: [[4, "desc"]],
+                    columns: [
+                        { title: "Punto", data: "Nombre" },
+                        { title: "Taquillero", data: "NombreTaquillero" },
+                        { title: "Total Ventas", data: "TotalVentas" },
+                        { title: "Total Base", data: "TotalBase" },
+                        { title: "Total Caja", data: "TotalCaja" }
+                    ]                    
+                });
+            };
+
+
+            $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPolling'], jsonp: true }).done(function () {
+
+            });
+        });
+        function setPopover() {
+            $('[data-toggle="popover"]').popover().on('show.bs.popover', function () {
+                $(".popover").remove();
+            });
+        }
+
+
+    </script>
+    }
+

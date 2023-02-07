@@ -1,0 +1,208 @@
+﻿@model CorParques.Presentacion.MVC.Core.Models.ConsultaKiosco
+@{
+    ViewBag.Title = "Consulta";
+    Layout = "~/Views/Shared/_LayoutKiosco.cshtml";
+    var tipo = ViewBag.Tipo;
+    var vigencia = false;
+    var bol = false;
+    var entregaBC = true;
+    if (Model.Boleta != null)
+    {
+        if (DateTime.Now < Model.Boleta.FechaInicioEvento || DateTime.Now > Model.Boleta.FechaFinEvento) { vigencia = false; }
+        else { vigencia = true; }
+    }
+    if (Model.Boleta != null && Model.DetalleBoleta != null) { bol = true; }
+    if (Model.BolControl != null)
+    {
+        DateTime date = new DateTime(1, 1, 1, 0, 0, 0);
+        if (Model.BolControl.FechaRedencion == date) { entregaBC = false; }
+    }
+}
+
+<a href="javascript:Atras()" style="text-decoration: none; position: absolute; top: 2px; left: 2px;">
+    <div class="backButton">
+        <div class="bckTriangulo"></div>
+    </div>
+    <p class="bckBtn-text">Atras</p>
+</a>
+<hr />
+
+@if (tipo == "General")
+{
+    <div class="consulta">
+        <div class="info">
+            <label class="info-title">Nombre del producto: </label>
+            <span class="info-data">@Model.DetalleBoleta.NombreProducto</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Vigencia del producto: </label>
+            <span class="info-data">@Model.DetalleBoleta.FechaVencimiento</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Estado del producto: </label>
+            <span class="info-data">@(Model.Boleta.IdEstado == 1? "Entregado" : "Disponible")</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Punto de entrega:</label>
+            <span class="info-data">@Model.DetalleBoleta.Punto</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Impresion:</label>
+            <span>@((vigencia && (Model.Boleta.IdEstado==2 || Model.Boleta.IdEstado==1)) ? "Disponible" : "No disponible" )</span>
+        </div>
+    </div>
+
+    <div class="uso-atraccion">
+        <div class="caja" style="@((Model.DetalleBoleta.historicoUso.Count() != 0) ? "display:block;": "display:none;")">
+            <h6 class="titulo">ver Uso de atracciones</h6>
+            <ul>
+                @foreach (var item in Model.DetalleBoleta.historicoUso)
+                {
+                    <li style="list-style: none;">@item.Punto</li>
+                }
+            </ul>
+        </div>
+        <div class="caja" style="@((Model.DetalleBoleta.historicoUso.Count() != 0) ? "display:block;": "display:none;")">
+            <h6 class="titulo">Fecha y Hora</h6>
+            <ul>
+                @foreach (var item in Model.DetalleBoleta.historicoUso)
+                {
+                    <li style="list-style: none;">@item.Fecha</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+else if (tipo == "UnoUno")
+{
+    <div class="consulta">
+        <div class="info">
+            <label class="info-title">Factura:  </label>
+            <span class="info-data">@Model.Factura.CodigoFactura</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Cliente: </label>
+            <span>@(Model.DetalleBoleta != null ? Model.DetalleBoleta.ClienteSap : "")</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Convenio: </label>
+            <span>@Model.Factura.IdConvenio</span>
+        </div>
+        <div class="info" style="@((Model.Factura.IdEstado == 3) ? "display:block;" : "display:none;")">
+            <label class="info-title">Anulacion de factura:</label>
+            <span>Anulado</span>
+        </div>
+        <div class="info" style="@((Model.Factura.IdEstado == 3) ? "display:block;" : "display:none;")">
+            <label class="info-title">Anulacion de factura:</label>
+            <span>Anulado</span>
+        </div>
+        <div style="@((Model.Factura.DetalleFactura.ToList().Count() !=0) ? "display:block;" : "display:none;")">
+            <div class="info" style="@((Model.Factura.DetalleFactura.ToList().First().IdNotaCredito !=0) ? "display:block;" : "display:none;")">
+                <label class="info-title">Nota crédito: </label>
+                <span>@Model.Factura.DetalleFactura.ToList().First().IdNotaCredito</span>
+            </div>
+        </div>
+        <div class="info">
+            <label class="info-title">Punto: </label>
+            <span>@(Model.DetalleBoleta != null ? Model.DetalleBoleta.Punto : Model.Factura.IdPunto)</span>
+        </div>
+        <div class="info">
+            <label class="info-title">Taquillero:</label>
+            <span>@(Model.DetalleBoleta != null ? Model.DetalleBoleta.Taquillero : Model.Factura.IdUsuarioCreacion.ToString())</span>
+        </div>
+
+        <div style="@(bol? "display:block" : "display:none")">
+            <div class="info">
+                <label class="info-title">Nombre del producto:</label>
+                <span>@(bol? Model.DetalleBoleta.NombreProducto : "")</span>
+            </div>
+            <div class="info">
+                <label class="info-title">Vigencia del producto:</label>
+                <span>@(bol? Model.DetalleBoleta.FechaVencimiento.ToString() : "")</span>
+            </div>
+            <div class="info">
+                <label class="info-title">Estado del producto:</label>
+                <span>@(bol? (Model.Boleta.IdEstado == 1? "Entregado" : "Disponible") : "")</span>
+            </div>
+            <div class="info">
+                <label class="info-title">Punto de entrega:</label>
+                <span>@(bol? Model.DetalleBoleta.Punto : "")</span>
+            </div>
+            <div class="info">
+                <label class="info-title">Impresion:</label>
+                <span>@((vigencia && Model.Boleta.IdEstado==2) ? "Disponible" : "No disponible" )</span>
+            </div>
+        </div>
+    </div>
+
+}
+else if (tipo == "FechaAbierta")
+{
+<div class="consulta">
+    <div class="info">
+        <label class="info-title">Cliente:</label>
+        <span>@Model.BolControl.NombreCliente</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Numero de pedido:</label>
+        <span>@Model.BolControl.CodSapPedido</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Tipo de pedido:</label>
+        <span>@(Model.BolControl.FechaAbierta == "SI"? "Fecha abierta" : "Institucional")</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Estado del pedido: </label>
+        <span>@(Model.BolControl.EstadoPedido == 1? "Activo" : "Inactivo")</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Estado de la boleta:</label>
+        <span>@(Model.BolControl.EstadoBC == 1? "Activa" : "Inactiva")</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Asesor: </label>
+        <span>@Model.BolControl.NombreVendedor</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Fecha y hora de asignacion:</label>
+        <span>@Model.BolControl.FechaCreacion</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Fecha de entrega:</label>
+        <span>@(entregaBC ? Model.BolControl.FechaRedencion.ToString() : "")</span>
+    </div>
+    <div class="info">
+        <label class="info-title">Correo:</label>
+        <span>@Model.BolControl.Correo</span>
+    </div>
+</div>
+}
+
+@section scripts{
+    <script>
+        function Atras() {
+            window.history.back();
+        }
+
+        (function () {
+
+            const idleDurationSecs = 15;
+            const redirectUrl = '/Kioscos';
+            let idleTimeout;
+
+            const resetIdleTimeout = function () {
+
+                if (idleTimeout) clearTimeout(idleTimeout);
+
+                idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+            };
+
+            resetIdleTimeout();
+
+            ['click', 'touchstart', 'mousemove'].forEach(evt =>
+                document.addEventListener(evt, resetIdleTimeout, false)
+            );
+
+        })();
+    </script>
+}

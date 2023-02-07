@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Operaciones>
+@{
+    ViewBag.Title = "Checklist Mantenimiento";
+    var detalle = ViewBag.Detalle;
+    var listPuntos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Puntos;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/OrdenMantenimiento.css" rel="stylesheet" />
+@*<script src="~/Vendors/jquery/dist/jquery-1.11.1.min.js"></script>
+<script src="~/Vendors/bootstrap/dist/js/bootstrap.min.js"></script>*@
+<link href="~/Content/OrdenMantenimiento.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    <div class="x_content">
+        <form id="frmFiltro" method="post" action="@Url.Action("ListarOrdenes","OrdenMantenimiento")">
+            <div class="row">
+                <label class="control-label col-sm-2 col-sm-2 col-xs-4">
+                    Punto
+                </label>
+                <div class="col-sm-6 col-sm-6 col-xs-12">
+                    <select id="DDL_Punto" onchange="OnChangeEvent(this);" class="form-control required setSelect2">
+                        <option value="">* Seleccione el punto</option>
+                        @if (listPuntos != null && listPuntos.Count() > 0)
+                        {
+                            foreach (var item in listPuntos)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <input type="hidden" id="punto" value="" />
+            </div>
+            <br />
+            <br />
+            <div id="listView">
+                @Html.Partial("_List", Model)
+            </div>
+        </form>
+    </div>
+}
+
+@section scripts{
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Scripts/OrdenMantenimiento.js"></script>
+    <script src="~/Scripts/General.js"></script>    
+}
+
+

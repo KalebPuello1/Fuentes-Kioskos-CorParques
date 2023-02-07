@@ -1,0 +1,39 @@
+﻿@model CorParques.Negocio.Entidades.TipoVehiculoPorParqueadero
+<form>
+    <div class="form-horizontal form-label-left">
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tipovehiculo">
+                Tipo Vehículo <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoVehiculo, new SelectList(Model.ListaTipoVehiculo, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantidad">
+                Espacio Por Vehículo <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.strEspaciosPorVehiculo, new { @class = "form-control col-md-7 col-xs-12 required mayorque0", onkeypress = "return EsNumeroFloat(this);", maxlength = 7, @data_valor = "min_max0", @data_comparar = "EspaciosReservados", data_mensaje = "La cantidad de espacios reservados no puede ser menor a los espacios por vehiculo" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantidad">
+                Espacios Reservados <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.EspaciosReservados, new { @class = "form-control col-md-7 col-xs-12 required rango", onkeypress = "return EsNumero(this);", maxlength = 7, @data_valor = "max_max0", @data_comparar = "strEspaciosPorVehiculo", data_mensaje = "La cantidad de espacios reservados no puede ser menor a los espacios por vehiculo" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantidad">
+                Estado <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+        
+    </div>
+</form>

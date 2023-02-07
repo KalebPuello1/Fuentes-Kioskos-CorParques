@@ -1,0 +1,7 @@
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll.config
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.AssemblyReference.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.CoreCompileInputs.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.pdb

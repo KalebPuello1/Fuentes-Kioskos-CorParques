@@ -1,0 +1,54 @@
+﻿@model  IEnumerable<CorParques.Negocio.Entidades.Convenio>
+@{
+    ViewBag.Title = "Cargue códigos";
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-2 col-sm-2 col-xs-12">
+        <a href="@Url.Content("~/Archivos/Template.xlsx")">
+            <img src="~/Images/excel-xls-icon.png" width="100px" height="100px" /> 
+        </a>
+    </div>
+    <div class="col-ms-10 col-sm-10 col-xs-12">
+        <div id="dropzoneElements" class="dropzone"></div>
+        <input type="hidden" id="Imagen" name="Imagen" />
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <select id="ddlConvenio" class="form-control">
+            <option value=""> Seleccione ..</option>
+            @if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <option value="@item.IdConvenio">@item.Nombre</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+<br />
+
+
+<div class="row">
+    <div class="col-md-12 col-xs-12"> 
+        <input type="button" class="btn btn-primary"  value="Aceptar" id="btnAceptar"/>
+        <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelar" />
+    </div>
+</div>
+
+@section scripts{
+
+<script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/Scripts/ConvenioConsecutivo.js"></script>
+
+    }
+

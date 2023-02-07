@@ -1,0 +1,38 @@
+﻿@*@model CorParques.Negocio.Entidades.ReporteFallaAtraccion*@
+
+@{
+    ViewBag.Title = "Reporte Control Boleteria";
+
+    
+}
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerIni">
+            <input type="text" class="form-control FInicial required" id="Fecha">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Taquillero</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="idTaquillero" id="idTaquillero">
+            <option value="null">* Seleccione</option>
+            @foreach (CorParques.Negocio.Entidades.Usuario item in ViewBag.Usuarios)
+            {
+                <option value="@item.Id">@($"{item.Nombre} {@item.Apellido}")</option>
+            }
+        </select>
+    </div>
+</div>
+
+
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+    <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success">Consultar</a>
+    <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+</div>

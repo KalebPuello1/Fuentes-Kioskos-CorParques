@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>CodigoSap</th>
+            <th>Precio</th>
+
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+                        string.Concat(item.Nombre))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoSap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+
+
+            <td style="text-align:center; width:50px">
+                @if (item.ActivoApp != 0)
+                {
+                    if (item.ActivoApp == 1)
+                    {
+                        <a class="lnkDisable" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-times-circle"></b></a>
+                    }
+                    else
+                    {
+                        //  <a class="lnkcreart" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-save"></b></a>
+                        <a class="lnkEdit" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-save"></b></a>
+
+                    }
+
+                }
+                else
+                {
+                    <a class="lnkhabilitar" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-check-square-o"></b></a>
+                }
+
+            </td>
+           
+        </tr>
+            }
+        }
+   
+
+    </tbody>
+</table>
+
+
+

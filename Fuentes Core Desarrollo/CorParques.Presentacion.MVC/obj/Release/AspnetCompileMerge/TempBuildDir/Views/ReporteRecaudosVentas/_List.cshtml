@@ -1,0 +1,79 @@
+﻿@*@model CorParques.Negocio.Entidades.ReporteFallaAtraccion*@
+
+@{
+    ViewBag.Title = "Reporte de Fallas";
+    var MediosDePagos = (IEnumerable<CorParques.Negocio.Entidades.MediosPago>)ViewBag.MediosDePagos;
+}
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerIni">
+            <input type="text" class="form-control FInicial required" data-mensajeerror="Este campo es obligatorio" id="FInicial">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Final</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerFin">
+            <input type="text" class="form-control FFinnal required" data-mensajeerror="Este campo es obligatorio" id="FFinal">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+@*########################################################################################################*@
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Consecutivo</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control numerico" id="txtConsecutivo">
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Nombre Cliente</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <input type="text" class="form-control" id="txtCliente">
+    </div>
+</div>
+
+@*########################################################################################################*@
+
+@*<div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Forma de Pago</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idMedioPago" id="idMedioPago">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.MediosPago item in MediosDePagos)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Entidad</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idArea" id="idArea">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.TipoGeneral item in ListaAreas)
+                {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>*@
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+    <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success">Consultar</a>
+    <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+</div>

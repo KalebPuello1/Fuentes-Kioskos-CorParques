@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+@{
+    ViewBag.Title = "";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Vendors/pnotify/dist/pnotify.brighttheme.css" rel="stylesheet" />
+<link href="~/Vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
+
+
+        <div class="tipoProducto productos" id="PremiosDestrezas">
+            @Html.Partial("_ListaProductos", Model)
+        </div>
+
+        @*<div class="x_content">            
+            <div id="listView">
+                @Html.Partial("_ListaProductos", Model)
+            </div>
+        </div>*@
+
+@section scripts{
+<script src="~/Scripts/EntregaPremios.js"></script>
+    }

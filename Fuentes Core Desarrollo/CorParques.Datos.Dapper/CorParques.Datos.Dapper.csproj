@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0FEECF7F-314A-46FB-AAFF-4B52B8588D5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorParques.Datos.Dapper</RootNamespace>
+    <AssemblyName>CorParques.Datos.Dapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.SimpleCRUD, Version=1.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.SimpleCRUD.1.13.0\lib\net45\Dapper.SimpleCRUD.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\RepositorioBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositorioAdicionPedidos.cs" />
+    <Compile Include="RepositorioAlmacen.cs" />
+    <Compile Include="RepositorioCliente.cs" />
+    <Compile Include="RepositorioCodigoFechaAbierta.cs" />
+    <Compile Include="RepositorioComplejidadCortesia.cs" />
+    <Compile Include="RepositorioConsumoDeEmpleado.cs" />
+    <Compile Include="RepositorioConvenio.cs" />
+    <Compile Include="RepositorioFidelizacion.cs" />
+    <Compile Include="RepositorioCortesia.cs" />
+    <Compile Include="RepositorioPlazoCortesia.cs" />
+    <Compile Include="RepositorioReagendamiento.cs" />
+    <Compile Include="RepositorioReimpresionReciboCajaV.cs" />
+    <Compile Include="RepositorioReporteSoporteIT.cs" />
+    <Compile Include="RepositorioReporteUsuarioApp.cs" />
+    <Compile Include="RepositorioReporteVentasPorConvenio.cs" />
+    <Compile Include="RepositorioReporte_SI_Consumo_SF_FechaAbierta.cs" />
+    <Compile Include="RepositorioTipoRedencionCortesia.cs" />
+    <Compile Include="RepositorioUsuarioVisitante.cs" />
+    <Compile Include="RepositorioLogRedebanSolicitudAnulacion.cs" />
+    <Compile Include="RepositorioMatrizPuntos.cs" />
+    <Compile Include="RepositorioOrden.cs" />
+    <Compile Include="RepositorioCargos.cs" />
+    <Compile Include="RepositorioReporteCostoProducto.cs" />
+    <Compile Include="RepositorioReporteTarjetaRecargable.cs" />
+    <Compile Include="RepositorioReporteDestreza.cs" />
+    <Compile Include="RepositorioReporteCuadreDiarioFlujoCajasTaq.cs" />
+    <Compile Include="RepositorioReporteControlCaja.cs" />
+    <Compile Include="RepositorioReporteDonaciones.cs" />
+    <Compile Include="RepositorioReporteReservaEspacio.cs" />
+    <Compile Include="RepositorioReporteInventarioGeneral.cs" />
+    <Compile Include="RepositorioReporteMovimientoInventario.cs" />
+    <Compile Include="RepositorioReporteRecaudosVentas.cs" />
+    <Compile Include="RepositorioReporteNotificaciones.cs" />
+    <Compile Include="RepositorioReporteAprovechamientoFA.cs" />
+    <Compile Include="RepositorioReporteVentasDiarias.cs" />
+    <Compile Include="RepositorioReporteRecoleccion.cs" />
+    <Compile Include="RepositorioReporteVentasPorProducto.cs" />
+    <Compile Include="RepositorioReporteVentasPorHora.cs" />
+    <Compile Include="RepositorioReporteRedFechaAbierta.cs" />
+    <Compile Include="RepositorioReporteFallaAtraccion.cs" />
+    <Compile Include="RepositorioEstructuraEmpleado.cs" />
+    <Compile Include="RepositorioRegistroFallas.cs" />
+    <Compile Include="RepositorioAuxiliarPunto.cs" />
+    <Compile Include="RepositorioBoleteria.cs" />
+    <Compile Include="RepositorioCargueBoleteria.cs" />
+    <Compile Include="RepositorioCentroImpresion.cs" />
+    <Compile Include="RepositorioClima.cs" />
+    <Compile Include="RepositorioDetalleRecoleccionNovedad.cs" />
+    <Compile Include="RepositorioHistoricoBoleta.cs" />
+    <Compile Include="RepositorioMateriales.cs" />
+    <Compile Include="RepositorioDashBoard.cs" />
+    <Compile Include="RepositorioPlaneacion.cs" />
+    <Compile Include="RepositorioRegistroTorniquete.cs" />
+    <Compile Include="RepositorioOperacion.cs" />
+    <Compile Include="RepositorioReportePasajerosAtracciones.cs" />
+    <Compile Include="RepositorioReporteVentasDirectas.cs" />
+    <Compile Include="RepositorioReservaEspacios.cs" />
+    <Compile Include="RepositorioResolucionFactura.cs" />
+    <Compile Include="RepositorioRetorno.cs" />
+    <Compile Include="RepositorioOrdenMantenimiento.cs" />
+    <Compile Include="RepositorioSegmentoDia.cs" />
+    <Compile Include="RepositorioBitacoraDia.cs" />
+    <Compile Include="RepositorioAlistamientoPendiente.cs" />
+    <Compile Include="RepositorioCierrePunto.cs" />
+    <Compile Include="RepositorioArqueo.cs" />
+    <Compile Include="RepositorioApertura.cs" />
+    <Compile Include="RepositorioAperturaBase.cs" />
+    <Compile Include="RepositorioArea.cs" />
+    <Compile Include="RepositorioAutorizacionVehiculo.cs" />
+    <Compile Include="RepositorioAperturaBrazalete.cs" />
+    <Compile Include="RepositorioConvenioSAP.cs" />
+    <Compile Include="RepositorioCortesiaDestreza.cs" />
+    <Compile Include="RepositorioCortesiaPunto.cs" />
+    <Compile Include="RepositorioDetalleRecoleccionBrazalete.cs" />
+    <Compile Include="RepositorioDetalleRecoleccionDocumento.cs" />
+    <Compile Include="RepositorioDetalleRecoleccionMonetaria.cs" />
+    <Compile Include="RepositorioFactura.cs" />
+    <Compile Include="RepositorioFranquicia.cs" />
+    <Compile Include="RepositorioNotaCredito.cs" />
+    <Compile Include="RepositorioObservacionRecoleccion.cs" />
+    <Compile Include="RepositorioProducto.cs" />
+    <Compile Include="RepositorioPuntos.cs" />
+    <Compile Include="RepositorioCargueBrazalete.cs" />
+    <Compile Include="RepositorioPasaporteUso.cs" />
+    <Compile Include="RepositorioRecambio.cs" />
+    <Compile Include="RepositorioRecoleccion.cs" />
+    <Compile Include="RepositorioRecoleccionSupervisor.cs" />
+    <Compile Include="RepositorioReimpresion.cs" />
+    <Compile Include="RepositorioReservaSkycoaster.cs" />
+    <Compile Include="RepositorioSerieCodBarra.cs" />
+    <Compile Include="RepositorioTarjetaRecargable.cs" />
+    <Compile Include="RepositorioTipoCliente.cs" />
+    <Compile Include="RepositorioTipoDenominacion.cs" />
+    <Compile Include="RepositorioLogRedebanSolicitud.cs" />
+    <Compile Include="RepositorioLogRedebanRespuesta.cs" />
+    <Compile Include="RepositorioTipoPaciente.cs" />
+    <Compile Include="RepositorioCentroMedico.cs" />
+    <Compile Include="RepositorioControlParqueadero.cs" />
+    <Compile Include="RepositorioConvenioParqueadero.cs" />
+    <Compile Include="RepositorioEstado.cs" />
+    <Compile Include="RepositorioMediosPago.cs" />
+    <Compile Include="RepositorioMenu.cs" />
+    <Compile Include="RepositorioPerfil.cs" />
+    <Compile Include="RepositorioCategoriaAtencion.cs" />
+    <Compile Include="RepositorioCodigodeBarras.cs" />
+    <Compile Include="RepositorioTipoProducto.cs" />
+    <Compile Include="RepositorioTipoPuntos.cs" />
+    <Compile Include="RepositorioTipoConvenioParqueadero.cs" />
+    <Compile Include="RepositorioTipoDocumento.cs" />
+    <Compile Include="RepositorioTipoVehiculoPorParqueadero.cs" />
+    <Compile Include="RepositorioInventario.cs" />
+    <Compile Include="RepositorioUbicacionPunto.cs" />
+    <Compile Include="RepositorioProductosApp.cs" />
+    <Compile Include="RepositorioUsuarioGrupo.cs" />
+    <Compile Include="RepositorioGestionMantenimientoControl.cs" />
+    <Compile Include="RepositorioGestionMantenimientoDetalle.cs" />
+    <Compile Include="RepositorioGruposNotificacion.cs" />
+    <Compile Include="RepositorioListaPrecio.cs" />
+    <Compile Include="RepositorioNotificacion.cs" />
+    <Compile Include="RepositorioPaciente.cs" />
+    <Compile Include="RepositorioGestionMantenimiento.cs" />
+    <Compile Include="RepositorioTarifasParqueadero.cs" />
+    <Compile Include="RepositorioTipoBrazalete.cs" />
+    <Compile Include="RepositorioTiposVehiculos.cs" />
+    <Compile Include="RepositorioPrioridadCorreo.cs" />
+    <Compile Include="RepositorioParametros.cs" />
+    <Compile Include="RepositorioProcedimiento.cs" />
+    <Compile Include="RepositorioTipoTarifaParqueadero.cs" />
+    <Compile Include="RepositorioUsuario.cs" />
+    <Compile Include="RepositorioVuycoom.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Corparques.Datoss.Contratos\Corparques.Datos.Contratos.csproj">
+      <Project>{34297a79-59e8-4cc7-a74d-f899f8c43469}</Project>
+      <Name>Corparques.Datos.Contratos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CorParques.Negocio.Entidades\CorParques.Negocio.Entidades.csproj">
+      <Project>{ca4c696a-108d-4270-a5d1-955048178c20}</Project>
+      <Name>CorParques.Negocio.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CorParques.Transversales.Contratos\CorParques.Transversales.Contratos.csproj">
+      <Project>{51B4F68F-1814-4CE4-B760-080C5838076E}</Project>
+      <Name>CorParques.Transversales.Contratos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CorParques.Transversales.Util\CorParques.Transversales.Util.csproj">
+      <Project>{9f32bc26-6336-410d-8965-6a6470d28942}</Project>
+      <Name>CorParques.Transversales.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

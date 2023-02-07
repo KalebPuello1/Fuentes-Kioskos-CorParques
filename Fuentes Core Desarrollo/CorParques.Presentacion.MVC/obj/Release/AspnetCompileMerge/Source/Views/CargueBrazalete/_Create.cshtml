@@ -1,0 +1,61 @@
+﻿@model CorParques.Negocio.Entidades.CargueBoleteria
+
+
+<form>
+    <div class="form-horizontal form-label-left">
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Tipo Boleteria <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdProducto, new SelectList(Model.TipoBoleteria, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" })                                
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Descripción <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite la descripción", maxlength = "300" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Consecutivo Inicial <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.ConsecutivoInicial, new { @class = "form-control col-md-7 col-xs-12 required rango numerico", maxlength = "9", placeholder = "Digite el consecutivo inicial", @data_valor="min",@data_comparar= "ConsecutivoFinal", data_mensaje="El consecutivo inicial debe ser menor que el consecutivo final" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Consecutivo Final <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.ConsecutivoFinal, new { @class = "form-control col-md-7 col-xs-12 required numerico rango numerico", maxlength = "9", placeholder = "Digite el consecutivo final", @data_valor = "max", @data_comparar = "ConsecutivoInicial", data_mensaje = "El consecutivo final debe ser mayor que el consecutivo inicial" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Fecha Inicio Vigencia <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.FechaInicioVigenciaDDMMAAAA, new { @class = "form-control col-md-7 col-xs-12 required calendario rangoFechas", maxlength = 12, @data_valor = "FechaInicial", @data_comparar = "FechaFinVigenciaDDMMAAAA", data_mensaje = "Fecha inicio vigencia debe ser menor o igual que fecha fin vigencia." })
+            </div>
+        </div>  
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Fecha Fin Vigencia <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.FechaFinVigenciaDDMMAAAA, new { @class = "form-control col-md-7 col-xs-12 required calendario rangoFechas", maxlength = 12, @data_valor = "FechaFinal", @data_comparar = "FechaInicioVigenciaDDMMAAAA", data_mensaje = "Fecha fin vigencia debe ser mayor o igual que fecha inicio vigencia." })
+            </div>
+        </div>  
+                        
+    </div>
+    
+</form>
+

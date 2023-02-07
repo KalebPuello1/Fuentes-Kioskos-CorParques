@@ -1,0 +1,16 @@
+﻿@model CorParques.Negocio.Entidades.BitacoraDiaLista
+
+@{
+    ViewBag.Title = "Bitacora del Día " + DateTime.Now.ToShortDateString();    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_content">
+    <div id="listView">
+        @Html.Partial("_List", Model)
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/BitacoraDia.js"></script>
+}

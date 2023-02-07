@@ -1,0 +1,9 @@
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.AssemblyReference.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CoreCompileInputs.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CopyComplete
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.pdb

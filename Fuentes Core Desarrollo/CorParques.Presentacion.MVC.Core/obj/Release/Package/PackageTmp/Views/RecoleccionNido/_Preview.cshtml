@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Recolección Nido";
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listaPuntos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Puntos;
+}
+
+
+<div class="form-group">
+    <div class="row">
+        <div class="item col-md-5 col-sm-5 col-xs-12">
+            @*<select id="ddlTaquillero" onchange="OnChangeEvent(this);" class="form-control required setSelect2">
+                <option value="">Seleccione...</option>
+                @if (listaPuntos != null && listaPuntos.Count() > 0)
+                {
+                    foreach (var item in listaPuntos)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                }
+            </select>*@
+            @Html.DropDownList("DDL_Punto", new SelectList(ViewBag.Puntos, "Valor", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @onchange = "OnChangeEvent(this)" })
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/RecoleccionNido.js"></script>
+    <script src="~/Scripts/General.js"></script>
+}

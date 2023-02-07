@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.AcompanamientoXProducto>
+@{
+    var ListTipoAcompa = (IEnumerable<CorParques.Negocio.Entidades.TipoAcompanamiento>
+        )ViewBag.ListarTipoAcompGroup;
+
+}
+<form>
+
+    <div class="form-horizontal " style="margin-left:5%">
+
+        @foreach (var item2 in ListTipoAcompa)
+        {
+            <div class="row">
+                @if (Model != null && Model.Count() > 0)
+                {
+                int bandera = 0;
+                foreach (var item in Model)
+                {
+                if (item.Id_TipoAcomp == item2.IdTipoAcomp)
+                {
+                if (bandera == 0)
+                {
+                bandera = 1;
+                <label for="sel1">@item2.NombreTipo : (@item.MaxAcompanamientos)</label>
+                }
+
+                <div class="col" style="margin-left:10%">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input checkAcomp Acompa-@item2.IdTipoAcomp" maxlength="@item2.IdTipoAcomp" value="@item.Nombre" id="@item.IdAcomp">
+                        <input value="@item.MaxAcompanamientos" id="MaxAcompa-@item2.IdTipoAcomp" hidden>
+                        <label class="form-check-label" for="exampleCheck1"> @item.Nombre </label>
+                    </div>
+
+                </div>
+                }
+                }
+                }
+            </div>
+        }
+
+
+        @*<div class="row">
+            <label for="sel1">Bebidas:(@Model.FirstOrDefault().Max_AcompBebidas)</label>
+
+
+            @if (Model != null && Model.Count() > 0)
+            {
+                <input value="@Model.FirstOrDefault().Max_AcompBebidas" id="MaxBebidas" hidden>
+                foreach (var item in Model)
+                {
+                    if (item.Id_TipoAcomp == 2)
+                    {
+
+
+                        <div class="col" style="margin-left:10%">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input checkAcomp Acompa2" value="@item.Nombre" id="@item.IdAcomp">
+                                <label class="form-check-label" for="exampleCheck1"> @item.Nombre </label>
+                            </div>
+
+                        </div>
+                    }
+                }
+            }
+
+        </div>*@
+    <div class="row">
+
+
+        <div class="col-md-6">
+            <label for="sel1">Descripción:</label>
+            <textarea id="TxtDescripcion" class="form-control"></textarea>
+        </div>
+        <div class="col-md-6">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input checkTipoEntrega" value="2" id="IdTipoEntregacheck" @ViewBag.BanderaTipoMesa>
+                <label class="form-check-label" for="exampleCheck1"> Para llevar</label>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+    @*<input type="button" onclick="verDiasSeleccionados()" value="Ver dias seleccionados">*@
+
+    @*<table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <b>Reserva: @Html.DisplayFor(model => model.Consecutivo)</b>
+                    <br />
+                    Hora Inicio: @Html.DisplayFor(model => model.HoraInicio)
+                    <br />
+                    Hora Finalización: @Html.DisplayFor(model => model.HoraFin)
+                    <br />
+                    Fecha Reserva: @Html.DisplayFor(model => model.FechaReserva)
+                </td>
+            </tr>
+        </table>*@
+</form>

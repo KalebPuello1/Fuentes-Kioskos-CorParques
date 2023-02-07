@@ -1,0 +1,72 @@
+﻿@model CorParques.Negocio.Entidades.Grupo
+
+<form>
+    <div class="form-horizontal form-label-left">
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                Nombre <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12", @readonly = true })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Descripción">
+                Descripción:
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12", @readonly = true })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Descripción">
+                Estado:
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control col-md-7 col-xs-12", @readonly = true })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label for="name">
+                Usuarios Asociados:
+            </label>
+        </div>
+        <div id="listView" style="overflow-y:scroll; height:270px;">
+            <table id="datatable-responsive_1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Apellidos
+                        </th>
+                        <th>
+                            Nombres
+                        </th>
+                        <th>
+                            e-Mail
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Usuarios != null)
+                    {
+                        foreach (var item in Model.Usuarios)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Apellido)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Correo)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

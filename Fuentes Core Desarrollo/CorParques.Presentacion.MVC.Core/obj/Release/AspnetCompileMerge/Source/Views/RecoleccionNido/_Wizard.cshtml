@@ -1,0 +1,750 @@
+﻿@model CorParques.Negocio.Entidades.Recoleccion
+@{
+    ViewBag.Title = "Recolección Nido";
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Usuario = ViewBag.Usuario;
+    var totalRecolecciones = ViewBag.TotalRecolecciones;
+    var IdRecolecciones = ViewBag.IdRecolecciones;
+    var FechaRecolecciones = ViewBag.FechaRecolecciones;
+    var Inicio = ViewBag.Inicio;
+    var listaPuntos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Puntos;
+}
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+<div class="form-group">
+    <div class="row">
+        <div class="item col-md-5 col-sm-5 col-xs-12">
+            @Html.DropDownList("DDL_Punto", new SelectList(ViewBag.Puntos, "Valor", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @onchange = "OnChangeEvent(this)" })
+        </div>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    var cont = 1;
+    <input type="hidden" value="@Model.IdUsuarioCreacion" id="IdUsuarioCreacion">    
+    <input type="hidden" value="@Usuario" id="Usuario">
+    <input type="hidden" value="@totalRecolecciones" id="totalRecolecciones">
+    
+    <form id="frmRecoleccion" method="post" action="@Url.Action("Actualizar", "RecoleccionNido")">
+        <input type="hidden" value="@Model.IdPunto" id="IdPunto">
+        @Html.HiddenFor(model => Model.IdPunto)
+        <input type="hidden" value="@Model.IdUsuarioSupervisor" id="IdUsuarioSupervisor">
+        @Html.HiddenFor(model => Model.IdUsuarioSupervisor)
+        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                @if ((int)totalRecolecciones == 1)
+                {
+                    <li role="presentation" class="paso active" id="@IdRecolecciones[0]">
+                        <a href="#tab_content-1" id="tab-1" class="pestana" role="tab" data-toggle="tab" aria-expanded="true">Recolección @FechaRecolecciones[0]</a>
+                    </li>
+                    cont = 0;
+                }
+                else
+                {
+                    for (int i = 1; i < totalRecolecciones + 1; i++)
+                    {                        
+                        if (i == 1 && Inicio)
+                        {
+                            <li role="presentation" class="paso active" id="@IdRecolecciones[i-1]">
+                                <a href="#tab_content-1" id="tab-1" class="pestana" role="tab" data-toggle="tab" aria-expanded="true">Recolección @FechaRecolecciones[i - 1]</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li role="presentation" class="paso" id="@IdRecolecciones[i-1]">
+                                <a href="#tab_content-@i" id="tab-@i" class="pestana" role="tab" data-toggle="tab" aria-expanded="true">Recolección @FechaRecolecciones[i - 1]</a>
+                            </li>
+                        }
+
+                    }
+                }
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in" id="tab_content-1" aria-labelledby="tab-1">
+                    <p>
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content-@cont" aria-labelledby="tab-@cont">
+                            <input type="hidden" value="@Model.IdRecoleccion" id="@Model.IdRecoleccion">
+                            <input type="hidden" value="@IdRecolecciones[cont]" id="tabSelected">
+                            <div class="x_content" id="div_Recoleccion">
+                                <input type="text" id="txtCantidad" name="txtCantidad" value="" hidden />
+                                <input type="text" id="txtUsuario" name="txtUsuario" value="@Usuario" hidden />
+                                <input type="hidden" name="IdUsuarioCreacion" value="@Model.IdUsuarioCreacion" />
+                                <input type="hidden" name="IdRecoleccion" value="@Model.IdRecoleccion" />
+                                <input type="hidden" name="cierreRecoleccion" value="@Model.cierreRecoleccion" id="cierreRecoleccion" />
+                                <input type="hidden" name="IdApertura" value="@Model.IdApertura" id="IdApertura" />
+                                @Html.HiddenFor(model => Model.IdUsuarioModificacion)
+                                <div id="wizard1" class="form_wizard wizard_horizontal">
+                                    <ul class="wizard_steps" id="pasos">
+                                        @if (Model.RecoleccionBase != null)
+                                        {
+                                            <li id="li_Base">
+                                                <a href="#step-1">
+                                                    <span class="step_no">Base</span>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.RecoleccionCorte != null)
+                                        {
+                                            <li id="li_Corte">
+                                                <a href="#step-2">
+                                                    <span class="step_no">Corte</span>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.RecoleccionVoucher != null && Model.RecoleccionVoucher.Count() > 0)
+                                        {
+                                            <li id="li_Voucher">
+                                                <a href="#step-3">
+                                                    <span class="step_no">Voucher</span>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.RecoleccionDocumentos != null && Model.RecoleccionDocumentos.Count() > 0)
+                                        {
+                                            <li id="li_Documento">
+                                                <a href="#step-4">
+                                                    <span class="step_no">Documentos</span>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.NovedadesArqueo != null && Model.NovedadesArqueo.Count() > 0)
+                                        {
+                                            <li id="li_NovedadArqueo">
+                                                <a href="#step-5">
+                                                    <span class="step_no">Novedades</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                    @if (Model.RecoleccionBase != null)
+                {
+                                        <div id="step-1">
+                                            <table class="table table-striped table-bordered" id="datatable-base" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="200px">
+                                                            Tipo
+                                                        </th>
+                                                        <th width="200px">
+                                                            Denominación
+                                                        </th>
+                                                        <th width="80px">
+                                                            Cantidad Supervisor
+                                                        </th>
+                                                        <th width="200px">
+                                                            Total Supervisor
+                                                        </th>
+                                                        <th width="80px">
+                                                            Cantidad Nido
+                                                        </th>
+                                                        <th width="200px">
+                                                            Total Nido
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model != null)
+                                                    {
+                                                        int intContador = 0;
+                                                        foreach (var item in Model.TipoDenominacion)
+                                                        {
+                                                            if (Model.RecoleccionBase != null)
+                                                            {
+                                                                var objItemDetalleMonetario = Model.RecoleccionBase.ToList().Where(x => x.IdTipoRecoleccion == 1 && x.IdTipoDenominacion == item.IdTipoDenominacion).FirstOrDefault();
+                                                                if (objItemDetalleMonetario != null)
+                                                                {
+                                                                    var totalTaquilla = (objItemDetalleMonetario.CantidadSupervisor * Convert.ToInt32(item.Denominacion));
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.Tipo)
+                                                                        </td>
+                                                                        <td>
+                                                                            <div id="D_@intContador">
+                                                                                @Html.DisplayFor(modelItem => item.Denominacion)
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="text" class="form-control cantidadbase required convalorbase" disabled id="Valor_@intContador" name="RecoleccionBase[@intContador].CantidadSupervisor" value="@objItemDetalleMonetario.CantidadSupervisor" />
+
+                                                                        </td>
+                                                                        <td>
+                                                                            <div id="Dt_@intContador">
+                                                                                @totalTaquilla
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].IdTipoRecoleccion" value="1">
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].IdRecoleccion" value=@objItemDetalleMonetario.IdRecoleccion>
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].IdTipoDenominacion" value=@item.IdTipoDenominacion>
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].IdDetalleRecoleccionMonetaria" value=@objItemDetalleMonetario.IdDetalleRecoleccionMonetaria>
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].CantidadSupervisor" value=@objItemDetalleMonetario.CantidadSupervisor>
+                                                                            <input type="hidden" name="RecoleccionBase[@intContador].IdUsuarioModificacion" value=@objItemDetalleMonetario.IdUsuarioModificacion>
+                                                                            <input type="text" class="form-control required " id="ValorSupervisor_@intContador" name="RecoleccionBase[@intContador].CantidadNido" value="@objItemDetalleMonetario.CantidadNido" maxlength="10" onkeypress="return EsNumero(this);" onkeyup=" Total(this, 'D_' , 'TotalSupervisor' , 'Total_BaseSupervisor' );" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <div id="TotalSupervisor_@intContador" class="Total_BaseSupervisor">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    intContador++;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+
+                                                        <td style="text-align:right">
+                                                            <b>Total Base</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_TotalSupervisorBase" class="FontBoldBig"></div>
+                                                        </td>
+
+                                                        <td style="text-align:right">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_TotalSupervisor" class="FontBoldBig"></div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            @if (Model.SobreBilletesBase != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre Billetes:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreBilletesBase" value="@Model.SobreBilletesBase" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.SobreMonedasBase != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre Monedas:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreMonedasBase" value="@Model.SobreMonedasBase" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    @if (Model.RecoleccionCorte != null)
+                {
+                                        <div id="step-2">
+                                            <table class="table table-striped table-bordered" id="datatable-corte" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="200px">
+                                                            Tipo
+                                                        </th>
+                                                        <th width="200px">
+                                                            Denominación
+                                                        </th>
+                                                        <th width="80px">
+                                                            Cantidad Supervisor
+                                                        </th>
+                                                        <th width="200px">
+                                                            Total Supervisor
+                                                        </th>
+                                                        <th width="80px">
+                                                            Cantidad Nido
+                                                        </th>
+                                                        <th width="200px">
+                                                            Total Nido
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.RecoleccionCorte != null)
+                                                    {
+                                                        int intContador = 0;
+                                                        foreach (var item in Model.TipoDenominacion)
+                                                        {
+                                                            var objItemDetalleMonetarioCorte = Model.RecoleccionCorte.ToList().Where(x => x.IdTipoRecoleccion == 2 && x.IdTipoDenominacion == item.IdTipoDenominacion).FirstOrDefault();
+                                                            if (objItemDetalleMonetarioCorte != null)
+                                                            {
+                                                                var totalTaquilla = (objItemDetalleMonetarioCorte.CantidadSupervisor * Convert.ToInt32(item.Denominacion));
+                                                                <tr>
+                                                                    <td>
+                                                                        @Html.DisplayFor(modelItem => item.Tipo)
+                                                                    </td>
+                                                                    <td>
+                                                                        <div id="DCorte_@intContador">
+                                                                            @Html.DisplayFor(modelItem => item.Denominacion)
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" disabled class="form-control cantidadcorte required convalorcorte" id="ValorCorte_@intContador" name="RecoleccionCorte[@intContador].CantidadSupervisor" value="@Model.RecoleccionCorte.ToList()[@intContador].CantidadSupervisor" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <div id="DCortet_@intContador">
+                                                                            @totalTaquilla
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].IdTipoRecoleccion" value="2">
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].IdTipoDenominacion" value=@item.IdTipoDenominacion>
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].IdRecoleccion" value=@objItemDetalleMonetarioCorte.IdRecoleccion>
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].IdDetalleRecoleccionMonetaria" value=@objItemDetalleMonetarioCorte.IdDetalleRecoleccionMonetaria>
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].CantidadSupervisor" value=@objItemDetalleMonetarioCorte.CantidadSupervisor>
+                                                                        <input type="hidden" name="RecoleccionCorte[@intContador].IdUsuarioModificacion" value=@objItemDetalleMonetarioCorte.IdUsuarioModificacion>
+                                                                        <input type="text" class="form-control required" id="ValorCorteSupervisor_@intContador" name="RecoleccionCorte[@intContador].CantidadNido" maxlength="10" value="@Model.RecoleccionCorte.ToList()[@intContador].CantidadNido" onkeypress="return EsNumero(this);" onkeyup=" Total(this, 'DCorte_' , 'TotalCorteSupervisor' , 'TotalCorteSupervisor' );" />
+                                                                    </td>
+                                                                    <td>
+                                                                        <div id="TotalCorteSupervisor_@intContador" class="TotalCorteSupervisor">
+
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                intContador++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                        <td style="text-align:right">
+                                                            <b>Total Corte</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_TotalSupervisorCorte" class="FontBoldBig"></div>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_TotalCorteSupervisor" class="FontBoldBig"></div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            @if (Model.SobreBilletesCorte != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre Billetes:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreBilletesCorte" value="@Model.SobreBilletesCorte" />
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.SobreMonedasCorte != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre Monedas:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreMonedasCorte" value="@Model.SobreMonedasCorte" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    @if (Model.RecoleccionVoucher != null && Model.RecoleccionVoucher.Count() > 0)
+                {
+                                        <div id="step-3">
+                                            <table class="table table-striped table-bordered" id="datatable-voucher" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="200px">
+                                                            Fecha Hora
+                                                        </th>
+                                                        <th width="200px">
+                                                            Código Voucher
+                                                        </th>
+                                                        <th width="200px">
+                                                            Franquicia
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Supervisor
+                                                        </th>
+                                                        <th width="100px">
+                                                            Valor
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Nido
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" onchange="SeleccionarTodos(this, 'voucher');" />
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model != null)
+                                                    {
+                                                        int intContador = 0;
+
+                                                        if (Model.RecoleccionVoucher != null)
+                                                        {
+                                                            var objItemDetalleDocumentosVoucher = Model.RecoleccionVoucher.ToList().Where(x => x.IdTipoRecoleccion == 3);
+                                                            if (objItemDetalleDocumentosVoucher != null)
+                                                            {
+                                                                foreach (var item in objItemDetalleDocumentosVoucher)
+                                                                {
+
+
+
+                                                                    <tr>
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.FechaCreacion)
+                                                                        </td>
+                                                                        <td>
+                                                                            <div>
+                                                                                @Html.DisplayFor(modelItem => item.NumReferencia)
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div>
+                                                                                @Html.DisplayFor(modelItem => item.Franquicia)
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div style="text-align:center;">
+                                                                                @if (objItemDetalleDocumentosVoucher != null)
+                                                                                {
+                                                                                    <input type="checkbox" id="chkv_@intContador" disabled name="RecoleccionVoucher[@intContador].RevisionSupervisor" value="true" checked onchange="SeleccionarCheckBox(this);" />
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <input type="checkbox" id="chkv_@intContador" disabled name="RecoleccionVoucher[@intContador].RevisionSupervisor" value="false" onchange="SeleccionarCheckBox(this);" />
+                                                                                }
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div id="valorvoucher_@intContador">
+                                                                                @*@string.Format("{0:C0}", item.Valor)*@
+                                                                                @string.Format("{0:C0}", Model.RecoleccionVoucher.Where(M => M.IdMedioPagoFactura == item.IdMedioPagoFactura).Select(M => M.Valor).FirstOrDefault())
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].NumeroSobre" value="@Model.SobreVoucher">
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].Valor" value="@Model.RecoleccionVoucher.Where(M => M.IdMedioPagoFactura == item.IdMedioPagoFactura).Select(M=>M.Valor).FirstOrDefault()">
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].IdTipoRecoleccion" value="3">
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].IdRecoleccion" value=@objItemDetalleDocumentosVoucher.First().IdRecoleccion>
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].IdMedioPagoFactura" value=@item.IdMedioPagoFactura>
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].IdDetalleRecoleccionDocumento" value=@objItemDetalleDocumentosVoucher.First().IdDetalleRecoleccionDocumento>
+                                                                            <input type="hidden" name="RecoleccionVoucher[@intContador].IdUsuarioModificacion" value=@objItemDetalleDocumentosVoucher.First().IdUsuarioModificacion>
+                                                                            <div style="text-align:center;">
+                                                                                <input type="checkbox" id="chkvs_@intContador" name="RecoleccionVoucher[@intContador].RevisionNido" value="false" onchange="SeleccionarCheckBox(this);" class="voucher" />
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    intContador++;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="3"></td>
+                                                        <td style="text-align:right">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_Totalvoucher" class="FontBoldBig"></div>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            @if (Model.SobreVoucher != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreVoucher" value="@Model.SobreVoucher" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    @if (Model.RecoleccionDocumentos != null && Model.RecoleccionDocumentos.Count() > 0)
+                {
+                                        <div id="step-4">
+                                            <table class="table table-striped table-bordered" id="datatable-documentos" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="200px">
+                                                            Fecha Hora
+                                                        </th>
+                                                        <th width="200px">
+                                                            Código Documento
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Supervisor
+                                                        </th>
+                                                        <th width="50px">
+                                                            Valor
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Nido
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" onchange="SeleccionarTodos(this, 'documentos');" />
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model.RecoleccionDocumentos != null)
+                                                    {
+                                                        int intContador = 0;
+                                                        foreach (var item in Model.DocumentosRecoleccion.Where(x => x.Tipo == 2))
+                                                        {
+                                                            var objItemDetalleDocumentos = Model.RecoleccionDocumentos.ToList().Where(x => x.IdTipoRecoleccion == 4 && x.IdMedioPagoFactura == item.IdMedioPagoFactura).FirstOrDefault();
+                                                            if (objItemDetalleDocumentos != null)
+                                                            {
+                                                                <tr>
+                                                                    <td>
+                                                                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                                                                    </td>
+                                                                    <td>
+                                                                        <div>
+                                                                            @Html.DisplayFor(modelItem => item.NumReferencia)
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div style="text-align:center;">
+                                                                            @if (objItemDetalleDocumentos != null)
+                                                                            {
+                                                                                <input type="checkbox" id="chkd_@intContador" disabled name="RecoleccionDocumentos[@intContador].RevisionSupervisor" value="true" checked onchange="SeleccionarCheckBox(this);" />
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="chkd_@intContador" disabled name="RecoleccionDocumentos[@intContador].RevisionSupervisor" value="false" onchange="SeleccionarCheckBox(this);" />
+                                                                            }
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div id="valordocumentos_@intContador">
+                                                                            @*@string.Format("{0:C0}", item.Valor)*@
+                                                                            @string.Format("{0:C0}", Model.RecoleccionDocumentos.Where(M => M.IdMedioPagoFactura == item.IdMedioPagoFactura).Select(M => M.Valor).FirstOrDefault())
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].NumeroSobre" value="@Model.SobreDocumentos">
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].Valor" value="@Model.RecoleccionDocumentos.Where(M => M.IdMedioPagoFactura == item.IdMedioPagoFactura).Select(M => M.Valor).FirstOrDefault()">
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].IdTipoRecoleccion" value="4">
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].IdRecoleccion" value=@objItemDetalleDocumentos.IdRecoleccion>
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].IdMedioPagoFactura" value=@item.IdMedioPagoFactura>
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].IdDetalleRecoleccionDocumento" value=@objItemDetalleDocumentos.IdDetalleRecoleccionDocumento>
+                                                                        <input type="hidden" name="RecoleccionDocumentos[@intContador].IdUsuarioModificacion" value=@objItemDetalleDocumentos.IdUsuarioModificacion>
+                                                                        <div style="text-align:center;">
+                                                                            <input type="checkbox" id="chkds_@intContador" name="RecoleccionDocumentos[@intContador].RevisionNido" value="false" onchange="SeleccionarCheckBox(this);" class="documentos"/>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                intContador++;
+                                                            }
+                                                        }
+                                                    }
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2"></td>
+                                                        <td style="text-align:right">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_Totaldocumentos" class="FontBoldBig"></div>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            @if (Model.SobreDocumentos != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreDocumentos" value="@Model.SobreDocumentos" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    @if (Model.NovedadesArqueo != null && Model.NovedadesArqueo.Count() > 0)
+                {
+                                        <div id="step-5">
+                                            <table class="table table-striped table-bordered" id="datatable-novedades" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="200px">
+                                                            Tipo Novedad
+                                                        </th>
+                                                        <th width="200px">
+                                                            Fecha Hora
+                                                        </th>
+                                                        <th width="200px">
+                                                            Valor
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Supervisor
+                                                        </th>
+                                                        <th width="50px">
+                                                            Validado Nido
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" onchange="SeleccionarTodos(this, 'Novedad');" />
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model != null)
+                                                    {
+                                                        int intContador = 0;
+                                                        foreach (var item in Model.NovedadesArqueo)
+                                                        {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.TipoNovedadNombre)
+                                                        </td>
+                                                        <td>
+                                                            @item.FechaCreado.ToString("yyyy/MM/dd HH:mm")
+                                                        </td>
+                                                        <td>
+                                                            <div id="valorNovedad_@intContador">
+                                                                @string.Format("{0:C0}", item.Valor)
+                                                                </div>
+</td>
+
+                                                        <td>
+                                                            <div style="text-align:center;">
+                                                                @if (Model.NovedadesArqueo != null)
+                                                                        {
+                                                                        <input type="checkbox" id="chknv_@intContador" disabled name="RecoleccionNovedad[@intContador].RevisionTaquillero" value="true" checked onchange="SeleccionarCheckBox(this);" />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        <input type="checkbox" id="chknv_@intContador" disabled name="RecoleccionNovedad[@intContador].RevisionTaquillero" value="false" onchange="SeleccionarCheckBox(this);" />
+                                                                        }
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" name="RecoleccionNovedad[@intContador].NumeroSobre" value="@Model.SobreNovedad">
+                                                            <input type="hidden" name="RecoleccionNovedad[@intContador].Valor" value="@Model.RecoleccionNovedad.FirstOrDefault().Valor">
+                                                            <input type="hidden" name="RecoleccionNovedad[@intContador].IdTipoRecoleccion" value="6">
+                                                            <input type="hidden" name="RecoleccionNovedad[@intContador].IdDetalleRecoleccionNovedad" value=@item.Id>
+                                                            <input type="hidden" name="RecoleccionNovedad[@intContador].IdNovedadArqueo" value=@item.Id>
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" id="chkns_@intContador" name="RecoleccionNovedad[@intContador].RevisionNido" value="false" onchange="SeleccionarCheckBox(this);" class="Novedad"/>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                            intContador++;
+                                                        }
+                                                    }
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align:right">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td>
+                                                            <div id="div_TotalNovedad" class="FontBoldBig"></div>
+                                                        </td>
+                                                        <td colspan="2"></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                            @if (Model.SobreNovedad != null)
+                                            {
+                                                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                                        Número Sobre:
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" class="form-control" style="width:150px" disabled id="SobreNovedad" value="@Model.SobreNovedad" />
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        @*<div style="text-align:right; display:none; " id="btnFin">
+                <button type="button" class="btn btn-finish btn btn-success recoleccion" onclick="EjecutarLogin(txtUsuario.value)" id="btnOK">Guardar</button>
+            </div>*@
+        <div id="modalCRUD" class="modal fade" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header btn-primary">
+                        <h4 class="modal-title">Confirmación supervisor</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="password" class="form-control required" placeholder="Contraseña" id="txtPassword" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label">Observaciones</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(modelItem => Model.objObservaciones.Observacion, new { @class = "form-control col-md-9 col-sm-9 col-xs-12 required", cols = "20", maxlength = 500, rows = "3", placeholder = "Observaciones", id = "txtObservaciones" })
+                                <input type="hidden" id="txtObservaciones" value="@Model.objObservaciones.Observacion" maxlength="500" placeholder="Observaciones" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarLogin" />
+                                <a id="btnCancelar" href="javascript:void(0)" onclick="CancelLogin()" class="btn btn-danger">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div class="well"><h4>El supervisor no tiene datos para verificar</h4></div>
+}
+@section scripts{
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Scripts/RecoleccionNido.js"></script>
+    <script src="~/Scripts/jquery.smartWizard.js"></script>
+    <script src="~/Scripts/General.js"></script>
+}
