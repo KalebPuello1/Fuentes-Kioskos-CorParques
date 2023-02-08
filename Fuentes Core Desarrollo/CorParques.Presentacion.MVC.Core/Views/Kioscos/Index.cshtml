@@ -2,17 +2,20 @@
 @{
     ViewBag.Title = "gjghj";
 
-    Layout = "~/Views/Shared/_LayoutKiosco.cshtml";
+    Layout = "";
 
 }
+<link rel="stylesheet" href="~/Content/Kioscos/index.css">
+<span class="titulo" style="display:none;">
+    Bienvenido al m&oacute;dulo interactivo de gesti&oacute;n
+</span>
 
-<div class="col-md-12 p-0">
-    <img src="./Images/Ikaro app.jpg" alt="Imagen-fondo" class="w-100 p-0" style="object-fit: fill;">
-
-     <a href="@Url.Action("IngresoCodigo", "Kioscos")" class="boton">
-        
-            Continuar
-        
-    </a>
-
-</div>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        (function () {
+            window.addEventListener("click", () => {
+                window.location.href = "Kioscos/IngresoCodigo";
+            });
+        })();
+    });
+</script>
