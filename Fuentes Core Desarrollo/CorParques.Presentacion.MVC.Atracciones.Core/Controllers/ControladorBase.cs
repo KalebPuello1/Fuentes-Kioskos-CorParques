@@ -23,7 +23,15 @@ namespace CorParques.Presentacion.MVC.Atracciones.Core.Controllers
         {
             get
             {
-                return Utilidades.ObtenerInformacionPunto(ConfigurationManager.AppSettings["IdPunto"].ToString()).Id;
+                if (Session["IdPuntoSeleccionado"] != null)
+                {
+                    return Convert.ToInt16(Session["IdPuntoSeleccionado"].ToString());
+                }
+                else
+                {
+                    return Utilidades.ObtenerInformacionPunto(ConfigurationManager.AppSettings["IdPunto"].ToString()).Id;
+                }
+               
             }
         }
 
