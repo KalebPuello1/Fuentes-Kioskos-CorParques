@@ -74,7 +74,10 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerListaJoin();
         }
-
+        public IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario)
+        {
+            return _repositorio.ObtenerPuntosXusuario(IdUsuario);
+        }
         public IEnumerable<Puntos> ObtenerxTipoPunto(int IdTipoPunto)
         {
             return _repositorio.ObtenerxTipoPunto(IdTipoPunto);

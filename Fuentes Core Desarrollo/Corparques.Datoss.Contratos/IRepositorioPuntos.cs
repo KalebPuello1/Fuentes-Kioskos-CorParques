@@ -13,7 +13,8 @@ namespace CorParques.Datos.Contratos
         IEnumerable<Puntos> ObtenerListaJoin();
         IEnumerable<TipoGeneral> ObtenerxIdTipoPunto(int IdTipoPunto);
         IEnumerable<Puntos> ObtenerxTipoPunto(int IdTipoPunto);
-
+        IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario);
+        
         bool EliminarLogica(int id);
         bool ActualizaHoraIdPunto(string HoraInicio, string HoraFin, int IdTipoPunto);
 
