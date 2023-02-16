@@ -1,0 +1,39 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+@{
+    ViewBag.Title = "Alistamiento de apertura";
+    //ViewBag.SubTitle = "Editar Aalistamiento de apertura de puntos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+        <div class="x_content">
+            @*<a href="javascript:void(0)" id="lnkAdd"><b style="font-size:xx-large" class="fa fa-plus-square"></b></a>*@
+            <div id="listView">
+                @Html.Partial("_EditAperturaBase", Model)
+            </div>
+        </div>
+
+@section scripts{
+<script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+<script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<script src="~/Scripts/Apertura.js"></script>
+
+<script>
+    $(function () {
+        var dataPuntos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ListaPuntos.Select(x => new { label = x.Nombre, value = x.Id,category = x.TipoPunto }).ToArray()));
+        InitPartialCreate(dataPuntos);
+    });
+</script>
+    }

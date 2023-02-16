@@ -1,0 +1,101 @@
+﻿@model CorParques.Negocio.Entidades.ControlParqueadero
+
+@*@using (Html.BeginForm("Salir", "Parqueadero", FormMethod.Post))
+{*@
+    <div class="form" id="formSalidaParqueadero" style="background-image: url(Images/talanquera.png); background-repeat: no-repeat; background-position-x: right; height: 220px;">
+        <div class="item form-group">
+            <div class="row">
+                <div id="divParqueaderoSalidaSuccess"  style="text-align: center; display: none;" class="col-md-6">
+                    <b style="font-size: 64px; color: #5cb85c;" class="fa fa-check-circle"></b> <br />
+                    <span style="font-size: 13px;" id="TextoParqueaderoSalidaSuccess"  class="label label-success"></span>
+                </div>
+
+                <div id="divParqueaderoSalidaDanger" style="text-align: center; display: none;" class="col-md-6">
+                    <b style="font-size: 64px; color: #d9534f;" class="fa fa-exclamation-triangle"></b> <br />
+                    <span style="font-size: 13px;" id="TextoParqueaderoSalidaDanger" class="label label-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <br />
+                <label>Código</label>
+                @Html.TextBoxFor(model => model.Id, new { @class = "form-control required", @id = "txtIdControlParqueadero", @style = "text-transform:uppercase", placeholder = "", maxlength = 14, Value = "", autofocus= "autofocus", autocomplete="Off" })
+            </div>
+            @*<div class="col-md-2">
+                <br />
+                <button type="button" id="btnEnviarSalida" onclick="setEventSalir();" class="btn btn-success">Registrar Salida</button>
+            </div>*@
+        </div>
+    </div>
+@*}*@
+
+    <script>
+
+        $("#txtIdControlParqueadero").keypress(function (evt) {
+            if (window.event) {
+                var charCode = event.keyCode;
+
+            } else if (evt.onkeypress.arguments[0].charCode) {
+                var charCode = evt.onkeypress.arguments[0].charCode;
+            }
+
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            //if (evt.which == 13 && $(this).val().length > 0)
+            //    calculaPagoParqueadero();
+
+            if (!inicializadointervalSalidaPark) {
+                inicializadointervalSalidaPark = true;
+                var refreshIntervalSalidaPark = setInterval(function () { setEventSalir(); clearInterval(refreshIntervalSalidaPark); }, 300);
+            }
+        });
+
+
+        function setEventSalir() {
+            //$("#btnEnviarSalida").click(function () {
+            $("#divParqueaderoSalidaSuccess").hide();
+            $("#TextoParqueaderoSalidaSuccess").text("");
+
+            $("#divParqueaderoSalidaDanger").hide();
+            $("#TextoParqueaderoSalidaDanger").text("");
+
+            if (!validarFormulario("formSalidaParqueadero *") || ($("#txtIdControlParqueadero").val() == "" || $("#txtIdControlParqueadero").val() == "0")) {
+                inicializadointervalSalidaPark = false;
+            }
+            else {
+                if ($("#txtIdControlParqueadero").val().length >= 10) {
+                    var strCodBarras = $("#txtIdControlParqueadero").val();
+                    var idDepurado = strCodBarras.substring(2, strCodBarras.length - 1);
+                    _idParqueadero = parseInt(idDepurado);
+
+                    var _Ingreso = new Object();
+                    _Ingreso.Id = _idParqueadero;
+                    EjecutarAjax(urlBase + "Parqueadero/Salir", "POST", JSON.stringify(_Ingreso), "SuccessParqueaderoSalir", null);
+                } else {
+                    $("#txtIdControlParqueadero").val("");
+                    inicializadointervalSalidaPark = false;
+                }
+            }
+            //});
+        }
+        function SuccessParqueaderoSalir(data) {
+            if (data.Correcto) {
+                //mostrarAlerta('Estado', 'Vehiculo ingresado con exito.');
+                $("#divParqueaderoSalidaSuccess").fadeIn("Slow");
+                $("#TextoParqueaderoSalidaSuccess").text("Salida registrada con exito");
+                EjecutarAjax(urlBase + "Parqueadero/GetPartial", "GET", null, "printPartialParqueaderoIngresar", { div: "#listView", func: "setEventSelect" });
+                $("#txtIdControlParqueadero").val("");
+                inicializadointervalSalidaPark = false;
+            }
+            else {
+                $("#divParqueaderoSalidaDanger").fadeIn("Slow");
+                $("#TextoParqueaderoSalidaDanger").text(data.Mensaje);
+                $("#txtIdControlParqueadero").val("");
+                inicializadointervalSalidaPark = false;
+            }
+        }
+
+    </script>

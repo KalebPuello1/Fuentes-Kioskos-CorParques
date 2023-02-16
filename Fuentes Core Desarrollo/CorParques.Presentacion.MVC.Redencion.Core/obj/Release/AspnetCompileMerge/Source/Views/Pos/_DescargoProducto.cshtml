@@ -1,0 +1,56 @@
+﻿@model List<CorParques.Negocio.Entidades.Producto>
+
+@if (Model != null && Model.Count > 0)
+{
+
+<br />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <table class="table table-striped jambo_table" width="100%">
+            <thead>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GroupBy(x => new { id = x.IdProducto, nombre = x.Nombre }))
+                {
+                    var cantidad = Model.Where(x => x.IdProducto == item.Key.id).Count();
+
+                    <tr>
+                        <td>@item.Key.nombre</td>
+                        <td><input type="text" value="@cantidad" class="form-control Cantidad Numerico" data-id="@item.Key.id" data-max="@cantidad" id="txt_@item.Key.id" /> </td>
+                        <td><input type="checkbox" data-id="@item.Key.id"  checked class="ChxDescarga" id="chx_@item.Key.id" /> </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+       
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <input type="button" class="btn btn-success" value="Si" id="btnAceptarDescargo" />
+        <input type="button" class="btn btn-danger" value="No" id="btnCancelarDescargo" />
+    </div>
+</div>
+
+
+    <script>
+
+        //Setear eventos - validar campos
+        SetEventDescargueProducto();
+
+        $("#btnAceptarDescargo").click(function () {
+            AceptarDescargoProductos();
+        });
+
+        $("#btnCancelarDescargo").click(function () {
+            CancelarDescargoProductos();
+        });
+    </script>
+}
+
+
+
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Grupo>
+
+@{
+    ViewBag.Title = "Envío de Notificaciones";
+    ViewBag.SubTitle = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">*@
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<div class="x_content" id="formularioNot">
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        @if (Model != null)
+                        {
+                            <label class="control-label">Grupos <a href="javascript:void(0)" class="fa fa-question-circle" data-toggle="popover" title="Digite uno de estos grupos" data-content="@string.Join("<br/>",Model.Select(x => x.Nombre)?.ToArray())" data-trigger="focus"></a></label>
+                        }
+                        else
+                        {
+                            <label class="control-label">Grupos <a href="javascript:void(0)" class="fa fa-question-circle" data-toggle="popover" title="Digite uno de estos grupos" data-content="" data-trigger="focus"></a></label>
+                        }
+                        @*<label class="control-label">Grupos <a  href="javascript:void(0)" class="fa fa-question-circle" data-toggle="popover" title="Digite uno de estos grupos" data-content="@string.Join("<br/>",Model.Select(x => x.Nombre).ToArray())" data-trigger="focus"></a></label>*@
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <input id="gruposAutocomplete" type="text" class="form-control" tabindex="1" />
+                            <input id="gruposAtracciones" type="text" class="tags form-control" readonly="readonly" />
+                            <input type="hidden" name="ListaGrupos" id="hdGrupos" value="" />
+                        </div>
+                      
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Prioritario</label>
+                        <input type="checkbox" class="required" id="chbxPrioritario" tabindex="2" name="Prioritario">
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Asunto</label>
+                        <input type="text" class="form-control required" id="txtAsunto" tabindex="3" name="Asunto" maxlength="150">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mensaje</label>
+                        <textarea class="form-control required" id="txtContenido" name="Contenido" tabindex="4" rows="5" style="resize: none;" maxlength="1000"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="btnEnviar" class="btn btn-primary btn-lg alignright">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Notificacion.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+    <script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+ <script>
+        $(document).ready(function () {
+            var dataGrupos = "";
+
+            if("@Model"!="null")
+            {
+                dataGrupos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(x => new { label = x.Nombre, value = x.Id }).ToArray()));
+            }
+           
+           
+
+            InitPartialCreate(dataGrupos);
+        });
+</script>
+}

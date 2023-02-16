@@ -1,0 +1,92 @@
+﻿@model  IEnumerable<CorParques.Negocio.Entidades.UsuarioVisitanteViewModel>
+@{
+    ViewBag.Title = "Cortesía";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<form id="frmCortesias">
+    <h2>Asignar Cortesias</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <input type="text" placeholder="Documento visitante" id="DocVisitante" class="form-control Numerico" />
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <input type="text" placeholder="Documento Ejecutivo Cor" id="DocEjecutivo" class="form-control Numerico" />
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <input type="text" placeholder="Número tarjeta" id="NumTarjeta" class="form-control  Numerico" />
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12">
+            <input type="text" placeholder="Correo App" id="CorreoApp" class="form-control  email" />
+        </div>
+    </div>
+    <div id="MostrarDatos" style="display: none;">
+        <div class="row">
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label>No. Documento:  <label id="CedulaVisitante"></label> </label>
+
+                <input type="text" id="txtNumdocumentoV" style="display:none" />
+                <input type="text" id="txtTipoCortesiaV" style="display:none" />
+                <input type="text" id="txtNumTarjetaFAN" style="display:none" />
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label>Nombres:  <label id="NombreVisitante"></label> </label>
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label>Correo:  <label id="CorreoVisitante"></label> </label>
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label>Teléfono:  <label id="TelefonoVisitante"></label> </label>
+            </div>
+
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <label>Cortesías disponibles <label id="lblCantidadCortesias">0</label> </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" id="Detallecortesia">
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <input type="text" placeholder="Código barras producto" class="form-control Numerico" id="txtCodigo" />
+                <input type="text" placeholder="Cod sap Producto Impresión en linea" class="form-control Numerico" id="txtCodigoImpresion" style="display:none"/>
+            </div>         
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                <input type="button" id="btnHabilitarImpresionLinea" class="btn btn-success" onclick="ActivarImpresion()" value="Activar Imp en línea" />
+            </div>
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12" id="listProductos">
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <input type="button" id="btnAceptar" class="btn btn-success" value="Buscar" />
+            <input type="button" id="btnCancelar" class="btn btn-danger" value="Cancelar" />
+
+           
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/Cortesia.js"></script>
+}
+
