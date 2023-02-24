@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="~/Content/Kioscos/General.css" />
 <link rel="stylesheet" href="~/Content/Kioscos/Menu.css" />
+<link rel="stylesheet" href="~/Content/Kioscos/KeyBoard.css"/>
 <input type="hidden" id="codigos" value="@consecutivosBoletas" />
 <div id="menu" style="display:block;">
     <div class="d-flex flex-column justify-content-center text-center mt-5">
@@ -55,7 +56,7 @@
                 <div class="row">
                     <div class="col-7">
                         <form id="frm-correoConfirmacion">
-                            <input type="text" placeholder="Nombre" id="input-nombre" class="input-correo form-control required">
+                            <input type="text" placeholder="Nombre" id="input-nombre" class="input-correo form-control required" name="">
                             <input type="text" placeholder="Correo" id="input-correo" class="input-correo form-control required">
                         </form>
                     </div>
@@ -81,6 +82,7 @@
             </div>
         </div>
     </div>
+    <div id="keyboard" class="softkeys" data-target="input[name='code']"></div>
 </div>
 
 <div class="modal" tabindex="-1" id="modalCodConfirmacion">
@@ -185,7 +187,52 @@
             document.getElementById("EnviarCorreo").disabled = true;
         }
 
+        $('#keyboard').hide();
+
+        $('#keyboard').click(function (e) {
+            e.stopPropagation();
+        });
+
+        //$(function () {
+        //    $('#input-nombre').focus(function () {
+        //        $('#keyboard').show();
+        //        $('#input-correo').prop("name", "");
+        //        $('#input-nombre').prop("name", "code");
+        //    });
+        //    $('#input-correo').click(function () {
+        //        $('#keyboard').show();
+        //        $('#input-nombre').prop("name", "");
+        //        $('#input-correo').prop("name", "code");
+        //    });
+        //    $(document).click(function () {
+        //        $('#keyboard').hide();
+
+        //    });
+        //});
+
+        $('#input-nombre').focus(function () {
+            $('#input-correo').prop("name","");
+            $('#input-nombre').prop("name", "code");
+            $('#keyboard').show(200);
+        });
+
+        $('#input-correo').focus(function () {
+            $('#input-nombre').prop("name", "");
+            $('#input-correo').prop("name", "code");
+            $('#keyboard').show(200);
+        });
+
+        $('#input-nombre').focusout(function () {
+            $('#keyboard').hide(100);
+        });
+
+        $('#input-correo').focusout(function () {
+            $('#keyboard').hide(200);
+        });
+
     </script>
 
     <script src="~/Scripts/Kioscos.js"></script>
+    <script src="~/Scripts/KeyBoard.js"></script>
+    <script src="~/Scripts/KeyPad.js"></script>
 }

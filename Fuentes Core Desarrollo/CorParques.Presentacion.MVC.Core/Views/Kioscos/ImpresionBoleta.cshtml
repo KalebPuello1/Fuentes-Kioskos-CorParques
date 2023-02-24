@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "ImprimirBoleta";
     Layout = "~/Views/Shared/_LayoutKiosco.cshtml";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
     var consecutivos = ViewBag.Consecutivos;
 }
 <link rel="stylesheet" href="~/Content/Kioscos/General.css" />
@@ -32,14 +31,20 @@
             <div class="col-5 d-flex flex-column">
                 <div class="brazalete">
                     <div class="brazalete-head">
-                        <span style="font-size:x-small;">Tu brazalete</span>
-                        <h2 style="text-transform:capitalize; font-family:'BalooBhai2';">@ViewBag.nombrePasaporte.ToLower()</h2>
-                        <span style="font-size:small; line-height:0rem;">Lorem ipsum dolor sit,</span>
+                        <span style="font-size:x-small; text-transform: capitalize;">@ViewBag.Head</span>
+                        <h2 style="text-transform:capitalize; line-height: 2rem;
+                            @(ViewBag.Nombre.StartsWith("0") ? "font-size: small;" : "font-family:'BalooBhai2';")">
+                            @(ViewBag.Nombre.StartsWith("0") ?
+                                           ViewBag.Nombre.Substring(1):
+                                           ViewBag.Nombre.Replace("PASAPORTE", "").ToLower())
+
+                        </h2>
+                        <span style="font-size:x-small;">@ViewBag.BolControl</span>
                     </div>
                     <div class="brazalete-body justify-content-center text-center">
                         <span style="font-weight:bold;">Vigencia del producto:</span>
                         <span style="font-size: x-small; font-weight: bold; margin-top: 0.8rem;">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, itaque!
+                            @ViewBag.Content
                         </span>
                     </div>
                     <div class="brazalete-body2">
@@ -48,9 +53,12 @@
                             <span id="dia" class="fecha"></span><span id="mes" class="fecha"></span><span id="year" class="fecha"></span>
                         </div>
                         <span style="font-family: code128; font-size: xxx-large; line-height: 3rem;">@ViewBag.Consecutivos.Replace("Blt", "")</span>
-                        <span style="font-size:small;">@ViewBag.Consecutivos.Replace("Blt", "")</span>
+                        <span style="font-size:small;">@ViewBag.Consecutivos.Substring(3)</span>
                         <div class="boleta-bottom">
-                            Lorem ipsum dolor sit
+                            ¿Necesitas ayuda? Por favor ac&eacute;rquese al &aacute;rea de
+                            <span style="font-weight: bold;">
+                                Experiencia al visitante
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -230,6 +230,7 @@
     <Content Include="Content\Kioscos\General.css" />
     <Content Include="Content\Kioscos\ImpresionBoleta.css" />
     <Content Include="Content\Kioscos\index.css" />
+    <Content Include="Content\Kioscos\KeyBoard.css" />
     <Content Include="Content\Kioscos\Menu.css" />
     <Content Include="Content\Kioscos\_Layout.css" />
     <Content Include="Content\loader.css" />
@@ -285,6 +286,8 @@
     <Content Include="Scripts\AperturaElementos.js" />
     <Content Include="Scripts\Fidelizacion.js" />
     <Content Include="Scripts\InventarioOperacion.js" />
+    <Content Include="Scripts\KeyBoard.js" />
+    <Content Include="Scripts\KeyPad.js" />
     <Content Include="Scripts\Kioscos.js" />
     <Content Include="Scripts\RecoleccionGeneral.js" />
     <Content Include="Scripts\PedidoA.js" />

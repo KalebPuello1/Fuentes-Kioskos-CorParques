@@ -52,6 +52,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 {
                     var consecutivo = Codigo.Replace("Blt", "");
                     var impEnLinea = await ValidarImpresion(consecutivo);
+
                     if (impEnLinea.Equals("")) ViewBag.ImpresionEnLinea = true;
                     else
                     {
@@ -123,22 +124,29 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
         public async Task<ActionResult> ImpresionBoleta(string Codigo)
         {
+            string head = string.Empty;
             string nombrePasaporte = string.Empty;
+            string content = string.Empty;
             int restantes = await ConsultarRestantes();
             int boletasValidas = 0;
             if (Codigo.StartsWith("BC"))
             {
                 string codBoletaCtrl = Codigo.Replace("BC", "");
                 var l_productos = await GetAsync<List<Producto>>($"Pos/VerPasaportesCodigoPedido/{codBoletaCtrl}");
+                var pedido = await GetAsync<ConsultaMovimientoBoletaControl>($"Boleteria/ConsultaMovimientoBoletaControl/{codBoletaCtrl}");
+                byte pasaportes = 0, tickets = 0;
+
                 foreach (var item in l_productos)
                 {
-                    var rta = await GetAsync<Producto>($"Pos/ValidarImpresionEnLinea/{item.CodigoSap}");
-                    if (item.CodSapTipoProducto == "2000" && rta.Nombre != "No existe el producto o es exeption")
-                    {
-                        boletasValidas += 1;
-                        nombrePasaporte = rta.Nombre.Replace("PASAPORTE ", "");
-                    }
+                    if (item.CodSapTipoProducto == "2000")
+                        pasaportes += 1;
+                    else
+                        tickets += 1;
                 }
+                head = "Tu Boleta";
+                nombrePasaporte = "0" + codBoletaCtrl + ", Pedido " + pedido.CodSapPedido.ToString();
+                content = "Se han de imprimir " + pasaportes + " pasaportes y " + tickets + " comprobantes de redención";
+                ViewBag.BolControl = pedido.NombreCliente;
                 ViewBag.Consecutivos = Codigo;
 
             }
@@ -147,42 +155,44 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 string consecutivo = Codigo.Replace("Blt", "");
                 var impValida = await ValidarImpresion(consecutivo);
                 if (impValida.Equals("")) boletasValidas += 1;
-                nombrePasaporte = await GetAsync<string>($"Boleteria/Cambioboleta/{consecutivo}");
-                nombrePasaporte = nombrePasaporte.Replace("PASAPORTE ", "");
+                Producto boletaProducto = await GetAsync<Producto>($"Boleteria//CambioboletaDato/{consecutivo}");
+                var l_tiposProducto = await GetAsync<List<TipoGeneral>>($"TipoProducto/ObtenerListaTipoProduto");
+                var tipo = l_tiposProducto.Where(x => x.CodSAP == boletaProducto.CodSapTipoProducto).First();
+                nombrePasaporte = boletaProducto.Nombre;
+                head = tipo.Nombre.ToLower();
+                if (boletaProducto.CodSapTipoProducto == "2000" || boletaProducto.CodSapTipoProducto == "2005"
+                    || boletaProducto.CodSapTipoProducto == "2010" || boletaProducto.CodSapTipoProducto == "2015")
+                    content = "En la fecha indicada podrá hacer uso de las atracciones y/o destrezas incluidas";
+                else
+                    content = "Por favor acérquese a los puntos correspondientes para reclamar su producto";
                 ViewBag.Consecutivos = Codigo;
             }
             else if (Codigo.StartsWith("FC|"))
             {
                 var CodFactura = Codigo.Replace("FC|", "");
                 var factura = await GetAsync<Factura>($"Pos/ObtenerFactura/{CodFactura}");
-                //var prodFactura = await GetAsync<DescargueBoletaControl>($"Pos/ObtenerListaProductoFactura/{CodFactura}"); // l productos
-                //if (prodFactura != null)
-                //    nombrePasaporte = prodFactura.Productos.First().Nombre.Replace("PASAPORTE ", "");
-                //else
-                //nombrePasaporte = "Ticket";
-                #region Nombre a mostrar
-                foreach (var item in factura.DetalleFactura)
+                DescargueBoletaControl descargueFactura = await GetAsync<DescargueBoletaControl>($"Pos/ObtenerListaProductoFactura/{CodFactura}");
+                byte pasaportes = 0, tickets = 0;
+
+                foreach (var item in descargueFactura.Productos)
                 {
-                    var bol = await GetAsync<Boleteria>($"Boleteria/GetById/{item.IdDetalleProducto}");
-                    if (bol != null)
-                    {
-                        var producto = await GetAsync<Producto>($"Boleteria/CambioboletaDato/{bol.Consecutivo}");
-                        if (producto != null && producto.CodSapTipoProducto == "2000")
-                        {
-                            nombrePasaporte = producto.Nombre.Replace("PASAPORTE ", "");
-                            break;
-                        }
-                        else nombrePasaporte = "Ticket";
-                    }
+                    if (item.CodSapTipoProducto == "2000")
+                        pasaportes += 1;
+                    else
+                        tickets += 1;
                 }
-                #endregion
+                head = "Tu Factura";
+                nombrePasaporte = "0" + CodFactura + " Emitida " + factura.FechaCreacion.ToString("dd MMMM yyyy");
+                content = "Se han de imprimir " + pasaportes + " pasaportes y " + tickets + " comprobantes de redención";
                 ViewBag.Consecutivos = Codigo;
             }
 
             if (restantes < boletasValidas)
                 ViewBag.Mensaje = "Existen solamente " + restantes + " boletas disponibles";
 
-            ViewBag.NombrePasaporte = nombrePasaporte;
+            ViewBag.Head = head;
+            ViewBag.Nombre = nombrePasaporte;
+            ViewBag.Content = content;
             return View();
         }
 
@@ -227,14 +237,14 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
         {
             var boleta = await GetAsync<Boleteria>($"Boleteria/ObtenerBoleta/{Consecutivo}");
             var producto = await GetAsync<Producto>($"Boleteria/CambioboletaDato/{Consecutivo}");
-            var rta = await GetAsync<Producto>($"Pos/ValidarImpresionEnLinea/{producto.CodigoSap}");
+            //var rta = await GetAsync<Producto>($"Pos/ValidarImpresionEnLinea/{producto.CodigoSap}");//
             string strMensaje = string.Empty;
 
             if (boleta != null && producto != null)
             {
-                if (producto.CodSapTipoProducto != "2000") strMensaje = "El producto no corresponde a un brazalete para impresion en linea";
-                if (rta.Nombre == "No existe el producto o es exeption") strMensaje = "Invalido impresión en linea";
-                if (producto.IdEstado != 1) strMensaje = "Pasaporte inactivo";
+                //if (producto.CodSapTipoProducto != "2000") strMensaje = "El producto no corresponde a un brazalete para impresion en linea";//
+                //if (rta.Nombre == "No existe el producto o es exeption") strMensaje = "Invalido impresión en linea";//
+                if (producto.IdEstado != 1) strMensaje = "Producto inactivo";
                 if (boleta.IdEstado != 2 && (boleta.IdEstado != 1 && (DateTime.Today < boleta.FechaUsoInicial) || (DateTime.Today > boleta.FechaUsoFinal)))
                     strMensaje = "Estado boleta invalida";
                 if (DateTime.Now < boleta.FechaInicioEvento || DateTime.Now > boleta.FechaFinEvento) strMensaje = "La boleta no tiene vigencia";
@@ -253,8 +263,19 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             }
             else if (Codigo.StartsWith("Blt"))
             {
+                JsonResult rta = null;
                 var consecutivo = Codigo.Replace("Blt", "");
-                var rta = await CambiarImprimirBoleta(consecutivo);
+                Producto productoBoleta = await GetAsync<Producto>($"Boleteria/CambioboletaDato/{consecutivo}");
+                var productoImpresionEnLinea = await GetAsync<Producto>($"Pos/ValidarImpresionEnLinea/{productoBoleta.CodigoSap}");
+
+                if (productoImpresionEnLinea.Nombre != "No existe el producto o es exeption")
+                    rta = await CambiarImprimirBoleta(consecutivo);
+                else
+                {
+                    productoBoleta.CodBarraInicio = consecutivo;
+                    productoBoleta.Cantidad = 1;
+                    rta = ImprimirTicketBoleteria(productoBoleta);
+                }
                 //var rta = new {Correcto = false, Mensaje= "Prueba", Elemento= consecutivo };
                 //return Json(rta, JsonRequestBehavior.AllowGet);
                 return rta;
@@ -266,6 +287,42 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 return rta;
             }
             else return null;
+        }
+
+        private JsonResult ImprimirTicketBoleteria(Producto productoBoleta)
+        {
+            RespuestaViewModel rta = new RespuestaViewModel();
+            ServicioImprimir objImprimir = new ServicioImprimir();
+            TicketImprimir objTicket = new TicketImprimir();
+
+            objTicket.TituloRecibo = "Soporte redencion";
+            objTicket.CodigoBarrasProp = productoBoleta.CodBarraInicio;
+            objTicket.TituloColumnas = "Valido para|Cant";
+            objTicket.ListaArticulos = new List<Articulo>();
+            objTicket.ListaArticulos.Add(new Articulo()
+            {
+                Nombre = productoBoleta.Nombre,
+                Cantidad = productoBoleta.Cantidad,
+                Precio = productoBoleta.Precio,
+                TituloColumnas = "Valido para|Cant"
+            });
+            objTicket.Usuario = NombreUsuarioLogueado;
+
+            try
+            {
+                objImprimir.ImprimirUsoAtraccionDestreza(objTicket);
+                rta.Correcto = true;
+            }
+            catch(Exception e)
+            {
+                Utilidades.RegistrarError(e, string.Concat(this.GetType().Name, "//"
+                               , System.Reflection.MethodBase.GetCurrentMethod().Name));
+                rta.Correcto = false;
+                rta.Mensaje = "Error imprimiendo ticket";
+                rta.Elemento = productoBoleta;
+            }
+
+            return Json(rta, JsonRequestBehavior.AllowGet);
         }
 
         public async Task<JsonResult> CambiarImprimirBoleta(string Codigo)
@@ -669,7 +726,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                     lp.Add(item);
                 }
             }
-
             impresion.listConsecutivos = listConsecutivos;
 
             if (lp.Count() == productosImpresion.Count())
@@ -688,15 +744,15 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 var rta = await PostAsync<ImprimirBoletaControl, RedencionBoletaControl>("Pos/ObtenerCodBarrasBoletaControl", modelo);//
                 if (rta.Correcto)
                 {
-                    foreach (var item in productosImpresion.Where(x => x.AplicaImpresionLinea))
+                    foreach (var productoImpEnLinea in productosImpresion.Where(x => x.AplicaImpresionLinea))
                     {
-                        Producto productoImpresion = brazaletes.Where(x => x.CodigoSap == item.CodigoSap).First();
-                        var rtaImpresion = imprimirImpresionEnLinea(item, productoImpresion, item.CodBarraInicio);
-                        if (!rtaImpresion.Equals("")) respuestaViewModel.Elemento += item.CodBarraInicio + "|";
+                        Producto productoImpresion = brazaletes.Where(x => x.CodigoSap == productoImpEnLinea.CodigoSap).First();
+                        var rtaImpresion = imprimirImpresionEnLinea(productoImpEnLinea, productoImpresion, productoImpEnLinea.CodBarraInicio);
+                        if (!rtaImpresion.Equals("")) respuestaViewModel.Elemento += productoImpEnLinea.CodBarraInicio + "|";
                         else
                         {
                             restantes -= 1;
-                            l_productos.Add(item);
+                            l_productos.Add(productoImpEnLinea);
                         }
                     }
 
@@ -704,19 +760,20 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                     if (objRespuesta.modeloImprimir != null)
                     {
                         ServicioImprimir objImprimir = new ServicioImprimir();
-                        foreach(var item in objRespuesta.modeloImprimir)
+                        foreach (var ticket in objRespuesta.modeloImprimir)
                         {
                             var objTicket = new TicketImprimir();
-                            objTicket.TituloRecibo = item.TituloRecibo;
-                            objTicket.CodigoBarrasProp = item.CodigoBarrasProp;
-                            objTicket.TituloColumnas = item.TituloColumnas;
+                            objTicket.TituloRecibo = ticket.TituloRecibo;
+                            objTicket.CodigoBarrasProp = ticket.CodigoBarrasProp;
+                            objTicket.TituloColumnas = ticket.TituloColumnas;
                             objTicket.ListaArticulos = new List<Articulo>();
-                            objTicket.ListaArticulos.Add(new Articulo() { Nombre = item.Nombre, Cantidad = 1, Precio = item.Precio, TituloColumnas = item.TituloColumnas });
+                            objTicket.ListaArticulos.Add(new Articulo() { Nombre = ticket.Nombre, Cantidad = 1, Precio = ticket.Precio, TituloColumnas = ticket.TituloColumnas });
                             objImprimir.ImprimirCupoDebito(objTicket);
                         }
                     }
                 }
 
+                await RegistrarControlBoleteria(restantes);
                 if (respuestaViewModel.Elemento == null)
                 {
                     registroRollo.listaProductos = l_productos;
