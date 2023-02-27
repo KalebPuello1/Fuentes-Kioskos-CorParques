@@ -226,7 +226,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\jquery-ui.min.css" />
-    <Content Include="Content\kioscos.css" />
+    <Content Include="Content\Kioscos\Consulta.css" />
+    <Content Include="Content\Kioscos\General.css" />
+    <Content Include="Content\Kioscos\ImpresionBoleta.css" />
+    <Content Include="Content\Kioscos\index.css" />
+    <Content Include="Content\Kioscos\Menu.css" />
+    <Content Include="Content\Kioscos\_Layout.css" />
     <Content Include="Content\loader.css" />
     <Content Include="Content\OrdenMantenimiento.css" />
     <Content Include="Content\Pos.css" />
@@ -247,6 +252,14 @@
     <Content Include="Images\GreenCircle.png" />
     <Content Include="Images\icn_flecha_menu.png" />
     <Content Include="Images\Ikaro app.jpg" />
+    <Content Include="Images\Kioscos\13-ok.png" />
+    <Content Include="Images\Kioscos\15-warning.png" />
+    <Content Include="Images\Kioscos\ask.png" />
+    <Content Include="Images\Kioscos\banner.png" />
+    <Content Include="Images\Kioscos\bg-intro.png" />
+    <Content Include="Images\Kioscos\BG-ui.png" />
+    <Content Include="Images\Kioscos\logo-MA.png" />
+    <Content Include="Images\Kioscos\print.png" />
     <Content Include="Images\logo_verde.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo_ma_color.jpg" />
@@ -334,6 +347,9 @@
     <Content Include="Vendors\bootstrap\dist\css\bootstrap.min.css" />
     <Content Include="Vendors\bootstrap\dist\js\bootstrap.3.3.7.min.js" />
     <Content Include="Vendors\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Vendors\bootstrap_4.6.2\dist\css\bootstrap.min.css" />
+    <Content Include="Vendors\bootstrap_4.6.2\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Vendors\bootstrap_4.6.2\dist\js\jquery.slim.min.js" />
     <Content Include="Vendors\datatables.net-bs\css\dataTables.bootstrap.min.css" />
     <Content Include="Vendors\datatables.net-bs\js\dataTables.bootstrap.min.js" />
     <Content Include="Vendors\datatables.net-buttons-bs\css\buttons.bootstrap.min.css" />
@@ -453,6 +469,9 @@
     <Content Include="fonts\Harabara\Harabara.ttf" />
     <Content Include="fonts\Harabara\Harabara.woff" />
     <Content Include="fonts\Ubuntu.woff2" />
+    <Content Include="fonts\BalooBhai2-ExtraBold.ttf" />
+    <Content Include="fonts\code128.ttf" />
+    <Content Include="fonts\Ubuntu-Regular.ttf" />
     <None Include="Project_Readme.html" />
     <Content Include="Vendors\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -689,6 +708,8 @@
     <Content Include="Views\Kioscos\Menu.cshtml" />
     <Content Include="Views\Kioscos\ImpresionBoleta.cshtml" />
     <Content Include="Views\Kioscos\Consulta.cshtml" />
+    <Content Include="Vendors\bootstrap_4.6.2\dist\css\bootstrap.min.css.map" />
+    <Content Include="Vendors\bootstrap_4.6.2\dist\js\bootstrap.bundle.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Entidades\CorParques.Negocio.Entidades.csproj">
