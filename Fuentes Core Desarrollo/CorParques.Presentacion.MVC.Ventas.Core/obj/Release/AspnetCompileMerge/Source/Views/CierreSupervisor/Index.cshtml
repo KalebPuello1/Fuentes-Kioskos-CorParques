@@ -1,0 +1,24 @@
+﻿@model CorParques.Negocio.Entidades.Recoleccion
+
+@{
+    ViewBag.Title = "Cierre taquilla - supervisor";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+        <div class="x_content">          
+            @Html.Partial("_Taquillero", Model)            
+        </div>
+
+@section scripts{
+<script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="~/Scripts/CierreSupervisor.js"></script>
+<script src="~/Scripts/jquery.smartWizard.js"></script>
+    }

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Fidelizacion de clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row form-horizontal form-label-lef" id="frmFidel">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Documento
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtDoc" name="Documento" class="form-control required numerico" value="" maxlength="20" />
+            </div>
+        </div>
+
+        <div class="otherField" style="display:none">
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Nombre<span>*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" id="txtName" name="Nombre" style="text-transform: uppercase;" class="form-control required" value="" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Correo<span>*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" id="txtMail" name="Correo" class="form-control required email" value="" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Telefono<span>*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" id="txtPhone" name="Telefono" class="form-control required numerico" value="" maxlength="10" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Dirección
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" id="txtAddress" name="Direccion" class="form-control" value="" maxlength="200" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Fecha de Nacimiento<span>*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" id="txtBirthday" name="FechaNacimiento" class="form-control required calendario" value="" />
+                </div>
+            </div>
+           
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                    Genero<span>*</span>
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select id="txtGender" name="Genero" class="form-control required">
+                        <option value="1">Masculino</option>
+                        <option value="0">Femenino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 otherField" style="display:none">
+        <div id="my_camera"></div>
+        <img src="#" id="snapshot" class="required"  style="display:none"></img>
+        <div class="row">
+            <a href="#" id="btnCaptura" class="btn btn-default">Tomar captura</a>
+            <a href="#" id="btnNuevaCaptura" style="display:none" class="btn btn-default">Volver a tomar captura</a>
+        </div>
+        @*<img src="#" alt="Foto cliente" id="Image" name="Imagen" style="width:200px; height:400px" />*@
+    </div>
+    <div class="col-md-12 otherField" style="display:none">
+        <a href="#" id="btnGuardar" class="btn btn-success">Guardar</a>
+    </div>
+</div>
+@section scripts{
+    
+<script src="~/Scripts/webcam.min.js"></script>
+<script src="~/Scripts/Fidelizacion.js"></script>
+    }
+

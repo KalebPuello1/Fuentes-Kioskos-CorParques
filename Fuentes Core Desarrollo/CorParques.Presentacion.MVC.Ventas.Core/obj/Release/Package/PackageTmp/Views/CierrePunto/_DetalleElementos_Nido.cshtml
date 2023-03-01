@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.CierreElementos>
+
+@if (Model != null && Model.Count() > 0)
+{
+    <form id="frmcierreelementos">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table jambo_table">
+                        <tr class="headings">
+                            <th width="30px">Elemento</th>      
+                            <th width="20px">Código</th>     
+                            <th width="30px">Estado Supervisor</th>                 
+                            <th width="50px">Observaciones Supervisor</th>
+                            <th width="100px">Estado Nido</th>
+                            <th width="50px">Observaciones Nido</th>                            
+                        </tr>
+                        <tbody id="bodyElementosApertura">
+
+                            @{int Contador = 0; }
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="[@Contador].IdElemento" value="@item.IdElemento" />
+                                        <input type="hidden" name="[@Contador].IdAperturaElementosHeader" value="@item.IdAperturaElementosHeader" />
+                                        <input type="hidden" name="[@Contador].Id" value="@item.Id" />
+                                        <input type="hidden" name="[@Contador].NombreElemento" value="@item.Elemento.Nombre" />
+                                        <input type="hidden" name="[@Contador].Estado" value="" />
+                                        <input type="hidden" name="[@Contador].Observacion" value="" />
+                                        <input type="hidden" name="[@Contador].IdUsuarioSupervisor" value="@item.IdUsuarioSupervisor" />
+                                        @item.Elemento.Nombre
+                                    </td>
+                                    <td>
+                                        @item.CodigoBarras
+                                    </td>
+                                    <td>
+                                        @item.EstadoSupervisor
+                                    </td>
+                                    <td>
+                                        @item.ObservacionesSupervisor
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => @item.IdEstadoNido, new SelectList(item.Estados, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required comboestado", @Name = $"[{Contador}].IdEstadoNido" })
+                                    </td>
+                                    <td>                                       
+                                        @Html.TextAreaFor(model => @item.ObservacionesNido, new { rows = "2", @class = "form-control col-md-12 ", maxlength = 500, @Name = $"[{Contador}].ObservacionesNido" })
+                                    </td>                             
+                                </tr>
+                                Contador++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row " style="text-align:right">
+            <div class="item col-md-12 col-sm-12 col-xs-12">
+                <input type="button" class="right btn btn-success" value="Guardar" id="btnSave" />
+                <input type="button" class="right btn btn-danger" value="Cancelar" id="btnCancelar" />
+            </div>
+        </div>
+    </form>
+}
+

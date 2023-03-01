@@ -19,6 +19,7 @@ namespace CorParques.Negocio.Contratos
         RespuestaTransaccionRedaban ObtenerIdFranquiciaRedeban(string CodFranquicia);
         
         string GenerarNumeroFactura(int IdPunto);
-
+        bool FlujoRedebanXPunto(int IdPunto);
+        
     }
 }

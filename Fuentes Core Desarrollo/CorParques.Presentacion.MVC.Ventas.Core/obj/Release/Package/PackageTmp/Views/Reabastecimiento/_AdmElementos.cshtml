@@ -1,0 +1,77 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-xl-12">
+        <br />
+        <a href="javascript:void(0)" style="display: none" id="lnkAddElemento"><b style="font-size:xx-large" class="fa fa-plus-square"></b></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="table-responsive">
+            <table class="table jambo_table">
+                <tr class="headings">
+                    <th>Tipo de Elemento</th>
+                    <th>Código de Barras</th>
+                    <th>Observaciones</th>
+                    <th style="width:50px"></th>
+                </tr>
+                <tbody id="bodyElementosApertura">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="modalAgergarElemento" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Adicionar Elementos</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form" id="formAgergarElemento">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-xl-12">
+                            <br />
+                            <label class="control-label">Tipo de Elemento</label> <span>*</span>
+                            <select id="selectTipoElementoAgergarElemento" class="form-control required">
+                                <option value>Seleccione...</option>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model.TipoElementos)
+                                    {
+                                        <option value="@(item.Id)">@(item.Nombre)</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-md-12 col-xl-12">
+                            <br />
+                            <label class="control-label">Código de Barras</label> <span id="ateriskCodigoBarras">*</span>
+                            <input type="text" id="inputCodigoBarrasAgergarElemento" class="form-control required" maxlength="20"/>
+                        </div>
+                        <div class="col-xs-12 col-md-12 col-xl-12">
+                            <br />
+                            <label class="control-label">Observaciones</label>
+                            <input type="text" id="inputObservacionAgergarElemento" class="form-control" maxlength="250" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="msjErrorModal">
+                <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <label id="lbl_message_error">Error procesando la solucitud</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-url="" data-metod="" data-function="" id="btnSaveAgergarElemento">Agregar</button>
+                <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnCancelAgergarElemento">Cancelar</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,165 @@
+﻿@model CorParques.Negocio.Entidades.AjustesInventario
+
+@{
+    ViewBag.Title = "Ajustes de Inventario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var PuntoNombre = "";
+    var PuntoId = "";
+    if (Session["InfoPunto"] != null && Session["IdPuntoSeleccionado"] != null)
+    {
+        PuntoNombre = Session["InfoPunto"].ToString();
+        PuntoId = Session["IdPuntoSeleccionado"].ToString();
+    }
+
+}
+<form class="form-horizontal form-label-left" id="formAjusteInvntario">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <label class="col-md-12 col-sm-6 col-xs-12 " for="Placa">Puntos: </label>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+
+                @if (PuntoId != "")
+                {
+                    <select class="form-control required setSelect2" name="IdPunto" id="IdPunto">
+
+                        @if (PuntoId != "")
+                        {
+                            <option value="@PuntoId" selected>@PuntoNombre</option>
+                        }
+
+                    </select>
+
+                }
+                else
+                {
+                    @Html.DropDownListFor(model => model.IdPunto, new SelectList(Model.ListaPuntos, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @id = "IdPunto" })
+                }
+
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <label class="col-md-12 col-sm-6 col-xs-12" for="Placa">Material: </label>
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.CodSapMaterial, new SelectList(Model.ListaMateriales, "CodigoSap", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @id = "CodSapMaterial" })
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <label class="col-md-12 col-sm-2 col-xs-12" for="Placa">Tipo de Ajuste: </label>
+            <div class="col-md-12 col-sm-12  col-xs-12">
+                @Html.DropDownListFor(model => model.CodSapTipoAjuste, new SelectList(Model.ListaTipoAjuste, "CodSapAjuste", "Ajuste"), "Seleccione...", new { @class = "form-control required setSelect2", @id = "CodSapTipoAjuste" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <label class="col-md-2 col-sm-3 col-xs-12" for="Placa">Motivo: </label>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.DropDownListFor(model => model.CodSapMotivo, new SelectList(Model.ListaMotivos, "CodSapMotivo", "Descripcion"), "Seleccione...", new { @class = "form-control required setSelect2", @id = "CodSapMotivo" })
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4">
+            <label class="col-md-12 col-sm-12 col-xs-12 visible-lg visible-md" for="Placa">Cantidad: </label>
+            <label class="col-md-12 col-sm-12 col-xs-12 visible-xs visible-sm" for="Placa">Cant <span>*</span></label>
+            <div class="col-md-5 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(modelItem => Model.Cantidad, new { @class = "decimal form-control required", maxlength = 7, style = "height : 38px" })
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <label class="control-label col-md-1 col-sm-2 col-xs-12" for="Placa">Observaciones:  </label>
+            <div class="col-md-12  col-sm-12 col-xs-12">
+                @Html.TextAreaFor(modelItem => Model.Observaciones, new { @class = "form-control required", maxlength = 500 })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <input type="button" id="btnAgregarAjusteInventario" class="btn btn-primary" value="Agregar" />
+    </div>
+    <div class="item form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="alignright col-md-6">
+            <label class="control-label">Buscar:</label>
+            <input class="form-control right" type="text" id="txtSearchInv">
+        </div>
+    </div>@* <div class="row"> *@
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br />
+            <label class="control-label" for="Placa">Ajustes</label>
+            <div class="table-responsive">
+                <table id="tableAjustesInventario" class="table jambo_table">
+                    <thead>
+                        <tr class="headings">
+                            <th>Código Sap</th>
+                            <th>Material</th>
+                            <th>Cantidad</th>
+                            <th>Unidad</th>
+                            <th>Tipo de Ajuste </th>
+                            <th>Motivo </th>
+                            <th>Costo Promedio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTableAjustesInventario"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <br />
+            <input type="button" id="btnAceptarAjusteInventario" class="btn btn-success" value="Guardar" />
+            <input type="button" id="btnCancelarAjusteInventario" class="btn btn-danger" value="Cancelar" />
+        </div>
+    </div>@* <div class="row"> *@
+    @*<div class="x_title">
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <label class="control-label" for="Placa">Inventario Actual</label>
+                <div class="table-responsive">
+                    <table id="tableAgregarElementos" class="table jambo_table">
+                        <tr class="headings">
+                            <th>Material</th>
+                            <th>Cantidad</th>
+                        </tr>
+                        <tbody id="bodyElementosApertura">
+                            <tr>
+                                <td>Salchicha</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>Pan-Perro</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>Servilletas </td>
+                                <td>30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>*@ @* <div class="row"> *@
+    </form>
+
+
+    @section Scripts{
+        <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+        <script src="~/Scripts/jquery-ui.min.js"></script>
+        <script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+        <script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+        <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+        <script src="~/Scripts/select2.min.js"></script>
+        <script src="~/Scripts/AjusteInventario.js"></script>
+    }

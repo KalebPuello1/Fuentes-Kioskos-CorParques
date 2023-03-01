@@ -71,5 +71,19 @@ namespace CorParques.Servicios.WebApi.Controllers
             return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
                             : Request.CreateResponse(HttpStatusCode.OK, item);
         }
+
+        [HttpGet]
+        [Route("api/Redeban/FlujoRedebanXPunto/{IdPunto}")]
+        public HttpResponseMessage FlujoRedebanXPunto(int IdPunto)
+        {
+            string itemresp = "0";
+            var item = _serviceFactura.FlujoRedebanXPunto(IdPunto);
+            if (item != null)
+            {
+                if (item == true)itemresp = "1";              
+            }
+            return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, itemresp);
+        }
     }
 }
