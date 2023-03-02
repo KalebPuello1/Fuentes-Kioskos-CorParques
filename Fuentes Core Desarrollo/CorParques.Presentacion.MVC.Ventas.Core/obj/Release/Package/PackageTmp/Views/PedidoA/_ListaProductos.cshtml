@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="text" value="" class="form-control txtBuscador" />
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div style="max-height: 550px; overflow-y: scroll; width: 100%;" class="well well-small">
+            @if (Model != null && Model.Count() > 0)
+            {
+
+
+                int Cont = 1; // Dividisiones
+                int _cont = 0;
+                int _final = Model.Count();
+
+                @Html.Raw("<div class='row' style='padding-top: 5px;'>")
+                foreach (var item in Model)
+                {
+                    var Row = Cont == 1;
+                    @*if (Row)
+                    {
+                        @Html.Raw("<div class='row row-eq-height' style='padding-top: 5px;'>")
+                    }*@
+                    <div class="col-md-2 col-sm-4 col-xs-12 ProductoGrilla " data-id="@item.IdProducto" data-toggle="tooltip" title="@item.Codigo-@item.Nombre">
+                        <a>
+                            @if (!string.IsNullOrEmpty(item.Imagen))
+                            {
+                                <img src="@($"{System.Configuration.ConfigurationManager.AppSettings["RutaImagenes"]}/Productos/{item.Imagen}")" width="70" /><br />
+                            }
+                            else
+                            {
+                                <div class="MenuTiposProducto" style="height: 70px;">
+                                    <div class="icon" style="left: 18px;height: 70px;"><i class="fa fa-picture-o"></i></div>
+                                </div>
+                            }
+                            <label>@item.Codigo-@item.Nombre</label>
+                            @if (item.TipoProducto.Trim() == "Uso Atracciones" || item.TipoProducto.Trim() == "Uso Destrezas")
+                            {
+                                <label>@item.TipoProducto.Replace("Uso ", "")</label>
+                            }
+                            <h6 class="precioPos">@item.Precio</h6> <br />
+                        </a>
+                        <div class="DescripcionProd">
+                            <div style="visibility:hidden"># @item.Codigo</div>
+                        </div>
+                    </div>
+
+                    @*if (Cont < 3)
+                    {
+                        Cont++;
+                        if (_cont + 1 == _final)
+                        {
+                            @Html.Raw("</div>")
+                        }
+                    }
+                    else
+                    {
+                        Cont = 1;
+                        @Html.Raw("</div>")
+                    }
+
+                    _cont++;*@
+                }
+
+                @Html.Raw("</div>")
+            }
+        </div>
+    </div>
+</div>

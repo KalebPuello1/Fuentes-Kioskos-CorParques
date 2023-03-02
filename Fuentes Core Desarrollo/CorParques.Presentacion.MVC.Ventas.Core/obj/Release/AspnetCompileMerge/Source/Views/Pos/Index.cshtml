@@ -1,0 +1,722 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+@{
+    ViewBag.Title = "Sistema de punto venta (POS)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.SubTitle = "Permite proceso pos";
+    var TipoPago = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.list;
+    //var TipoCliente = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.listTipoCliente;
+    var usuario = (Session["UsuarioAutenticado"] as CorParques.Negocio.Entidades.Usuario);
+    var propina = (CorParques.Negocio.Entidades.Parametro)ViewBag.parametro;
+    //var atraccion = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.atraccion;
+    var ListAyB = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListAyB;
+    var ListaMesasA = (IEnumerable<CorParques.Negocio.Entidades.Mesa>)ViewBag.ListMesasActivas;
+    var ListSouvenir = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListSouvenir;
+    var ListAyD = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListAyD;
+    var ListServicios = ((IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListServicios).Where(x => x.Precio > 0); @* Solo muestra los productos que tengan precio *@
+    var ListPasaporte = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListPasaporte;
+    var pasaporteUso = (IEnumerable<CorParques.Negocio.Entidades.PasaporteUso>)ViewBag.pasaporteUso;
+    var pasaporteImpresion = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.PasaportesImpresion;
+    var ultimaFacturaPunto = (CorParques.Negocio.Entidades.Factura)ViewBag.UltimaFactura;
+    var contingencia = Session["contingencia"] == null ? 0 : (int)Session["contingencia"];
+
+}
+
+<link href="~/Vendors/pnotify/dist/pnotify.brighttheme.css" rel="stylesheet" />
+<link href="~/Vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
+<link href="~/Content/Pos.css" rel="stylesheet" />
+
+<style type="text/css">
+    .pdtimg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .modalLoading {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 100px auto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+
+        .center img {
+            height: 128px;
+            width: 128px;
+        }
+</style>
+
+
+@*Tipos de producto*@
+<input type="hidden" id="inputCodSapTipoProductoAgrupaCantidad" value="@ViewBag.CodSapTipoProductoAgrupaCantidad" />
+<input type="hidden" id="inputCodSapProductoAgrupaCantidad" value="@ViewBag.CodSapProductoAgrupaCantidad" />
+<input type="hidden" id="inputCodSapProductosDonaciones" value="@ViewBag.donacion" />
+<input type="hidden" id="inpuntTransaccionRedebanHabilitada" value="@ViewBag.TransaccionRedebanHabilitada" />
+
+<div class="row">
+    <div class="top_tiles">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <a class="linkProductos btn MenuTipo" data-id="Boleteria">
+                <i class="fa fa-ticket"></i>
+                Boletería
+            </a>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <a class="linkProductos btn MenuTipo" data-id="Alimentos">
+                <i class="fa fa-cutlery"></i>
+                Alimentos y bebidas
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <a class="linkProductos btn MenuTipo" data-id="Souvenir">
+                <i class="fa fa-picture-o"></i>
+                Souvenir
+            </a>
+        </div>
+
+        @if (contingencia == 0)
+        {
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 pru">
+                <a class="linkProductos btn MenuTipo" data-id="Atracciones">
+                    <i class="fa fa-puzzle-piece"></i>
+                    Atracciones y destrezas
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 pru">
+                <a class="btn MenuTipo" data-id="Atracciones" disabled>
+                    <i class="fa fa-puzzle-piece"></i>
+                    Atracciones y destrezas
+                </a>
+            </div>
+        }
+        @if (contingencia == 0)
+        {
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <a class="linkProductos  btn MenuTipo" data-id="Parqueadero">
+                    <i class="fa fa-car"></i>
+                    Parqueadero
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <a class="btn MenuTipo" data-id="Parqueadero" disabled>
+                    <i class="fa fa-car"></i>
+                    Parqueadero
+                </a>
+            </div>
+        }
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <a class="linkProductos btn MenuTipo" data-id="Servicios">
+                <i class="fa fa-shopping-basket "></i>
+                Servicios
+            </a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <a class="linkProductos btn MenuTipo" data-id="Mesas">
+                <i class="fa fa-spoon "></i>
+                Mesas Restaurante
+            </a>
+        </div>
+
+    </div>
+</div>
+<br />
+
+@*Productos y Detalle*@
+<div class="row row-eq-height">
+
+    @*Factura Detalle*@
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="button" class="btn btn-danger" value="Limpiar" id="btnCancelar" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <label id="lblConsecutivo">
+                        @if ((ultimaFacturaPunto != null) && (!string.IsNullOrEmpty(ultimaFacturaPunto.CodigoFactura)))
+                        {
+                            <br />
+                            @:Última venta del punto: @ultimaFacturaPunto.CodigoFactura
+                        }
+                    </label>
+                </div>
+            </div>
+
+            <br />
+            <div id="dvProductos">
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label> Base:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" id="TotalBase">
+                    $0
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label> Impuestos:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" id="TotalImpuestos">
+                    $0
+                </div>
+            </div>
+
+            <div class="row" style="padding: 5px;">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <input type="checkbox" id="chxPropina" /> <label>Propina % @propina.Valor </label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input type="text" value="0" id="txtPropina" class="form-control TipoPago" disabled="disabled" maxlength=10 />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label> Total:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12" id="total">
+                    <h1 style="font-weight: bold;">$0</h1>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <label> Vendedor:</label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    @(usuario == null ? "" : usuario.Nombre)
+                </div>
+            </div>
+            @*EDSP: Se actualiza el value del combo por el id del convenio*@
+            <div class="row" id="dvPosConvenios">
+                <hr />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label> Convenios:</label>
+                    <div class="col-md-12 col-sm-12 col-xs-12 input-group">
+                        <select id="selectPosConvenioSAP" class="form-control"
+                                @if (contingencia == 1) { @: disabled
+                                }>
+                            <option value="">Seleccione el convenio</option>
+                            @foreach (var item in (IEnumerable<CorParques.Negocio.Entidades.Convenio>
+)ViewBag.ConveniosSeleccion)
+                            {
+                                <option value="@item.IdConvenio">@item.Nombre</option>
+                            }
+                        </select>
+                        <span class="input-group-btn">
+                            <input type="button" id="inputCancelselectPosConvenioSAP" style="height: 38px;" value="X" class="btn btn-danger" @if (contingencia == 1) { @: disabled
+                                   } />
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <br />
+                    <label>Convenio Código de Barras:</label>
+                    <div class="col-md-12 col-sm-12 col-xs-12 input-group">
+                        <input type="text" id="inputConvenioCodBarrasSAP" class="form-control" @if (contingencia == 1) { @: disabled
+                               } />
+                        <span class="input-group-btn">
+                            <input type="button" id="inputCancelConvenioCodBarrasSAP" value="X" class="btn btn-danger" @if (contingencia == 1) { @: disabled
+                                   } />
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div style="position:absolute; right:0; width:100px; bottom:0;">
+                <img src="#" id="snapshot" style="display:none; width:100px;"></img>
+                <div id="divNombreCliente" style="font-size:15px; font-weight:bold"></div>
+            </div>
+            <div class="row">
+                <hr />
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    @Html.Partial("_DetallePago")
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <label> Total Pagado:</label>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12" id="TotalPagado">
+                    $0
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h4 id="cambio">Cambio: $0</h4>
+                </div>
+            </div>
+            <br />
+            <div class="row" id="divDonarCambio">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="checkbox" id="cbDonacion" value="" />Desea donar el cambio?
+                </div>
+            </div>
+            <div class="row" id="divDonarProd" style="display:none">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    Ingrese el documento del donante
+                </div>
+            </div>
+            <div class="row" id="divDonante" style="display:none">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input type="text" data-codigo="@System.Configuration.ConfigurationManager.AppSettings["KeyDonacion"]" value="" id="txtDonante" class="form-control" maxlength=100 />
+                </div>
+                <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12">
+                    <a class="EditarDon">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
+                    </a>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="button" class="btn btn-primary" value="Pagar" id="btnPagar" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Productos*@
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+
+                <div class="tipoProducto" id="Boleteria">
+
+                    @*Brazalete*@
+
+                    <div class="row CodBrazalete x_panel col-centered">
+                        <div class="row x_title">
+                            <h2>Brazalete</h2>
+                        </div>
+                        <br />
+                        <div class="col-md-11 col-sm-11 col-xs-11">
+                            <input type="text" name="CodBarra" id="CodBarra" class="form-control" maxlength="13" autofocus />
+                        </div>
+                        <div class="col-md-1 col-sm-11 col-xs-11">
+                            <a class="EditarCod">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
+                            </a>
+                        </div>
+                        <br /><br />
+                    </div>
+                    <br /><br />
+
+                    @*Mostrar si no está en contingencia*@
+
+                    @if (contingencia == 0)
+                    {
+
+                        @*Cupo Debito*@
+                        <div class="row x_panel col-centered">
+                            <div class="row x_title">
+                                <h2>Cupo débito</h2>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.Partial("_CupoDebito")
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="row x_panel col-centered">
+                            <div class="row x_title">
+                                <h2>Recarga tarjeta</h2>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.Partial("_TarjetaRecargable")
+                            </div>
+                        </div>
+                        <br /><br />
+                        @*Pasaporte Uso*@
+                        <div class="row x_panel col-centered">
+                            <div class="tipoProducto productos" id="Boleteria" style="background:none">
+                                <div class="row x_title">
+                                    <h2>Pasaporte por uso</h2>
+                                </div><br />
+                                <div class="row">
+                                    @Html.Partial("_ListaProductos", ListPasaporte)
+                                </div>
+                            </div>
+                        </div>
+
+                        @*Pasaportes impresión*@
+                        <div class="row x_panel col-centered">
+                            <div class="tipoProducto productos" id="Boleteria" style="background:none">
+                                <div class="row x_title">
+                                    <h2>Pasaportes</h2>
+                                </div><br />
+                                <div class="row">
+                                    @Html.Partial("_ListaProductos", pasaporteImpresion)
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="row x_panel col-centered">
+                            <div class="row x_title">
+                                <h2>Pasaporte uso</h2>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                @Html.Partial("_TiqueteIngresos", pasaporteUso)
+                            </div>
+                        </div>*@
+                    <br />
+                    <br />
+                </div>
+
+                @*Mostrar si no está en contingencia*@
+
+                @if (contingencia == 0)
+                {
+                    <div class="tipoProducto" id="Parqueadero">
+                        @Html.Partial("_PagoParqueadero")
+                    </div>
+                }
+
+                @*Lista Productos para evitar doble consulta*@
+                @if (Model != null && Model.Count() > 0)
+                {
+                    <script>
+                        ListaConveniosCodigoBarras  = @Html.Raw(Json.Encode(((IEnumerable<CorParques.Negocio.Entidades.Convenio>)ViewBag.ConveniosCodigoBarras)));
+                        ListaTodosProductosSAP = @Html.Raw(Json.Encode(((IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListaTodosProductosSAP)));
+                        tmpLista = @Html.Raw(Json.Encode(ListAyB));
+                        tmpListaAyD = @Html.Raw(Json.Encode(ListAyD));
+                        tmpListaSouvenir = @Html.Raw(Json.Encode(ListSouvenir));
+                        tmpListaServicios = @Html.Raw(Json.Encode(ListServicios));
+                        tmpListaPasaporte = @Html.Raw(Json.Encode(ListPasaporte));
+                    </script>
+                }
+
+                <div class="tipoProducto productos" id="Atracciones">
+                    <div class="row">
+                        @Html.Partial("_ListaProductos", ListAyD)
+                    </div>
+                </div>
+
+                <div class="tipoProducto productos" id="Alimentos">
+                    @Html.Partial("_ListaProductos", Model)
+                </div>
+
+                <div class="tipoProducto productos" id="Souvenir">
+                    @Html.Partial("_ListaProductos", ListSouvenir)
+                </div>
+
+                <div class="tipoProducto productos" id="Servicios">
+                    @Html.Partial("_ListaProductos", ListServicios)
+                </div>
+                <div class="tipoProducto productos" id="Mesas">
+                    @Html.Partial("_ListaMesas", ListaMesasA)
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="div_print"></div>
+    </div>
+</div>
+<div id="modalPOS" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Registrar tarjeta recargable</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>Documento del cliente: </label>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control required " id="DocClienteTR" placeholder="" maxlength="2000" />
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12">
+                        <a class="EditarDoc">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>Valor recarga: </label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control TipoPago" id="ValorCompraRecarga" maxlength="20" value="0" />
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>Nombre: </label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control required" id="NombreCliente" style="text-transform:uppercase;" maxlength="100" />
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>Correo: </label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control email required" id="CorreoCliente" maxlength="100" />
+                    </div>
+                </div><br />
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <label>Genero: </label>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <select id="txtGender" name="Genero" class="form-control required">
+                            <option value="">Seleccione...</option>
+                            <option value="1">Masculino</option>
+                            <option value="0">Femenino</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="msjErrorModal">
+                <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <label id="lbl_message_error">Error procesando la solicitud</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSavePos"><i class="fa fa-"></i>Guardar</button>
+                <button type="button" class="btn btn-danger" id="btnCancelPos">Cancelar</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div id="modalRepo" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Reposicion tarjeta recargable</h4>
+            </div>
+            <div class="modal-body">
+                <div id="frmRepo">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Documento del cliente: </label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control required " id="DocClienteRepo" placeholder="" maxlength="2000" />
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-sm-1 col-xs-12">
+                            <a class="EditarDocRepo">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Tarjeta Recargable: </label>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                            <input type="password" class="form-control required" id="TRecargableRepo" placeholder="" maxlength="20" />
+                            <input type="hidden" id="hdIdProdRepo" value="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="msjErrorModal">
+                <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    <label id="lbl_message_error">Error procesando la solicitud</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveRepo"><i class="fa fa-"></i>Guardar</button>
+                <button type="button" class="btn btn-danger" id="btnCancelRepo">Cancelar</button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div id="modalFAN" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Asociar tarjeta recargable a cliente FAN</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="frmFan">
+                    <div class="col-md-8 col-lg-8 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>Tarjeta Recargable: </label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="password" class="form-control required" id="TRecargable" placeholder="" maxlength="20" />
+                                <input type="hidden" id="hdIdProd" value="" /><input type="hidden" id="hdrenova" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>Valor recarga: </label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" class="form-control TipoPago" id="ValorCompraRecargaFan" maxlength="20" value="0" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Documento
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtDoc" name="Documento" class="form-control required numerico" value="" maxlength="20" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Nombre<span>*</span>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtName" name="Nombre" style="text-transform: uppercase;" class="form-control required" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Correo<span>*</span>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtMail" name="Correo" class="form-control required email" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Telefono<span>*</span>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtPhone" name="Telefono" class="form-control required numerico" value="" maxlength="10" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Dirección
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtAddress" name="Direccion" class="form-control" value="" maxlength="200" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Fecha de Nacimiento<span>*</span>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" id="txtBirthday" name="FechaNacimiento" class="form-control required " value="" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-lg-4 col-md-4 col-sm-4 col-xs-12" for="IdCategoriaAtencion">
+                                Genero<span>*</span>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <select id="txtGenderFan" name="Genero" class="form-control required">
+                                    <option value="1">Masculino</option>
+                                    <option value="0">Femenino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 col-xs-12">
+                        <div id="my_camera"></div>
+                        <img src="" id="snapshotFan" class="required" style="display:none"></img>
+                        <div class="row">
+                            <a href="#" id="btnCaptura" class="btn btn-default">Tomar captura</a>
+                            <a href="#" id="btnNuevaCaptura" style="display:none" class="btn btn-default">Volver a tomar captura</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="msjErrorModal">
+                    <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <label id="lbl_message_error">Error procesando la solicitud</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="btnSaveFan"><i class="fa fa-"></i>Agregar</button>
+                    <button type="button" class="btn btn-danger" id="btnCancelFan">Cancelar</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    @section scripts{
+        <script>
+            var ValorPropina = @Html.Raw(Json.Encode(propina));
+            parametros = @Html.Raw(Json.Encode(ViewBag.parametros));
+        </script>
+        <script src="~/Vendors/pnotify/dist/pnotify.js"></script>
+        <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+        <script src="~/Vendors/print_plugin/jquery.PrintArea.js"></script>
+        <script src="~/Scripts/select2.min.js"></script>
+        <script src="~/Scripts/webcam.min.js"></script>
+        <script src="~/Scripts/Pos.js" type="text/javascript"></script>
+
+        <script src="~/Scripts/General.js"></script>
+        <script>
+        @*@if (ViewBag.Apertura != null)
+        {
+            if (!(bool)ViewBag.Apertura)
+            {
+                @Html.Raw("MostrarMensajeRedireccion('Importante', 'El taquillero no tiene apertura', 'Home/Index', 'warning');");
+
+            }
+        }*@
+            $('[data-toggle="tooltip"]').tooltip();
+        </script>
+
+    }
+
+
+
+
+
+
+    <div id="loadingDiv" class="modalLoading" style="display: none">
+
+        <img id="imgLoaging" src="~/Images/LOOP-MUNDO-AVENTURA_.gif" style="height: 196px; left: 50%; top: 50%; margin: -12vw 0 0 -18vw; position: absolute;" />
+    </div>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Redención boleta control";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmDescargueBoleta">
+    
+    <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            <input type="text" placeholder="Código de barra inicial" class="form-control" maxlength="13" id="CodBarra1"  onkeypress = "return EsAlfaNumerico(this);" />
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            <input type="text" placeholder="Código de barra final" class="form-control" disabled maxlength="13" id="CodBarra2"  onkeypress = "return EsAlfaNumerico(this);" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12" id="listproductos">
+            @Html.Partial("_ListaProductos", new CorParques.Negocio.Entidades.DescargueBoletaControl { Productos = new List<CorParques.Negocio.Entidades.Producto>() })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-sm-10 col-xs-12">
+            <div style="text-align: right;">
+                <input type="button" class="btn btn-primary" value="Descargar" id="btnDescargar" />
+                <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelar" />
+            </div>
+            
+        </div>
+    </div>
+</form>
+
+@section scripts{
+    <script src="~/Scripts/DescargueBoleta.js"></script>
+}

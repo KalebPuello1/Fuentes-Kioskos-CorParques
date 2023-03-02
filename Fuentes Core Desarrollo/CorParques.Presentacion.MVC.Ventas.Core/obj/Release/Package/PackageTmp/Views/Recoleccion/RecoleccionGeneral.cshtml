@@ -1,0 +1,505 @@
+﻿@model CorParques.Negocio.Entidades.Recoleccion
+
+@{
+    ViewBag.Title = "Recolección";
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double TotalVoucher = 0;
+    double TotalDocumentos = 0;
+
+    if (Model != null)
+    {
+        foreach (var item in Model.DocumentosRecoleccion?.Where(x => x.Tipo == 1))
+        {
+            TotalVoucher += item.Valor;
+        }
+
+        foreach (var item in Model.DocumentosRecoleccion?.Where(x => x.Tipo == 2))
+        {
+            TotalDocumentos += item.Valor;
+        }
+
+    }
+
+}
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+@if (Model != null)
+{
+<div class="card-box table-responsive">
+    <form id="frmRecoleccion">
+        @Html.HiddenFor(model => model.IdRecoleccion)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.MaximoBase)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.MaximoCorte)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.MostrarBase)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.MostrarCorte)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.TotalVentasDia)
+        @Html.HiddenFor(model => model.IdUsuarioSupervisor)
+        @Html.HiddenFor(model => model.objRecoleccionAuxliar.ValorCortesRealizados)
+        <div class="dataTables_wrapper container-fluid dt-bootstrap no-footer">
+
+            <table class="table jambo_table">
+                <tr role="row">
+                    <th></th>
+                    <th>Forma recoleccion </th>
+                    <th>Valor recoleccion </th>
+                </tr>
+                <tbody id="bodyElementosApertura">
+                    @if (Model != null)
+                    {
+                        int contador = 0;
+                        int contadorVaoucher = 0;
+                        int contadorDocumentos = 0;
+                        int contadorNovedades = 0;
+                        int contadorDocumento = 0;
+                        if (Model.objRecoleccionAuxliar.MostrarBase)
+                        {
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px"></td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Base
+                                    <input type="hidden" name="RecoleccionBase[@contador].IdTipoRecoleccion" value="1">
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.ValorRecoleccionBase, new { @class = "form-control RecoleccionValor", maxlength = 10 })
+                                </td>
+                            </tr>
+                            contador++;
+                        }
+
+                        if (Model.objRecoleccionAuxliar.MostrarCorte)
+                        {
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px"></td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Corte
+                                    <input type="hidden" name="RecoleccionCorte[@contador].IdTipoRecoleccion" value="2">
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(model => model.ValorRecoleccionCorte, new { @class = "form-control RecoleccionValor", maxlength = 10})
+                                </td>
+                            </tr>
+                            contador++;
+                        }
+
+                        if (Model.DocumentosRecoleccion?.Where(x => x.Tipo == 1).Count() > 0)
+                        {
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px">
+                                    <a class="expandirVoucher" data-id="0" href="javascript:void(0)"><b id="iconoPlusVoucher" class="fa fa-plus-square"></b></a>
+                                </td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Voucher
+                                    <input type="hidden" name="RecoleccionCorte[@contador].IdTipoRecoleccion" value="2">
+                                </td>
+                                <td>
+                                    <div id="divTotalvoucher" class="Numero mon" style="padding-bottom:3px;font-weight:bold;"> @string.Format("{0:C0}", @TotalVoucher)</div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td id="tdExpandirVoucher" style="display:none" class="child" colspan="8">
+                                    <ul data-dtr-index="27">
+
+                                        <table class="table jambo_table">
+                                            <tr role="row">
+                                                <th width="200px">
+                                                    Fecha Hora
+                                                </th>
+                                                <th width="200px">
+                                                    Código Voucher
+                                                </th>
+                                                <th width="200px">
+                                                    Franquicia
+                                                </th>
+                                                <th width="200px">
+                                                    Valor
+                                                </th>
+                                                <th width="50px" style="text-align:center;">
+                                                    <input type="checkbox" id="TodosVoucher" value="true" checked onclick="SeleccionarTodos(this, 'voucher')">
+                                                </th>
+                                            </tr>
+                                            <tbody id="bodyVoucher">
+
+                                                @foreach (var item in Model.DocumentosRecoleccion.Where(x => x.Tipo == 1))
+                                                {
+
+                                                    <tr>
+                                                        <td>
+                                                            @item.FechaCreacion.ToString("yyyy/MM/dd HH:mm")
+                                                            @*@Html.DisplayFor(modelItem => item.FechaCreacion)*@
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                @Html.DisplayFor(modelItem => item.NumReferencia)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                @Html.DisplayFor(modelItem => item.Franquicia)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div id="valorvoucher_@contadorVaoucher">
+                                                                @string.Format("{0:C0}", item.Valor)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].IdTipoRecoleccion" value="3">
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].IdMedioPagoFactura" value=@item.IdMedioPagoFactura>
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].Franquicia" value="@item.Franquicia">
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].NumReferencia" value="@item.NumReferencia">
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].Fecha" value="@item.FechaCreacion.ToString("yyyy/MM/dd HH:mm")">
+                                                            <input type="hidden" name="RecoleccionVoucher[@contadorVaoucher].Valor" value="@item.Valor">
+
+                                                            <div style=" text-align:center;">
+                                                                <input type="checkbox" id="chkv_@contadorVaoucher" class="voucher" name="RecoleccionVoucher[@contadorVaoucher].RevisionTaquillero" value="true" checked onchange="SeleccionarCheckBox(this, 'voucher');" data-indice="@contadorVaoucher" />
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    contadorVaoucher++;
+                                                }
+
+                                            </tbody>
+                                        </table>
+
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+
+                        if (Model.DocumentosRecoleccion?.Where(x => x.Tipo == 2).Count() > 0)
+                        {
+
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px">
+                                    <a class="expandirDocumentos" data-id="0" href="javascript:void(0)"><b id="iconoPlusDocumento" class="fa fa-plus-square"></b></a>
+                                </td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Documentos
+                                    <input type="hidden" name="RecoleccionCorte[@contador].IdTipoRecoleccion" value="2">
+                                </td>
+                                <td>
+                                    <div id="divTotaldocumentos" class="Numero mon" style="padding-bottom:3px;font-weight:bold;">@string.Format("{0:C0}", @TotalDocumentos)</div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+
+                                <td id="tdExpandirDocumentos" style="display:none" class="child" colspan="8">
+                                    <ul data-dtr-index="27">
+
+                                        <table class="table jambo_table">
+                                            <tr role="row">
+                                                <th width="200px">
+                                                    Fecha Hora
+                                                </th>
+                                                <th width="200px">
+                                                    Código Documento
+                                                </th>
+                                                <th width="200px">
+                                                    Valor
+                                                </th>
+                                                <th width="50px" style="text-align:center;">
+                                                    <input type="checkbox" id="TodosDocumentos" value="true" checked onclick="SeleccionarTodos(this, 'documentos')">
+                                                </th>
+                                            </tr>
+                                            <tbody id="bodyVoucher">
+                                                @foreach (var item in Model.DocumentosRecoleccion.Where(x => x.Tipo == 2))
+                                                {
+
+                                                    <tr>
+                                                        <td>
+                                                            @item.FechaCreacion.ToString("yyyy/MM/dd HH:mm")
+                                                        </td>
+                                                        <td>
+                                                            <div>
+                                                                @Html.DisplayFor(modelItem => item.NumReferencia)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div id="valordocumentos_@contadorDocumentos">
+                                                                @string.Format("{0:C0}", item.Valor)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" name="RecoleccionDocumentos[@contadorDocumentos].IdTipoRecoleccion" value="4">
+                                                            <input type="hidden" name="RecoleccionDocumentos[@contadorDocumentos].IdMedioPagoFactura" value=@item.IdMedioPagoFactura>
+                                                            <input type="hidden" name="RecoleccionDocumentos[@contadorDocumentos].NumReferencia" value=@item.NumReferencia>
+                                                            <input type="hidden" name="RecoleccionDocumentos[@contadorDocumentos].Fecha" value="@item.FechaCreacion.ToString("yyyy/MM/dd HH:mm")">
+                                                            <input type="hidden" name="RecoleccionDocumentos[@contadorDocumentos].Valor" value="@item.Valor">
+
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" id="chkd_@contadorDocumentos" class="documentos" name="RecoleccionDocumentos[@contadorDocumentos].RevisionTaquillero" value="true" checked onchange="SeleccionarCheckBox(this, 'documentos');" data-indice="@contadorDocumentos" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    contadorDocumentos++;
+                                                }
+
+                                            </tbody>
+                                        </table>
+
+                                    </ul>
+                                </td>
+
+                            </tr>
+
+
+                        }
+
+                        if (Model.NovedadesArqueo.Count() > 0)
+                        {
+
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px">
+                                    <a class="expandirDocumentos" data-id="0" href="javascript:void(0)"><b id="iconoPlusDocumento" class="fa fa-plus-square"></b></a>
+                                </td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Documentos
+                                    <input type="hidden" name="RecoleccionCorte[@contador].IdTipoRecoleccion" value="2">
+                                </td>
+                                <td>
+                                    <div id="divTotalnovedad" class="Numero mon" style="padding-bottom:3px;font-weight:bold;">@string.Format("{0:C0}", @TotalDocumentos)</div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+
+                                <td id="tdExpandirDocumentos" style="display:none" class="child" colspan="8">
+                                    <ul data-dtr-index="27">
+
+                                        <table class="table jambo_table">
+                                            <tr>
+                                                <th width="200px">
+                                                    Tipo Novedad
+                                                </th>
+                                                <th width="200px">
+                                                    Fecha Hora
+                                                </th>
+                                                <th width="200px">
+                                                    Valor
+                                                </th>
+                                                <th width="50px" style="text-align:center;">
+                                                    <input type="checkbox" id="TodosNovedades" value="true" checked onclick="SeleccionarTodos(this, 'novedad')">
+                                                </th>
+                                            </tr>
+                                            <tbody id="bodyVoucher">
+                                                @foreach (var item in Model.NovedadesArqueo)
+                                                {
+
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.TipoNovedadNombre)
+                                                        </td>
+                                                        <td>
+                                                            @item.FechaCreado.ToString("yyyy/MM/dd HH:mm")
+                                                            @*@Html.DisplayFor(modelItem => item.FechaCreado)*@
+                                                        </td>
+                                                        <td>
+                                                            <div id="valornovedad_@contadorNovedades">
+                                                                @string.Format("{0:C0}", item.Valor)
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" name="RecoleccionNovedad[@contadorNovedades].IdTipoRecoleccion" value="6">
+                                                            <input type="hidden" name="RecoleccionNovedad[@contadorNovedades].IdNovedadArqueo" value=@item.Id>
+                                                            <input type="hidden" name="RecoleccionNovedad[@contadorNovedades].TipoNovedadNombre" value="@item.TipoNovedadNombre">
+                                                            <input type="hidden" name="RecoleccionNovedad[@contadorNovedades].Valor" value="@item.Valor">
+
+                                                            <div style="text-align:center;">
+                                                                <input type="checkbox" id="chkn_@contadorNovedades" class="novedad" name="RecoleccionNovedad[@contadorNovedades].RevisionTaquillero" value="true" checked onchange="SeleccionarCheckBox(this, 'novedad');" data-indice="@contadorNovedades" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    contadorNovedades++;
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+
+                        if (Model.CierreBrazalete != null)
+                        {
+
+
+                            <tr role="row" class="parent">
+
+                                <td style="text-align:center; width:50px">
+                                    <a class="expandirDocumentos" data-id="0" href="javascript:void(0)"><b id="iconoPlusDocumento" class="fa fa-plus-square"></b></a>
+                                </td>
+
+                                <td tabindex="0" class="sorting_1">
+                                    Documentos
+                                    <input type="hidden" name="RecoleccionCorte[@contador].IdTipoRecoleccion" value="2">
+                                </td>
+                                <td>
+                                    <div id="divTotalbrazaletes" class="Numero mon" style="padding-bottom:3px;font-weight:bold;">@string.Format("{0:C0}", @TotalDocumentos)</div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+
+                                <td id="tdExpandirDocumentos" style="display:none" class="child" colspan="8">
+                                    <ul data-dtr-index="27">
+
+                                        <table class="table jambo_table">
+                                            <tr>
+                                                <th width="200px">
+                                                    Tipo
+                                                </th>
+                                                <th width="200px">
+                                                    Asignados
+                                                </th>
+                                                <th width="200px">
+                                                    Vendidos
+                                                </th>
+                                                <th width="200px">
+                                                    Ajustes
+                                                </th>
+                                                <th width="80px">
+                                                    En caja
+                                                </th>
+
+                                                <th width="80px">
+                                                    Devolver
+                                                </th>
+                                            </tr>
+                                            <tbody id="bodyVoucher">
+                                                @foreach (var item in Model.CierreBrazalete)
+                                                {
+
+                                                    <tr>
+                                                        <td>
+                                                            @item.TipoBrazalete
+                                                        </td>
+                                                        <td>
+                                                            @item.Asignados
+                                                        </td>
+                                                        <td>
+                                                            @item.TotalVendidos
+                                                        </td>
+                                                        <td>
+                                                            @item.TotalDiferencia
+                                                        </td>
+                                                        <td>
+                                                            @item.EnCaja
+                                                        </td>
+                                                        <td>
+                                                            <input type="hidden" name="RecoleccionBrazalete[@contadorDocumento].IdTipoBrazalete" value=@item.IdTipoBrazalete>
+                                                            <input type="hidden" name="RecoleccionBrazalete[@contadorDocumento].IdAperturaBrazaleteDetalle" value=@item.IdAperturaBrazaleteDetalle>
+                                                            <input type="hidden" name="RecoleccionBrazalete[@contadorDocumento].TipoBrazalete" value="@item.TipoBrazalete">
+
+                                                            <input type="text" class="txtBoleteriareturn form-control required boleteria numerico" id="Valorb_@contadorDocumento" name="RecoleccionBrazalete[@contadorDocumento].CantidadTaquillero" data-value="@item.EnCaja" maxlength="10" value="0" onchange="ValidateCount(this);" />
+                                                        </td>
+                                                    </tr>
+                                                    contadorDocumento++;
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+
+                </tbody>
+            </table>
+
+
+            <br />
+            <div class="row " style="text-align:right">
+                <div class="item col-md-12 col-sm-12 col-xs-12">
+                    <a href="javascript:void(0)" id="btnSaveRecoleccion" class="right btn btn-success">Guardar</a>
+                    <a href="javascript:void(0)" id="btnCancelRecoleccion" class="right btn btn-danger">Cancelar</a>
+                </div>
+            </div>
+        </div>
+
+        @*Muestra pop up para agregar un auxiliar*@
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header btn-primary">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Confirmación supervisor/recolector</h4>
+                    </div>
+                    <div class="row">
+                        <div class="modal-body">
+                            <div>
+                                <label>Acerque el carnet al lector de código de barras</label>
+                                <input type="text" id="txt_DocumentoEmpleado" placeholder="Acerque su carnet al lector." autofocus style="width:0px; height:0px; border:0px; background-color:transparent; top:10000px" maxlength="20" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-body" id="divPassword" style="display:none">
+                            <div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                                    Contraseña:
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="password" class="form-control " id="Password" name="Password" placeholder="Digíte su contraseña" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="text-align:right">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarLogin" />
+                            <input type="button" class="btn btn-primary" value="Limpiar" id="btnLimpiar" />
+                            <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelarLogin" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+}
+
+
+@section scripts{
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Scripts/RecoleccionGeneral.js"></script>
+    <script src="~/Scripts/jquery.smartWizard.js"></script>
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script>
+            var pedidos = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+    </script>
+}

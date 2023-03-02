@@ -442,6 +442,27 @@ namespace CorParques.Datos.Dapper
 
             return values.ToString();
         }
+        public bool FlujoRedebanXPunto(int IdPunto)
+        {
+            var result = _cnn.Query($"select Activo from dbo.TB_ActivacionRedeban where IdPunto = {IdPunto}");
+
+            if (result.Count() > 0)
+            {
+
+            
+            var firstRow = result.FirstOrDefault();
+            var Heading = ((IDictionary<string, object>)firstRow).Keys.ToArray();
+            var details = ((IDictionary<string, object>)firstRow);
+            bool values = (bool)details[Heading[0]];
+
+            return values;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
 
         public IEnumerable<FacturaValidaUsoRespuesta> ValidarUsoFactura(string codigoFactura)
         {

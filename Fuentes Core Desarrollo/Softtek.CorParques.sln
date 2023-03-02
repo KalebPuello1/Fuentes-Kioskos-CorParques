@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorParques.Presentacion.MVC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorParques.Presentacion.MVC.Redencion.Core", "CorParques.Presentacion.MVC.Redencion.Core\CorParques.Presentacion.MVC.Redencion.Core.csproj", "{49E3BF72-781E-477C-900A-7E9BCCD0979D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorParques.Presentacion.MVC.Ventas.Core", "CorParques.Presentacion.MVC.Ventas.Core\CorParques.Presentacion.MVC.Ventas.Core.csproj", "{59C2D63D-850E-4A4C-A350-BAFE0725E521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{49E3BF72-781E-477C-900A-7E9BCCD0979D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49E3BF72-781E-477C-900A-7E9BCCD0979D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49E3BF72-781E-477C-900A-7E9BCCD0979D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C2D63D-850E-4A4C-A350-BAFE0725E521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C2D63D-850E-4A4C-A350-BAFE0725E521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C2D63D-850E-4A4C-A350-BAFE0725E521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C2D63D-850E-4A4C-A350-BAFE0725E521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +152,7 @@ Global
 		{34297A79-59E8-4CC7-A74D-F899F8C43469} = {5CB5D802-AD2B-43D2-B901-AF92E77A0265}
 		{E3021CCA-F6E0-46A9-95B4-A94F25CA8F24} = {125A74F0-5203-42F0-BDAD-AD9090658E17}
 		{49E3BF72-781E-477C-900A-7E9BCCD0979D} = {125A74F0-5203-42F0-BDAD-AD9090658E17}
+		{59C2D63D-850E-4A4C-A350-BAFE0725E521} = {125A74F0-5203-42F0-BDAD-AD9090658E17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {501D1420-5729-47DA-8467-E0CB1DB9BD3F}

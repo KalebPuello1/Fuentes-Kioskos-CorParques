@@ -1364,7 +1364,11 @@ namespace CorParques.Datos.Dapper
         {
             throw new NotImplementedException();
         }
-
+        public bool FlujoRedebanXPunto(int IdPunto)
+        {
+            throw new NotImplementedException();
+        }
+        
         public Producto ObtenerProductoPorCodSap(string CodSapProducto)
         {
             return _cnn.GetList<Producto>().Where(x => x.CodigoSap == CodSapProducto).FirstOrDefault();

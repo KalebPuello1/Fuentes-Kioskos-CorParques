@@ -1,0 +1,116 @@
+﻿@model CorParques.Negocio.Entidades.DetalleInventario
+
+@{
+    ViewBag.Title = "Reabastecimiento de inventario punto";
+    //ViewBag.SubTitle = "Reabastecimiento de inventario al taquillero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var TipoBrazalete = (IEnumerable<CorParques.Negocio.Entidades.TipoBrazalete>)ViewBag.tipoBrazalete;
+    var listSupervisor = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.supervisor;
+    var AperturaBase = (CorParques.Negocio.Entidades.Apertura)ViewBag.aperturabase;
+}
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+
+<form id="frmInventarioOperativoPuntos">
+    <div class="x_panel" style="padding: 40px;">
+
+        <div class="form-group">
+            <div class="row">                
+                <div class="item col-md-5 col-sm-5 col-xs-12">
+                    @*<select id="IdTaquillero"  name="IdSupervisor" class="form-control required setSelect2" >
+                        <option value="">* Taquillero</option>
+                        @if (listSupervisor != null && listSupervisor.Count() > 0)
+                        {
+                            foreach (var item in listSupervisor)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        }
+                    </select>*@
+                    @Html.DropDownListFor(model => model.IdSupervisor, new SelectList(listSupervisor, "Id", "Nombre", Model!= null? Model.IdSupervisor : 0), "Seleccione...", new { @class = "form-control required setSelect2", @id= "IdTaquillero"})
+                </div>
+            </div>
+        </div>
+        <br />        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.Partial("_AperturaBrazalete", AperturaBase)
+            </div>            
+        </div>
+        <br />       
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @*@Html.Partial("_DetalleAperturaBase", AperturaBase)*@
+            </div>
+        </div>
+        <br />        
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @Html.Partial("_DetalleElementos", AperturaBase)
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <label  class="col-md-2 col-sm-2 col-xs-12"> Observaciones</label>
+            <div class="col-md-10 col-sm-10 col-xs-12">
+                @Html.TextAreaFor(m => m.Observacion, new  {@class = "form-control", placeholder = "Observaciones", maxlength = 2000 })
+            </div>                        
+        </div>
+        <br/>
+        @*<div class="row">
+            <div style="text-align:right;">
+                <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarAlistamientoPuntos" />
+            </div>
+        </div>*@
+        <div class="row">
+            <div class="col-md-12" style="text-align:right;">
+                <input type="button" class="right btn btn-success" value="Guardar" id="btnAceptarAlistamientoPuntos" />
+                <input type="button" class="right btn btn-danger" value="Cancelar" id="btnCancelarAlistamientoPuntos" />
+            </div>
+        </div>
+    </div>
+
+</form>
+@section Scripts{ 
+
+<script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+<script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+<script src="~/Scripts/select2.min.js"></script>       
+<script src="~/Scripts/EntregaInventarioReabastecimiento.js"></script>
+<script>
+        var urlaction = '@Url.Action("ObtenerDetalleInventarioPuntos", "Apertura")';
+
+    DetalleInventario = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+     @if (ViewBag.IsApertura != null)
+     {
+         if (!(bool)ViewBag.isApertura)
+         {
+             @Html.Raw("MostrarMensajeRedireccion('Importante', 'No existe un alistamiento previo para este punto.', 'Home/Index', 'warning');");               
+
+         }
+     }
+
+    //Formato de la moneda
+    $.each($(".FormatMoneda"), function (i, item) {
+        var valor = $.trim($(item).html());
+        if (valor.length > 0)
+            $(item).html(FormatoMoneda(valor));
+    });
+    //$("#btnAceptarAlistamientoPuntos").click(function () {
+    //    AlistarListaApertura();
+    //});
+</script>
+
+}
