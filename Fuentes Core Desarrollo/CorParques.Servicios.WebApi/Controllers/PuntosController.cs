@@ -45,7 +45,16 @@ namespace CorParques.Servicios.WebApi.Controllers
                             : Request.CreateResponse(HttpStatusCode.OK, list);
         }
 
+        [HttpGet]
+        [Route("api/Puntos/ObtenerPuntosXusuario/{IdUsuario}")]
+        public HttpResponseMessage ObtenerPuntosXusuario(int IdUsuario)
+        {
+            var list = _servicio.ObtenerPuntosXusuario(IdUsuario);
+            return list.Count() == 0 ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, list);
+        }
         
+
         [HttpGet]
         [Route("api/Puntos/GetAllSimple")]
         public HttpResponseMessage GetAllSimple()
