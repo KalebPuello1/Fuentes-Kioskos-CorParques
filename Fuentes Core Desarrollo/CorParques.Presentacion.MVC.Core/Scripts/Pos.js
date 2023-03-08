@@ -37,6 +37,12 @@ var numeroReciboEliminar = "";
 var indexMedioPagoEliminar = 0;
 var IdFranquiciaRedeban = 0;
 var _tarjetafanclien = 0;
+var numeroPasaportesDia = 0;
+var tarjetaVencida = false;
+var listProductosCortesia = [];
+var usuarioCortesia = "";
+var IdDetalleCortesia = 0;
+var esMejoraCortesia = false;
 
 //FIDELIZACION
 Webcam.set({
@@ -2245,8 +2251,8 @@ function ActualizarListaDePrecios() {
         $.each(lstProductosCompra, function (i, item) {
             var tieneprecioConvenio = false;
 
-            var objDetalleConvenio = listDetalleConvenioSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
-            if (objDetalleConvenio != null) {
+            var objDetalleConvenio = listDetalleConvenioSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)            
+            if (objDetalleConvenio != null && !tarjetaVencida) {
 
                 var objProductoNm = ListaTodosProductosSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
                 if (objProductoNm != null) {
@@ -2271,7 +2277,22 @@ function ActualizarListaDePrecios() {
                             }
                         } else {
                             item.Nombre = objProductoNm.Nombre + ' **';
-                            item.Precio = objDetalleConvenio.Valor;
+                            if (item.esMayor && numeroPasaportesDia < 1) {
+                                item.Precio = objDetalleConvenio.Valor;
+                            }
+                            else if (item.CodSapTipoProducto != "2000" && item.CodSapTipoProducto != "2005") {
+                                item.Precio = objDetalleConvenio.Valor;
+                            }
+                            else if (!esMejoraCortesia && (item.CodSapTipoProducto == "2000" || item.CodSapTipoProducto == "2005")) {
+                                item.Precio = objProductoNm.Precio;
+                            }
+                            //else if (item.Consecutivo == 0) {
+                            //    item.Precio = objDetalleConvenio.Valor;
+                            //}
+                            else {
+                                item.Precio = objProductoNm.Precio;
+                            }
+                            //item.Precio = objDetalleConvenio.Valor;
                             item.PrecioTotal = (item.Precio * item.Cantidad);
                             item.EsConvenio = true;
                             tieneprecioConvenio = true;
@@ -2381,168 +2402,31 @@ function ObtenerproductoPorCodigoSap(CodSap) {
 
 //RDSH: Actualiza la tabla de los productos que el cliente ha comprado.
 function ActualizarTablaCompras() {
+    //Aqui determino el pasaporte con mayor valor    
+    var mayorPrecio = 0;
+    var ContI = 0;
+    var ContMayor = 0;
+    var encontrado = false;
+    $.each(lstProductosCompra, function () {
+        //var IdProducto = item.IdDetalleProducto == null || item.IdDetalleProducto === undefined ? "0" : item.IdDetalleProducto;
+        if (lstProductosCompra[ContI].Precio > mayorPrecio && CodigoBarrasConvenioPistoleadedo != ""
+            && (lstProductosCompra[ContI].CodSapTipoProducto == "2000" || lstProductosCompra[ContI].CodSapTipoProducto == "2005")) {
+            mayorPrecio = lstProductosCompra[ContI].Precio;
+            ContMayor = ContI;
+            encontrado = true;
+        }
+        lstProductosCompra[ContI].esMayor = false;
+        ContI++;
+    });
+    if (encontrado) {
+        lstProductosCompra[ContMayor].esMayor = true;
+    }
     ActualizarListaDePrecios();
     MostrarPropina();
 
-    if (lstProductosCompra.length > 0) {
-        var tablaHead = "<div class='row x_panel'> <table class='table table-striped jambo_table' width='100%'>";
-        tablaHead += "<thead>" + "<th>Nombre</th>"
-            + "<th>Valor</th>"
-            + "<th>Cantidad</th>"
-            + "<th>Total</th>"
-            + "<th></th>"
-            + "</thead>";
-        var tablaBody = "<tbody>";
-        var UltimoIdProducto = "";
-        var disabledCantidad = "";
-        var hiddenCantidad = "";
-        $.each(lstProductosCompra, function (i, item) {
-            var IdProducto = item.IdDetalleProducto == null || item.IdDetalleProducto === undefined ? "0" : item.IdDetalleProducto;
-            UltimoIdProducto = item.IdProducto;
-            disabledCantidad = "";
-            if (validaProductoAgrupaCantidad(item.CodSapTipoProducto, item.CodigoSap)) {
-                disabledCantidad = "disabled";
-            }
-            if (item.CtgProducto == 1) {
-                disabledCantidad = "disabled";
-                hiddenCantidad = "hidden";
-            }
-            tablaBody += "<tr>"
-                //+ "<td style='vertical-align: middle;'>" + (item.ConseutivoDetalleProducto == null ? item.Nombre : item.Nombre + " " + item.ConseutivoDetalleProducto) + "</td>"
-                + "<td style='vertical-align: middle;'>" + item.Nombre + "</td>"
+    MostrarProductos();
 
-                + "<td style='vertical-align: middle;'>" + EnMascarar(item.Precio) + "</td>"
-                + "<td style='vertical-align: middle;' width='20px'>" + "<input data-id ='" + item.IdProducto + "' type='text' style='text-align: center; padding-top: 0; padding-bottom: 0; height: 22px;' class='form-control evtCambiar' id='prod_compra_" + item.IdProducto + "'" + "value='" + item.Cantidad + "' maxlength='3' autofocus onkeypress='return EsNumero(this);' " + disabledCantidad + " />" + "</td>"
-                + "<td style='vertical-align: middle;' width='100px'>" + EnMascarar(item.PrecioTotal) + "</td>"
-                + "<td style='vertical-align: middle;'><a data-id ='" + item.IdProducto + "' class='evtEliminar' id='" + IdProducto + "' " + hiddenCantidad + "><span class='fa fa-trash-o IconosPos' aria-hidden='true'  ></span></a></td></tr>";
-
-        });
-
-        var footer = "</tbody></table></div>";
-        $("#dvProductos").html(tablaHead + tablaBody + footer);
-        MostrarTotal();
-        ValidarCantidadConvenio();
-
-        var searchInput = $("#prod_compra_" + UltimoIdProducto);
-        if (!searchInput.prop("disabled")) {
-            // Multiply by 2 to ensure the cursor always ends up at the end;
-            // Opera sometimes sees a carriage return as 2 characters.
-            var strLength = searchInput.val().length * 2;
-            searchInput.focus();
-            searchInput[0].setSelectionRange(strLength, strLength);
-        }
-
-        $(".evtCambiar").change(function () {
-
-            var id = $(this).data('id');
-            var elemento = $(this);
-            index = id;
-            if (isNaN($(this).val()) || $(this).val() == "" || $(this).val() == " ") {
-                $(this).val("1");
-            }
-            var NuevaCantidad = parseInt($(this).val());
-            if (NuevaCantidad <= 0) {
-                NuevaCantidad = 1;
-            }
-
-            $.each(lstProductosCompra, function (i) {
-                if (lstProductosCompra[i].IdProducto === id) {
-                    lstProductosCompra[i].Cantidad = NuevaCantidad;
-                    lstProductosCompra[i].PrecioTotal = (lstProductosCompra[i].Precio * NuevaCantidad);
-                    return false;
-                }
-            });
-
-            ActualizarTablaCompras();
-            MostrarcambioApp();
-        });
-
-        $(".evtEliminar").click(function () {
-            var id = $(this).data('id');
-            var idDetalle = $(this).attr("id");
-
-            if (lstProductosCompra.length == 1)
-                lstProductosCompra = [];
-            else {
-
-                if (idDetalle != '0') {
-
-                    $.each(lstProductosCompra, function (i) {
-                        if (lstProductosCompra[i].IdDetalleProducto == idDetalle && lstProductosCompra[i].IdProducto == id) {
-                            if (lstProductosCompra[i].CodigoSap == parametros.CodSapTarjetaRecargable.Valor) {
-                                var idtest = lstProductosCompra[i].ConseutivoDetalleProducto;
-                                lstProductosCompra.splice(i, 1);
-                                var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
-                                    return e.DataExtension != idtest
-                                });
-                                lstProductosCompra = lstFinalProdu;
-                                return false;
-                                //$.each(lstProductosCompra, function (j, v) {
-                                //    if (lstProductosCompra[i].ConseutivoDetalleProducto === v.DataExtension) {
-
-                                //        lstProductosCompra.splice(i, 1);
-                                //        lstProductosCompra.splice(j - 1, 1);
-                                //    }
-                                //});
-                            } else {
-                                lstProductosCompra.splice(i, 1);
-                            }
-                            return false;
-                        }
-                    });
-                } else {
-
-                    $.each(lstProductosCompra, function (i) {
-                        if (lstProductosCompra[i].IdProducto === id) {
-                            if (lstProductosCompra[i].CodigoSap === parametros.CodSapPrecioTarjeta.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapReposicionTarjeta.Valor) {
-                                var idtest = lstProductosCompra[i].DataExtension;
-                                lstProductosCompra.splice(i, 1);
-                                var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
-                                    return (e.DataExtension != idtest && e.ConseutivoDetalleProducto != idtest)
-                                });
-                                lstProductosCompra = lstFinalProdu;
-                            } else {
-                                lstProductosCompra.splice(i, 1);
-                            }
-
-                            return false;
-                        }
-                    });
-                }
-            }
-            ActualizarTablaCompras();
-            MostrarcambioApp();
-        });
-
-        //DANR: 22-01-2019 -- Adicion campo donante
-        var mostrarDonante = false;
-        $.each(lstProductosCompra, function (i, v) {
-            if ($("#inputCodSapProductosDonaciones").val().indexOf(v.CodigoSap) >= 0)
-                mostrarDonante = true;
-        });
-        if (mostrarDonante) {
-            if ($("#cbDonacion").prop("checked") && $("#txtDonante").val() !== "") {
-            } else {
-                $("#cbDonacion").prop("checked", true);
-                $("#divDonarCambio").hide();
-                $("#txtDonante").val("");
-                $("#divDonarProd").show();
-                $("#divDonante").show();
-            }
-        }
-        else {
-            $("#divDonarCambio").show();
-            $("#divDonarProd").hide();
-            $("#cbDonacion").prop("checked", false);
-            $("#divDonante").hide();
-        }
-        //fin DANR: 22-01-2019 -- Adicion campo donante
-
-        MostrarcambioApp();
-    } else {
-        /*Limpiar();*/
-        $("#dvProductos").html("");
-    }
+    
 }
 
 //RDSH: Funcion para agregar un producto a la lista de compras.
@@ -2809,6 +2693,8 @@ $("#inputConvenioCodBarrasSAP").keypress(function (evt) {
 
     if (!inicializadointervalConvenio) {
         inicializadointervalConvenio = true;
+        numeroPasaportesDia = 0;
+        tarjetaVencida = false;
         var refreshIntervalIdConvenio = setInterval(function () { fnValidaCodSapConvenio(); clearInterval(refreshIntervalIdConvenio); }, 300);
     }
 });
@@ -2819,13 +2705,15 @@ function fnValidaCodSapConvenio() {
         CodigoBarrasConvenioPistoleadedo = "";
     } else {
         CodigoBarrasConvenioPistoleadedo = $("#inputConvenioCodBarrasSAP").val();
+        EjecutarAjax(urlBase + "Pos/ConsultarVencimientoTarjeta", "GET", { Tarjeta: $("#inputConvenioCodBarrasSAP").val() }, "successObtenerVencimientoTarjeta", null);
+        EjecutarAjax(urlBase + "Pos/ObtenerDetallesConsecutivoConvenioDia", "GET", { Consecutivo: $("#inputConvenioCodBarrasSAP").val() }, "successObtenerDetalleConsecutivoDia", null);
         EjecutarAjax(urlBase + "Pos/ObtenerDetalleConvenioByConsec", "GET", { Consecutivo: $("#inputConvenioCodBarrasSAP").val() }, "successObtenerDetalleConvenioCodigoSAP", null);
     }
 }
 
 function successObtenerDetalleConvenioCodigoSAP(rta) {
     debugger;
-    if (rta.resultado.length > 0) {
+    if (rta.resultado.length > 0 && tarjetaVencida == false) {
         listDetalleConvenio = rta.resultado;
         ActualizarTablaCompras();
         var nombreConvenio = listDetalleConvenioSAPGetNombreConvenio();
@@ -2879,6 +2767,35 @@ function successObtenerDetalleConvenioCodigoSAP(rta) {
     }
 }
 
+function successObtenerDetalleConsecutivoDia(rta) {
+    if (rta.resultado != null) {
+        listaComprasDia = rta.resultado;
+        $.each(listaComprasDia, function (i, item) {
+            if (item.CodSapTipoProducto == "2000" || item.CodSapTipoProducto == "2005") {
+                numeroPasaportesDia++;
+            }
+        });
+        if (numeroPasaportesDia > 0) {
+            ActualizarListaDePrecios();
+            MostrarProductos();
+        }
+    }
+}
+
+function successObtenerVencimientoTarjeta(rta) {
+    if (rta.resultado != null) {
+        var anio = (rta.resultado.substring(6, 10)) * 1;
+        var dia = (rta.resultado.substring(3, 5)) * 1;
+        var mes = ((rta.resultado.substring(0, 2)) * 1) - 1;
+        var vencimiento = new Date(anio, mes, dia);
+        var hoy = new Date();
+        if (vencimiento < hoy) {
+            MostrarMensajeRedireccion("Importante", "La tarjeta FAN esta vencida", null, "warning");
+            tarjetaVencida = true;
+        }
+    }
+    return;
+}
 
 $("#inputCancelConvenioCodBarrasSAP").click(function (evt) {
     if ($("#selectPosConvenioSAP").val() == "") {
@@ -3412,5 +3329,168 @@ function successObtenerTarjetaRecargable(rta) {
         $("#ValorRecargaTR").val("");
         $("#CodTarjeta").val("");
         MostrarMensaje("Importante", rta.MensajeValidacion, "warning");
+    }
+}
+
+
+function MostrarProductos() {
+    if (lstProductosCompra.length > 0) {
+        var tablaHead = "<div class='row x_panel'> <table class='table table-striped jambo_table' width='100%'>";
+        tablaHead += "<thead>" + "<th>Nombre</th>"
+            + "<th>Valor</th>"
+            + "<th>Cantidad</th>"
+            + "<th>Total</th>"
+            + "<th></th>"
+            + "</thead>";
+        var tablaBody = "<tbody>";
+        var UltimoIdProducto = "";
+        var disabledCantidad = "";
+        var hiddenCantidad = "";
+        $.each(lstProductosCompra, function (i, item) {
+            var IdProducto = item.IdDetalleProducto == null || item.IdDetalleProducto === undefined ? "0" : item.IdDetalleProducto;
+            UltimoIdProducto = item.IdProducto;
+            disabledCantidad = "";
+            if (validaProductoAgrupaCantidad(item.CodSapTipoProducto, item.CodigoSap)) {
+                disabledCantidad = "disabled";
+            }
+            if (item.CtgProducto == 1) {
+                disabledCantidad = "disabled";
+                hiddenCantidad = "hidden";
+            }
+            tablaBody += "<tr>"
+                //+ "<td style='vertical-align: middle;'>" + (item.ConseutivoDetalleProducto == null ? item.Nombre : item.Nombre + " " + item.ConseutivoDetalleProducto) + "</td>"
+                + "<td style='vertical-align: middle;'>" + item.Nombre + "</td>"
+
+                + "<td style='vertical-align: middle;'>" + EnMascarar(item.Precio) + "</td>"
+                + "<td style='vertical-align: middle;' width='20px'>" + "<input data-id ='" + item.IdProducto + "' type='text' style='text-align: center; padding-top: 0; padding-bottom: 0; height: 22px;' class='form-control evtCambiar' id='prod_compra_" + item.IdProducto + "'" + "value='" + item.Cantidad + "' maxlength='3' autofocus onkeypress='return EsNumero(this);' " + disabledCantidad + " />" + "</td>"
+                + "<td style='vertical-align: middle;' width='100px'>" + EnMascarar(item.PrecioTotal) + "</td>"
+                + "<td style='vertical-align: middle;'><a data-id ='" + item.IdProducto + "' class='evtEliminar' id='" + IdProducto + "' " + hiddenCantidad + "><span class='fa fa-trash-o IconosPos' aria-hidden='true'  ></span></a></td></tr>";
+
+        });
+
+        var footer = "</tbody></table></div>";
+        $("#dvProductos").html(tablaHead + tablaBody + footer);
+        MostrarTotal();
+        ValidarCantidadConvenio();
+
+        var searchInput = $("#prod_compra_" + UltimoIdProducto);
+        if (!searchInput.prop("disabled")) {
+            // Multiply by 2 to ensure the cursor always ends up at the end;
+            // Opera sometimes sees a carriage return as 2 characters.
+            var strLength = searchInput.val().length * 2;
+            searchInput.focus();
+            searchInput[0].setSelectionRange(strLength, strLength);
+        }
+
+        $(".evtCambiar").change(function () {
+
+            var id = $(this).data('id');
+            var elemento = $(this);
+            index = id;
+            if (isNaN($(this).val()) || $(this).val() == "" || $(this).val() == " ") {
+                $(this).val("1");
+            }
+            var NuevaCantidad = parseInt($(this).val());
+            if (NuevaCantidad <= 0) {
+                NuevaCantidad = 1;
+            }
+
+            $.each(lstProductosCompra, function (i) {
+                if (lstProductosCompra[i].IdProducto === id) {
+                    lstProductosCompra[i].Cantidad = NuevaCantidad;
+                    lstProductosCompra[i].PrecioTotal = (lstProductosCompra[i].Precio * NuevaCantidad);
+                    return false;
+                }
+            });
+
+            ActualizarTablaCompras();
+            MostrarcambioApp();
+        });
+
+        $(".evtEliminar").click(function () {
+            var id = $(this).data('id');
+            var idDetalle = $(this).attr("id");
+
+            if (lstProductosCompra.length == 1)
+                lstProductosCompra = [];
+            else {
+
+                if (idDetalle != '0') {
+
+                    $.each(lstProductosCompra, function (i) {
+                        if (lstProductosCompra[i].IdDetalleProducto == idDetalle && lstProductosCompra[i].IdProducto == id) {
+                            if (lstProductosCompra[i].CodigoSap == parametros.CodSapTarjetaRecargable.Valor) {
+                                var idtest = lstProductosCompra[i].ConseutivoDetalleProducto;
+                                lstProductosCompra.splice(i, 1);
+                                var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
+                                    return e.DataExtension != idtest
+                                });
+                                lstProductosCompra = lstFinalProdu;
+                                return false;
+                                //$.each(lstProductosCompra, function (j, v) {
+                                //    if (lstProductosCompra[i].ConseutivoDetalleProducto === v.DataExtension) {
+
+                                //        lstProductosCompra.splice(i, 1);
+                                //        lstProductosCompra.splice(j - 1, 1);
+                                //    }
+                                //});
+                            } else {
+                                lstProductosCompra.splice(i, 1);
+                            }
+                            return false;
+                        }
+                    });
+                } else {
+
+                    $.each(lstProductosCompra, function (i) {
+                        if (lstProductosCompra[i].IdProducto === id) {
+                            if (lstProductosCompra[i].CodigoSap === parametros.CodSapPrecioTarjeta.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapReposicionTarjeta.Valor) {
+                                var idtest = lstProductosCompra[i].DataExtension;
+                                lstProductosCompra.splice(i, 1);
+                                var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
+                                    return (e.DataExtension != idtest && e.ConseutivoDetalleProducto != idtest)
+                                });
+                                lstProductosCompra = lstFinalProdu;
+                            } else {
+                                lstProductosCompra.splice(i, 1);
+                            }
+
+                            return false;
+                        }
+                    });
+                }
+            }
+            ActualizarTablaCompras();
+            MostrarcambioApp();
+        });
+
+        //DANR: 22-01-2019 -- Adicion campo donante
+        var mostrarDonante = false;
+        $.each(lstProductosCompra, function (i, v) {
+            if ($("#inputCodSapProductosDonaciones").val().indexOf(v.CodigoSap) >= 0)
+                mostrarDonante = true;
+        });
+        if (mostrarDonante) {
+            if ($("#cbDonacion").prop("checked") && $("#txtDonante").val() !== "") {
+            } else {
+                $("#cbDonacion").prop("checked", true);
+                $("#divDonarCambio").hide();
+                $("#txtDonante").val("");
+                $("#divDonarProd").show();
+                $("#divDonante").show();
+            }
+        }
+        else {
+            $("#divDonarCambio").show();
+            $("#divDonarProd").hide();
+            $("#cbDonacion").prop("checked", false);
+            $("#divDonante").hide();
+        }
+        //fin DANR: 22-01-2019 -- Adicion campo donante
+
+        MostrarcambioApp();
+    } else {
+        /*Limpiar();*/
+        $("#dvProductos").html("");
     }
 }

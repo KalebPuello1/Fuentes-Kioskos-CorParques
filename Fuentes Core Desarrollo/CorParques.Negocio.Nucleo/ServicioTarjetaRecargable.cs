@@ -28,6 +28,10 @@ namespace CorParques.Negocio.Nucleo
             return _repositorio.ValidarDocumento(doc);
         }
 
+        public string ConsultarVencimientoTarjeta(string Tarjeta)
+        {
+            return _repositorio.ConsultarVencimientoTarjeta(Tarjeta);
+        }
         #endregion
 
 

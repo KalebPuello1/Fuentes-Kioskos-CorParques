@@ -7,3 +7,12 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CopyComplete
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CopyComplete
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.pdb

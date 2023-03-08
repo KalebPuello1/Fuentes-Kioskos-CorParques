@@ -9,3 +9,14 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CopyComplete
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\Corparques.Datos.Contratos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\Corparques.Datos.Contratos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CopyComplete
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.pdb

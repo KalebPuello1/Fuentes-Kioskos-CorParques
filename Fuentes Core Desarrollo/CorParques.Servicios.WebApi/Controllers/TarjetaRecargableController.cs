@@ -27,7 +27,13 @@ namespace CorParques.Servicios.WebApi.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, valor);
         }
 
-       
+        [HttpGet]
+        [Route("api/TarjetaRecargable/ConsultarVencimientoTarjeta/{Tarjeta}")]
+        public HttpResponseMessage ConsultarVencimientoTarjeta(string Tarjeta)
+        {            
+             string vencimiento = _service.ConsultarVencimientoTarjeta(Tarjeta);
+            return Request.CreateResponse(HttpStatusCode.OK, vencimiento);
+        }
 
     }
 }

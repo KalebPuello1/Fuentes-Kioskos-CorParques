@@ -32,6 +32,11 @@ namespace CorParques.Datos.Dapper
             return consulta.First();
         }
 
+        public string ConsultarVencimientoTarjeta(string Tarjeta)
+        {
+            var consulta = _cnn.Query<string>("SP_ConsultarVencimientoTarjetaFan", new { TarjetaRecargable = Tarjeta }, commandType: System.Data.CommandType.StoredProcedure);
+            return consulta.First();
+        }
         #endregion
 
 

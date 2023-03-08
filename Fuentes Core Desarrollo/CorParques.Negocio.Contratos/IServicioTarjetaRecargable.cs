@@ -12,6 +12,6 @@ namespace CorParques.Negocio.Contratos
 	{
                 
         string ValidarDocumento(string doc);
-
+        string ConsultarVencimientoTarjeta(string Tarjeta);
     }
 }

@@ -13,6 +13,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Net.Http;
+using System.Data;
 
 namespace CorParques.Presentacion.MVC.Core.Controllers
 {
@@ -1770,7 +1771,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
         [HttpGet]
         public async Task<JsonResult> ObtenerDetallesConsecutivoConvenioDia(string Consecutivo)
-        {
+        {            
             var resultado = await GetAsync<IEnumerable<DetalleFactura>>($"Factura/ObtenerDetallesConsecutivoConvenioDia/{Consecutivo}");
 
             return Json(new { resultado = resultado }, JsonRequestBehavior.AllowGet);
