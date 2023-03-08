@@ -2445,10 +2445,10 @@ function AgregarProductoACompra(IdProducto, tmpList) {
                     return false;
                 }
             }
-            if (Producto.length > 0 && Producto[0].CodigoSap === parametros.CodSapClienteFan.Valor) {
-                MostrarMensajeRedireccion("Importante", "Solo puede agregar una tarjeta FAN por factura", null, "warning");
-                return false;
-            }
+            //if (Producto.length > 0 && Producto[0].CodigoSap === parametros.CodSapClienteFan.Valor) {
+            //    MostrarMensajeRedireccion("Importante", "Solo puede agregar una tarjeta FAN por factura", null, "warning");
+            //    return false;
+            //}
             if (Producto.length > 0 && !validaProductoAgrupaCantidad(Producto[0].CodSapTipoProducto, Producto[0].CodigoSap)) {
                 ActualizarCantidadProducto(IdProducto, (Producto[0].Cantidad + 1))
             }
