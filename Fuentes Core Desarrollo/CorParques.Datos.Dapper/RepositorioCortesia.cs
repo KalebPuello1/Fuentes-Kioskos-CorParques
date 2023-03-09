@@ -327,7 +327,8 @@ namespace CorParques.Datos.Dapper
                     IdUsuario = modelo.idUsuario,
                     Documento = modelo.Documento,
                     TipoCortesia = tipoCortesia,
-                    ValorGenerico = modelo.ValorGenerico
+                    ValorGenerico = modelo.ValorGenerico,
+                    IdDetalleCortesia = modelo.IdDetalleCortesia
                 }, commandType: CommandType.StoredProcedure);
                 return rta.Single();
             }

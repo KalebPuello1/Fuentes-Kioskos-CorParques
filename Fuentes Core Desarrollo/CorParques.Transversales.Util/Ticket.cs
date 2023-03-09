@@ -1604,6 +1604,37 @@ namespace CorParques.Transversales.Util
 
         }
 
+        public string ImprimirTicketRedencion()
+        {
+
+            string strRetorno = string.Empty;
+
+            try
+            {
+                if (PrinterExists(strImpresora))
+                {
+                    this.printFont = new Font(this.fontName, (float)this.fontSize, FontStyle.Regular);
+                    PrintDocument document = new PrintDocument
+                    {
+                        PrinterSettings = { PrinterName = strImpresora }
+                    };
+                    document.PrintPage += new PrintPageEventHandler(this.pr_PrintPageRedencion);
+                    document.Print();
+                }
+                else
+                {
+                    strRetorno = "Error: No se ha configurado la impresora.";
+                }
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error ImprimirTicketCortesias: ", ex.Message);
+            }
+
+            return strRetorno;
+
+        }
+
         private void pr_PrintPageCortesias(object sender, PrintPageEventArgs e)
         {
             e.Graphics.PageUnit = GraphicsUnit.Millimeter;
@@ -2187,6 +2218,46 @@ namespace CorParques.Transversales.Util
             }                                             // **********
 
             return ticket += parte2 + "\n";                     // agrega el segundo parametro al final
+
+        }
+
+        private void pr_PrintPageRedencion(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            this.gfx = e.Graphics;
+            this.GenerarEncabezadoRedencion();
+            //this.GenerarCodigoBarrasCortesias();
+            this.GenerarPiePagina();
+        }
+
+        private void GenerarEncabezadoRedencion()
+        {
+
+            try
+            {
+
+                if (strLogoParque.Trim().Length > 0)
+                {
+                    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
+                }
+
+                AgregarLinea(TextoCentro("C O R P A R Q U E S"));
+                AgregarLinea(TextoCentro("Nit. 830008059-1"));
+                Espacio();
+                AgregarLinea(TextoCentro(strTituloTicket), new Font(this.fontName, 8, FontStyle.Bold));
+                Espacio();
+                AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
+                Espacio();
+                //AgregarLinea(string.Concat("Documento: ", this.d));
+                //AgregarLinea(string.Concat("Valido para: ", Utilidades.ObtenerFechaActual(), "    Usos: 1"));
+                //AgregarLinea(string.Concat("Atendido por: ", strUsuario));
+                //AgregarLinea(string.Concat("Atracción: ", objListaArticulos[0].Nombre));
+                Espacio();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(string.Concat("Error en AgregarImagen_Ticket 1633: ", ex.Message));
+            }
 
         }
 
