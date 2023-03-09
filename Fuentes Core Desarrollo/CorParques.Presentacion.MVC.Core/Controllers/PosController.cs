@@ -28,7 +28,11 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
             //Proceso POS 
             Session["PosCont"] = true;
-
+            
+            //Aqui traigo el valor del parámetro para mejora de la cortesia ubin
+            //var objParametroMerjoraFan = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/{"Mejora Cortesia Cliete FAN"}");
+            //var _mejoraUbin = objParametroMerjoraFan.Valor;
+            //ViewBag.Apertura = _mejoraUbin;
 
             //Validar tiempo 
 
@@ -340,8 +344,9 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 CodSapTarjetaRecargable = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapTarjetaRecargable"), // codigo sap cliente fan
                 CodSapPrecioTarjeta = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapPlasticoTarjeta"),// codigo sap cliente fan
                 CodSapReposicionTarjeta = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapRepoTarjeta"),
-                AplicaDescargue = existepunto
-            };
+                AplicaDescargue = existepunto,
+                MejoraUbin = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/Mejora Cortesia Ubin") // Mejora Cortesia UBIN
+        };
 
             ViewBag.TransaccionRedebanHabilitada = ConfigurationManager.AppSettings["FlujoRedeban"].ToString();
             _time.Stop();
@@ -451,7 +456,11 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                                     , string CodSapConvenio = ""
                                                     , string ConsecutivoConvenio = ""
                                                     , int IdConvenio = 0
-                                                    , string Donante = ""
+                                                    , List<Producto> productosCortesia = null
+                                                    , string numTarjeta =""
+                                                    , UsuarioVisitanteViewModel usuarioCortesia = null
+                                                    ,int IdDetalleCortesia = 0
+                                                    , string Donante = ""                                                   
                                                     )
         {
             //Esto es validacion para impresion en linea
@@ -1082,6 +1091,45 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                         }
                     }
                     MensajeBoletasRestantes += "\n\r ****   Verifique que no se acabo el limite de rollo";
+                }
+                if (numTarjeta != "" && productosCortesia != null)
+                {
+                    
+                    var obj = new GuardarCortesiaUsuarioVisitante()
+                    {
+                        idUsuario = IdUsuarioLogueado,
+                        Documento = usuarioCortesia.NumeroDocumento,
+                        ListaProductos = productosCortesia,
+                        TipoCortesia = usuarioCortesia.IdTipoCortesia,
+                        ValorGenerico = usuarioCortesia.TipoDocumento,
+                        IdDetalleCortesia = IdDetalleCortesia
+                    };
+                    var rta = await PostAsync<GuardarCortesiaUsuarioVisitante, string>("Cortesia/GuardarCortesiaUsuarioVisitante", obj);
+                    //Aqui se imprime el ticket comprobante redenciónn de cortesia
+
+                    var usuarioAutenticado = (CorParques.Negocio.Entidades.Usuario)Session["UsuarioAutenticado"];
+
+                    ServicioImprimir objImprimir = new ServicioImprimir();
+
+                    TicketImprimir objRedencionCortesia = new TicketImprimir();
+                    objRedencionCortesia.TituloRecibo = "Boleta Redención de Cortesia";
+
+                    var consecutivo = usuarioCortesia.ListDetalleCortesia.ToList()[0].Consecutivo;
+
+                    DataTable tablaDatos = new DataTable();
+                    tablaDatos.Columns.Add("Taquillero", typeof(string));
+                    tablaDatos.Columns.Add("Documento", typeof(string));
+                    tablaDatos.Columns.Add("Nombres", typeof(string));
+                    tablaDatos.Columns.Add("Cortesia", typeof(string));
+                    tablaDatos.Columns.Add("Consecutivo", typeof(string));
+                    tablaDatos.Rows.Add(usuarioAutenticado.Nombre + " " + usuarioAutenticado.Apellido,
+                        usuarioCortesia.NumeroDocumento,
+                        usuarioCortesia.Nombres + " " + usuarioCortesia.Apellidos,
+                        usuarioCortesia.Observacion,
+                        consecutivo);
+                    objRedencionCortesia.TablaDetalle = tablaDatos;
+
+                    objImprimir.ImprimirComprobanteRedencion(objRedencionCortesia);
                 }
             }
             catch (Exception ex)
@@ -1783,6 +1831,188 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var resultado = await GetAsync<String>($"TarjetaRecargable/ConsultarVencimientoTarjeta/{Tarjeta}");
 
             return Json(new { resultado = resultado }, JsonRequestBehavior.AllowGet);
+        }        
+
+        [HttpGet]
+        public async Task<ActionResult> ObtenerDetalleCortesia(string documento, int IdTipoCortesia, string numeroTarjetaFAN)
+        {
+            CortesiaViewModel cortesia = new CortesiaViewModel();
+            if (IdTipoCortesia == 1)
+            {
+                cortesia.documento = documento;
+            }
+            if (IdTipoCortesia == 5)
+            {
+                cortesia.documentoEjecutivo = documento;
+            }
+            if (IdTipoCortesia == 2)
+            {
+                cortesia.numTarjeta = numeroTarjetaFAN;
+            }
+
+            var rta = await PostAsync<CortesiaViewModel, UsuarioVisitanteViewModel>("Cortesia/ObtenerCortesiaUsuarioVisitante", cortesia);
+            return PartialView("_DetalleCortesias", rta.Elemento);
+        }
+
+        
+        public async Task<JsonResult> ObtenerProductoCortesia(string CodBarra, string Documento, string numtarjeta, List<Producto> productos, int IdTipoCortesia, int impresionLinea, int IdDetalle)
+        {
+            Producto _producto = new Producto();
+            UsuarioVisitanteViewModel listacortesi = new UsuarioVisitanteViewModel();
+            if (IdTipoCortesia == 1)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaUsuarioVisitante2/{Documento}");
+            }
+            if (IdTipoCortesia == 5)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaUsuarioVisitanteEjecutivo/{Documento}");
+            }
+            if (IdTipoCortesia == 2)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaTarjetaFAN/{numtarjeta}");
+                if (listacortesi != null)
+                {
+                    if (listacortesi.ListDetalleCortesia != null && IdDetalle == 0)
+                    {
+                        listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.FechaInicial <= DateTime.Now && l.FechaFinal >= DateTime.Now && l.Activo == true).ToArray();
+                    }
+                    if (IdDetalle != 0)
+                    {
+                        listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.IdDetalleCortesia == IdDetalle && l.Activo == true).ToArray();
+                    }
+
+                }
+            }
+
+
+            var resultCortesiasDispo = new List<Producto>();
+            if (listacortesi != null)
+            {
+                resultCortesiasDispo = (from t in listacortesi.ListDetalleCortesia
+                                        group t by new { t.CodigoSap }
+                                        into grp
+                                        select new Producto()
+                                        {
+                                            CodigoSap = grp.Key.CodigoSap,
+                                            Cantidad = grp.Sum(t => t.Cantidad)
+                                        }).ToList();
+            }
+
+            var _prod = await GetAsync<Producto>($"Pos/ObtenerBrazaleteConsecutivo/{CodBarra}/{(Session["UsuarioAutenticado"] as Usuario).Id}/0");
+            var productoagregar = new Producto();
+            if (impresionLinea == 1 && listacortesi != null)
+            {
+                if (listacortesi.ListDetalleCortesia != null)
+                {
+
+
+                    var prueba = listacortesi.ListDetalleCortesia.Where(l => l.CodigoSap == CodBarra).ToArray();
+                    if (prueba.Count() > 0)
+                    {
+                        productoagregar = (from t in prueba
+                                           group t by new { t.CodigoSap, t.IdProducto, t.IdDetalleCortesia, t.Nombre, t.CodSapTipoProducto }
+                                       into grp
+                                           select new Producto()
+                                           {
+                                               CodigoSap = grp.Key.CodigoSap,
+                                               Cantidad = grp.Sum(t => t.Cantidad),
+                                               IdProducto = grp.Key.IdProducto,
+                                               IdDetalleProducto = grp.Key.IdDetalleCortesia,
+                                               ConseutivoDetalleProducto = grp.Key.CodigoSap,
+                                               Nombre = grp.Key.Nombre,
+                                               CodSapTipoProducto = grp.Key.CodSapTipoProducto
+                                           }).FirstOrDefault();
+                    }
+
+                }
+            }
+
+            if (_prod != null)
+            {
+                _producto = _prod;
+                if (_prod.IdProducto > 0)
+                {
+                    if (productos == null)
+                    {
+                        productos = new List<Producto>();
+                    }
+                    _producto.Cantidad = 1;
+                    productos.Add(_producto);
+                }
+                else if (impresionLinea == 1)
+                {
+                    if (productoagregar != null)
+                    {
+                        _producto = productoagregar;
+                        if (productos == null)
+                        {
+                            productos = new List<Producto>();
+                        }
+                        _producto.Cantidad = 1;
+                        productos.Add(_producto);
+                    }
+                }
+
+            }
+            var resultProdCargado = new List<Producto>();
+            if (productos != null)
+            {                
+                resultProdCargado = (from t in productos
+                                     group t by new { t.CodigoSap, t.IdProducto }
+                           into grp
+                                     select new Producto()
+                                     {
+                                         CodigoSap = grp.Key.CodigoSap,
+                                         Cantidad = grp.Sum(t => t.Cantidad)
+                                     }).ToList();
+
+            }
+            bool _banderadisponible = true;
+            if (resultCortesiasDispo != null && resultProdCargado != null)
+            {
+                foreach (var item in resultProdCargado)
+                {
+                    foreach (var item2 in resultCortesiasDispo)
+                    {
+                        if (item.CodigoSap == item2.CodigoSap && item.Cantidad > item2.Cantidad)
+                        {
+                            _banderadisponible = false;
+                        }
+                    }
+                }
+            }
+
+            Parametro _productos = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/ProductosCortesiasPQRS");
+
+
+
+            //Validar si el producto aplica
+            //bool _blnAplica = false;
+
+            //if (listacortesi != null && listacortesi.ListDetalleCortesia != null && _producto.IdProducto > 0)
+            //{
+            //    foreach (var item in listacortesi.ListDetalleCortesia)
+            //    {
+            //        if (item.CodigoSap == _producto.CodigoSap)
+            //            _blnAplica = true;
+            //    }
+            //}
+
+
+
+
+            //if (!_blnAplica && _producto.IdProducto > 0)
+            //    _producto = new Producto() { MensajeValidacion = "Producto no valido!" };
+            //else if (!_banderadisponible)
+            //    _producto = new Producto() { MensajeValidacion = "No se pueden cargar mas productos de ese tipo!" };
+
+            if (!_banderadisponible)
+                _producto = new Producto() { MensajeValidacion = "No se pueden cargar mas productos de ese tipo!" };
+
+
+            return Json(_producto, JsonRequestBehavior.AllowGet);
+
+
         }
 
         #endregion

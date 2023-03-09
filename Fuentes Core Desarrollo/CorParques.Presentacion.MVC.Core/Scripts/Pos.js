@@ -199,6 +199,20 @@ function LimpiarRepo() {
     $("#TRecargableRepo").val("");
     $("#hdIdProdRepo").val("");
 }
+function LimpiarCortesia() {
+    $("#NumTarjeta").val("");
+    $("#txtCodigo").val("");    
+
+    $("#Detallecortesia").html("");
+
+    $(".otherField").hide();
+    listProductosCortesia = [];
+    tablaBodyCortesias = "";
+    IdDetalleCortesia = 0;
+    esMejoraCortesia = false;
+    usuarioCortesia = "";
+    
+}
 $("#btnCancelFan").click(function () {
     cerrarModal("modalFAN");
     LimpiarFan();
@@ -210,6 +224,15 @@ $("#btnSaveRepo").click(function () {
         EjecutarAjax(urlBase + "Pos/ValidarDocumento", "GET", { doc: $("#DocClienteRepo").val() }, "AgregarTarjetaYRepo", null);
     }
 })
+$("#btnCancelCortesia").click(function () {
+    cerrarModal("modalRedencionCortesia");
+    LimpiarCortesia();
+})
+
+$("#btnSaveCortesia").click(function () {
+    cerrarModal("modalRedencionCortesia");    
+})
+
 var contador = 0;
 $("#btnSaveFan").click(function () {
     $("#btnSaveFan").hide();
@@ -1187,6 +1210,7 @@ function ConfirmarPago() {
     })
     var CodSapConvenioVal = listDetalleConvenioSAPGetCodSapConvenio();
     var idConvenio = listDetalleConvenioSAPGetIdConvenio();
+    var numTarjeta = $("#NumTarjeta").val();
     if (CodSapConvenioVal == "") {
         EjecutarAjaxJson(urlBase + "Pos/PagarCompra", "post", {
             IdPedido: _tmpIdPedido,
@@ -1195,7 +1219,7 @@ function ConfirmarPago() {
             Donante: ($("#divDonante").css("display") !== "none" ? $("#txtDonante").val() : "")
         }, "successPagarPos", null);
 
-    } else {
+    } else {        
         EjecutarAjaxJson(urlBase + "Pos/PagarCompra", "post", {
             IdPedido: _tmpIdPedido,
             ListaProductos: lista,
@@ -1203,6 +1227,10 @@ function ConfirmarPago() {
             CodSapConvenio: CodSapConvenioVal,
             ConsecutivoConvenio: CodigoBarrasConvenioPistoleadedo,
             IdConvenio: idConvenio,
+            productosCortesia: listProductosCortesia,
+            numTarjeta: numTarjeta,
+            usuarioCortesia: usuarioCortesia,
+            IdDetalleCortesia: IdDetalleCortesia,
             Donante: ($("#divDonante").css("display") !== "none" ? $("#txtDonante").val() : "")
         }, "successPagarPos", null);
     }
@@ -1249,11 +1277,12 @@ function successPagarPos(rta) {
             MostrarMensaje("Importante", rta.impresionLinea, "success");
             AgregarCortesiasTarjetaFan();
             Limpiar();
+            LimpiarCortesia();
         }
         else {
             AgregarCortesiasTarjetaFan();
             Limpiar();
-
+            LimpiarCortesia();
         }
     }
     else {
@@ -1262,11 +1291,13 @@ function successPagarPos(rta) {
                 window.location.href = "Home";
             else {
                 Limpiar();
+                LimpiarCortesia();
                 MostrarMensajeHTML("Importante", rta, "error");
             }
         } else {
             AgregarCortesiasTarjetaFan();
             Limpiar();
+            LimpiarCortesia();
         }
     }
     
@@ -2246,13 +2277,15 @@ function ValidaProductoAgregadoConvenio(indiceValidar, itemValidar) {
     return agregado;
 }
 
-function ActualizarListaDePrecios() {
+function ActualizarListaDePrecios() {      
     if (lstProductosCompra.length > 0) {
         $.each(lstProductosCompra, function (i, item) {
             var tieneprecioConvenio = false;
 
-            var objDetalleConvenio = listDetalleConvenioSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)            
-            if (objDetalleConvenio != null && !tarjetaVencida) {
+            var objDetalleConvenio = listDetalleConvenioSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
+
+            var objProducto = ListaTodosProductosSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
+            if (objDetalleConvenio != null) {
 
                 var objProductoNm = ListaTodosProductosSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
                 if (objProductoNm != null) {
@@ -2286,11 +2319,11 @@ function ActualizarListaDePrecios() {
                             else if (!esMejoraCortesia && (item.CodSapTipoProducto == "2000" || item.CodSapTipoProducto == "2005")) {
                                 item.Precio = objProductoNm.Precio;
                             }
-                            //else if (item.Consecutivo == 0) {
-                            //    item.Precio = objDetalleConvenio.Valor;
-                            //}
-                            else {
-                                item.Precio = objProductoNm.Precio;
+                            else if (item.Consecutivo == 0 ){                            
+                                item.Precio = objDetalleConvenio.Valor;
+                            }
+                            else {                                
+                                item.Precio = objProducto.Precio;
                             }
                             //item.Precio = objDetalleConvenio.Valor;
                             item.PrecioTotal = (item.Precio * item.Cantidad);
@@ -2303,7 +2336,7 @@ function ActualizarListaDePrecios() {
             }
 
             if (!tieneprecioConvenio) {
-                var objProducto = ListaTodosProductosSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
+                //var objProducto = ListaTodosProductosSAPGetByCodSap(item.CodSapTipoProducto, item.CodigoSap)
                 if (objProducto != null) {
                     item.EsConvenio = false;
                     //Cambioquitar
@@ -2653,6 +2686,15 @@ $("#selectPosConvenioSAP").change(function () {
         ActualizarTablaCompras();
     } else {
         EjecutarAjax(urlBase + "Pos/ObtenerDetalleConvenio", "GET", { IdConvenio: $("#selectPosConvenioSAP").val() }, "successObtenerDetalleConvenio", null);
+
+        //Aqui llamo la ventana emrgente para redimir las cortesias 
+        var prueba = $("#selectPosConvenioSAP").val();
+        if ($("#selectPosConvenioSAP").val() == parametros.MejoraUbin.Valor) {
+            esMejoraCortesia = true;
+            MostrarModalRedencionCortesia();
+            ActualizarTablaCortesias();
+        }        
+
     }
 });
 
@@ -3333,6 +3375,147 @@ function successObtenerTarjetaRecargable(rta) {
 }
 
 
+function MostrarModalRedencionCortesia() {    
+    abrirModal("modalRedencionCortesia");
+}
+
+$('#NumTarjeta').keypress(function (e) {    
+    //if (validarFormulario("frmCortesias")) {
+    var _numTarjeta = $("#NumTarjeta").val();
+    
+    EjecutarAjax(urlBase + "Cortesia/ObtenerCortesiaUsuarioVisitante", "GET", { numTarjeta: _numTarjeta }, "RespuestaConsulta");
+    //}
+    
+});
+
+function RespuestaConsulta(rta, doc) {    
+    
+    if (rta.Elemento.NumeroDocumento != null || rta.Elemento.TipoDocumento != null) {
+        usuarioCortesia = rta.Elemento;
+        
+        if (rta.Elemento.Apellidos != null) {
+            $("#NombreVisitante").html(rta.Elemento.Nombres + ' ' + rta.Elemento.Apellidos);
+        }
+        else {
+            $("#NombreVisitante").html(rta.Elemento.Nombres);
+        }
+
+        $("#CedulaVisitante").html(rta.Elemento.NumeroDocumento);
+        
+        $("#lblCantidadCortesias").html(rta.Elemento.Cantidad);
+        $("#txtNumdocumentoV").val(rta.Elemento.NumeroDocumento);
+        $("#txtNumTarjetaFAN").val(rta.Elemento.NumTarjetaFAN);
+        $("#txtTipoCortesiaV").val(rta.Elemento.IdTipoCortesia);
+        /*$("#btnAceptar").val("Aceptar");*/
+        if (rta.Elemento.IdTipoCortesia == 1 || rta.Elemento.IdTipoCortesia == 5 || rta.Elemento.IdTipoCortesia == 2) {                        
+            EjecutarAjax(urlBase + "Pos/ObtenerDetalleCortesia", "GET", { documento: rta.Elemento.NumeroDocumento, IdTipoCortesia: rta.Elemento.IdTipoCortesia, numeroTarjetaFAN: rta.Elemento.NumTarjetaFAN }, "RespuestaConsultaDetalle", null);
+        }
+        
+    }
+    else {
+        usuarioCortesia = null;
+
+        MostrarMensaje("Mensaje", "El usuario visitante no se encuentra disponible para redimir una cortesía");
+    }
+}
+
+function RespuestaConsultaDetalle(data) {
+    if (isNaN(data)) {
+        $("#Detallecortesia").html(data);        
+    }
+}
+
+$('#txtCodigo').keypress(function (e) {
+    if (!inicializadointerval) {
+        inicializadointerval = true;
+        var refreshIntervalId = setInterval(function () { ConsultarBoleta(); inicializadointerval = false; clearInterval(refreshIntervalId); }, 300);
+    }
+});
+
+function ConsultarBoleta() {
+    var obj = $("#txtCodigo");
+    var numdocument = $("#txtNumdocumentoV");
+    var IDtipoCorteV = $("#txtTipoCortesiaV");
+    var numerotarjeta = $("#txtNumTarjetaFAN");
+    if (obj.length > 0) {        
+        EjecutarAjax(urlBase + "Pos/ObtenerProductoCortesia", "POST", JSON.stringify({ CodBarra: obj.val(), Documento: numdocument.val(), numtarjeta: numerotarjeta.val(), productos: listProductosCortesia, IdTipoCortesia: IDtipoCorteV.val(), impresionLinea: 0, IdDetalle: IdDetalleCortesia }), "successObtenerProducto", null);
+        obj.val("");
+    }
+}
+
+function successObtenerProducto(rta) {
+
+    if (rta.IdProducto > 0) {
+        //var obj = BuscarIdBrazalete(rta.IdDetalleProducto);
+        var obj = BuscarIdBrazaleteCortesia(rta.IdDetalleProducto);
+        if (obj === null) {
+            rta.Cantidad = 1;
+            rta.PrecioTotal = rta.Precio;
+            listProductosCortesia.push(rta);            
+            ActualizarTablaCortesias();
+        } else
+            MostrarMensaje("Importante", "La boleta ya fue agregado en la lista de productos.", "warning");
+    } else {
+
+        MostrarMensaje("Importante", rta.MensajeValidacion, "warning");
+    }
+}
+
+
+//Actualiza la tabla de cortesias a redimir
+function ActualizarTablaCortesias() {
+
+    if (listProductosCortesia.length > 0) {
+        var tablaHeadCortesias = "<div class='row x_panel'> <table class='table table-striped jambo_table' width='100%'>";
+        tablaHeadCortesias += "<thead>" + "<th>Nombre</th>"
+            + "<th></th>"
+            + "</thead>";
+        var tablaBodyCortesias = "<tbody>";
+
+        $.each(listProductosCortesia, function (i, item) {
+
+            tablaBodyCortesias += "<tr>"
+                + "<td style='vertical-align: middle;'>" + (item.ConseutivoDetalleProducto == null ? item.Nombre : item.Nombre + " " + item.ConseutivoDetalleProducto) + "</td>"
+                + "<td style='vertical-align: middle;'><a data-id ='" + item.IdProducto + "' class='evtEliminarCortesia' id='" + item.IdDetalleProducto + "' href='javascript:void(0)'><span class='fa fa-trash-o IconosPos' aria-hidden='true' ></span></a></td></tr>";
+
+        });
+
+        var footerCortesias = "</tbody></table></div>";
+        $("#listProductos").html(tablaHeadCortesias + tablaBodyCortesias + footerCortesias);
+
+
+
+        $(".evtEliminarCortesia").click(function () {
+
+            var id = $(this).data('id');
+            var idDetalle = $(this).attr("id");
+
+            if (listProductosCortesia.length == 1)
+                listProductosCortesia = [];
+            else {
+
+                if (idDetalle != '0') {
+
+                    $.each(listProductosCortesia, function (i) {
+                        if (listProductosCortesia[i].IdDetalleProducto == idDetalle) {
+                            listProductosCortesia.splice(i, 1);
+                            return false;
+                        }
+                    });
+                }
+            }            
+            ActualizarTablaCortesias();
+        });
+
+    } else {
+        $("#listProductos").html("");
+    }
+}
+
+function Seleccionar(idDetalle) {
+    IdDetalleCortesia = idDetalle;
+}
+
 function MostrarProductos() {
     if (lstProductosCompra.length > 0) {
         var tablaHead = "<div class='row x_panel'> <table class='table table-striped jambo_table' width='100%'>";
@@ -3493,4 +3676,17 @@ function MostrarProductos() {
         /*Limpiar();*/
         $("#dvProductos").html("");
     }
+}
+
+function BuscarIdBrazaleteCortesia(id) {
+    var objReturn = null;
+
+    $.each(listProductosCortesia, function (i, item) {
+        if ($.trim(item.IdDetalleProducto) == $.trim(id)) {
+            objReturn = item;
+            return false;
+        }
+    });
+
+    return objReturn;
 }

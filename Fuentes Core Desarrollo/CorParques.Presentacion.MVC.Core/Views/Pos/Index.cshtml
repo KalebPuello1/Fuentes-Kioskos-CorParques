@@ -714,3 +714,91 @@
 
         <img id="imgLoaging" src="~/Images/LOOP-MUNDO-AVENTURA_.gif" style="height: 196px; left: 50%; top: 50%; margin: -12vw 0 0 -18vw; position: absolute;" />
     </div>
+</div>
+
+
+<div id="modalRedencionCortesia" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Redención de cortesía cliente FAN</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="frmRedencion">
+                    <div class="col-md-8 col-lg-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>Numero de Tarjeta: </label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" class="form-control required" id="NumTarjeta" placeholder="" maxlength="20" />
+                                <input type="hidden" id="hdIdProd" value="" /><input type="hidden" id="hdrenova" value="" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>No. Documento:  <label id="CedulaVisitante"></label> </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <label>Nombre:  <label id="NombreVisitante"></label> </label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>Cortesías disponibles <label id="lblCantidadCortesias">0</label> </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="Detallecortesia">
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label>Código barras del producto: </label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+
+                                @*<input type="text" class="form-control Numerico" id="txtCodigo" />*@
+                                <input type="text" class="form-control required" id="txtCodigo" placeholder="" maxlength="20" />
+                                <input type="text" id="txtNumdocumentoV" style="display:none" />
+                                <input type="text" id="txtTipoCortesiaV" style="display:none" />
+                                <input type="text" id="txtNumTarjetaFAN" style="display:none" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12" id="listProductos">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="msjErrorModal">
+                    <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <label id="lbl_message_error">Error procesando la solicitud</label>
+                    </div>
+                </div>                
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="btnSaveCortesia"><i class="fa fa-"></i>Agregar</button>
+                    <button type="button" class="btn btn-danger" id="btnCancelCortesia">Cancelar</button>
+
+                </div>
+            </div>  modal-content
+        </div>  modal-dialog 
+    </div>
+    
+    <div id="loadingDiv" class="modalLoading" style="display: none">
+
+        <img id="imgLoaging" src="~/Images/LOOP-MUNDO-AVENTURA_.gif" style="height: 196px; left: 50%; top: 50%; margin: -12vw 0 0 -18vw; position: absolute;" />
+    </div>
+</div>
