@@ -73,26 +73,26 @@ $(function () {
             myObj.Observaciones = $("#TxtDescripcion").val();
             lstAcompanamientos.push(myObj);
         });
-      
+
         ActualizarTablaCompras2();
 
         mostrarAlerta("Información", "Producto agregado a pedido.", "success");
         cerrarModal("modalCRUD");
     });
 
-
-   
-
-
     $("#ddlPunto").change(function () {
 
         EjecutarAjax(urlBase + "ReservaSkycoaster/ObtenerLista", "GET", { id: $(this).val() }, "printPartial", { div: "#listView", func: "setEventEdit" });
     });
 
+    //$("#btnImprimirPreFactura").css("display", "none");
+    //if (lstProductosCompra == 0) {
+    $("#btnImprimirPreFactura").prop("disabled", true);
+    //}
 });
 
 $(".productos .ProductoGrilla").click(function (e) {
-    crearListaBusqueda($(this).data("id")); 
+    crearListaBusqueda($(this).data("id"));
 });
 $(".productos .ProductoGrillaMesas").click(function (e) {
     crearListaBusqueda($(this).data("id"));
@@ -265,82 +265,82 @@ function EliminarProductoTabla(data, obj) {
 
     if (data < 3) {
 
-    if (lstProductosCompra.length == 1) {
-        lstProductosCompra = [];
-        lstAcompanamientos = [];
-    }
-    else {
+        if (lstProductosCompra.length == 1) {
+            lstProductosCompra = [];
+            lstAcompanamientos = [];
+        }
+        else {
 
-        if (_idDetalletemp != '0') {
+            if (_idDetalletemp != '0') {
 
-            $.each(lstProductosCompra, function (i) {
-                if (lstProductosCompra[i].IdDetalleProducto == _idDetalletemp && lstProductosCompra[i].IdProducto == _idtemp) {
-                    if (lstProductosCompra[i].CodigoSap == parametros.CodSapTarjetaRecargable.Valor) {
-                        var idtest = lstProductosCompra[i].ConseutivoDetalleProducto;
-                        lstProductosCompra.splice(i, 1);
-                        var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
-                            return e.DataExtension != idtest
-                        });
-                        lstProductosCompra = lstFinalProdu;
+                $.each(lstProductosCompra, function (i) {
+                    if (lstProductosCompra[i].IdDetalleProducto == _idDetalletemp && lstProductosCompra[i].IdProducto == _idtemp) {
+                        if (lstProductosCompra[i].CodigoSap == parametros.CodSapTarjetaRecargable.Valor) {
+                            var idtest = lstProductosCompra[i].ConseutivoDetalleProducto;
+                            lstProductosCompra.splice(i, 1);
+                            var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
+                                return e.DataExtension != idtest
+                            });
+                            lstProductosCompra = lstFinalProdu;
+                            return false;
+                            //$.each(lstProductosCompra, function (j, v) {
+                            //    if (lstProductosCompra[i].ConseutivoDetalleProducto === v.DataExtension) {
+
+                            //        lstProductosCompra.splice(i, 1);
+                            //        lstProductosCompra.splice(j - 1, 1);
+                            //    }
+                            //});
+                        } else {
+                            lstProductosCompra.splice(i, 1);
+                            var lstFinalAcompa = lstAcompanamientos;
+
+                            $.each(lstFinalAcompa, function (j) {
+                                if (lstFinalAcompa[j].IdProducto === _idtemp) {
+                                    lstAcompanamientos.splice(j, 1);
+                                }
+                            });
+                        }
+
                         return false;
-                        //$.each(lstProductosCompra, function (j, v) {
-                        //    if (lstProductosCompra[i].ConseutivoDetalleProducto === v.DataExtension) {
-
-                        //        lstProductosCompra.splice(i, 1);
-                        //        lstProductosCompra.splice(j - 1, 1);
-                        //    }
-                        //});
-                    } else {
-                        lstProductosCompra.splice(i, 1);
-                        var lstFinalAcompa = lstAcompanamientos;
-
-                        $.each(lstFinalAcompa, function (j) {
-                            if (lstFinalAcompa[j].IdProducto === _idtemp) {
-                                lstAcompanamientos.splice(j, 1);
-                            }
-                        });
                     }
 
-                    return false;
-                }
+                });
+            } else {
+                let lstFinalAcompa = [];
+                lstFinalAcompa = lstAcompanamientos;
+                $.each(lstProductosCompra, function (i) {
+                    if (lstProductosCompra[i].IdProducto === _idtemp && lstProductosCompra[i].Consecutivo === _contemp) {
+                        if (lstProductosCompra[i].CodigoSap === parametros.CodSapPrecioTarjeta.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapReposicionTarjeta.Valor) {
+                            var idtest = lstProductosCompra[i].DataExtension;
+                            lstProductosCompra.splice(i, 1);
+                            var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
+                                return (e.DataExtension != idtest && e.ConseutivoDetalleProducto != idtest)
+                            });
+                            lstProductosCompra = lstFinalProdu;
+                        } else {
+                            lstProductosCompra.splice(i, 1);
+                            let k = 0;
+                            while (k < lstAcompanamientos.length) {
+                                var item = lstAcompanamientos[k];
 
-            });
-        } else {
-            let lstFinalAcompa = [];
-            lstFinalAcompa = lstAcompanamientos;
-            $.each(lstProductosCompra, function (i) {
-                if (lstProductosCompra[i].IdProducto === _idtemp && lstProductosCompra[i].Consecutivo === _contemp) {
-                    if (lstProductosCompra[i].CodigoSap === parametros.CodSapPrecioTarjeta.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor || lstProductosCompra[i].CodigoSap === parametros.CodSapReposicionTarjeta.Valor) {
-                        var idtest = lstProductosCompra[i].DataExtension;
-                        lstProductosCompra.splice(i, 1);
-                        var lstFinalProdu = $.grep(lstProductosCompra, function (e) {
-                            return (e.DataExtension != idtest && e.ConseutivoDetalleProducto != idtest)
-                        });
-                        lstProductosCompra = lstFinalProdu;
-                    } else {
-                        lstProductosCompra.splice(i, 1);
-                        let k = 0;
-                        while (k < lstAcompanamientos.length) {
-                            var item = lstAcompanamientos[k];
+                                if (item.IdProducto === _idtemp && item.Consecutivo === _contemp) {
+                                    lstAcompanamientos.splice(k, 1);
+                                } else {
+                                    k += 1;
+                                }
 
-                            if (item.IdProducto === _idtemp && item.Consecutivo === _contemp) {
-                                lstAcompanamientos.splice(k, 1);
-                            } else {
-                                k += 1;
                             }
+
+
 
                         }
 
-
-
+                        return false;
                     }
-
-                    return false;
-                }
-            });
+                });
+            }
         }
-    }
-    ActualizarTablaCompras2();
+        ActualizarTablaCompras2();
     }
     else {
         MostrarMensajeRedireccion("Importante", "El producto no se puede eliminar porque se encuentra en un estado despachado o entregado", null, "warning");
@@ -366,7 +366,7 @@ function printPartialModalPedidosA(data, obj) {
         $("#btnVolverGeneric").click(function () {
             cerrarModal('modalCRUD');
         });
-        
+
         $("#btnImprimirGeneric").click(function () {
 
             $("#div_print").show();
@@ -410,7 +410,7 @@ function printPartialModalPedidosA(data, obj) {
         //    // Comprovamos si supera la cantidad máxima indicada
         //    if (contador > cantidadMaxima) {
 
-               
+
         //        // Desmarcamos el ultimo elemento
         //        $(elemento).prop('checked', false);
         //        contador--;
@@ -420,7 +420,7 @@ function printPartialModalPedidosA(data, obj) {
         //});
         $('input.checkAcomp').on('change', function () {
             var idacompa = $(this).attr("maxlength");
-            
+
             var cantidadMaxima = $("#MaxAcompa-" + idacompa).val();
             // Cogemos el elemento actual
             var elemento = this;
@@ -459,7 +459,7 @@ function printPartialModalPedidosA(data, obj) {
 
         //    // Comprovamos si supera la cantidad máxima indicada
         //    if (contador > cantidadMaxima) {
-              
+
         //        // Desmarcamos el ultimo elemento
         //        $(elemento).prop('checked', false);
         //        contador--;
@@ -597,9 +597,9 @@ $("#btnCerrarMesa").click(function () {
     $("#btnCerrarMesa").attr("disabled", true);
     var bandera;
     $('.evtCambiarcheck').each(function () {
-        
+
         if ($(this).is(':checked')) {
-           /* bandera = true;*/
+            /* bandera = true;*/
         } else {
             bandera = false;
         }
@@ -642,7 +642,8 @@ $("#btnSavePedidoP").click(function () {
             Lista2.push(item2);
         }
     });
-
+    // enable btn impresion
+    $("#btnImprimirPreFactura").prop("disabled", false);
     ConfirmarPago()
 });
 function successPagarPos(data, values) {
@@ -669,7 +670,7 @@ function successActualizarMesas(data, values) {
     if (isNaN(data)) {
         $(values.div).html(data);
         finalizarProceso();
-   
+
 
         mostrarAlerta("Información", "Pedido guardado", "success");
         $('.MesasBusq').click(function () {
@@ -705,16 +706,16 @@ function successActualizarMesas(data, values) {
 
 function successCierreMesa(rta) {
     if (rta !== null) {
-       /* if (rta == "NO") {*/
-            //MostrarMensajeRedireccion("Importante", "No se puede cerrar la mesa porque no se ha cancelado el pedido en caja", null, "warning");
-            //$("#btnCerrarMesa").attr("disabled", false);
-            //return false;
-            window.location = urlBase + "PedidoA";
-        }
-        else {
-          
-        }
-  
+        /* if (rta == "NO") {*/
+        //MostrarMensajeRedireccion("Importante", "No se puede cerrar la mesa porque no se ha cancelado el pedido en caja", null, "warning");
+        //$("#btnCerrarMesa").attr("disabled", false);
+        //return false;
+        window.location = urlBase + "PedidoA";
+    }
+    else {
+
+    }
+
 }
 function successListarMesaZona(rta) {
     if (rta !== null) {
@@ -735,7 +736,7 @@ function successListarMesaZona(rta) {
             select.add(option2);
         });
 
-       
+
     }
     else {
 
@@ -746,14 +747,14 @@ function successAnulacionPedido(rta) {
     if (rta !== null) {
         if (rta == "SI") {
             window.location = urlBase + "PedidoA";
-   
+
         }
-         else {
+        else {
             MostrarMensajeRedireccion("Importante", "No se puedo anular el pedido", null, "warning");
             $("#btnAnularPedido").attr("disabled", false);
             return false;
-         }
-       
+        }
+
     }
     else {
 
@@ -849,20 +850,20 @@ function successListarProdMesa(rta) {
             else {
                 ProductoSeleccionado2[0].Entregado = false;
             }
-            
+
 
             lstProductosCompra.push(ProductoSeleccionado2[0]);
 
-            
+
             $.each(rta.listaAcompa, function (j, item2) {
                 if (item2.IdDetallePedido == item.IdDetallePedido) {
-                var myObj = {};
-                myObj.IdProducto = item2.Id_Producto;
-                myObj.IdAcomp = item2.Id_Acomp;
-                myObj.Consecutivo = _Contador;
-                myObj.Nombre = item2.Nombre;
-                myObj.Observaciones = "";
-                lstAcompanamientos.push(myObj);
+                    var myObj = {};
+                    myObj.IdProducto = item2.Id_Producto;
+                    myObj.IdAcomp = item2.Id_Acomp;
+                    myObj.Consecutivo = _Contador;
+                    myObj.Nombre = item2.Nombre;
+                    myObj.Observaciones = "";
+                    lstAcompanamientos.push(myObj);
                 }
             });
         });
@@ -967,10 +968,10 @@ function ConfirmarPago() {
         NombreCliente: NombreCCli
     }, "successPagarPos", { div: "#Mesas" });
 
-   
+
 }
 function DeleteProductoCarga(Id) {
-  
+
     var id = _idProductocarga;
     var con = _idDetalleAcompa;
     var idDetalle = _idDetalle;
@@ -1086,7 +1087,7 @@ function ActualizarTablaCompras2() {
             var NombreAcom = ObtenerAcompanamientos(lstAcompanamientos, item.IdProducto, item.Consecutivo);
             var banderacheck = "";
             if (item.Entregado == true) {
-                 banderacheck = "checked";
+                banderacheck = "checked";
             }
 
             tablaBody += "<tr>"
@@ -1114,7 +1115,7 @@ function ActualizarTablaCompras2() {
         //}
 
         $(".evtCambiarcheck").change(function () {
-            var bandera ;
+            var bandera;
             if ($(this).is(':checked')) {
                 bandera = true;
             } else {
@@ -1129,12 +1130,12 @@ function ActualizarTablaCompras2() {
                 }
             });
 
-           
+
 
         });
 
-   
-       
+
+
         $(".evtEliminar").click(function () {
             _idProductocarga = $(this).data('id');
             _idDetalleAcompa = $(this).data('con');
@@ -1143,7 +1144,7 @@ function ActualizarTablaCompras2() {
             //if (confirm("Está seguro que desea eliminar este usuario?"))
             //    EjecutarAjax(urlBase + "Usuarios/Delete", "GET", { id: $(this).data("id") }, "successDelete", null);
         });
-        
+
         //DANR: 22-01-2019 -- Adicion campo donante
         var mostrarDonante = false;
         $.each(lstProductosCompra, function (i, v) {
@@ -1249,7 +1250,7 @@ function ActualizarTablaCompras() {
         });
         $(".evtEliminar").click(function () {
             _idProductocarga = $(this).data('id');
-           _idDetalleAcompa = $(this).attr("id");
+            _idDetalleAcompa = $(this).attr("id");
             MostrarConfirm("Importante", "¿Está seguro que desea desactivar este usuario?", "DeleteProductoCarga", $(this).data("id"));
             //if (confirm("Está seguro que desea eliminar este usuario?"))
             //    EjecutarAjax(urlBase + "Usuarios/Delete", "GET", { id: $(this).data("id") }, "successDelete", null);
@@ -1465,7 +1466,7 @@ function setEventEdit() {
         $("#ContenedorCarta").show();
         $("#ConFactura").show();
         $("#ConMesa").show();
-        $('#IdPuntoOrigen').prepend("<option value='" + _idmesa + "' >" + nombremesa+"</option>");
+        $('#IdPuntoOrigen').prepend("<option value='" + _idmesa + "' >" + nombremesa + "</option>");
         $("#IdPuntoOrigen").val(_idmesa);
         //$("#IdPuntoOrigen option[value='" + idmesa + "']").attr("selected", true);
         $("#IdPuntoOrigen").prop("disabled", true);
@@ -1488,7 +1489,7 @@ function setEventEdit() {
         else {
             MostrarMensaje("Importante", "Seleccione una factura para abrir.", "error");
         }
-       
+
 
     });
 
@@ -1560,10 +1561,6 @@ function setEventEdit() {
 
 //}
 
-
-
-
-
 function successProceso(rta, id) {
 
     $("#diverror").hide();
@@ -1579,5 +1576,42 @@ function successProceso(rta, id) {
     else {
         cerrarModal("modalCRUD");
         MostrarMensaje("Importante", rta.Mensaje, "info");
+    }
+}
+
+//funcion Boton imprimir prefactura
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href");
+    if (target == "#menu22" || target == "#menu2") {
+        $("#btnImprimirPreFactura").css("display", "inline-block");
+        if (lstProductosCompra.length <= 0) {
+            $("#btnImprimirPreFactura").prop("disabled", true);
+        }
+    }
+    else {
+        $("#btnImprimirPreFactura").css("display", "none");
+    }
+});
+
+$('#btnImprimirPreFactura').click(function () {
+    console.log('Mesa', $('#IdPuntoOrigen').val());
+    //console.log('Total', document.getElementById("totalPedido").innerText);
+    var total = document.getElementById("totalPedido").innerText;
+    if (lstProductosCompra.length > 0) {
+        //var lst_productos = JSON.stringify(lstProductosCompra);
+        EjecutarAjaxJson(urlBase + "PedidoA/ImprimirPreFactura", "post",
+            { ListaProductos: lstProductosCompra, IdMesa: _idmesa, Total: total },
+            "successImpresionPreFactura", null);
+    }
+});
+
+function successImpresionPreFactura(response) {
+    if (response) {
+        $("#btnImprimirPreFactura").prop("disabled", true);
+        MostrarMensaje("Impresion Correcta", "La prefactura se ha impreso", "success");
+    }
+    else {
+        $("#btnImprimirPreFactura").prop("disabled", false);
+        MostrarMensaje("Impresion incorrecta", "La prefactura no se imprimio, intentelo de nuevo", "error");
     }
 }

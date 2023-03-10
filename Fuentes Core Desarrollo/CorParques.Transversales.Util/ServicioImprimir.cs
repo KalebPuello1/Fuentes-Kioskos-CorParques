@@ -653,6 +653,36 @@ namespace CorParques.Transversales.Util
             }
         }
 
+        public string ImprimirTicketPreFactura(TicketImprimir objTicket)
+        {
+            Ticket objRecibo = new Ticket();
+            string strRetorno = string.Empty;
+
+            try
+            {
+                objRecibo.TituloRecibo = objTicket.TituloRecibo;
+                objRecibo.AdicionarContenido(objTicket.AdicionarContenidoHeader);
+                objRecibo.TituloColumnas = objTicket.TituloColumnas;
+                objRecibo.AdicionarContenido(objTicket.PieDePagina);
+                objRecibo.ListaArticulos = objTicket.ListaArticulos;
+                objRecibo.Usuario = objTicket.Usuario;
+
+                //objRecibo.ImprimirTicket();
+                objRecibo.ImprimirTicketPreFactura();
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error en ImprimirTicketPreFactura_ServicioImprimir ", ex.Message);
+            }
+            finally
+            {
+                objRecibo = null;
+            }
+
+            return strRetorno;
+
+        }
+
         /// <summary>
         /// RDSH: Impresion de varios tickets en un solo recibo.
         /// </summary>
