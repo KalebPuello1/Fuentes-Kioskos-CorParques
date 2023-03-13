@@ -1209,10 +1209,12 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
                     var mesmas = MesCumple + 1;
 
-                    if (MesCumple > mesActual)
+                    if (MesCumple >= mesActual)
                     {
-                        fechaInicialSet = Convert.ToDateTime("01-" + "- " + MesCumple + "- " + System.DateTime.Now.Year);
-                        fechaFinalSet = Convert.ToDateTime("01-" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
+                        //fechaInicialSet = Convert.ToDateTime("01-" + "- " + MesCumple + "- " + System.DateTime.Now.Year);                        
+                        //fechaFinalSet = Convert.ToDateTime("01-" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
+                        fechaInicialSet = Convert.ToDateTime("01" + "- " + MesCumple + "- " + System.DateTime.Now.Year);
+                        fechaFinalSet = Convert.ToDateTime("01" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
                     }
                     else
                     {
