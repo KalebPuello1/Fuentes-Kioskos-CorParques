@@ -2262,6 +2262,73 @@ namespace CorParques.Transversales.Util
         }
 
         #endregion
+
+        #region Ticket Pre-FActura Arazá
+        public string ImprimirTicketPreFactura()
+        {
+            string strRetorno = string.Empty;
+
+            try
+            {
+                if (PrinterExists(strImpresora))
+                {
+                    this.printFont = new Font(this.fontName, (float)this.fontSize, FontStyle.Regular);
+                    PrintDocument document = new PrintDocument
+                    {
+                        PrinterSettings = { PrinterName = strImpresora }
+                    };
+                    document.PrintPage += new PrintPageEventHandler(this.pr_PrintPageTicketPreFactura);
+                    document.Print();
+                }
+                else
+                {
+                    strRetorno = "Error: No se ha configurado la impresora.";
+                }
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error ImprimirTicketAtraccionesDestrezas: ", ex.Message);
+            }
+
+            return strRetorno;
+        }
+        private void pr_PrintPageTicketPreFactura(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            this.gfx = e.Graphics;
+            this.GenerarEncabezadoTicketPreFactura();
+            this.GenerarDetalle();
+            AgregarLinea(LineasGuion());
+            this.GenerarPiePaginaTicketPreFactura();
+        }
+        private void GenerarEncabezadoTicketPreFactura()
+        {
+            try
+            {
+                if (strLogoParque.Trim().Length > 0)
+                    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
+
+                AgregarLinea(TextoCentro("PRE-FACTURA"), new Font(this.fontName, 12, FontStyle.Bold));
+                Espacio();
+                AgregarLinea(TextoCentro("Restaurante Arazá"));
+                AgregarLinea(TextoCentro("C O R P A R Q U E S"));
+                AgregarLinea(TextoCentro("Nit. 830008059-1"));
+                Espacio();
+                AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
+                Espacio();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(string.Concat("Error en AgregarImagen_Ticket 1738: ", ex.Message));
+            }
+        }
+        private void GenerarPiePaginaTicketPreFactura()
+        {
+            AgregarLinea(string.Concat("Atendido por: ", strUsuario));
+            AgregarLinea(string.Concat("Mesa: ", strTituloTicket));
+        }
+
+        #endregion
     }
 }
 
