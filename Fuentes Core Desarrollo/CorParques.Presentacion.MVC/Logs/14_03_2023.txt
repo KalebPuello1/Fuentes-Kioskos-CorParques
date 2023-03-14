@@ -1,6 +1,6 @@
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:22:08
+Hora :14/03/2023 08:39:00
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -28,7 +28,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:30:35
+Hora :14/03/2023 08:54:05
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -56,7 +56,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:32:07
+Hora :14/03/2023 08:55:12
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -84,7 +84,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:55:32
+Hora :14/03/2023 09:02:01
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -112,7 +112,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:57:00
+Hora :14/03/2023 09:10:04
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -140,7 +140,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 08:58:43
+Hora :14/03/2023 09:16:03
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -168,7 +168,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:35:42
+Hora :14/03/2023 09:18:50
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -196,7 +196,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:40:31
+Hora :14/03/2023 09:18:56
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -224,7 +224,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:40:33
+Hora :14/03/2023 09:19:00
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -252,7 +252,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:40:39
+Hora :14/03/2023 09:19:04
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -280,7 +280,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:56:04
+Hora :14/03/2023 09:19:14
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -308,7 +308,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 09:57:29
+Hora :14/03/2023 09:19:16
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -336,7 +336,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:00:04
+Hora :14/03/2023 09:19:21
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -364,7 +364,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:00:48
+Hora :14/03/2023 09:19:25
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -392,7 +392,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:00:50
+Hora :14/03/2023 09:19:28
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -420,7 +420,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:00:52
+Hora :14/03/2023 09:19:33
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -448,7 +448,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:00
+Hora :14/03/2023 09:19:39
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -476,7 +476,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:01
+Hora :14/03/2023 09:19:42
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -504,7 +504,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:04
+Hora :14/03/2023 09:19:49
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -532,7 +532,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:11
+Hora :14/03/2023 09:19:53
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -560,7 +560,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:15
+Hora :14/03/2023 09:19:57
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -588,7 +588,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:01:19
+Hora :14/03/2023 09:20:02
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -616,7 +616,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:32:51
+Hora :14/03/2023 09:20:08
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -644,7 +644,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:35:11
+Hora :14/03/2023 09:20:11
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -672,7 +672,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:41:29
+Hora :14/03/2023 09:20:25
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -700,7 +700,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:42:32
+Hora :14/03/2023 09:20:26
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -728,7 +728,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:48:42
+Hora :14/03/2023 09:20:29
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -756,7 +756,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 10:54:56
+Hora :14/03/2023 09:20:35
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -784,7 +784,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:25:42
+Hora :14/03/2023 09:20:36
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -812,63 +812,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:26:28
-Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
-   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
-   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
-   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
-   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
-   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
-   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
-   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
-   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
-*********************************************************
-Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:27:03
-Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
-   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
-   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
-   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
-   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
-   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
-   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
-   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
-   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
-   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
-   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
-   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
-   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
-*********************************************************
-Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:35:38
+Hora :14/03/2023 09:20:40
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -896,7 +840,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :No se encuentra el controlador de la ruta de acceso '/Pos' o no implementa IController.
-Hora :13/03/2023 11:48:07
+Hora :14/03/2023 09:25:19
 Traza:    en System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
    en System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
    en System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
@@ -908,7 +852,7 @@ Traza:    en System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(Reque
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:07
+Hora :14/03/2023 09:25:19
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -936,7 +880,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:40
+Hora :14/03/2023 10:04:21
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -964,7 +908,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:41
+Hora :14/03/2023 10:15:53
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -992,7 +936,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:43
+Hora :14/03/2023 10:16:29
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1020,7 +964,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:52
+Hora :14/03/2023 10:38:12
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1048,7 +992,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:48:56
+Hora :14/03/2023 10:41:15
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1076,7 +1020,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:00
+Hora :14/03/2023 10:41:22
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1104,7 +1048,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:02
+Hora :14/03/2023 10:41:24
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1132,7 +1076,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:09
+Hora :14/03/2023 10:41:52
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1160,7 +1104,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:11
+Hora :14/03/2023 10:41:58
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1188,7 +1132,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:14
+Hora :14/03/2023 10:41:59
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1216,7 +1160,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:22
+Hora :14/03/2023 10:42:01
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1244,7 +1188,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:24
+Hora :14/03/2023 10:51:34
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1272,7 +1216,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 11:49:25
+Hora :14/03/2023 11:00:43
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1300,7 +1244,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:20:31
+Hora :14/03/2023 11:08:15
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1328,7 +1272,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:24:45
+Hora :14/03/2023 11:22:05
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1356,7 +1300,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:25:55
+Hora :14/03/2023 11:26:57
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1384,7 +1328,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:32:12
+Hora :14/03/2023 11:27:02
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1412,7 +1356,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:34:48
+Hora :14/03/2023 11:27:05
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1440,7 +1384,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 16:59:57
+Hora :14/03/2023 11:27:09
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1468,7 +1412,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 17:09:57
+Hora :14/03/2023 11:31:35
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1496,7 +1440,7 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 17:13:43
+Hora :14/03/2023 11:31:37
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
@@ -1524,7 +1468,371 @@ Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
 *********************************************************
 Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
-Hora :13/03/2023 17:18:21
+Hora :14/03/2023 11:31:39
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:31:52
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:31:54
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:31:56
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:05
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:07
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:09
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:20
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:22
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:24
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:32
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:35
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:32:37
+Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
+   en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)
+   en System.Web.Mvc.ControllerActionInvoker.InvokeExceptionFilters(ControllerContext controllerContext, IList`1 filters, Exception exception)
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecuteCore>b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.<BeginExecute>b__15(IAsyncResult asyncResult, Controller controller)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.<BeginProcessRequest>b__5(IAsyncResult asyncResult, ProcessRequestState innerState)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)
+   en System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   en System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   en System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   en System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   en System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   en System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+*********************************************************
+Error :El servidor no puede establecer el estado después de enviar los encabezados HTTP.
+Hora :14/03/2023 11:38:55
 Traza:    en System.Web.HttpResponse.set_StatusCode(Int32 value)
    en System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
    en System.Web.Mvc.HandleErrorAttribute.OnException(ExceptionContext filterContext)

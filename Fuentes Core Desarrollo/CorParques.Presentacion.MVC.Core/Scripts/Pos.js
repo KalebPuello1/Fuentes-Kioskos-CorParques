@@ -1238,26 +1238,28 @@ function ConfirmarPago() {
 function AgregarCortesiasTarjetaFan() {
     var bandera = false;
 
-$.each(lstProductosCompra, function (i) {    
+    $.each(lstProductosCompra, function (i) {    
         if (lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor ) {
             bandera = true;                                    
-        } 
-    if (lstProductosCompra[i].DataExtension.split('|').length > 1 && bandera==true) {
-        var DataExtension = lstProductosC0ompra[i].DataExtension.split('|');        
-        EjecutarAjaxJson(urlBase + "Pos/InsertarCortesias", "post", {
-            Documento: DataExtension[0].substring(1),
-            Nombre: DataExtension[1].substring(1),
-            Correo: DataExtension[2].substring(1),
-            Genero: DataExtension[3].substring(1),
-            Telefono: DataExtension[4].substring(1),
-            FechaCumple: DataExtension[5].substring(1),
-            Direccion: DataExtension[6].substring(1),
-            CodTarjetaFAN: lstProductosCompra[i].ConseutivoDetalleProducto,
-            Foto: DataExtension[7].substring(1)
-            }, "successagregarCortesias", null);
-    }
+        }
 
-});
+        if (lstProductosCompra[i].DataExtension.split("|").length > 1 && bandera==true) {
+            var DataExtension = lstProductosCompra[i].DataExtension.split('|');        
+            EjecutarAjaxJson(urlBase + "Pos/InsertarCortesias", "post", {
+                Documento: DataExtension[0].substring(1),
+                Nombre: DataExtension[1].substring(1),
+                Correo: DataExtension[2].substring(1),
+                Genero: DataExtension[3].substring(1),
+                Telefono: DataExtension[4].substring(1),
+                FechaCumple: DataExtension[5].substring(1),
+                Direccion: DataExtension[6].substring(1),
+                CodTarjetaFAN: lstProductosCompra[i].ConseutivoDetalleProducto,
+                Foto: DataExtension[7].substring(1)
+                }, "successagregarCortesias", null);
+        }
+
+    });
+
     //if (bandera == true) {
     //    var DataExtension = "1" + $("#txtDoc").val() + "|2" + $("#txtName").val() + "|3" + $("#txtMail").val() + "|4" + $("#txtGenderFan option:selected").val() + "|5" + $("#txtPhone").val() + "|6" + $("#txtBirthday").val() + "|7" + $("#txtAddress").val() + "|8" + $("#snapshotFan").attr("src").replace("data:image/png;base64,", "");
 
@@ -1308,9 +1310,9 @@ function successPagarPos(rta) {
                 MostrarMensajeHTML("Importante", rta, "error");
             }
         } else {
-            AgregarCortesiasTarjetaFan();
+            AgregarCortesiasTarjetaFan();            
             Limpiar();
-            LimpiarCortesia();
+            LimpiarCortesia();            
         }
     }
     
@@ -2767,7 +2769,7 @@ function fnValidaCodSapConvenio() {
 }
 
 function successObtenerDetalleConvenioCodigoSAP(rta) {
-    debugger;
+    //debugger;
     if (rta.resultado.length > 0 && tarjetaVencida == false) {
         listDetalleConvenio = rta.resultado;
         ActualizarTablaCompras();

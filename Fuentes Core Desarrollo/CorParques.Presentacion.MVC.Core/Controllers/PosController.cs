@@ -29,11 +29,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             //Proceso POS 
             Session["PosCont"] = true;
             
-            //Aqui traigo el valor del parámetro para mejora de la cortesia ubin
-            //var objParametroMerjoraFan = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/{"Mejora Cortesia Cliete FAN"}");
-            //var _mejoraUbin = objParametroMerjoraFan.Valor;
-            //ViewBag.Apertura = _mejoraUbin;
-
             //Validar tiempo 
 
             Stopwatch _time = new Stopwatch();
