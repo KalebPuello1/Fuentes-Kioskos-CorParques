@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Notificaciones APP";
+    ViewBag.SubTitle = "Enviar notificaciones a los usuarios de la app";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="frmNotificacion">
+    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Mensaje</label>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <textarea placeholder="Si deseas que en el mensaje aparezca el nombre del usuario debes ingresar el siguiente tag [Name]" rows="5" name="Message" class="form-control required"></textarea>
+        </div>
+    </div>
+
+
+    <h3>Enviar a</h3>
+    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+        <label class="control-label col-md-12 col-sm-12 col-xs-12">Genero</label>
+        <div class="col-md-2 col-sm-4 col-xs-4">
+            Todos
+            <input type="radio" id="GenderDefault" name="Gender" checked="checked" value="" />
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-4">
+            Hombres
+            <input type="radio" name="Gender" value="0" />
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-4">
+            Mujeres
+            <input type="radio" name="Gender" value="1" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label class="control-label col-md-12 col-sm-12 col-xs-12">Clientes Fan</label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <input type="checkbox" name="Fan" value="1" />
+            </div>
+        </div>
+
+        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label class="control-label col-md-12 col-sm-12 col-xs-12">Usuarios ausentes por mas de 30 dias</label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <input type="checkbox" name="DaysWithoutVisit" value="1" />
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label class="control-label col-md-12 col-sm-12 col-xs-12">Que se encuentren en el parque</label>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <input type="checkbox" name="Surroundings" value="1" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label class="control-label col-md-12 col-sm-12 col-xs-12">Mes de cumpleaños</label>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <select class="form-control col-md-12 col-sm-12 col-xs-12" name="Birthday">
+                    <option value="">Todos</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+            <label class="control-label col-md-12 col-sm-12 col-xs-12">Fecha de envio</label>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="input-group date" id="datetimepicker">
+                    <input type="text" name="DateSend" class="form-control Fecha required" id="DateSend" value="">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+        <a href="javascript:void(0)" id="btnSend" class="right btn btn-success">Enviar</a>
+        <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $('#datetimepicker').datetimepicker({
+            useCurrent: true,
+            minDate: moment(),
+            format: 'YYYY-MM-DD HH:mm'
+        });
+
+        $("#btnLimpiar").click(function () {
+            limpiar();
+        });
+
+        $("#btnSend").click(function () {
+            if ($("[name=Message]").val().trim() === "") {
+                MostrarMensaje("Error Notificacion", "Debe ingresar un mensaje para que crear la notificacion", "error")
+                return;
+            }
+            MostrarConfirm("Importante","Está seguro que desea crear esta notificación?", "sendMessageApp", null);
+
+        });
+
+        var limpiar = function () {
+             $("#GenderDefault").prop("checked", true);
+            $("[name=Message]").val("");
+            $("[name=Fan]").prop("checked", false);
+            $("[name=DaysWithoutVisit]").prop("checked", false);
+            $("[name=Surroundings]").prop("checked", false);
+            $("[name=Birthday]").val("");
+            $("[name=DateSend]").val("");
+        }
+        var sendMessageApp = function () {
+          var obj = "{ \"Id\" : 0,"+
+                "\"Message\" : \""+$('[name=Message]').val()+"\","+
+                "\"Gender\": "+($('[name=Gender]:checked').val() === '' ? 'null' : $('[name=Gender]:checked').val())+"," +
+                "\"Birthday\": "+($('[name=Birthday]').val() === '' ? 'null' : $('[name=Birthday]').val())+"," +
+                "\"Fan\": "+$('[name=Fan]').prop('checked')+"," +
+                "\"DaysWithoutVisit\" :  "+($('[name=DaysWithoutVisit]').prop('checked') ? 30 : null)+"," +
+		        "\"Action\": \"Home\"," +
+                "\"DateSend\" : \""+$('[name=DateSend]').val()+"\"," +
+            "\"Surroundings\": "+$('[name=Surroundings]').prop('checked') +
+            "}";
+            EjecutarAjax("http://8.242.211.181/apiapp/api/open/CreateNotification", "POST", obj,"okCreateNotification", null)
+
+        }
+        var okCreateNotification = function () {
+            MostrarMensaje("Perfecto", "La notificacion se ha creado con exito y sera procesada basada en la configuracion definida");
+            limpiar();
+        }
+    </script>
+}

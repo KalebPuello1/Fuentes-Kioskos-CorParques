@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{76448D76-C417-4B76-A714-F506232FD589}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorParques.Negocio.Contratos</RootNamespace>
+    <AssemblyName>CorParques.Negocio.Contratos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IServicioAdicionPedidos.cs" />
+    <Compile Include="IServicioAlmacen.cs" />
+    <Compile Include="IServicioCodigoFechaAbierta.cs" />
+    <Compile Include="IServicioConsumoDeEmpleados.cs" />
+    <Compile Include="IServicioFactura.cs" />
+    <Compile Include="IServicioCliente.cs" />
+    <Compile Include="IServicioConvenio.cs" />
+    <Compile Include="IServicioFidelizacion.cs" />
+    <Compile Include="IServicioMatrizPuntos.cs" />
+    <Compile Include="IServicioOrden.cs" />
+    <Compile Include="IServicioCargos.cs" />
+    <Compile Include="IServicioCortesia.cs" />
+    <Compile Include="IServicioReagendamiento.cs" />
+    <Compile Include="IServicioRedeban.cs" />
+    <Compile Include="IServicioReimpresionReciboCajaV.cs" />
+    <Compile Include="IServicioReporteAprovechamientoFA.cs" />
+    <Compile Include="IServicioReporteDestreza.cs" />
+    <Compile Include="IServicioReporteCuadreDiarioFlujoCajasTaq.cs" />
+    <Compile Include="IServicioReporteControlCaja.cs" />
+    <Compile Include="IServicioReporteDonaciones.cs" />
+    <Compile Include="IServicioReporteSoporteIT.cs" />
+    <Compile Include="IServicioReporteReservaEspacio.cs" />
+    <Compile Include="IServicioReporteInventarioGeneral.cs" />
+    <Compile Include="IServicioReporteMovimientoInventario.cs" />
+    <Compile Include="IServicioReporteRecaudosVentas.cs" />
+    <Compile Include="IServicioReporteNotificaciones.cs" />
+    <Compile Include="IServicioReporteTarjetaRecargable.cs" />
+    <Compile Include="IServicioReporteUsuarioApp.cs" />
+    <Compile Include="IServicioReporteVentasDiarias.cs" />
+    <Compile Include="IServicioReporteRecoleccion.cs" />
+    <Compile Include="IServicioReporteVentasPorConvenio.cs" />
+    <Compile Include="IServicioReporteVentasPorProducto.cs" />
+    <Compile Include="IServicioReporteVentasPorHora.cs" />
+    <Compile Include="IServicioReporteCostoProducto.cs" />
+    <Compile Include="IServicioReporteRedFechaAbierta.cs" />
+    <Compile Include="IServicioReporteFallaAtraccion.cs" />
+    <Compile Include="IServicioAlistamientoPendiente.cs" />
+    <Compile Include="IServicioApertura.cs" />
+    <Compile Include="IServicioRegistroFallas.cs" />
+    <Compile Include="IServicioAuxiliarPunto.cs" />
+    <Compile Include="IServicioCentroImpresion.cs" />
+    <Compile Include="IServicioHistoricoBoleta.cs" />
+    <Compile Include="IServicioMateriales.cs" />
+    <Compile Include="IServicioBoleteria.cs" />
+    <Compile Include="IServicioCargueBoleteria.cs" />
+    <Compile Include="IServicioDashBoard.cs" />
+    <Compile Include="IServicioPlaneacion.cs" />
+    <Compile Include="IServicioRegistroTorniquete.cs" />
+    <Compile Include="IServicioOperacion.cs" />
+    <Compile Include="IServicioOrdenMantenimiento.cs" />
+    <Compile Include="IServicioReportePasajerosAtracciones.cs" />
+    <Compile Include="IServicioReporteVentasDirectas.cs" />
+    <Compile Include="IServicioReporte_SI_Consumo_SF_FechaAbierta.cs" />
+    <Compile Include="IServicioReservaEspacios.cs" />
+    <Compile Include="IServicioResolucionFactura.cs" />
+    <Compile Include="IServicioSegmentoDia.cs" />
+    <Compile Include="IServicioClima.cs" />
+    <Compile Include="IServicioBitacoraDia.cs" />
+    <Compile Include="IServicioCierrePuntos.cs" />
+    <Compile Include="IServicioArqueo.cs" />
+    <Compile Include="IServicioAperturaBase.cs" />
+    <Compile Include="IServicioArea.cs" />
+    <Compile Include="IServicioConvenioSAP.cs" />
+    <Compile Include="IServicioCortesiaDestreza.cs" />
+    <Compile Include="IServicioCortesiaPunto.cs" />
+    <Compile Include="IServicioFranquicia.cs" />
+    <Compile Include="IServicioMediosPago.cs" />
+    <Compile Include="IServicioNotaCredito.cs" />
+    <Compile Include="IServicioObservacionRecoleccion.cs" />
+    <Compile Include="IServicioPos.cs" />
+    <Compile Include="IServicioPuntos.cs" />
+    <Compile Include="IServicioCargueBrazalete.cs" />
+    <Compile Include="IServicioCentroMedico.cs" />
+    <Compile Include="IServicioControlParqueadero.cs" />
+    <Compile Include="IServicioConvenioParqueadero.cs" />
+    <Compile Include="IServicioPasaporteUso.cs" />
+    <Compile Include="IServicioRecambio.cs" />
+    <Compile Include="IServicioRecoleccion.cs" />
+    <Compile Include="IServicioRecoleccionSupervisor.cs" />
+    <Compile Include="IServicioReimpresion.cs" />
+    <Compile Include="IServicioReservaSkycoaster.cs" />
+    <Compile Include="IServicioSerieCodBarra.cs" />
+    <Compile Include="IServicioTarjetaRecargable.cs" />
+    <Compile Include="IServicioTipoCliente.cs" />
+    <Compile Include="IServicioCodigodeBarras.cs" />
+    <Compile Include="IServicioTipoDenominacion.cs" />
+    <Compile Include="IServicioTipoProducto.cs" />
+    <Compile Include="IServicioTipoPuntos.cs" />
+    <Compile Include="IServicioTipoConvenioParqueadero.cs" />
+    <Compile Include="IServicioTipoDocumento.cs" />
+    <Compile Include="IServicioTipoVehiculo.cs" />
+    <Compile Include="IServicioEstado.cs" />
+    <Compile Include="IServicioMenu.cs" />
+    <Compile Include="IServicioPerfil.cs" />
+    <Compile Include="IServicioTipoVehiculoPorParqueadero.cs" />
+    <Compile Include="IServicioInventario.cs" />
+    <Compile Include="IServicioRetorno.cs" />
+    <Compile Include="IServicioUbicacionPunto.cs" />
+    <Compile Include="IServicioProductosApp.cs" />
+    <Compile Include="IServicioUsuarioGrupo.cs" />
+    <Compile Include="IServicioGestionMantenimientoControl.cs" />
+    <Compile Include="IServicioGestionMantenimientoDetalle.cs" />
+    <Compile Include="IServicioListaPrecio.cs" />
+    <Compile Include="IServicioPaciente.cs" />
+    <Compile Include="IServicioGestionMantenimiento.cs" />
+    <Compile Include="IServicioTarifasParqueadero.cs" />
+    <Compile Include="IServicioTipoBrazalete.cs" />
+    <Compile Include="IServicioTipoTarifaParqueadero.cs" />
+    <Compile Include="IServicioBase.cs" />
+    <Compile Include="IServicioGruposNotificacion.cs" />
+    <Compile Include="IServicioNotificacion.cs" />
+    <Compile Include="IServicioParametros.cs" />
+    <Compile Include="IServicioPrioridadCorreo.cs" />
+    <Compile Include="IServicioProcedimiento.cs" />
+    <Compile Include="IServicioUsuario.cs" />
+    <Compile Include="IServicioVuycoom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CorParques.Negocio.Entidades\CorParques.Negocio.Entidades.csproj">
+      <Project>{ca4c696a-108d-4270-a5d1-955048178c20}</Project>
+      <Name>CorParques.Negocio.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

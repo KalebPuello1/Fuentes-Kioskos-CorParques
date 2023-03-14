@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA4C696A-108D-4270-A5D1-955048178C20}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorParques.Negocio.Entidades</RootNamespace>
+    <AssemblyName>CorParques.Negocio.Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acompanamiento.cs" />
+    <Compile Include="AcompanamientoXProducto.cs" />
+    <Compile Include="AcompPedido.cs" />
+    <Compile Include="ActualizarPrecios.cs" />
+    <Compile Include="AdicionPedidos.cs" />
+    <Compile Include="Almacen.cs" />
+    <Compile Include="AnulacionFacturaRedeban.cs" />
+    <Compile Include="BrazaleteReimpresion.cs" />
+    <Compile Include="CambioFechaBoleta.cs" />
+    <Compile Include="CargosPerfil.cs" />
+    <Compile Include="Cargos.cs" />
+    <Compile Include="CategoriaImagenes.cs" />
+    <Compile Include="ColorTiempoRestaurante.cs" />
+    <Compile Include="ComplejidadCortesia.cs" />
+    <Compile Include="ConsultaMovimientoBoletaControl.cs" />
+    <Compile Include="CortesiaViewModel.cs" />
+    <Compile Include="DetalleCortesia.cs" />
+    <Compile Include="ImagenAdmin.cs" />
+    <Compile Include="ListaCortesia.cs" />
+    <Compile Include="ObtenerFacturaReagendamiento.cs" />
+    <Compile Include="MensajesVisual.cs" />
+    <Compile Include="PagosVyuCoom.cs" />
+    <Compile Include="ParamCortesiasAPP.cs" />
+    <Compile Include="PedidosPorCliente.cs" />
+    <Compile Include="PlantillaBrazalete.cs" />
+    <Compile Include="PlazoCortesia.cs" />
+    <Compile Include="ProductoBoleteria.cs" />
+    <Compile Include="Reagendamiento.cs" />
+    <Compile Include="RegistroFallasInvOperacion.cs" />
+    <Compile Include="ReimpresionReciboCajaV.cs" />
+    <Compile Include="ProductoxAcompanamiento.cs" />
+    <Compile Include="ReporteBonoRegalo.cs" />
+    <Compile Include="ReportePedidoRestaurante.cs" />
+    <Compile Include="ReporteVentasPorConvenio.cs" />
+    <Compile Include="ReporteVentasPorConvenioFiltros.cs" />
+    <Compile Include="Reporte_SI_Consumo_SF_FechaAbierta.cs" />
+    <Compile Include="SolicitudCodigo.cs" />
+    <Compile Include="TipoCortesia.cs" />
+    <Compile Include="Cortesia.cs" />
+    <Compile Include="GuardarCortesiaUsuarioVisitante.cs" />
+    <Compile Include="CodigoFechaAbierta.cs" />
+    <Compile Include="ConsumoDeEmpleados.cs" />
+    <Compile Include="LogRedebanSolicitudAnulacion.cs" />
+    <Compile Include="ProductosMesaCocina.cs" />
+    <Compile Include="ProductosMesaCocinaGroup.cs" />
+    <Compile Include="MedioPagoFactura.cs" />
+    <Compile Include="FacturaValidaUsoRespuesta.cs" />
+    <Compile Include="ReporteUsuarioApp.cs" />
+    <Compile Include="SoporteIT.cs" />
+    <Compile Include="ReporteRecoleccion.cs" />
+    <Compile Include="SegregacionFunciones.cs" />
+    <Compile Include="ArchivoBrazalete.cs" />
+    <Compile Include="FacturaSolicitud.cs" />
+    <Compile Include="FacturaRespuesta.cs" />
+    <Compile Include="IpInfo.cs" />
+    <Compile Include="ProductosConvenio.cs" />
+    <Compile Include="ListaAcomProductos.cs" />
+    <Compile Include="Mesa.cs" />
+    <Compile Include="ProductosTiendaRespuesta.cs" />
+    <Compile Include="ProductosTienda.cs" />
+    <Compile Include="ResolucionFactura.cs" />
+    <Compile Include="PuntoBrazalete.cs" />
+    <Compile Include="ReimpresionBrazalete.cs" />
+    <Compile Include="SaldoApp.cs" />
+    <Compile Include="ReporteEntregaPedido.cs" />
+    <Compile Include="ReporteBoleteria.cs" />
+    <Compile Include="SolicitudRetorno.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="ClienteFidelizacion.cs" />
+    <Compile Include="ConsumoCupoEmpleado.cs" />
+    <Compile Include="ConvenioProducto.cs" />
+    <Compile Include="CortesiasEmpleado.cs" />
+    <Compile Include="DiccionarioContigencia.cs" />
+    <Compile Include="ExclusionConvenio.cs" />
+    <Compile Include="GuardarCortesiaEmpleado.cs" />
+    <Compile Include="ImprimirDescargueProducto.cs" />
+    <Compile Include="MenuPerfil.cs" />
+    <Compile Include="Orden.cs" />
+    <Compile Include="PerfilUsuario.cs" />
+    <Compile Include="ProductosPedidos.cs" />
+    <Compile Include="PuntoUsuario.cs" />
+    <Compile Include="ReporteCostoProducto.cs" />
+    <Compile Include="ReporteCuadreDiarioFlujoCajasTaq.cs" />
+    <Compile Include="ReporteControlCaja.cs" />
+    <Compile Include="ReporteDonaciones.cs" />
+    <Compile Include="ReporteTarjetaRecargable.cs" />
+    <Compile Include="ReporteVentasDiario.cs" />
+    <Compile Include="ReporteReservaEspacio.cs" />
+    <Compile Include="ReporteInventarioGeneral.cs" />
+    <Compile Include="ReporteMovimientoInventario.cs" />
+    <Compile Include="ReporteRecaudosVentas.cs" />
+    <Compile Include="ReporteNotificaciones.cs" />
+    <Compile Include="ReporteAprovechamientoFA.cs" />
+    <Compile Include="ReporteInventario.cs" />
+    <Compile Include="ReporteVentasPorProducto.cs" />
+    <Compile Include="ReporteVentasPorProductoFiltros.cs" />
+    <Compile Include="ReporteDestrezaFiltros.cs" />
+    <Compile Include="ReporteDestrezas.cs" />
+    <Compile Include="ReporteVentasPorHoraFiltros.cs" />
+    <Compile Include="ReporteVentasPorHora.cs" />
+    <Compile Include="ReporteRedFechaAbierta.cs" />
+    <Compile Include="RedencionBoletaControl.cs" />
+    <Compile Include="ReporteFallaAtraccion.cs" />
+    <Compile Include="AjustesInventario.cs" />
+    <Compile Include="AlistamientoPendiente.cs" />
+    <Compile Include="EstructuraEmpleadoConsecutivos.cs" />
+    <Compile Include="LogVentaPunto.cs" />
+    <Compile Include="RegistroFallas.cs" />
+    <Compile Include="DashBoard.cs" />
+    <Compile Include="AuxiliarPunto.cs" />
+    <Compile Include="Boleteria.cs" />
+    <Compile Include="CargueBoleteria.cs" />
+    <Compile Include="ConvenioConsecutivos.cs" />
+    <Compile Include="DescargueBoletaControl.cs" />
+    <Compile Include="DetalleBoleta.cs" />
+    <Compile Include="CabeceraDetalleRecoleccion.cs" />
+    <Compile Include="FacturaImprimir.cs" />
+    <Compile Include="Espacio.cs" />
+    <Compile Include="HistoricoBoleta.cs" />
+    <Compile Include="ConvenioDetalle.cs" />
+    <Compile Include="Convenio.cs" />
+    <Compile Include="ImprimirBoletaControl.cs" />
+    <Compile Include="Indicadores.cs" />
+    <Compile Include="Inventario.cs" />
+    <Compile Include="PedidosDetalleBoletaControl.cs" />
+    <Compile Include="PlaneacionAuxiliar.cs" />
+    <Compile Include="Planeacion.cs" />
+    <Compile Include="ProductoBoleta.cs" />
+    <Compile Include="ReportePasajeros.cs" />
+    <Compile Include="ReportePasajerosFiltros.cs" />
+    <Compile Include="ReporteVentas.cs" />
+    <Compile Include="ReporteVentasFiltros.cs" />
+    <Compile Include="ReservaEspaciosAuxiliar.cs" />
+    <Compile Include="ReservaEspacios.cs" />
+    <Compile Include="ResumenCierre.cs" />
+    <Compile Include="Materiales.cs" />
+    <Compile Include="MotivosInventario.cs" />
+    <Compile Include="NovedadArqueo.cs" />
+    <Compile Include="BitacoraDiaLista.cs" />
+    <Compile Include="BitacoraDia.cs" />
+    <Compile Include="AperturaElementosHeader.cs" />
+    <Compile Include="CierreElementos.cs" />
+    <Compile Include="Arqueo.cs" />
+    <Compile Include="AnulacionFactura.cs" />
+    <Compile Include="AperturaBrazalete.cs" />
+    <Compile Include="AperturaBrazaleteDetalle.cs" />
+    <Compile Include="AperturaElementos.cs" />
+    <Compile Include="AperturaElementosInsert.cs" />
+    <Compile Include="Area.cs" />
+    <Compile Include="Articulo.cs" />
+    <Compile Include="AperturaBase.cs" />
+    <Compile Include="AutorizacionVehiculo.cs" />
+    <Compile Include="BitacoraElementos.cs" />
+    <Compile Include="BitacoraElementosDetalle.cs" />
+    <Compile Include="BrazaletesApertura.cs" />
+    <Compile Include="CortesiaDestreza.cs" />
+    <Compile Include="CortesiaPunto.cs" />
+    <Compile Include="DetalleFactura.cs" />
+    <Compile Include="DetalleRecoleccionBrazalete.cs" />
+    <Compile Include="DetalleRecoleccionDocumento.cs" />
+    <Compile Include="DetalleRecoleccionMonetaria.cs" />
+    <Compile Include="DetalleInventario.cs" />
+    <Compile Include="DetalleRecoleccionNovedad.cs" />
+    <Compile Include="EstructuraEmpleado.cs" />
+    <Compile Include="Factura.cs" />
+    <Compile Include="Franquicia.cs" />
+    <Compile Include="LineaProducto.cs" />
+    <Compile Include="NotaCredito.cs" />
+    <Compile Include="Notificacion2.cs" />
+    <Compile Include="ConsultaCodigodeBarras.cs" />
+    <Compile Include="ObservacionRecoleccion.cs" />
+    <Compile Include="NotificacionAlerta.cs" />
+    <Compile Include="Operaciones.cs" />
+    <Compile Include="OrdenMantenimiento.cs" />
+    <Compile Include="PagoFactura.cs" />
+    <Compile Include="PagoFacturaMediosPago.cs" />
+    <Compile Include="Puntos.cs" />
+    <Compile Include="Brazalete.cs" />
+    <Compile Include="CargueBrazalete.cs" />
+    <Compile Include="CategoriaAtencion.cs" />
+    <Compile Include="CentroMedico.cs" />
+    <Compile Include="ControlParqueadero.cs" />
+    <Compile Include="ConvenioParqueadero.cs" />
+    <Compile Include="Correo.cs" />
+    <Compile Include="Estados.cs" />
+    <Compile Include="GestionMatenimientoControl.cs" />
+    <Compile Include="GestionMatenimientoDetalle.cs" />
+    <Compile Include="Grupo.cs" />
+    <Compile Include="ListaPrecio.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="MediosPago.cs" />
+    <Compile Include="MediosPagoFactura.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Perfil.cs" />
+    <Compile Include="Producto.cs" />
+    <Compile Include="CierreBrazalete.cs" />
+    <Compile Include="Recambio.cs" />
+    <Compile Include="RecetaProducto.cs" />
+    <Compile Include="DetalleRecoleccion.cs" />
+    <Compile Include="RecoleccionAuxliar.cs" />
+    <Compile Include="Recoleccion.cs" />
+    <Compile Include="RegistroTorniquete.cs" />
+    <Compile Include="Reimpresion.cs" />
+    <Compile Include="ReimpresionFiltros.cs" />
+    <Compile Include="ReservaSkycoaster.cs" />
+    <Compile Include="Retorno.cs" />
+    <Compile Include="RetornoDetalle.cs" />
+    <Compile Include="SerieCodigoBarras.cs" />
+    <Compile Include="SolicitudBoleteria.cs" />
+    <Compile Include="TablaGeneral.cs" />
+    <Compile Include="PasaporteUso.cs" />
+    <Compile Include="Apertura.cs" />
+    <Compile Include="TicketImprimir.cs" />
+    <Compile Include="TipoAcompanamiento.cs" />
+    <Compile Include="TipoAjusteInventario.cs" />
+    <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoDenominacion.cs" />
+    <Compile Include="LogRedebanRespuesta.cs" />
+    <Compile Include="LogRedebanSolicitud.cs" />
+    <Compile Include="TipoElementos.cs" />
+    <Compile Include="TipoEspacio.cs" />
+    <Compile Include="TipoGeneralValor.cs" />
+    <Compile Include="TipoMovimiento.cs" />
+    <Compile Include="TipoPaciente.cs" />
+    <Compile Include="TipoProducto.cs" />
+    <Compile Include="TipoPuntos.cs" />
+    <Compile Include="GestionMatenimiento.cs" />
+    <Compile Include="TarifasParqueadero.cs" />
+    <Compile Include="TipoConvenioParqueadero.cs" />
+    <Compile Include="TipoDocumento.cs" />
+    <Compile Include="TipoRedencionCortesia.cs" />
+    <Compile Include="TipoReserva.cs" />
+    <Compile Include="TipoVehiculoPorParqueadero.cs" />
+    <Compile Include="TransladoInventario.cs" />
+    <Compile Include="UbicacionPunto.cs" />
+    <Compile Include="UsuarioExterno.cs" />
+    <Compile Include="UsuarioVisitanteViewModel.cs" />
+    <Compile Include="UsuarioVisitante.cs" />
+    <Compile Include="UsuarioSimple.cs" />
+    <Compile Include="UsuarioGrupo.cs" />
+    <Compile Include="TipoBrazalete.cs" />
+    <Compile Include="TipoGeneral.cs" />
+    <Compile Include="Notificacion.cs" />
+    <Compile Include="Paciente.cs" />
+    <Compile Include="Parametro.cs" />
+    <Compile Include="PrioridadCorreo.cs" />
+    <Compile Include="Procedimiento.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoTarifaParqueadero.cs" />
+    <Compile Include="TipoVehiculo.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="VentasContingencia.cs" />
+    <Compile Include="VisualPantallas.cs" />
+    <Compile Include="Vyucoom.cs" />
+    <Compile Include="ZonaRestaurante.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,47 @@
+﻿@model CorParques.Negocio.Entidades.TarifasParqueadero
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(model => model.Id)
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Nombre Tarifa Parqueadero <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el nombre", onkeypress = "return EsTexto(this);", maxlength = 150 })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo Tarifa <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoTarifaParqueadero, new SelectList(Model.ListaTipoTarifaParqueadero, "Id", "Nombre", Model.IdTipoTarifaParqueadero), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo Vehículo <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoVehiculo, new SelectList(Model.ListaTipoVehiculo, "Id", "Nombre", Model.IdTipoVehiculo), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>     
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Valor <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Valor, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el valor" , onkeypress = "return EsNumero(this);", maxlength = 10 })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Estado <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+    </div>    
+</form>

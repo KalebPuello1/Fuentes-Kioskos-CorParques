@@ -1,0 +1,91 @@
+﻿@model CorParques.Negocio.Entidades.Boleteria
+<hr />
+
+<div class="row">
+    <div class="col-sm-7">
+
+        <table id="TblBuscarBoletasR" class="display table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">
+                        Pasaporte / destreza
+                    </th>
+                    <th style="text-align:center;">
+                        Cantidad
+                    </th>
+                    <th style="text-align:center;">
+                        Usos
+                    </th>
+                    <th style="text-align:center;">
+                        Cant. reagendamientos
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody id="put">
+
+                @if (Model != null)
+                {
+
+                    <tr>
+                        <td style="text-align:center;">
+                            @Model.NombreProducto
+                        </td>
+
+
+                        <td style="text-align:center;">
+                            @Model.CantidadPasaportes
+                        </td>
+
+
+                        <td style="text-align:center;">
+                            @Model.UsosPasaportes/ @Model.AtraccionesDisponibles
+                        </td>
+
+
+                        <td style="text-align:center;">
+                            @Model.ReagendamientoPasaportes
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="col-sm-5" style="text-align:center;">
+
+            <div class="item form-group">
+
+                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                    Fecha actual Consecutivo :
+                </label>
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <input style="text-align:center;" type='text' class="form-control fecha" id="TxtFechaActualR" value="@Model.FechaEditada" disabled />
+                </div>
+
+                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                    Fecha nueva :
+                </label>
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                    <div class='input-group date required' id='datetimepickerIni'>
+                        <input style="text-align:center;" type='text' class="form-control fecha" id="TxtFechaNuevaR" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div style="text-align:center;">
+                <a id="BtnModificarR" onclick="ModificarFecha()" class="btn btn-success">Modificar</a>
+                <a id="BtnCancelarR" onclick="CancelarReagendamiento()" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

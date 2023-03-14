@@ -1,0 +1,80 @@
+﻿@{
+    var ListaMediosPagos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.ListaMediosPagos;//tipo de ingreso
+}
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerIni">
+            <input type="text" class="form-control FInicial required" id="FInicial">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4 ">Fecha Final</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerFin">
+            <input type="text" class="form-control FFinnal required" id="FFinnal">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+@*----------------------------------------------------------------------------------------------------------*@
+<!--Se comentarean filtros por solicitud del usuario GALD-->
+@*<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Tipo de Ingreso</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="idTipIngreso" id="idTipIngreso">
+            <option value="">* Seleccione</option>
+            <option value="0">Todos</option>
+            @foreach (CorParques.Negocio.Entidades.TipoGeneral item in ListaMediosPagos)
+            {
+                <option value="@item.Id">@item.Nombre</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Tipo de Consumo</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="TipConsnumo" id="TipConsnumo">
+            <option value="">Seleccione</option>
+            <option value="null">Todos</option>
+            <option value="ZC">Corparques</option>
+            <option value="ZA">Activos</option>
+            <option value="ZS">Serviola</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Novedad</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="TipNovedad" id="TipNovedad">
+            <option value="">Seleccione</option>
+            <option value="null">Todos</option>
+            <option value="NS">Sobrante</option>
+            <option value="NF">Faltante</option>
+        </select>
+    </div>
+</div>*@
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">    
+    <a class="btn btn-success" id="btnGrid"> Vista Previa</a>
+    <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success"><i class="fa fa-file-excel-o"></i>Exportar a Excel</a>
+    <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>        
+</div>
+<br/>
+<br/>
+
+<div class="row" id="div_grilla"></div>

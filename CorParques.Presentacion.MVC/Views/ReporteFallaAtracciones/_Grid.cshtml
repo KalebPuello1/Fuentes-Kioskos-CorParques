@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.ReporteFallaAtraccion>
+
+
+<div class="row" id="div_tabla">
+    <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Atracción
+                </th>
+                <th>
+                    Hora de falla
+                </th>
+                <th>
+                    Hora de solución
+                </th>
+                <th>
+                    Tiempo de respuesta
+                </th>
+                <th>
+                    Descripción de la falla por auxiliar
+                </th>
+                <th>
+                    Orden de falla
+                </th>                
+                <th>
+                    Nombre del técnico 
+                </th>               
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.atraccion
+                        </td>
+                        <td>
+                            @item.HoraFalla
+                        </td>
+                        <td>
+                           @item.HoraSolucion
+                        </td>
+                        <td>
+                           @item.TiempoRespuesta
+                        </td>
+                        <td>
+                            @item.DescripcionFallaAuxiliar
+                        </td>
+                        <td>
+                           @item.orden
+                        </td>
+                        <td>
+                            @item.NombreTecnico
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@*<div class="row">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-6 col-sm-3 col-xs-12" for="valorsinimpuesto">
+            Total Valor Sin Impuesto
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @string.Format("{0:C0}", Model.Sum(x => long.Parse(x.ValorSinImpuesto)))
+        </div>
+    </div>    
+</div>
+<div class="row">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-6 col-sm-3 col-xs-12" for="valorconimpuesto">
+            Total Valor Con Impuesto
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @string.Format("{0:C0}", Model.Sum(x => long.Parse(x.ValorConImpuesto)))
+        </div>
+    </div>
+</div>*@

@@ -1,0 +1,131 @@
+﻿@model CorParques.Negocio.Entidades.TipoBrazalete
+
+
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(model => model.Id)
+        <table>
+            <tr>
+                <td>
+                    <label for="name">
+                        Nombre <span>*</span>
+                    </label>
+                </td>
+                <td>
+                    <div>
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el nombre del brazalete", maxlength = 150})
+                    </div>
+                </td>
+                <td style="width:30px">
+            </tr>
+            <tr style="height:30px"></tr>
+            <tr>
+                <td>
+                    <label>
+                        Descripción <span>*</span>
+                    </label>
+                </td>
+                <td>
+                    <div style="width:500px">
+                        @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite una descripción del tipo de brazalete", maxlength = 500 })
+                    </div>
+                </td>
+                <td style="width:30px">
+            </tr>
+            <tr style="height:30px"></tr>
+            <tr>
+                <td>
+                    <label for="name">
+                        Precio <span>*</span>
+                    </label>
+                </td>
+                <td>
+                    <div>
+                        @Html.TextBoxFor(model => model.Precio, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el precio del brazalete", maxlength = 10 })
+                    </div>
+                </td>
+                <td style="width:30px">
+            </tr>
+            <tr style="height:30px"></tr>
+            <tr>
+                <td>
+                    <label>
+                        Estado <span>*</span>
+                    </label>
+                </td>
+                <td>
+                    <div>
+                        <div>
+                            @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.Estados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required" })
+                        </div>
+                    </div>
+                </td>
+                <td style="width:30px">
+            </tr>
+            <tr style="height:30px"></tr>
+            <tr>
+                <td>
+                    <label>
+                        Asociacion de usuarios @*<span>*</span>*@
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <div id="listView">
+            <table id="datatable-responsive_1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th style="width:5px">
+
+                        </th>
+                        <th>
+                            Atracción
+                        </th>
+                        <th style="width:15px">
+                            Control
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.Atracciones)
+                    {
+                        <tr>
+
+                            @{int Control = CorParques.Presentacion.MVC.Controllers.TipoBrazaleteController.Asociada(@item.Id.ToString(), Model.AtraccionesSeleccionadas);}
+
+                            @if (Control >= 0)
+                            {
+                                <td style="width:5px" >
+                                    <input class="flat"  name="chkatracion" type="checkbox" value="@item.Id" onchange="selectcheck(this);" checked="checked" />
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td style="width:5px">
+                                    <input class="flat" style="width:50px" name="txtControl" value="@Control" id="@item.Id" type="text" onkeydown="return EsNumero(this);" onkeyup="AddControl(this);" maxlength="10" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td style="width:5px">
+                                    <input class="flat"  name="chkatracion" type="checkbox" value="@item.Id" onchange="selectcheck(this);" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td style="width:5px">
+                                    <input class="flat" style="width:50px" name="txtControl" id="@item.Id" type="text" onkeydown="return EsNumero(this);" onkeyup="AddControl(this);" readonly="readonly" maxlength="10" />
+                                </td>
+                            }
+
+
+                        </tr>
+                                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.AtraccionesSeleccionadas, new { id = "hdf_atraccionesSeleccionadas", value = "" })
+</form>

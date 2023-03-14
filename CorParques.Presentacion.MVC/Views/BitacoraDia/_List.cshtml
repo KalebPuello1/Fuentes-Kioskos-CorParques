@@ -1,0 +1,92 @@
+﻿@model CorParques.Negocio.Entidades.BitacoraDiaLista
+
+@{
+    var manana = Model.BitacoraDiaList?.Where(M => M.IdSegmentoDiaFK == 1 && M.Fecha.Value.ToShortDateString() == DateTime.Now.ToShortDateString()).FirstOrDefault();
+    var tarde = Model.BitacoraDiaList?.Where(M => M.IdSegmentoDiaFK == 2 && M.Fecha.Value.ToShortDateString() == DateTime.Now.ToShortDateString()).FirstOrDefault();
+    var noche = Model.BitacoraDiaList?.Where(M => M.IdSegmentoDiaFK == 3 && M.Fecha.Value.ToShortDateString() == DateTime.Now.ToShortDateString()).FirstOrDefault();
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="x_panel">
+            <div>
+                <form id="frmBitacora">
+
+                    <div class="form-horizontal col-md-12 col-xs-12">
+
+                        <div class="col-md-4">
+                            <h3 style="text-align:center">Cantidad de Personas</h3>
+                        </div>
+
+                        <div class="x_content">
+                            <div class="col-md-4 col-xs-12 form-group" >
+                                <input type="number" name="CantidadPersonas" value="@Model.CantidadPersonas" class="form-control numerico"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-horizontal col-md-4 col-xs-12">
+
+                        <div class="x_title">
+                            <h3 style="text-align:center">MAÑANA</h3>
+                        </div>
+
+                        <div class="x_content">
+                            <div class="col-md-12 col-xs-12 form-group">
+                                <input type="hidden" name="BitacoraDiaList[0].IdSegmentoDiaFK" value="1" />
+                                @Html.DropDownList("IdClimaFK_M", Model.Clima.Select(M => new SelectListItem() { Value = M.Id.ToString(), Text = M.Nombre, Selected = (M.Id == manana?.IdClimaFK) }), new { @class = "form-control", @Name = "BitacoraDiaList[0].IdClimaFK" })
+                            </div>
+                            <div class="col-md-12 col-xs-12 form-group">
+                                <textarea id="Observacion_M" name="BitacoraDiaList[0].Observacion" style="width:100%;resize: none;" class="form-control" placeholder="Observacion" maxlength="500">@(manana?.Observacion)</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal col-md-4 col-xs-12">
+
+                        <div class="x_title">
+                            <h3 style="text-align:center">TARDE</h3>
+                        </div>
+
+                        <div class="x_content">
+                            <div class="col-md-12 col-xs-12 form-group">
+                                <input type="hidden" name="BitacoraDiaList[1].IdSegmentoDiaFK" value="2" />
+                                @Html.DropDownList("IdClimaFK_T", Model.Clima.Select(M => new SelectListItem() { Value = M.Id.ToString(), Text = M.Nombre, Selected = (M.Id == tarde?.IdClimaFK) }), new { @class = "form-control", @Name = "BitacoraDiaList[1].IdClimaFK" })
+                            </div>
+                            <div class="col-md-12 col-xs-12 form-group">
+                                <textarea id="Observacion_T" name="BitacoraDiaList[1].Observacion" style="width:100%;resize: none;" class="form-control" placeholder="Observacion" maxlength="500">@(tarde?.Observacion)</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-horizontal col-md-4 col-xs-12">
+                        <div class="x_title">
+                            <h3 style="text-align:center">NOCHE</h3>
+                        </div>
+
+                        <div class="x_content">
+                            <div class="col-md-12 col-xs-12 form-group">
+
+                                <input type="hidden" name="BitacoraDiaList[2].IdSegmentoDiaFK" value="3" />
+                                @Html.DropDownList("IdClimaFK_N", Model.Clima.Select(M => new SelectListItem() { Value = M.Id.ToString(), Text = M.Nombre, Selected = (M.Id == noche?.IdClimaFK) }), new { @class = "form-control", @Name = "BitacoraDiaList[2].IdClimaFK" })
+                            </div>
+                            <div class="col-md-12 col-xs-12 form-group">
+                                <textarea id="Observacion_N" name="BitacoraDiaList[2].Observacion" style="width:100%;resize: none;" class="form-control" placeholder="Observacion" maxlength="500">@(noche?.Observacion)</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="x_content">
+                <div class="form-horizontal">
+                    <div class="col-md-12 form-group" style="padding-left:20px;">
+                        <input type="button" id="btnSubir" value="Guardar" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

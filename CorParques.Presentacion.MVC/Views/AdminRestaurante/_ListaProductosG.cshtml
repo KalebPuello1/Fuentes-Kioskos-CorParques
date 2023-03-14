@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+@{
+
+    var ListatipoAcomp = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.TipoAcompaRestaurante;
+    var TipoProductosRestaurante = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.TipoProductosRestaurante;
+
+}
+<br />
+<br />
+<div style="height:600px; overflow-y:auto;">
+
+    <table id="datatable-responsive22" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Código SAP
+                </th>
+                <th>
+                    Tipo Acompanamiento
+                </th>
+                <th>
+                    Tipo producto
+                </th>
+                <th style="width:50px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoSap)
+                        </td>
+                        <td>
+                            <select id="IdTipAcompa-@item.IdProducto" class="form-control  setSelect2" onchange="listarMesaporZona()">
+                                <option value="">*Seleccione...</option>
+                                @if (ListatipoAcomp != null && ListatipoAcomp.Count() > 0)
+                                {
+                                    foreach (var item2 in ListatipoAcomp)
+                                    {
+                                        <option value="@item2.Id">@item2.Nombre</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <select id="IdTipProduR-@item.IdProducto" class="form-control  setSelect2" onchange="listarMesaporZona()">
+                                <option value="">*Seleccione...</option>
+                                @if (TipoProductosRestaurante != null && TipoProductosRestaurante.Count() > 0)
+                                {
+                                    foreach (var item22 in TipoProductosRestaurante)
+                                    {
+                                        <option value="@item22.Id">@item22.Nombre</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                        <td style="text-align:center; width:50px">
+                            <input class="checkboxProd" name="chkPuntos" type="checkbox" value="@item.IdProducto" />
+
+                            @*<a class="lnkDelete" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-times-circle"></b></a>*@
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

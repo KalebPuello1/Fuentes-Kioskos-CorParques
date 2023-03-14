@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "gjghj";
+
+    Layout = "";
+
+}
+<link rel="stylesheet" href="~/Content/Kioscos/index.css">
+<span class="titulo" style="display:none;">
+    Bienvenido al m&oacute;dulo interactivo de gesti&oacute;n
+</span>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        (function () {
+            window.addEventListener("click", () => {
+                window.location.href = "Kioscos/IngresoCodigo";
+            });
+        })();
+    });
+</script>

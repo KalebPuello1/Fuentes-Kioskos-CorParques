@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34297A79-59E8-4CC7-A74D-F899F8C43469}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Corparques.Datos.Contratos</RootNamespace>
+    <AssemblyName>Corparques.Datos.Contratos</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\IRepositorioBase.cs" />
+    <Compile Include="IRepositorioAdicionPedidos.cs" />
+    <Compile Include="IRepositorioAlistamientoPendiente.cs" />
+    <Compile Include="IRepositorioAlmacen.cs" />
+    <Compile Include="IRepositorioApertura.cs" />
+    <Compile Include="IRepositorioAperturaBase.cs" />
+    <Compile Include="IRepositorioAperturaBrazalete.cs" />
+    <Compile Include="IRepositorioArea.cs" />
+    <Compile Include="IRepositorioArqueo.cs" />
+    <Compile Include="IRepositorioAutorizacionVehiculo.cs" />
+    <Compile Include="IRepositorioAuxiliarPunto.cs" />
+    <Compile Include="IRepositorioBitacoraDia.cs" />
+    <Compile Include="IRepositorioBoleteria.cs" />
+    <Compile Include="IRepositorioBrazalete.cs" />
+    <Compile Include="IRepositorioCargueBoleteria.cs" />
+    <Compile Include="IRepositorioCargueBrazalete.cs" />
+    <Compile Include="IRepositorioCategoriaAtencion.cs" />
+    <Compile Include="IRepositorioCentroImpresion.cs" />
+    <Compile Include="IRepositorioCentroMedico.cs" />
+    <Compile Include="IRepositorioCierrePunto.cs" />
+    <Compile Include="IRepositorioCliente.cs" />
+    <Compile Include="IRepositorioClima.cs" />
+    <Compile Include="IRepositorioCodigodeBarras.cs" />
+    <Compile Include="IRepositorioCodigoFechaAbierta.cs" />
+    <Compile Include="IRepositorioComplejidadCortesia.cs" />
+    <Compile Include="IRepositorioConsumoDeEmpleado.cs" />
+    <Compile Include="IRepositorioControlParqueadero.cs" />
+    <Compile Include="IRepositorioConvenio.cs" />
+    <Compile Include="IRepositorioConvenioParqueadero.cs" />
+    <Compile Include="IRepositorioConvenioSAP.cs" />
+    <Compile Include="IRepositorioCortesiaDestreza.cs" />
+    <Compile Include="IRepositorioCortesiaPunto.cs" />
+    <Compile Include="IRepositorioDashBoard.cs" />
+    <Compile Include="IRepositorioDetalleRecoleccionBrazalete.cs" />
+    <Compile Include="IRepositorioDetalleRecoleccionDocumento.cs" />
+    <Compile Include="IRepositorioDetalleRecoleccionMonetaria.cs" />
+    <Compile Include="IRepositorioDetalleRecoleccionNovedad.cs" />
+    <Compile Include="IRepositorioEstados.cs" />
+    <Compile Include="IRepositorioEstructuraEmpleado.cs" />
+    <Compile Include="IRepositorioFactura.cs" />
+    <Compile Include="IRepositorioFidelizacion.cs" />
+    <Compile Include="IRepositorioFranquicia.cs" />
+    <Compile Include="IRepositorioGestionMantenimiento.cs" />
+    <Compile Include="IRepositorioGestionMantenimientoControl.cs" />
+    <Compile Include="IRepositorioGestionMantenimientoDetalle.cs" />
+    <Compile Include="IRepositorioGrupoNotificacion.cs" />
+    <Compile Include="IRepositorioHistoricoBoleta.cs" />
+    <Compile Include="IRepositorioInventario.cs" />
+    <Compile Include="IRepositorioLineaProducto.cs" />
+    <Compile Include="IRepositorioListaPrecio.cs" />
+    <Compile Include="IRepositorioCortesia.cs" />
+    <Compile Include="IRepositorioPlazoCortesia.cs" />
+    <Compile Include="IRepositorioReagendamiento.cs" />
+    <Compile Include="IRepositorioReimpresionReciboCajaV.cs" />
+    <Compile Include="IRepositorioReporteSoporteIT.cs" />
+    <Compile Include="IRepositorioReporteUsuarioApp.cs" />
+    <Compile Include="IRepositorioReporteVentasPorConvenio.cs" />
+    <Compile Include="IRepositorioReporte_SI_Consumo_SF_FechaAbierta.cs" />
+    <Compile Include="IRepositorioTipoRedencionCortesia.cs" />
+    <Compile Include="IRepositorioUsuarioVisitante.cs" />
+    <Compile Include="IRepositorioLogRedebanSolicitudAnulacion.cs" />
+    <Compile Include="IRepositorioMateriales.cs" />
+    <Compile Include="IRepositorioMatrizPuntos.cs" />
+    <Compile Include="IRepositorioMediosPagos.cs" />
+    <Compile Include="IRepositorioMenu.cs" />
+    <Compile Include="IRepositorioNotaCredito.cs" />
+    <Compile Include="IRepositorioNotificacion.cs" />
+    <Compile Include="IRepositorioObservacionRecoleccion.cs" />
+    <Compile Include="IRepositorioOperacion.cs" />
+    <Compile Include="IRepositorioOrden.cs" />
+    <Compile Include="IRepositorioOrdenMantenimiento.cs" />
+    <Compile Include="IRepositorioPaciente.cs" />
+    <Compile Include="IRepositorioParametros.cs" />
+    <Compile Include="IRepositorioPasaporteUso.cs" />
+    <Compile Include="IRepositorioCargos.cs" />
+    <Compile Include="IRepositorioPerfil.cs" />
+    <Compile Include="IRepositorioPlaneacion.cs" />
+    <Compile Include="IRepositorioPrioridadCorreo.cs" />
+    <Compile Include="IRepositorioProcedimiento.cs" />
+    <Compile Include="IRepositorioProducto.cs" />
+    <Compile Include="IRepositorioPuntos.cs" />
+    <Compile Include="IRepositorioRecambio.cs" />
+    <Compile Include="IRepositorioRecoleccion.cs" />
+    <Compile Include="IRepositorioRecoleccionSupervisor.cs" />
+    <Compile Include="IRepositorioRegistroFallas.cs" />
+    <Compile Include="IRepositorioRegistroTorniquete.cs" />
+    <Compile Include="IRepositorioReimpresion.cs" />
+    <Compile Include="IRepositorioReporteAprovechamientoFA.cs" />
+    <Compile Include="IRepositorioReporteControlCaja.cs" />
+    <Compile Include="IRepositorioReporteCostoProducto.cs" />
+    <Compile Include="IRepositorioReporteCuadreDiarioFlujoCajasTaq.cs" />
+    <Compile Include="IRepositorioReporteTarjetaRecargable.cs" />
+    <Compile Include="IRepositorioReporteDestreza.cs" />
+    <Compile Include="IRepositorioReporteDonaciones.cs" />
+    <Compile Include="IRepositorioReporteFallaAtraccion.cs" />
+    <Compile Include="IRepositorioReporteInventarioGeneral.cs" />
+    <Compile Include="IRepositorioReporteMovimientoInventario.cs" />
+    <Compile Include="IRepositorioReporteNotificaciones.cs" />
+    <Compile Include="IRepositorioReportePasajerosAtracciones.cs" />
+    <Compile Include="IRepositorioReporteRecaudosVentas.cs" />
+    <Compile Include="IRepositorioReporteRedFechaAbierta.cs" />
+    <Compile Include="IRepositorioReporteReservaEspacio.cs" />
+    <Compile Include="IRepositorioReporteVentasDiarias.cs" />
+    <Compile Include="IRepositorioReporteRecoleccion.cs" />
+    <Compile Include="IRepositorioReporteVentasDirectas.cs" />
+    <Compile Include="IRepositorioReporteVentasPorHora.cs" />
+    <Compile Include="IRepositorioReporteVentasPorProducto.cs" />
+    <Compile Include="IRepositorioReservaEspacios.cs" />
+    <Compile Include="IRepositorioReservaSkycoaster.cs" />
+    <Compile Include="IRepositorioResolucionFactura.cs" />
+    <Compile Include="IRepositorioRetorno.cs" />
+    <Compile Include="IRepositorioSegmentoDia.cs" />
+    <Compile Include="IRepositorioSerieCodBarra.cs" />
+    <Compile Include="IRepositorioTarifasParqueadero.cs" />
+    <Compile Include="IRepositorioTarjetaRecargable.cs" />
+    <Compile Include="IRepositorioTipoBrazalete.cs" />
+    <Compile Include="IRepositorioTipoCliente.cs" />
+    <Compile Include="IRepositorioTipoConvenioParqueadero.cs" />
+    <Compile Include="IRepositorioTipoDenominacion.cs" />
+    <Compile Include="IRepositorioLogRedebanRespuesta.cs" />
+    <Compile Include="IRepositorioLogRedebanSolicitud.cs" />
+    <Compile Include="IRepositorioTipoDocumento.cs" />
+    <Compile Include="IRepositorioTipoPaciente.cs" />
+    <Compile Include="IRepositorioTipoProducto.cs" />
+    <Compile Include="IRepositorioTipoPuntos.cs" />
+    <Compile Include="IRepositorioTiposVehiculos.cs" />
+    <Compile Include="IRepositorioTipoTarifaParqueadero.cs" />
+    <Compile Include="IRepositorioTipoVehiculoPorParqueadero.cs" />
+    <Compile Include="IRepositorioUbicacionPunto.cs" />
+    <Compile Include="IRepositorioProductosApp.cs" />
+    <Compile Include="IRepositorioUsuario.cs" />
+    <Compile Include="IRepositorioUsuarioGrupo.cs" />
+    <Compile Include="IRepositorioVuycoom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CorParques.Negocio.Entidades\CorParques.Negocio.Entidades.csproj">
+      <Project>{ca4c696a-108d-4270-a5d1-955048178c20}</Project>
+      <Name>CorParques.Negocio.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

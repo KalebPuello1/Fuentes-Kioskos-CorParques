@@ -1,0 +1,101 @@
+﻿@{
+    var espacio = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.espacio;
+    var tipoEspacio = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.tipoEspacio;
+}
+
+<form id="frmReservaEspacios">
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="input-group date" id="datetimepickerIni">
+                <input type="text" class="form-control FInicial required" id="FInicial">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Final</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <div class="input-group date" id="datetimepickerFin">
+                <input type="text" class="form-control FFinnal required" id="FFinnal">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">
+            Hora Inicial
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class='input-group dateTime' id='dateTimeHoraInicial'>
+                <input type='text' class="form-control" id="txtHoraInicial" placeholder="HH:MM" maxlength="8" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">
+            Hora Final
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class='input-group dateTime' id='dateTimeHoraFinal'>
+                <input type='text' class="form-control" id="txtHoraFinal" placeholder="HH:MM" maxlength="8" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+    </div>*@
+
+    @*############################################################################################################################################*@
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Tipo de Espacio</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idEps" id="idEps">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.TipoGeneral item in tipoEspacio)
+            {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Espacio</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control setSelect2" name="idTipEps" id="idTipEps">
+                <option value="">* Seleccione</option>
+                @foreach (CorParques.Negocio.Entidades.TipoGeneral item in espacio)
+            {
+                    <option value="@item.Id">@item.Nombre</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @*<div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Número de pedido</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <input type="text" class="form-control" id="txtNPedido">
+        </div>
+    </div>*@
+
+
+
+
+    <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+        <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success">Consultar</a>
+        <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+    </div>
+</form>
