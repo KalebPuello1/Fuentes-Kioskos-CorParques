@@ -79,15 +79,13 @@ $(function () {
         mostrarAlerta("Información", "Producto agregado a pedido.", "success");
         cerrarModal("modalCRUD");
     });
-
-
-   
-
-
+     
     $("#ddlPunto").change(function () {
 
         EjecutarAjax(urlBase + "ReservaSkycoaster/ObtenerLista", "GET", { id: $(this).val() }, "printPartial", { div: "#listView", func: "setEventEdit" });
     });
+
+    $("#btnImprimirPreFactura").prop("disabled", true);
 
 });
 
@@ -642,6 +640,8 @@ $("#btnSavePedidoP").click(function () {
             Lista2.push(item2);
         }
     });
+
+    $("#btnImprimirPreFactura").prop("disabled", false);
 
     ConfirmarPago()
 });
@@ -1579,5 +1579,43 @@ function successProceso(rta, id) {
     else {
         cerrarModal("modalCRUD");
         MostrarMensaje("Importante", rta.Mensaje, "info");
+    }
+}
+
+//funcion Boton imprimir prefactura
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href");
+    if (target == "#menu22" || target == "#menu2") {
+        $("#btnImprimirPreFactura").css("display", "inline-block");
+        $("#btnImprimirPreFactura").prop("disabled", true);
+        if (lstProductosCompra.length <= 0) {
+            $("#btnImprimirPreFactura").prop("disabled", true);
+        }
+    }
+    else {
+        $("#btnImprimirPreFactura").css("display", "none");
+    }
+});
+
+$('#btnImprimirPreFactura').click(function () {
+    console.log('Mesa', $('#IdPuntoOrigen').val());
+    //console.log('Total', document.getElementById("totalPedido").innerText);
+    var total = document.getElementById("totalPedido").innerText;
+    if (lstProductosCompra.length > 0) {
+        //var lst_productos = JSON.stringify(lstProductosCompra);
+        EjecutarAjaxJson(urlBase + "PedidoA/ImprimirPreFactura", "post",
+            { ListaProductos: lstProductosCompra, IdMesa: _idmesa, Total: total },
+            "successImpresionPreFactura", null);
+    }
+});
+
+function successImpresionPreFactura(response) {
+    if (response) {
+        $("#btnImprimirPreFactura").prop("disabled", true);
+        MostrarMensaje("Impresion Correcta", "La prefactura se ha impreso", "success");
+    }
+    else {
+        $("#btnImprimirPreFactura").prop("disabled", false);
+        MostrarMensaje("Impresion incorrecta", "La prefactura no se imprimio, intentelo de nuevo", "error");
     }
 }

@@ -12,7 +12,7 @@
     <p class="bckBtn-text">Atras</p>
 </a>
 
-<div class="d-flex flex-column justify-content-center text-center mt-5">
+<div class="d-flex flex-column justify-content-center text-center mt-5" id="contenedor-cod">
 
     <div class="mt-5">
         <h2 style="font-weight: bold;">Escanee el c&oacute;digo en el lector o dig&iacute;telo para continuar</h2>
@@ -47,7 +47,11 @@
         </div>
 
         <div class="col-lg-5">
-            <div class="video"></div>
+            <div class="video">
+                <video width="100%" height="auto" autoplay controls style="border-radius:5px;">
+                    <source src="~/Carpeta/ Video.extension" type="video/mp4">
+                </video>
+            </div>
         </div>
     </div>
 </div>
@@ -55,7 +59,7 @@
 
 <script src="~/Scripts/Kioscos.js"></script>
 <script>
-    $(".loader-wrapper").css("display", "none");
+    //$(".loader-wrapper").css("display", "none");
     var inicializadointerval = false;
     var codigo = "";
     document.getElementById("input-codigo").innerHTML = "";

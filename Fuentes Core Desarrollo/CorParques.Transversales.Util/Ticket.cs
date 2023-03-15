@@ -211,7 +211,7 @@ namespace CorParques.Transversales.Util
                     AgregarLinea(TextoDerecha(strNombrePunto));
                 }
                 AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
-                AgregarLinea(TextoCentro(strTituloTicket),new Font(this.fontName, 8, FontStyle.Bold));
+                AgregarLinea(TextoCentro(strTituloTicket), new Font(this.fontName, 8, FontStyle.Bold));
             }
             catch (Exception ex)
             {
@@ -307,12 +307,12 @@ namespace CorParques.Transversales.Util
                     strRutaCodigoBarras = CodigoBarras.GenerarCodigoDeBarras(strCodigoBarras, 50, 2);
 
                     if (strRutaCodigoBarras.IndexOf("Error") < 0)
-                    {                        
+                    {
                         AgregarImagen(Utilidades.RetornarImagen(strRutaCodigoBarras), 42, 15, 18);
                         AgregarLinea("");
                         AgregarLinea("");
                         AgregarLinea("");
-                        AgregarLinea(TextoCentro(strCodigoBarras));                        
+                        AgregarLinea(TextoCentro(strCodigoBarras));
                         //AgregarLinea(LineasGuion());
                         Utilidades.LimpiarTempCodigosBarra(strRutaCodigoBarras);
                     }
@@ -326,7 +326,7 @@ namespace CorParques.Transversales.Util
             }
 
         }
-        
+
         /// <summary>
         /// RDSH: Imprime texto al final del recibo.
         /// </summary>
@@ -367,7 +367,7 @@ namespace CorParques.Transversales.Util
             return intEspacios;
         }
 
-        private string AgregaArticulos(string strArticulo, int intCantidad, double dblPrecio, string strOtro,bool boleteria=false)
+        private string AgregaArticulos(string strArticulo, int intCantidad, double dblPrecio, string strOtro, bool boleteria = false)
         {
 
             string[] strSplit;
@@ -391,7 +391,7 @@ namespace CorParques.Transversales.Util
                         strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), intCantidad, Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - intCantidad.ToString().Length), " "), boleteria ? dblPrecio.ToString() : dblPrecio.ToString("C0"));
                     }
                     else if (intCantidad > 0 && dblPrecio == 0 && strOtro.Trim().Length == 0)
-                    {                        
+                    {
                         strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), intCantidad, Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - intCantidad.ToString().Length), " "), "");
                     }
                     else if (intCantidad == 0 && dblPrecio > 0)
@@ -400,7 +400,7 @@ namespace CorParques.Transversales.Util
                     }
                     else if (intCantidad == 0 && dblPrecio == 0)
                     {
-                        strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), " ", Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - intCantidad.ToString().Length), " "), boleteria ? dblPrecio.ToString(): dblPrecio.ToString("C0"));
+                        strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), " ", Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - intCantidad.ToString().Length), " "), boleteria ? dblPrecio.ToString() : dblPrecio.ToString("C0"));
                     }
                     else if (intCantidad > 0 && dblPrecio == 0 && strOtro.Trim().Length > 0)
                     {
@@ -411,7 +411,7 @@ namespace CorParques.Transversales.Util
                     {
                         strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), intCantidad, Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - (intCantidad.ToString().Length - 3)), " "), strOtro);
                     }
-                    break;                    
+                    break;
                 case 4:
                     strArticulo = Utilidades.RecortarTexto(strArticulo, 16);
                     strLinea = string.Concat(strArticulo, Utilidades.Replicar((int.Parse(strSplit[0].ToString()) - strArticulo.Length), " "), intCantidad, Utilidades.Replicar(((int.Parse(strSplit[1].ToString()) - 3) - intCantidad.ToString().Length), " "), dblPrecio.ToString("C0"), Utilidades.Replicar((int.Parse(strSplit[2].ToString()) - dblPrecio.ToString("C0").Length), " "), strOtro);
@@ -627,7 +627,7 @@ namespace CorParques.Transversales.Util
                         PrinterSettings = { PrinterName = strImpresora }
                     };
                     document.PrintPage += new PrintPageEventHandler(this.pr_PrintPage);
-                    if(ConfigurationManager.AppSettings["alturaImpresion"]!=null)
+                    if (ConfigurationManager.AppSettings["alturaImpresion"] != null)
                         if (ConfigurationManager.AppSettings["alturaImpresion"] == "1")
                             document.DefaultPageSettings.PaperSize = new PaperSize("First custom size", document.DefaultPageSettings.PaperSize.Width + 30, 420);
 
@@ -689,9 +689,9 @@ namespace CorParques.Transversales.Util
             this.GenerarEncabezadoParqueadero();
             //this.GenerarDetalle();
             //this.GenerarCodigoBarras();   
-            float texto = 7.5F ;
+            float texto = 7.5F;
             Font printFont = new Font(this.fontName, texto, FontStyle.Regular);
-            this.GenerarPiePaginaParqueadero(printFont);            
+            this.GenerarPiePaginaParqueadero(printFont);
             this.GenerarCodigoBarrasParqueadero();
             this.AgregarCodigoBarrasParqueadero();
             AgregarLinea(LineasGuion());
@@ -715,8 +715,8 @@ namespace CorParques.Transversales.Util
                 AgregarLinea(TextoCentro("C O R P A R Q U E S"));
                 AgregarLinea(TextoCentro("Nit. 830008059-1"));
                 AgregarLinea(TextoCentro("VISITENOS EN"));
-                AgregarLinea(TextoCentro("WWW.MUNDOAVENTURA.COM.CO")); 
-                AgregarLinea(TextoCentro("CRA. 71D 1 - 14 SUR"));                
+                AgregarLinea(TextoCentro("WWW.MUNDOAVENTURA.COM.CO"));
+                AgregarLinea(TextoCentro("CRA. 71D 1 - 14 SUR"));
                 AgregarLinea(TextoCentro("Tel 4142700"));
                 AgregarLinea("");
 
@@ -737,7 +737,7 @@ namespace CorParques.Transversales.Util
                 AgregarLinea(TextoCentro("CONDICIONES DE PRESTACION DEL SERVICIO"), new Font(this.fontName, 8, FontStyle.Bold));
                 //AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));                
                 //AgregarLinea(TextoCentro(strTituloTicket), new Font(this.fontName, 8, FontStyle.Bold));               
-                
+
                 if (this.LineaParqueadero.Length > 0)
                 {
                     AdicionarContenidoParquedero();
@@ -780,7 +780,7 @@ namespace CorParques.Transversales.Util
         }
         private string LineasTotales()
         {
-            return "                          -----------\n"; ;   // agrega lineas de total
+            return "                             -----------\n";    // agrega lineas de total
 
         }
 
@@ -795,7 +795,7 @@ namespace CorParques.Transversales.Util
             else { parte1 = par1; }                      // **********
             ticket = parte1;
             parte2 = total.ToString("C0");
-            max = 35 - (parte1.Length + parte2.Length);
+            max = 39 - (parte1.Length + parte2.Length);
             for (int i = 0; i < max; i++)                // **********
             {
                 ticket += " ";                           // Agrega espacios para poner el valor de moneda al final
@@ -824,7 +824,7 @@ namespace CorParques.Transversales.Util
                 Utilidades.RegistrarError(ex, "Ticket_AdicionarContenido");
                 this.Lineas.Add(strLinea);
             }
-            
+
         }
 
 
@@ -1046,7 +1046,7 @@ namespace CorParques.Transversales.Util
                         if (dblTotal > 0)
                         {
                             AgregarLinea("");
-                            AgregarLinea(LineasTotales(), objFont);                            
+                            AgregarLinea(LineasTotales(), objFont);
                             AgregarLinea(AgregaTotales("Total", dblTotal), objFont);
                             dblTotal = 0;
                             AgregarLinea("");
@@ -1071,7 +1071,7 @@ namespace CorParques.Transversales.Util
                 {
                     AgregarLinea("");
                     AgregarLinea(LineasTotales(), objFont);
-                    AgregarLinea(AgregaTotales("Total", dblTotal), objFont);                    
+                    AgregarLinea(AgregaTotales("Total", dblTotal), objFont);
                     dblTotal = 0;
                 }
 
@@ -1440,14 +1440,15 @@ namespace CorParques.Transversales.Util
 
                     if (strRutaCodigoBarras.IndexOf("Error") < 0)
                     {
-                        
+
                         AgregarLinea("  ");
                         //AgregarLinea("");
-                        AgregarImagen(Utilidades.RetornarImagen(strRutaCodigoBarras), 42, 15, 18);                        
+                        AgregarImagen(Utilidades.RetornarImagen(strRutaCodigoBarras), 42, 15, 18);
                         //AgregarLinea(TextoCentro(strCodigoBarras));                        
                         Utilidades.LimpiarTempCodigosBarra(strRutaCodigoBarras);
                     }
-                    else {
+                    else
+                    {
                         Utilidades.RegistrarError(new Exception("Genero error el codigo de barras"), "Genero error el codigo de barras");
                     }
                 }
@@ -1604,11 +1605,42 @@ namespace CorParques.Transversales.Util
 
         }
 
+        public string ImprimirTicketRedencion()
+        {
+
+            string strRetorno = string.Empty;
+
+            try
+            {
+                if (PrinterExists(strImpresora))
+                {
+                    this.printFont = new Font(this.fontName, (float)this.fontSize, FontStyle.Regular);
+                    PrintDocument document = new PrintDocument
+                    {
+                        PrinterSettings = { PrinterName = strImpresora }
+                    };
+                    document.PrintPage += new PrintPageEventHandler(this.pr_PrintPageRedencion);
+                    document.Print();
+                }
+                else
+                {
+                    strRetorno = "Error: No se ha configurado la impresora.";
+                }
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error ImprimirTicketCortesias: ", ex.Message);
+            }
+
+            return strRetorno;
+
+        }
+
         private void pr_PrintPageCortesias(object sender, PrintPageEventArgs e)
         {
             e.Graphics.PageUnit = GraphicsUnit.Millimeter;
-            this.gfx = e.Graphics;           
-            this.GenerarEncabezadoCortesias();            
+            this.gfx = e.Graphics;
+            this.GenerarEncabezadoCortesias();
             this.GenerarCodigoBarrasCortesias();
             this.GenerarPiePagina();
         }
@@ -1659,7 +1691,7 @@ namespace CorParques.Transversales.Util
                         AgregarImagen(Utilidades.RetornarImagen(strRutaCodigoBarras), 42, 15, 18);
                         Espacio();
                         AgregarLinea(TextoCentro(strCodigoBarras));
-                        Espacio();                        
+                        Espacio();
                         Utilidades.LimpiarTempCodigosBarra(strRutaCodigoBarras);
                     }
                 }
@@ -1795,7 +1827,7 @@ namespace CorParques.Transversales.Util
             e.Graphics.PageUnit = GraphicsUnit.Millimeter;
             this.gfx = e.Graphics;
             this.GenerarEncabezado();
-            this.GenerarTicketArqueo();            
+            this.GenerarTicketArqueo();
             this.GenerarPiePagina();
         }
 
@@ -1848,7 +1880,7 @@ namespace CorParques.Transversales.Util
 
                 foreach (Articulo objArticulo in objTicketImprimir.ListaArticulos)
                 {
-                    AgregarLinea(AgregaArticulos(objArticulo.Nombre, objArticulo.Cantidad, objArticulo.Precio, objArticulo.Otro,objArticulo.Boleteria), objFont);
+                    AgregarLinea(AgregaArticulos(objArticulo.Nombre, objArticulo.Cantidad, objArticulo.Precio, objArticulo.Otro, objArticulo.Boleteria), objFont);
                     if (objArticulo.Precio > 0)
                     {
                         dblTotal = dblTotal + objArticulo.Precio;
@@ -2188,6 +2220,112 @@ namespace CorParques.Transversales.Util
 
             return ticket += parte2 + "\n";                     // agrega el segundo parametro al final
 
+        }
+
+        private void pr_PrintPageRedencion(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            this.gfx = e.Graphics;
+            this.GenerarEncabezadoRedencion();
+            //this.GenerarCodigoBarrasCortesias();
+            this.GenerarPiePagina();
+        }
+
+        private void GenerarEncabezadoRedencion()
+        {
+
+            try
+            {
+
+                if (strLogoParque.Trim().Length > 0)
+                {
+                    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
+                }
+
+                AgregarLinea(TextoCentro("C O R P A R Q U E S"));
+                AgregarLinea(TextoCentro("Nit. 830008059-1"));
+                Espacio();
+                AgregarLinea(TextoCentro(strTituloTicket), new Font(this.fontName, 8, FontStyle.Bold));
+                Espacio();
+                AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
+                Espacio();
+                //AgregarLinea(string.Concat("Documento: ", this.d));
+                //AgregarLinea(string.Concat("Valido para: ", Utilidades.ObtenerFechaActual(), "    Usos: 1"));
+                //AgregarLinea(string.Concat("Atendido por: ", strUsuario));
+                //AgregarLinea(string.Concat("Atracción: ", objListaArticulos[0].Nombre));
+                Espacio();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(string.Concat("Error en AgregarImagen_Ticket 1633: ", ex.Message));
+            }
+
+        }
+
+        #endregion
+
+        #region Ticket Pre-FActura Arazá
+        public string ImprimirTicketPreFactura()
+        {
+            string strRetorno = string.Empty;
+
+            try
+            {
+                if (PrinterExists(strImpresora))
+                {
+                    this.printFont = new Font(this.fontName, (float)this.fontSize, FontStyle.Regular);
+                    PrintDocument document = new PrintDocument
+                    {
+                        PrinterSettings = { PrinterName = strImpresora }
+                    };
+                    document.PrintPage += new PrintPageEventHandler(this.pr_PrintPageTicketPreFactura);
+                    document.Print();
+                }
+                else
+                {
+                    strRetorno = "Error: No se ha configurado la impresora.";
+                }
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error ImprimirTicketAtraccionesDestrezas: ", ex.Message);
+            }
+
+            return strRetorno;
+        }
+        private void pr_PrintPageTicketPreFactura(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+            this.gfx = e.Graphics;
+            this.GenerarEncabezadoTicketPreFactura();
+            this.GenerarDetalle();
+            AgregarLinea(LineasGuion());
+            this.GenerarPiePaginaTicketPreFactura();
+        }
+        private void GenerarEncabezadoTicketPreFactura()
+        {
+            try
+            {
+                //if (strLogoParque.Trim().Length > 0)
+                //    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
+                AgregarLinea(TextoCentro("PRE-FACTURA"), new Font(this.fontName, 9, FontStyle.Bold));
+                Espacio();
+                AgregarLinea(TextoCentro("Restaurante Arazá"));
+                AgregarLinea(TextoCentro("C O R P A R Q U E S"));
+                AgregarLinea(TextoCentro("Nit. 830008059-1"));
+                AgregarLinea(TextoCentro(string.Concat("Mesa: ", strTituloTicket)));
+                Espacio();
+                AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
+                Espacio();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(string.Concat("Error en AgregarImagen_Ticket 1738: ", ex.Message));
+            }
+        }
+        private void GenerarPiePaginaTicketPreFactura()
+        {
+            AgregarLinea(string.Concat("Atendido por: ", strUsuario));
         }
 
         #endregion

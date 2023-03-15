@@ -32,8 +32,8 @@ namespace CorParques.Presentacion.MVC.Controllers
                     {
                         objParametrovalue = Convert.ToInt64(objParametro.Valor);
                     }
-                }               
-                
+                }
+
             }
             ViewBag.BotonAnular = "";
             if (objParametrovalue == (Session["UsuarioAutenticado"] as Usuario).Id)
@@ -52,10 +52,10 @@ namespace CorParques.Presentacion.MVC.Controllers
             }
             else
             {
-                ViewBag.ListMesasActivas = ListMesasActivas.Where(l =>  (l.Estado == 1)).ToList();
+                ViewBag.ListMesasActivas = ListMesasActivas.Where(l => (l.Estado == 1)).ToList();
             }
 
-           
+
             Session["PosCont"] = true;
 
 
@@ -110,7 +110,7 @@ namespace CorParques.Presentacion.MVC.Controllers
 
             var _deztresas = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/Uso_DestrezasPOS");
 
-           
+
             List<Producto> listaAtraccionesDestrezas = _ListaTodosProductosSAP.Any(l => l.CodSapTipoProducto == _deztresas.Valor)
                 ? _ListaTodosProductosSAP.Where(l => l.CodSapTipoProducto == _deztresas.Valor).ToList()
                 : new List<Producto>();
@@ -126,14 +126,14 @@ namespace CorParques.Presentacion.MVC.Controllers
 
 
             var _servicios = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/Servicios_ventaPOS");
-           
+
             ViewBag.ListServicios = _ListaTodosProductosSAP.Any(l => l.CodSapTipoProducto == _servicios.Valor)
                 ? _ListaTodosProductosSAP.Where(l => l.CodSapTipoProducto == _servicios.Valor).ToArray()
                 : new List<Producto>().ToArray();
 
             var _pasaporte = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/Uso_PasaportePOS");
 
-           
+
             Producto[] pasaportes = _ListaTodosProductosSAP.Any(l => l.CodSapTipoProducto == _pasaporte.Valor)
                 ? _ListaTodosProductosSAP.Where(l => l.CodSapTipoProducto == _pasaporte.Valor).ToArray()
                 : new List<Producto>().ToArray();
@@ -216,7 +216,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             return Json(item, JsonRequestBehavior.AllowGet);
         }
 
-       
+
         public async Task<ActionResult> UpdateTipoAcompa(TipoAcompanamiento modelo)
         {
             //Pos / ActualizarProducto
@@ -225,11 +225,11 @@ namespace CorParques.Presentacion.MVC.Controllers
 
             return Json(resultado, JsonRequestBehavior.AllowGet);
         }
- 
+
         public async Task<ActionResult> GetPartialTipoAcompa()
         {
             var item = await GetAsync<TipoAcompanamiento>($"Puntos/ObtenerTipoAcompaRestauranteXId/{3}");
-            var  tipoacom =  new  TipoAcompanamiento();
+            var tipoacom = new TipoAcompanamiento();
             var estados1 = new TipoGeneral();
             var estados2 = new TipoGeneral();
             var listaestados = new List<TipoGeneral>();
@@ -241,7 +241,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             listaestados.Add(estados2);
 
             ViewBag.Estados = listaestados;
-            return   PartialView("../AdminRestaurante/_CreateTipoAcompanamiento", tipoacom);
+            return PartialView("../AdminRestaurante/_CreateTipoAcompanamiento", tipoacom);
         }
 
         public async Task<ActionResult> GetPartialProductos()
@@ -254,7 +254,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             return PartialView("../AdminRestaurante/_ListaProductosG", ListaTodosProductosSAP);
         }
 
- 
+
         [HttpPost]
         public async Task<ActionResult> AgregarProducAraza(List<Producto> listaProductosAgregar)
         {
@@ -285,7 +285,7 @@ namespace CorParques.Presentacion.MVC.Controllers
         }
         public async Task<ActionResult> ObtenerProdRestaurante(int id)
         {
-            
+
             var item = await GetAsync<IEnumerable<Producto>>($"Puntos/ObtenerProductoAdminRestaurante/{id}");
             ViewBag.TipoAcompaRestaurante = await GetAsync<IEnumerable<TipoGeneral>>("Puntos/ObtenerTipoAcompaRestaurante");
             ViewBag.TipoProductosRestaurante = await GetAsync<IEnumerable<TipoGeneral>>("Puntos/ObtenerTipoProductosRestaurante");
@@ -324,7 +324,7 @@ namespace CorParques.Presentacion.MVC.Controllers
         }
         [HttpPost]
         public async Task<ActionResult> PagarCompra(List<Producto> ListaProductos, List<Acompanamiento> ListaAcompa
-                                                    , int Mesa ,string NombreCliente)
+                                                    , int Mesa, string NombreCliente)
         {
 
             var resultado = new object();
@@ -344,7 +344,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             }
             catch (Exception ex)
             {
-                
+
             }
             finally
             {
@@ -522,7 +522,7 @@ namespace CorParques.Presentacion.MVC.Controllers
 
         }
 
-        public async Task<ActionResult> Acompa(int IdProducto , int IdMesa)
+        public async Task<ActionResult> Acompa(int IdProducto, int IdMesa)
         {
             var ListMesas = await GetAsync<IEnumerable<Mesa>>("Puntos/ObtenerMesas");
             ViewBag.BanderaTipoMesa = "";
@@ -551,7 +551,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             }
             else
             {
-                model =  new List<AcompanamientoXProducto>();
+                model = new List<AcompanamientoXProducto>();
                 ViewBag.ListarTipoAcompGroup = new List<TipoAcompanamiento>();
                 return PartialView("_Acompa", model);
             }
@@ -599,6 +599,38 @@ namespace CorParques.Presentacion.MVC.Controllers
             }
 
 
+        }
+
+        public JsonResult ImprimirPrefactura(List<Producto> ListaProductos, string IdMesa, string Total)
+        {
+            ServicioImprimir Imprimir = new ServicioImprimir();
+            TicketImprimir objTicket = new TicketImprimir();
+            bool Correcto = false;
+
+            try
+            {
+                objTicket.TituloRecibo = IdMesa;
+                objTicket.TituloColumnas = "Producto|Cant|Precio";
+                objTicket.Usuario = string.Concat((Session["UsuarioAutenticado"] as Usuario).Nombre, " ", (Session["UsuarioAutenticado"] as Usuario).Apellido);
+                objTicket.ListaArticulos = new List<Articulo>();
+                foreach (var producto in ListaProductos)
+                {
+                    objTicket.ListaArticulos.Add(new Articulo()
+                    {
+                        Nombre = producto.Nombre,
+                        Cantidad = producto.Cantidad,
+                        Precio = producto.Precio
+                    });
+                }
+                //throw new NullReferenceException();
+                Imprimir.ImprimirTicketPreFactura(objTicket);
+                Correcto = true;
+            }
+            catch (Exception e)
+            {
+                Correcto = false;
+            }
+            return Json(Correcto, JsonRequestBehavior.AllowGet);
         }
     }
 }

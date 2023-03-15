@@ -53,9 +53,10 @@ function successCodImp(data) {
 }
 
 function successCod1(data) {
-    //$(".loader-wrapper").css("display", "none");
     codigo = "";
+    //$(".loader-wrapper").css("display", "none");
     if (data.redirectToUrl != null) {
+        $(".loader-wrapper").css("display", "block");
         window.location.href = data.redirectToUrl;
     }
     else {
@@ -170,6 +171,7 @@ function successCodConfirmacion(data) {
     if (data.Estado) {
         document.getElementById("codConfirmacion").value = '';
         var consecutivos = $("#codigos").val();
+        $(".loader-wrapper").css("display", "block");
         window.location.href = "ImpresionBoleta?Codigo=" + consecutivos;
     }
     else {

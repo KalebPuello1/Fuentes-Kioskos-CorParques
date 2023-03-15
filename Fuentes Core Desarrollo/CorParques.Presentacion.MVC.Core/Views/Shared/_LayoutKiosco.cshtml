@@ -142,6 +142,9 @@
     }
     @RenderSection("scripts", required: false)
     <script>
+        $(window).load(function() {
+            $('#loader-1').hide();
+        });
         function cerrarSesion() {
             $('#frmLogOut').submit();
         }
