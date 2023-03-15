@@ -1242,22 +1242,23 @@ function AgregarCortesiasTarjetaFan() {
         if (lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor ) {
             bandera = true;                                    
         }
-
-        if (lstProductosCompra[i].DataExtension.split("|").length > 1 && bandera==true) {
-            var DataExtension = lstProductosCompra[i].DataExtension.split('|');        
-            EjecutarAjaxJson(urlBase + "Pos/InsertarCortesias", "post", {
-                Documento: DataExtension[0].substring(1),
-                Nombre: DataExtension[1].substring(1),
-                Correo: DataExtension[2].substring(1),
-                Genero: DataExtension[3].substring(1),
-                Telefono: DataExtension[4].substring(1),
-                FechaCumple: DataExtension[5].substring(1),
-                Direccion: DataExtension[6].substring(1),
-                CodTarjetaFAN: lstProductosCompra[i].ConseutivoDetalleProducto,
-                Foto: DataExtension[7].substring(1)
+        if (lstProductosCompra[i].DataExtension != null) {
+            if (lstProductosCompra[i].DataExtension.split("|").length > 1 && bandera == true) {
+                var DataExtension = lstProductosCompra[i].DataExtension.split('|');
+                EjecutarAjaxJson(urlBase + "Pos/InsertarCortesias", "post", {
+                    Documento: DataExtension[0].substring(1),
+                    Nombre: DataExtension[1].substring(1),
+                    Correo: DataExtension[2].substring(1),
+                    Genero: DataExtension[3].substring(1),
+                    Telefono: DataExtension[4].substring(1),
+                    FechaCumple: DataExtension[5].substring(1),
+                    Direccion: DataExtension[6].substring(1),
+                    CodTarjetaFAN: lstProductosCompra[i].ConseutivoDetalleProducto,
+                    Foto: DataExtension[7].substring(1)
                 }, "successagregarCortesias", null);
+            }
         }
-
+        
     });
 
     //if (bandera == true) {
