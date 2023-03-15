@@ -1242,6 +1242,7 @@ function AgregarCortesiasTarjetaFan() {
         if (lstProductosCompra[i].CodigoSap === parametros.CodSapClienteFan.Valor ) {
             bandera = true;                                    
         }
+        //Este cambio se realizó para actualizar las cortesias
         if (lstProductosCompra[i].DataExtension != null) {
             if (lstProductosCompra[i].DataExtension.split("|").length > 1 && bandera == true) {
                 var DataExtension = lstProductosCompra[i].DataExtension.split('|');
