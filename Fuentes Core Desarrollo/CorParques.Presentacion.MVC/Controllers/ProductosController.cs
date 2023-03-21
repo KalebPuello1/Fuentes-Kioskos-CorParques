@@ -17,6 +17,7 @@ namespace CorParques.Presentacion.MVC.Controllers
         public async Task<ActionResult> Index()
         {
             var _model = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductos");
+          
             return View(_model);
         }
 
@@ -25,8 +26,19 @@ namespace CorParques.Presentacion.MVC.Controllers
             var lista = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductos");
             return PartialView("_List", lista);
         }
-       
+        public async Task<ActionResult> PuntosEntrega()
+        {
+            var _model = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductosPtoEntrega");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Apertura/ObtenerPuntosSinApertura");
+            return View(_model);
+        }
+        public async Task<ActionResult> GetListPuntosEntrega()
+        {
 
+            var _model = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductosPtoEntrega");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Apertura/ObtenerPuntosSinApertura");
+            return PartialView("_ListPuntosEntrega", _model);
+        }
         public async Task<ActionResult> GetById(int id)
         {
             var item = await GetAsync<Producto>($"Pos/ObtenerProducto/{id}");
@@ -35,6 +47,27 @@ namespace CorParques.Presentacion.MVC.Controllers
             return PartialView("_Edit", item);
         }
 
+        public async Task<ActionResult> GetByIdPuntosEntrega(int id)
+        {
+            var item = await GetAsync<Producto>($"Pos/ObtenerProductoPtoEntrega/{id}");
+            ViewBag.Estados = await GetAsync<IEnumerable<TipoGeneral>>($"Estado/ObtenerEstados/{(int)Enumerador.ModulosAplicacion.Puntos}");
+            ViewBag.LineaProductos = await GetAsync<IEnumerable<TipoGeneral>>("Pos/ObtenerLineaProductos");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Puntos/GetAll");
+            return PartialView("_EditPuntosEntrega", item);
+        }
+        public async Task<ActionResult> UpdatePuntosEntrega(Producto modelo)
+        {
+            //Pos / ActualizarProducto
+
+            modelo.IdUsuarioModificacion = (Session["UsuarioAutenticado"] as Usuario).Id;
+            var imageOrigin = modelo.Imagen;
+
+           
+
+            var rta = await PutAsync<Producto, string>("Pos/ActualizarProductoPuntosEntrega", modelo);
+
+            return Json(new RespuestaViewModel { Correcto = rta != string.Empty, Mensaje = rta }, JsonRequestBehavior.AllowGet);
+        }
         public async Task<ActionResult> Update(Producto modelo)
         {
             //Pos / ActualizarProducto

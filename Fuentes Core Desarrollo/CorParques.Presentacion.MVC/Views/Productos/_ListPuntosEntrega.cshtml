@@ -1,0 +1,55 @@
+﻿
+@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Tipo producto
+            </th>
+            <th>
+                Código SAP
+            </th>
+            <th>
+                Ptos Entrega
+            </th>
+            <th>
+                Estado
+            </th>
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoSap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePuntos)
+                    </td>
+                    <td>
+                        @((CorParques.Transversales.Util.Enumerador.Estados)item.IdEstado)
+                    </td>
+                    <td style="text-align:center; width:50px">
+                        <a class="lnkEdit" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-pencil-square"></b></a>
+                        @*<a class="lnkDelete" data-id="@item.IdProducto" href="javascript:void(0)"><b class="fa fa-times-circle"></b></a>*@
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

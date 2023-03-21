@@ -39,7 +39,15 @@ namespace CorParques.Servicios.WebApi.Controllers
             return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
                             : Request.CreateResponse(HttpStatusCode.OK, item);
         }
-
+        [HttpGet]
+        [Route("api/Pos/ObtenerProductoPtoEntrega/{idProducto}")]
+        public HttpResponseMessage ObtenerProductoPtoEntrega(int idProducto)
+        {
+            var item = _service.ObtenerProductoPtoEntrega(idProducto);
+            return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, item);
+        }
+        
 
         [HttpGet]
         [Route("api/Pos/ObtenerFactura/{codigoFactura}")]
@@ -77,6 +85,14 @@ namespace CorParques.Servicios.WebApi.Controllers
                             : Request.CreateResponse(HttpStatusCode.OK, item);
         }
 
+        [HttpGet, Route("api/Pos/ObtenerProductosPtoEntrega")]
+        public HttpResponseMessage ObtenerProductosPtoEntrega()
+        {
+            var item = _service.ObtenerProductosPtoEntrega();
+            return item.Count() == 0 ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, item);
+        }
+        
         [HttpGet, Route("api/Pos/ObtenerListaNotaCredito")]
         public HttpResponseMessage ObtenerListaNotaCredito(int Usuario)
         {
@@ -319,6 +335,15 @@ namespace CorParques.Servicios.WebApi.Controllers
                             : Request.CreateResponse(HttpStatusCode.OK, item);
         }
 
+        [HttpPut]
+        [Route("api/Pos/ActualizarProductoPuntosEntrega")]
+        public HttpResponseMessage ActualizarProductoPuntosEntrega(Producto modelo)
+        {
+            var item = _service.ActualizarProductoPuntosEntrega(modelo);
+            return item == false ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, item);
+        }
+        
         [HttpPost]
         [Route("api/Pos/AnularFacturas")]
         public HttpResponseMessage AnularFacturas(IEnumerable<AnulacionFactura> modelo)
