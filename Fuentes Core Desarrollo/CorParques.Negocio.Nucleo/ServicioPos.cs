@@ -512,7 +512,11 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerProducto(IdProducto);
         }
-
+        public Producto ObtenerProductoPtoEntrega(int IdProducto)
+        {
+            return _repositorio.ObtenerProductoPtoEntrega(IdProducto);
+        }
+        
         public IEnumerable<TipoGeneral> ObtenerProductosDonacion()
         {
             return _repositorio.ObtenerProductosDonacion();
@@ -522,7 +526,11 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerProductos();
         }
-
+        public IEnumerable<Producto> ObtenerProductosPtoEntrega()
+        {
+            return _repositorio.ObtenerProductosPtoEntrega();
+        }
+        
         public IEnumerable<TipoGeneral> ObtenerLineaproductos()
         {
             return _repositorio.ObtenerLineaProducto();
@@ -532,7 +540,11 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ActualizarProducto(modelo);
         }
-
+        public bool ActualizarProductoPuntosEntrega(Producto modelo)
+        {
+            return _repositorio.ActualizarProductoPuntosEntrega(modelo);
+        }
+        
         public Factura ObtenerFactura(string codigoFactura)
         {
             return _repositorio.ObtenerFactura(codigoFactura);
