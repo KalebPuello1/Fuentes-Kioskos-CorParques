@@ -61,7 +61,13 @@ namespace CorParques.Datos.Dapper
             var attractions = rta.Read<Puntos>().ToList();
             return attractions;
         }
-        
+        public IEnumerable<Puntos> ObtenerPuntosXProducto(int IdProducto)
+        {
+            var rta = _cnn.QueryMultiple("SP_GetPuntosXProducto", param: new { IdProducto = IdProducto }, commandType: System.Data.CommandType.StoredProcedure);
+            var attractions = rta.Read<Puntos>().ToList();
+            return attractions;
+        }
+
         public bool EliminarLogica(int id)
         {
             var item = _cnn.Get<Puntos>(id);
