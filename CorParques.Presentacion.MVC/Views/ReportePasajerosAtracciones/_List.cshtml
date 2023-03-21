@@ -1,0 +1,97 @@
+﻿@{ 
+    var listPuntos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Puntos;
+    var listTipoProducto = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.TipoProducto;
+}
+
+
+<div class="row" id="divFechas">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Fecha Inicial
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class='input-group date' id='datetimepickerIni'>
+                <input type='text' class="form-control fechaIni required" data-mensajeerror="Este campo es obligatorio" id="txtFechaInicial" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Fecha Final
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class='input-group date' id='datetimepickerFin'>
+                <input type='text' class="form-control fechaFin required" data-mensajeerror="Este campo es obligatorio" id="txtFechaFinal" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Atracción
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <select id="DDL_Punto" class="form-control setSelect2">
+                <option value="">Seleccione...</option>
+                <option value="0">Todos</option>
+                @if (listPuntos != null && listPuntos.Count() > 0)
+                {
+                    foreach (var item in listPuntos)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Tipo producto
+        </label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <select id="DDL_TipoProducto" class="form-control setSelect2" >
+                <option value="">Seleccione...</option>
+                <option value="0">Todos</option>
+                @if (listTipoProducto != null && listTipoProducto.Count() > 0)
+                {
+                    foreach (var item in listTipoProducto)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            </label>
+            <div class="col-md-12 col-sm-8 col-xs-12">
+                <div style="text-align:right;">
+                    <button type="button" class="right btn btn-success" id="btnGrid">Vista Previa</button>
+                    @*<button type="button" class="right btn btn-success" id="btnConsultar">Consultar</button>*@
+                    <a class="btn btn-success" id="btnConsultar">
+                        <i class="fa fa-file-excel-o"></i> Exportar a Excel
+                    </a>
+                    <button type="button" class="right btn btn-danger" id="btnLimpiar">Limpiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<br />
+<div class="row" id="div_grilla"></div>

@@ -1,0 +1,47 @@
+﻿@model CorParques.Negocio.Entidades.TarifasParqueadero
+<form>
+    <div class="form-horizontal form-label-left">        
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Nombre Tarifa Parqueadero
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", @readonly = true, maxlength = 150 })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo Tarifa
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoTarifaParqueadero, new SelectList(Model.ListaTipoTarifaParqueadero, "Id", "Nombre", Model.IdTipoTarifaParqueadero), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo Vehículo
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoVehiculo, new SelectList(Model.ListaTipoVehiculo, "Id", "Nombre", Model.IdTipoVehiculo), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+            </div>
+        </div>  
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Valor
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Valor, new { @class = "form-control col-md-7 col-xs-12 required", @readonly = true, maxlength = 10 })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Estado
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+            </div>
+        </div> 
+    </div>    
+</form>

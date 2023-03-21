@@ -1,0 +1,247 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.SubTitle = "Permite proceso pos";
+    var TipoPago = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.list;
+    //var TipoCliente = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.listTipoCliente;
+    var usuario = (Session["UsuarioAutenticado"] as CorParques.Negocio.Entidades.Usuario);
+    var propina = (CorParques.Negocio.Entidades.Parametro)ViewBag.parametro;
+    //var atraccion = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.atraccion;
+    var ListaMesasA = (IEnumerable<CorParques.Negocio.Entidades.Mesa>)ViewBag.ListMesasActivas;
+    var ListAyB = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListAyB;
+    var ListSouvenir = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListSouvenir;
+    var ListAyD = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListAyD;
+    var ListServicios = ((IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListServicios).Where(x => x.Precio > 0); @* Solo muestra los productos que tengan precio *@
+    var ListPasaporte = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListPasaporte;
+    var pasaporteUso = (IEnumerable<CorParques.Negocio.Entidades.PasaporteUso>)ViewBag.pasaporteUso;
+    var pasaporteImpresion = (IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.PasaportesImpresion;
+    var ultimaFacturaPunto = (CorParques.Negocio.Entidades.Factura)ViewBag.UltimaFactura;
+    var contingencia = Session["contingencia"] == null ? 0 : (int)Session["contingencia"];
+    var ListPuntos = (IEnumerable<CorParques.Negocio.Entidades.Mesa>)ViewBag.ListPuntos;
+    var ListZonas = (IEnumerable<CorParques.Negocio.Entidades.ZonaRestaurante>)ViewBag.ListZonas;    
+    var BotonAnular = ViewBag.BotonAnular;
+}
+
+
+<link href="~/Vendors/pnotify/dist/pnotify.brighttheme.css" rel="stylesheet" />
+<link href="~/Vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
+<link href="~/Content/Pos.css" rel="stylesheet" />
+
+
+@*Tipos de producto*@
+<input type="hidden" id="inputCodSapTipoProductoAgrupaCantidad" value="0" />
+<input type="hidden" id="inputCodSapProductoAgrupaCantidad" value="0" />
+<input type="hidden" id="inputCodSapProductosDonaciones" value="0" />
+
+
+
+
+<ul class="nav nav-tabs">
+    <li id="TabPedido" class="active"><a data-toggle="tab" href="#home">Pedidos Arazá</a></li>
+    <li id="TabMesas"><a data-toggle="tab" href="#menu2">Mis Mesas</a></li>
+</ul>
+
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <br />
+        <div class="was-validated">
+
+            <div class="row" id="ConMesa" style="display:none">
+                <br />
+                <div class="col" style="text-align:center">
+                    <button type="button" class="btn btn-success" id="btnNuvMesa"><i class="fa fa-"></i>Nueva Mesa</button>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6" id="DivZonaOrigen">
+                    <label class="control-label" for="Placa">Zona</label>
+                    <select id="IdZonaOrigen" class="form-control required setSelect2" onchange="listarMesaporZona()">
+                        <option value="">*Seleccione...</option>
+                        @if (ListZonas != null && ListZonas.Count() > 0)
+                        {
+                            foreach (var item in ListZonas)
+                            {
+                                <option value="@item.IdZona">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label" for="Placa">Mesa</label>
+                    <select id="IdPuntoOrigen" class="form-control required setSelect2">
+                        <option value="">*Seleccione...</option>
+
+                    </select>
+                </div>
+
+
+
+                <div class="col-md-6" style="display:none" id="ConFactura">
+                    <label class="control-label" for="Placa">Factura <span>*</span></label>
+
+
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="input-group date " id="">
+                            <input type="text" id="inputFacturaProd" class="form-control" placeholder=" Num. Factura" />
+                            <span class="input-group-addon conusultaFactura">
+                                <i class="fa fa-search "></i>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row " id="ConPedido">
+                <br />
+                <div class="col" style="text-align:center">
+                    <button type="button" class="btn btn-success" id="btnSaveAPedido"><i class="fa fa-"></i>Abrir Pedido</button>
+                </div>
+            </div>
+            <div id="ContenedorCarta" style="display:none">
+                <div class="row ">
+                    <br />
+                    <div class="col" style="text-align:center">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home2">Carta   </a></li>
+                            <li><a data-toggle="tab" href="#menu22">Pedido  </a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home2" class="tab-pane fade in active">
+
+
+                                <div class="tipoProducto productos" id="Boleteria" style="background:none">
+
+                                </div>
+
+                                @*Lista Productos para evitar doble consulta*@
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    <script>
+                        ListaConveniosCodigoBarras  = @Html.Raw(Json.Encode(((IEnumerable<CorParques.Negocio.Entidades.Convenio>)ViewBag.ConveniosCodigoBarras)));
+                        ListaTodosProductosSAP = @Html.Raw(Json.Encode(((IEnumerable<CorParques.Negocio.Entidades.Producto>)ViewBag.ListaTodosProductosSAP)));
+
+                        tmpLista = @Html.Raw(Json.Encode(ListAyB));
+                        tmpListaAyD = @Html.Raw(Json.Encode(ListAyD));
+                        tmpListaSouvenir = @Html.Raw(Json.Encode(ListSouvenir));
+                        tmpListaServicios = @Html.Raw(Json.Encode(ListServicios));
+                        tmpListaPasaporte = @Html.Raw(Json.Encode(ListPasaporte));
+                                    </script>
+                                }
+
+                                <div class="tipoProducto productos" id="Alimentos">
+                                    @Html.Partial("_ListaProductos", Model)
+                                </div>
+
+
+                            </div>
+                            <div id="menu22" class="tab-pane fade">
+                                <br />
+                                <div id="dvProductos">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label> Total:</label>
+                        @*<label style="font-weight: bold;font-size:20px" id="total"> $0</label>*@
+                        <div id="totalPedido">
+                            <h1 style="font-weight: bold;">$0</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label" for="Placa">Cliente </label>
+                        <input type="text" id="inputNombreCliente" class="form-control" placeholder="Nombre Cliente" />
+                    </div>
+                </div>
+                <div class="row">
+                    <br />
+                    <div class="col" style="text-align:center">
+                        <button type="button" class="btn btn-success" id="btnImprimirPreFactura"><i class="fa fa-print"></i> Pre-Factura</button>
+                        <button type="button" class="btn btn-success" id="btnSavePedidoP"><i class="fa fa-"></i>Guardar</button>
+                        <button type="button" class="btn btn-success" id="btnCerrarMesa"><i class="fa fa-"></i>Cerrar mesa</button>
+                        @if (ViewBag.BotonAnular != "hidden")
+                        {
+                            <button type="button" class="btn btn-danger" id="btnAnularPedido"><i class="fa fa-"></i>Anular pedido</button>
+                        }
+                        <button type="button" class="btn btn-danger" id="btnCancelarMesa"><i class="fa fa-"></i>Cancelar</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+        <br />
+        <div class="" id="Mesas">
+            @Html.Partial("_ListaMesas", ListaMesasA)
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<br />
+
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="div_print"></div>
+    </div>
+</div>
+
+
+
+
+
+
+@section scripts{
+    <script>
+            var ValorPropina = @Html.Raw(Json.Encode(propina));
+            parametros = @Html.Raw(Json.Encode(ViewBag.parametros));
+    </script>
+
+
+    <script src="~/Vendors/pnotify/dist/pnotify.js"></script>
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Vendors/print_plugin/jquery.PrintArea.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+
+    <script src="~/Scripts/General.js"></script>
+    <script src="~/Scripts/PedidoA.js" type="text/javascript"></script>
+
+
+    <script>
+        @*@if (ViewBag.Apertura != null)
+        {
+            if (!(bool)ViewBag.Apertura)
+            {
+                @Html.Raw("MostrarMensajeRedireccion('Importante', 'El taquillero no tiene apertura', 'Home/Index', 'warning');");
+
+            }
+        }*@
+            $('[data-toggle="tooltip"]').tooltip();
+    </script>
+
+}
+
+
+

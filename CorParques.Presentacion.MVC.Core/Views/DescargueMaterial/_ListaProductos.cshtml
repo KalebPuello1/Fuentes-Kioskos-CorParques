@@ -1,0 +1,59 @@
+﻿@model List<CorParques.Negocio.Entidades.Producto>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped jambo_table" width="100%">
+        <thead>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.GroupBy(x => new { id = x.IdProducto, nombre = x.Nombre }))
+            {
+                var cantidad = Model.Where(x => x.IdProducto == item.Key.id).Count();
+
+                <tr>
+                    <td>@item.Key.nombre</td>
+                    <td><input type="text" value="@cantidad" class="form-control Cantidad Numerico" data-id="@item.Key.id" data-max="@cantidad" id="txt_@item.Key.id" /> </td>
+                    <td><input type="checkbox" data-id="@item.Key.id" checked class="ChxDescarga" id="chx_@item.Key.id" /> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        lista = @Html.Raw(Json.Encode(Model));
+        SetEventDescargueProducto();
+    </script>
+}
+else
+{
+    if (Model == null)
+    {
+        if (ViewBag.Mensaje != null)
+        {
+            <script>
+                 @Html.Raw("MostrarMensajeRedireccion('Importante', '"+ ViewBag.Mensaje+"', 'DescargueMaterial/Index', 'warning');");
+            </script>
+        }
+        else
+        {
+            <script>
+                 @Html.Raw("MostrarMensajeRedireccion('Importante', 'Factura no disponible para redencion', 'DescargueMaterial/Index', 'warning');");
+            </script>
+        }
+    }
+    else if(Model.Count == 0)
+    {
+        if (ViewBag.Mensaje != null)
+        {
+            <script>
+                 @Html.Raw("MostrarMensajeRedireccion('Importante', '"+ ViewBag.Mensaje+"', 'DescargueMaterial/Index', 'warning');");
+            </script>
+        }
+        else
+        {
+            <script>
+                 @Html.Raw("MostrarMensajeRedireccion('Importante', 'Factura no disponible para redencion', 'DescargueMaterial/Index', 'warning');");
+            </script>
+        }
+    }
+}
+

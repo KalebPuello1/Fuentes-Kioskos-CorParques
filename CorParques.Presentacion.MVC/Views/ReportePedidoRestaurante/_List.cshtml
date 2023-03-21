@@ -1,0 +1,117 @@
+﻿@{
+        ViewBag.Title = "Reporte movimiento inventario";
+        var Material = (IEnumerable<CorParques.Negocio.Entidades.Materiales>)ViewBag.Material;
+        //var Puntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.puntos;
+        var Puntos = (IEnumerable<CorParques.Negocio.Entidades.Almacen>)ViewBag.puntos;
+        var Usuarios = (IEnumerable<CorParques.Negocio.Entidades.Usuario>)ViewBag.Usuario;
+        var UnidadMedida = (List<string>)ViewBag.UnidadMedida;
+        var TiposMovimiento = (IEnumerable<CorParques.Negocio.Entidades.TipoMovimiento>)ViewBag.TiposMovimiento;
+        var ListZonas = (IEnumerable <CorParques.Negocio.Entidades.ZonaRestaurante>)ViewBag.ListZonas;
+    }
+
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerIni">
+            <input type="text" class="form-control FInicial required" id="FInicial">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Final</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerFin">
+            <input type="text" class="form-control FFinnal required" id="FFinal">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+@*#####################################################################################*@
+
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Mesero</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="IdResponsable" id="IdResponsable">
+            <option value="">* Seleccione</option>
+            @foreach (var item in Usuarios)
+            {
+                <option value="@item.Id">@string.Concat(item.Nombre, " ", item.Apellido) </option>
+            }
+
+        </select>
+    </div>
+</div>
+
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Zonas</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="IdZonaOrigen" id="IdZonaOrigen" onchange="listarMesaporZona()">
+            <option value="">* Seleccione</option>
+            @if (ListZonas != null && ListZonas.Count() > 0)
+            {
+                foreach (var item in ListZonas)
+                {
+                    <option value="@item.IdZona">@item.Nombre</option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+
+
+
+
+@*#######################################################################################*@
+
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <!--<label class="control-label col-md-4 col-sm-4 col-xs-4">Punto origen</label>-->
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Mesas</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select id="IdPuntoOrigen" class="form-control setSelect2 mesaselect" >
+            <option value="">*Seleccione...</option>
+
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    @*<label class="control-label col-md-4 col-sm-4 col-xs-4">Punto destino</label>*@
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Almacen </label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="IdPuntoDestino" id="IdPuntoDestino">
+            <option value="">* Seleccione</option>
+            @foreach (var item in Puntos)
+            {
+                <option value="@item.CodSapAlmacen">@item.CodSapAlmacen</option>
+            }
+        </select>
+    </div>
+</div>
+
+@*#######################################################################################*@
+
+@*#######################################################################################*@
+
+
+
+
+
+@*#######################################################################################*@
+
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+    <a href="javascript:void(0)" id="btnConsultarRest" class="right btn btn-success">Consultar</a>
+    <a href="javascript:void(0)" id="btnLimpiarRest" class="right btn btn-danger">Limpiar</a>
+</div>

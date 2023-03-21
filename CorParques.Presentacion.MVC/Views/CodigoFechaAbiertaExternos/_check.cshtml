@@ -1,0 +1,601 @@
+﻿@*@model List<CorParques.Negocio.Entidades.CodigoFechaAbierta>*@
+@model CorParques.Negocio.Entidades.CodigoFechaAbierta
+@{
+    //var a = "1000005594000010";
+    var a = ViewBag.cod;
+}
+<!--datatable-responsive-->
+
+
+
+@if (Model != null)
+{
+    @*<table>*@
+    if (Model.ListaListFechaAbierta != null && Model.Mostrar != "false")
+    {
+        <div style="margin-bottom: 30px; float: right;">
+            <div>
+                Pedidos:
+            </div>
+            @for (int i = 0; i < Model.ListaListFechaAbierta.Count; i++)
+            {
+                @*<div onclick=verProductosPedido(${Model.ListaListFechaAbierta[i][0].CodSapPedido})>*@
+                <div class="border-blue btn" style="height:50px; width:240px; float: left; margin-bottom: 60px;" onclick="verProductosPedido(@Model.ListaListFechaAbierta[i][0].CodSapPedido)">
+                    @Html.Label(Model.ListaListFechaAbierta[i][0].CodSapPedido)
+                </div>
+            }
+        </div>
+        using (Html.BeginForm("Recibir", "CodigoFechaAbiertaExternos", FormMethod.Post))
+        {
+            <table class="col-md-12 col-sm-12 col-xs-12 display table table-striped table-bordered">
+                <tr>
+                    @*<td style="display:none">
+                            @Html.DisplayNameFor(model => model.CodSapPedido)
+                        </td>*@
+                    @*<td style="display:none">*@
+                    <td>
+                        Pedido
+                    </td>
+                    <td style="display:none">
+                        @Html.DisplayNameFor(model => model.CodSapProducto)
+                    </td>
+                    <td>
+                        Nombre Producto
+                    </td>
+                    <td>
+                        Cantidad Inicial
+                    </td>
+                    <td>
+                        cantidad Disponible
+                    </td>
+                    @if (a == null)
+                    {
+                        <td>
+                            Cantidad Asignar
+                        </td>
+                    }
+
+
+
+                    @*<td>
+                            @Html.DisplayNameFor(model => model.CantEnviar)
+                        </td>*@
+                    <!--<td>-->
+                    @*@Html.DisplayNameFor(model => model[0].CantEnviar)*@
+                    <!--</td>-->
+                </tr>
+                @Html.AntiForgeryToken()
+                @* @if (Model.ListaListFechaAbierta.Count() > 0)
+                    {
+                        <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                                Correo electronico <span>*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-10 col-xs-12">
+                                @Html.TextBoxFor(x => x.Correo,
+                               new { placeholder = "@" })
+                            </div>
+
+                        </div>
+                        <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                                Cantidad productos enviar <span>*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-10 col-xs-12">
+                                @Html.TextBoxFor(x => x.CantEnviar,
+                             new { placeholder = "Cantidad productos enviar" })
+                            </div>
+
+                        </div>
+                        @*
+                            @Html.TextBoxFor(x => x.Correo,
+                                new { placeholder = "Correo electorinico" })
+                            @Html.TextBoxFor(x => x.CantEnviar,
+                                 new { placeholder = "Cantidad producto enviar" })
+                *@
+                <!--}
+                else
+                {
+                    <script>-->
+                @*@Html.Raw("MostrarMensajeRedireccion('Importante','" + ViewBag.mensaje + "', 'AdicionPedidos/Index' ,'warning');")*@
+                @*@Html.Raw("MostrarMensaje('Importante', '" + "El producto no se encuentra vigente o ya esta redimido, verifique si es boleta control " + "','error');")*@
+                @*   </script>
+                    }*@
+
+                @*<button class="btn btn-primary" type="submit">
+                            Enviar correo
+                        </button>
+                    </table>*@
+                @*}*@
+                @for (int i = 0; i < Model.ListaListFechaAbierta.Count; i++)
+                {
+                    @*<div>
+                            Pedidos:   @Html.Label(Model.ListaListFechaAbierta[i][0].CodSapPedido)
+                        </div>*@
+
+                    for (int ii = 0; ii < Model.ListaListFechaAbierta[i].Count; ii++)
+                    {
+                        @*if (ViewBag.cod != "" && ViewBag.cod == Model.ListaListFechaAbierta[i][ii].CodSapPedido)*@
+                        if (a == Model.ListaListFechaAbierta[i][0].CodSapPedido)
+                        {
+                            <tr>
+                                <td style="display:none">
+
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].IdProducto,
+                            new { placeholder = "IdProducto", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapTipoProducto,
+                            new { placeholder = "Cod Sap Tipo Producto", @class = "form-control" })
+                                </td>
+                                @*<td style="display:none">
+
+                                            @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapPedido,
+                                    new { placeholder = "CodSapPedido" })
+                                        </td>*@
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapProducto,
+                            new { placeholder = "CodSapProducto", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapPedido,
+                            new { placeholder = "CodSapPedido", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].Nombre,
+                         new { placeholder = "Nombre", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CantidadProducto,
+                     new { placeholder = "Disponible", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].cantidadDisponible,
+                     new { placeholder = "Disponible", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].FechaInicial,
+                                new { placeholder = "FechaInicial", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].FechaFinal,
+                                new { placeholder = "FechaFinal", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].Valor,
+                                new { placeholder = "Valor", @class = "form-control" })
+                                </td>
+                                @*<td>
+                                                @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CantEnviar,
+                                    new { placeholder = "Cantidad productos enviar" })
+                                            </td>*@
+                                <!--<td>
+                                    @*@if (item.Redencion == 1)
+                                        {
+                                            @item.FechaRedencion
+                                        }*@
+                                    @*@Html.TextBoxFor(x => x[i].CantEnviar,
+                                new { placeholder = "Cantidad Enviar" })*@
+
+                                </td>-->
+                            </tr>
+                        }
+                        else if (a == null)
+                        {
+                            <tr>
+                                <td style="display:none">
+
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].IdProducto,
+                            new { placeholder = "IdProducto", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapTipoProducto,
+                            new { placeholder = "Cod Sap Tipo Producto", @class = "form-control" })
+                                </td>
+                                @*<td style="display:none">
+
+                                            @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapPedido,
+                                    new { placeholder = "CodSapPedido" })
+                                        </td>*@
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapProducto,
+                            new { placeholder = "CodSapProducto", @class = "form-control" })
+                                </td>
+                                @if (ii == 0)
+                                {
+                                    <td rowspan="@Model.ListaListFechaAbierta[i].Count">
+                                        @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapPedido,
+                                new { placeholder = "CodSapPedido", @class = "form-control noEditable", id = "noEditable" })
+                                    </td>
+                                    <td style="display:none" rowspan="@Model.ListaListFechaAbierta[i].Count">
+                                        @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CodSapPedido,
+                                new { placeholder = "CodSapPedido", @class = "form-control" })
+                                    </td>
+                                }
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].Nombre,
+                         new { placeholder = "Nombre", @class = "form-control noEditable", id = "noEditable" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].Nombre,
+                         new { placeholder = "Nombre", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CantidadProducto,
+                     new { placeholder = "Disponible", @class = "form-control noEditable", id = "noEditable" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CantidadProducto,
+                     new { placeholder = "Disponible", @class = "form-control" })
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].cantidadDisponible,
+                     new { placeholder = "Disponible", @class = "form-control noEditable", id = "noEditable" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].cantidadDisponible,
+                     new { placeholder = "Disponible", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].FechaInicial,
+                                new { placeholder = "FechaInicial", @class = "form-control" })
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].FechaFinal,
+                                new { placeholder = "FechaFinal", @class = "form-control" })
+                                </td>
+                                <td style="display:none">
+                                    @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].Valor,
+                                new { placeholder = "Valor", @class = "form-control" })
+                                </td>
+                                @if (ii == 0)
+                                {
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ListaListFechaAbierta[i][ii].CantEnviar,
+                            new { placeholder = "Cantidad productos enviar", @class = "form-control", type = "number", min = 0, max = Model.ListaListFechaAbierta[i][0].cantidadDisponible })
+                                    </td>
+                                }
+                                <!--<td>
+                                    @*@if (item.Redencion == 1)
+                                        {
+                                            @item.FechaRedencion
+                                        }*@
+                                    @*@Html.TextBoxFor(x => x[i].CantEnviar,
+                                new { placeholder = "Cantidad Enviar" })*@
+
+                                </td>-->
+                            </tr>
+                        }
+                    }
+                }
+
+                @*Aqui va el for que corte
+                    @if (a == null)*@
+
+                <!--Esto se debe descomentar-->
+                @if (a == null)
+                {
+                    <div class="ui-widget-shadow border-blue col-md-6" style="float: left; padding: 20px; margin-bottom: 33px; ">
+                        <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                Correo electronico <span>*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-10 col-xs-12">
+                                @Html.TextBoxFor(x => x.Correo,
+                               new { id = "Correo", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                Nombre recibe <span>*</span>
+                            </label>
+                            <div class="col-md-9 col-sm-10 col-xs-12">
+                                @Html.TextBoxFor(x => x.NombreEnviado,
+                             new { id = "Nombre", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                            <div class="col-md-10 col-sm-10 col-xs-12">
+                                @*<input id="envia" class="btn btn-primary" value="Enviar correo" type="submit">*@
+                                <button id="envia" class="btn btn-primary" type="submit">
+                                    Enviar correo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @*else
+                    {
+
+                    }*@
+                @for (int i = 0; i < Model.ListaListFechaAbierta.Count; i++)
+                {
+                    if (a == Model.ListaListFechaAbierta[i][0].CodSapPedido)
+                    {
+
+                        <div class="ui-widget-shadow border-blue" style="float: left; padding: 20px; margin-bottom: 133px; ">
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                                    Correo electronico cliente <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.Correo,
+                                   new { id = "Correo", @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                                    Cantidad de productos enviar <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.CantEnviar,
+                                 new { id = "cantidad", @class = "form-control" })
+                                </div>
+
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @*<input id="envia" class="btn btn-primary" value="Enviar correo" type="submit">*@
+                                    <button id="envia" class="btn btn-primary" type="submit">
+                                        Enviar correo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                }
+
+            </table>
+        }
+        <!--<div class="item form-group col-md-12 col-sm-12 col-xs-12">-->
+        @*<label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                Cantidad de productos enviar <span>*</span>
+            </label>*@
+        <!--<div class="col-md-12 col-sm-10 col-xs-12">
+                <button class="btn btn-primary" type="submit" onclick="enviar()">
+                    Ver
+                </button>
+            </div>
+
+        </div>-->
+    }
+    else
+    {
+        if (Model.ListaListFechaAbierta != null && Model.Mostrar == "false")
+        {
+            <div style="margin-bottom: 30px; float: right;">
+                <div>
+                    Pedidos:
+                </div>
+                @for (int i = 0; i < Model.ListaListFechaAbierta.Count; i++)
+                {
+                    @*<div onclick=verProductosPedido(${Model.ListaListFechaAbierta[i][0].CodSapPedido})>*@
+                    <div class="border-blue btn" style="height:50px; width:220px; float: left; margin-bottom: 60px;" onclick="verProductosPedido(@Model.ListaListFechaAbierta[i][0].CodSapPedido)">
+                        @Html.Label(Model.ListaListFechaAbierta[i][0].CodSapPedido)
+                    </div>
+                }
+            </div>
+        }
+        if (Model.ListaCodigoFechaAbierta != null)
+        {
+            using (Html.BeginForm("Recibir", "CodigoFechaAbiertaExternos", FormMethod.Post))
+            {
+                <table class="col-md-12 col-sm-12 col-xs-12 display table table-striped table-bordered">
+                    <tr>
+                        <td style="display:none">
+                            Pedido
+                        </td>
+                        <td style="display:none">
+                            @Html.DisplayNameFor(model => model.CodSapProducto)
+                        </td>
+                        <td>
+                            Nombre Producto
+                        </td>
+                        <td>
+                            Cantidad Inicial
+                        </td>
+                        <td>
+                            cantidad Disponible
+                        </td>
+                        <!--<td>-->
+                        @*@Html.DisplayNameFor(model => model[0].CantEnviar)*@
+                        <!--</td>-->
+                    </tr>
+                    @Html.AntiForgeryToken()
+
+                    @for (int i = 0; i < Model.ListaCodigoFechaAbierta.Count; i++)
+                    {
+                        <tr>
+                            <td style="display:none">
+
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].IdProducto,
+                        new { placeholder = "IdProducto", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].CodSapTipoProducto,
+                        new { placeholder = "Cod Sap Tipo Producto", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].CodSapPedido,
+                        new { placeholder = "CodSapPedido", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].CodSapProducto,
+                        new { placeholder = "CodSapProducto", @class = "form-control" })
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].Nombre,
+                                new { placeholder = "Nombre", @class = "form-control noEditable" })
+                            </td>
+                            <td style="display:none">
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].Nombre,
+                                new { placeholder = "Nombre", @class = "form-control" })
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].CantidadProducto,
+                            new { placeholder = "Disponible", @class = "form-control noEditable" })
+                            </td>
+                            <td style="display:none">
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].CantidadProducto,
+                            new { placeholder = "Disponible", @class = "form-control" })
+                            </td>
+                            <td>
+                                @*@item.FechaFinal*@
+                                @*@item.cantidadDisponible*@
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].cantidadDisponible,
+                            new { placeholder = "Disponible", @class = "form-control noEditable" })
+                            </td>
+                            <td style="display:none">
+                                @*@item.FechaFinal*@
+                                @*@item.cantidadDisponible*@
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].cantidadDisponible,
+                            new { placeholder = "Disponible", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+                                @*@item.FechaFinal*@
+                                @*@item.cantidadDisponible*@
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].FechaInicial,
+                            new { placeholder = "FechaInicial", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+                                @*@item.FechaFinal*@
+                                @*@item.cantidadDisponible*@
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].FechaFinal,
+                            new { placeholder = "FechaFinal", @class = "form-control" })
+                            </td>
+                            <td style="display:none">
+                                @*@item.FechaFinal*@
+                                @*@item.cantidadDisponible*@
+                                @Html.TextBoxFor(x => x.ListaCodigoFechaAbierta[i].Valor,
+                            new { placeholder = "Valor", @class = "form-control" })
+                            </td>
+                            <!--<td>
+                                @*@if (item.Redencion == 1)
+                                    {
+                                        @item.FechaRedencion
+                                    }*@
+                                @*@Html.TextBoxFor(x => x[i].CantEnviar,
+                            new { placeholder = "Cantidad Enviar" })*@
+
+                            </td>-->
+                        </tr>
+
+                    }
+                    @if (a != null)
+                    {
+
+                        <div class="ui-widget-shadow border-blue col-md-6" style="float: left; padding: 20px; margin-bottom: 33px; ">
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Correo electronico cliente<span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.Correo,
+                                   new { id = "Correo", @class = "form-control", type = "email" })
+                                </div>
+
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Nombre recibe <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.NombreEnviado,
+                                 new { id = "Nombre", @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Cantidad de productos enviar <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.CantEnviar,
+                                 new { id = "cantidad", @class = "form-control required", type = "number", min = 0, max = Model.ListaCodigoFechaAbierta[0].cantidadDisponible })
+                                </div>
+                                @*@foreach (var item in collection)
+                                    {
+                                        <div class="col-md-9 col-sm-10 col-xs-12">
+                                            @Html.TextBoxFor(x => x.CantEnviar,
+                                         new { id = "cantidad", @class = "form-control", type = "number", min = 0, max = Model.ListaCodigoFechaAbierta[0].cantidadDisponible })
+                                        </div>
+                                    }*@
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    @*<input id="envia" class="btn btn-primary" value="Enviar correo" type="submit">*@
+                                    <button id="envia" onclick="enviaDato()" class="btn btn-primary" type="submit">
+                                        Enviar correo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+
+                        <div class="ui-widget-shadow border-blue col-md-6" style="float: left; padding: 20px; margin-bottom: 33px; ">
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Correo electronico cliente<span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.Correo,
+                                   new { id = "Correo", @class = "form-control", type = "email" })
+                                </div>
+
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Nombre recibe <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.NombreEnviado,
+                                 new { id = "Nombre", @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <label class="control-label col-md-3 col-sm-2 col-xs-12" for="Nombre">
+                                    Cantidad productos enviar <span>*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-10 col-xs-12">
+                                    @Html.TextBoxFor(x => x.CantEnviar,
+                                 new { id = "cantidad", @class = "form-control", type = "number", min = 1, max = Model.ListaCodigoFechaAbierta[0].cantidadDisponible })
+                                </div>
+                            </div>
+                            <div class="item form-group col-md-12 col-sm-10 col-xs-12">
+                                <div class="col-md-10 col-sm-10 col-xs-12">
+                                    @*<input id="envia" class="btn btn-primary" value="Enviar correo" type="submit">*@
+                                    <button id="envia" onclick="enviaDato()" class="btn btn-primary" type="submit">
+                                        Enviar correo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </table>
+            }
+        }
+    }
+    @*</table>*@
+}
+
+@if (ViewBag.Mensaje != null)
+{
+
+<script>
+    //MostrarMensaje("Fecha abierta ", ViewBag.Mensaje, "error")
+    //window.location = 'CodigoFechaAbiertaExternos' + '/Index';
+        @*@Html.Raw("MostrarMensajeRedireccion('Importante','" + ViewBag.Mensaje + "', 'AdicionPedidos/Index' ,'warning');") *@
+</script>
+
+
+}

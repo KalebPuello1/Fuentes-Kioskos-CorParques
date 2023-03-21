@@ -1,0 +1,72 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+@if (Model != null && Model.AperturaBrazalete != null && Model.AperturaBrazalete.Count() > 0)
+{
+
+    <label> Brazaletes</label>
+
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Codigo Sap
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Cant. Disponible
+                </th>
+                <th>
+                    Cant. Taquillero
+                </th>
+                <th style="width:15px">
+                    Cantidad
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model != null && Model.AperturaBrazalete != null)
+            {
+                foreach (var item in Model.TiposBrazaletes.Where(x => x.CantInventario > 0))
+                {
+                    if (item.IdEstado == 1)
+                    {
+                        int valorTexto = 0;
+                        int IdAperturaBrazalete = 0;
+
+                        var valorBase = Model.AperturaBrazalete.Where(x => x.IdBrazalete.Equals(item.Id));
+
+                        if (valorBase != null && valorBase.Count() > 0)
+                        {
+
+                            valorTexto = valorBase.First().CantidadFinal;
+                            IdAperturaBrazalete = valorBase.First().Id;
+
+                        }
+                        <tr>
+                            <td>
+                                @item.CodigoSap
+                            </td>
+                            <td>
+                                @item.Nombre
+                            </td>
+                            <td>
+                                @valorTexto
+                                @*<input type="text" class="form-control Brazaletes Numero" data-id="@item.Id" value="@valorTexto" style="width: 70px; padding: 10px;" readonly="readonly" />*@
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td width="50px" style="padding:1px">
+                                <input type="text" class="form-control Brazaletes" data-id2="@item.Id" data-id="@item.Id|@Model.Id" data-value="@valorTexto" value="0" style="width: 70px; padding: 10px;" onkeyup="ValidateCount(this);" maxlength="10" />
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+
+        </tbody>
+    </table>
+}

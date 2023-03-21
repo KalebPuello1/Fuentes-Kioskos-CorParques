@@ -1,0 +1,51 @@
+﻿@model CorParques.Negocio.Entidades.GestionMantenimientoControl
+
+
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(model => model.Id)
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Atracciones <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Atraccion, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el nombre de la atraccion", maxlength = "150" })
+            </div>  
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Descripcion <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite una descripción del mantenimiento realizado", maxlength = "500" })
+            </div>
+        </div>
+   
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Verificaciones 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="checkbox">
+                    @foreach (var item in Model.MantenimientoDetalle)
+                    {
+                        <label>
+                            @if (item.Verificado)
+                            {
+                                <input class="flat" name="chkatracion" type="checkbox" value="@item.IdGestion" onchange="selectcheck(this);" checked="checked" /> @item.Descripcion
+                            }
+                            else
+                            {
+                                <input class="flat" name="chkatracion" type="checkbox" value="@item.IdGestion" onchange="selectcheck(this);" />@item.Descripcion
+                            }
+
+                        </label>
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.Verificadas, new { id = "hdf_atraccionesSeleccionadas", value = "" })
+    @Html.HiddenFor(model => model.IdAtraccion, new { id = "hdf_idAtraccion", value = "" })
+</form>

@@ -1,0 +1,48 @@
+﻿
+
+@model CorParques.Negocio.Entidades.TipoAcompanamiento
+
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+<link href="~/Vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
+<form id="frmCreate">
+    <div class="form-horizontal form-label-left" style="overflow-y:auto; overflow-x: hidden ">
+        @Html.HiddenFor(model => model.IdTipoAcomp)
+
+
+
+
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Nombre
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12", maxlength = 500 })
+            </div>
+        </div>
+
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Estado
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.Estado, new SelectList(ViewBag.Estados, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+
+
+
+
+    </div>
+</form>
+<script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/Vendors/switchery/dist/switchery.min.js"></script>
+<script>
+    $(function () {
+        setFileLoad(true);
+        setEventStatus();
+    });
+</script>
+

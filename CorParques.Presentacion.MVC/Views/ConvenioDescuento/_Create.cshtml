@@ -1,0 +1,101 @@
+﻿@model CorParques.Negocio.Entidades.ConvenioDescuento
+<form id="formCrearConvenioDescuento">
+    <div class="form-horizontal form-label-left">
+        <div class="item form-group">
+            <div class="col-md-6">
+                <label class="control-label">Nombre <span>*</span></label>
+                @Html.TextBoxFor(model => model.NomConvenioDescuento, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "50" })
+            </div>
+            <div class="col-md-6">
+                <label class="control-label">Estado <span>*</span></label>
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <div class="col-md-12">
+                <label class="control-label">Descripcion <span>*</span></label>
+                @Html.TextBoxFor(model => model.DescConvenioDescuento, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "350" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <div class="col-md-3">
+                <label class="control-label">Codigo Sap <span>*</span></label>
+                @Html.TextBoxFor(model => model.CodSap, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "50" })
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Codigo Interno <span>*</span></label>
+                @Html.TextBoxFor(model => model.CodInterno, new { @class = "form-control col-md-7 col-xs-12 required", Value = "", maxlength = "9" })
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Vigencia Desde <span>*</span></label>
+                @Html.TextBoxFor(model => model.FecVigenciaDesde, new { @class = "form-control col-md-7 col-xs-12 required calendario rango", Value = "", @data_valor = "minTime", @data_comparar = "FecVigenciaHasta", data_mensaje = "La fecha de inicio debe ser menor que la fecha final" })
+            </div>
+            <div class="col-md-3">
+                <label class="control-label">Vigencia Hasta <span>*</span></label>
+                @Html.TextBoxFor(model => model.FecVigenciaHasta, new { @class = "form-control col-md-7 col-xs-12 required calendario rango", Value = "", @data_valor = "maxTime", @data_comparar = "FecVigenciaDesde", data_mensaje = "La fecha final debe ser mayor que la fecha de inicio" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="item form-group">
+                <br />
+                <label class="control-label col-md-8" style="font-weight:bold;">
+                    Descuentos Producto
+                </label>
+                <label class="control-label col-md-4">
+                    <b>%</b>
+                </label>
+            </div>
+            @if (Model != null)
+            {
+                foreach (var item in Model.ListaProductos)
+                {
+                    <div class="item form-group">
+                        <label class="control-label col-md-8" style="padding-left: 0 !important;" for="txtConvenioDescuentoProdId@(item.Id)">
+                            @(item.Nombre)
+                        </label>
+                        <div class="col-md-4">
+                            @*@Html.TextBox(item.Valor, new { @class = "form-control required" })*@
+                            <input type="text" id="txtConvenioDescuentoProdId@(item.Id)" maxlength = "10" idItem="@(item.Id)" onkeydown="return EsNumeroFloat(this);" class="form-control required itemConvenioDescuentoProducto" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="col-md-6">
+            <div class="item form-group">
+                <br />
+                <label class="control-label col-md-8" style="font-weight:bold;">
+                    Descuentos Por Linea
+                </label>
+                <label class="control-label col-md-4">
+                    <b>%</b>
+                </label>
+            </div>
+            @if (Model != null)
+            {
+                foreach (var item in Model.ListaLineas)
+                {
+                    <div class="item form-group">
+                        <label class="control-label col-md-8" style="padding-left: 0 !important;" for="txtConvenioDescuentoLineaId@(item.Id)">
+                            @(item.Nombre)
+                        </label>
+                        <div class="col-md-4">
+                            @*@Html.TextBox(item.Valor, new { @class = "form-control required" })*@
+                            <input type="text" id="txtConvenioDescuentoLineaId@(item.Id)" maxlength = "10" onkeydown="return EsNumeroFloat(this);"  idItem="@(item.Id)" class="form-control required itemConvenioDescuentoLinea" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="col-md-12 right">
+            <br />
+            <button type="button" class="btn btn-info" data-url="" data-metod="" data-function="" onclick="eventoGuardarBoton();" id="btnSaveConvenioDescuento"><i class="fa fa-"></i>Guardar</button>
+            <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnCancelConvenioDescuento">Cancelar</button>
+        </div>
+    </div>
+</form>

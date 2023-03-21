@@ -1,0 +1,42 @@
+﻿@model CorParques.Negocio.Entidades.ListaPrecio
+
+
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(model => model.Id)
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Descripción <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el nombre descriptivo de la lista", maxlength = "50" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Valor Total <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.ValorTotal, "{0:#}", new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el valor total de la lista", maxlength = "9" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Fecha Inicio <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.FechaInicioVigencia, "{0:yyyy-MM-dd}", new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Seleccione la fecha de inicio de vigencia", type = "date" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Fecha Fin <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.FechaFinVigencia, "{0:yyyy-MM-dd}", new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Seleccione la fecha fin de vigencia", type = "date" })
+            </div>
+        </div>
+    </div>
+</form>

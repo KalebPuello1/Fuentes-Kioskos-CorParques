@@ -1,0 +1,53 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+@{
+    ViewBag.Title = "Elementos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@using (Html.BeginForm("Ingresar", "Parqueadero", FormMethod.Post))
+    {*@
+<div class="form" id="formIngresoParqueadero">
+    <div class="row">
+        
+        <div class="col-md-2">
+            <br />
+            <label class="control-label" for="Placa">Fecha <span>*</span></label>
+            <input type="text" id="fechaAperturaElementos" value="@ViewBag.FechaActual" class="form-control col-md-7 col-xs-12 calendario15dias" onkeypress="return false;" />
+        </div>
+
+        <div class="col-md-4">
+            <br />
+            <label class="control-label" for="Placa">Punto <span>*</span></label>
+            @*@Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaPuntos, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" })*@
+            <select id="selectPuntoAgergarElemento" class="form-control">
+                <option value>Seleccione...</option>
+                @if (Model != null)
+                {
+                    foreach (var item in Model.ListaPuntos)
+                    {
+                        <option value="@(item.Id)">@(item.Nombre)</option>
+                    }
+                }
+            </select>
+
+            
+        </div>
+    </div>
+
+    @Html.Partial("_AdmElementos")
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <button type="button" id="btnEnviarAperturaElemento" class="btn btn-success">Guardar</button>
+            <button type="button" id="btnCancelarAperturaElemento" class="btn btn-danger">Cancelar</button>
+        </div>
+    </div>
+    @*</div>*@
+</div>
+@*}*@
+
+@section scripts{
+    <script src="~/Scripts/AperturaElementos.js"></script>
+}

@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "";
+
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corparques</title>
+    <!-- Bootstrap -->
+    @*<link href="~/Vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />*@
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/50ff3f267c.js" crossorigin="anonymous"></script>
+    @*<link href="~/Vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/Vendors/bootstrap_4.6.2/dist/css/bootstrap.min.css" />
+    <script src="~/Vendors/bootstrap_4.6.2/dist/js/jquery.slim.min.js"></script>
+    <script src="~/Vendors/bootstrap_4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    @*<link href="~/Content/kioscos.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/Content/Kioscos/_Layout.css" />
+    <link href="~/Content/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/loader.css">
+    <link href="~/Content/sweetalert2.css" rel="stylesheet" />
+
+</head>
+@*data-time="@(((System.Web.Configuration.SessionStateSection)System.Web.Configuration.WebConfigurationManager.GetSection("system.web/sessionState")).Timeout.TotalMinutes)"*@
+<body data-time="@(((System.Web.Configuration.SessionStateSection)System.Web.Configuration.WebConfigurationManager.GetSection("system.web/sessionState")).Timeout.TotalMinutes)">
+    @*<hidden id="control" value="0"></hidden>*@
+    <div id="date_complete" style="display:none;"></div>
+    <div class="loader-wrapper" id="loader-1">
+        <img src="~/Images/LOOP-MUNDO-AVENTURA_.gif" style="height: 196px; left: 50%; top: 50%; margin: -12vw 0 0 -18vw; position: absolute;" />
+    </div>
+    @{ var usuarioAutenticado = (CorParques.Negocio.Entidades.Usuario)Session["UsuarioAutenticado"];}
+    @{ var Punto = Session["InfoPunto"].ToString();}
+    @**************************************************BODY********************************************************@
+    <div class="container-fluid p-0">
+        <div id="header" class="row">
+            <div id="logo" class="col-md-2 col-2 img-container">
+                <img src="../Images/logo.png" alt="Logo-corparques" class="img-fluid logo">
+            </div>
+            <div id="banner" class="col-md-10 col-10 col">
+                <img src="../Images/Kioscos/banner.png" alt="Logo-corparques" class="img-fluid banner">
+            </div>
+        </div>
+        <div id="mensaje" class="row">
+            <div class="col-md-12">
+                <p class="msj">
+                    En este dipositivo podr&aacute;s verificar e imprimir los pasaportes digitales para mayor facilidad de ingreso a nuestras atracciones
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col">
+                <div id="contenido" class=" bg-img">
+                    <img src="../Images/Kioscos/logo-MA.png" alt="logo mundo-aventura" class="imagen">
+
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalCRUD" class="modal modal-bg" role="dialog">
+        <img src="../Images/Kioscos/logo-MA.png" alt="logo mundo-aventura" class="imagen">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-cnt-spv">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body" style="padding: 0px; text-align: center;">
+
+                </div>
+                <div class="msjErrorModal">
+                    <div id="div_message_error" class="alert alert-danger" role="alert" style="display:none;">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <label id="lbl_message_error">Error procesando la solicitud</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-url="" data-metod="" data-function="" id="btnSaveGeneric"><i class="fa fa-"></i>Guardar</button>
+                    <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnCancelGeneric">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-url="" data-metod="" data-function="" id="btnImprimirGeneric" style="display:none;">Imprimir</button>
+                    <button type="button" class="btn btn-danger" data-url="" data-metod="" data-function="" id="btnVolverGeneric" style="display:none;">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        urlBase = "@Url.Action("test", "test")";
+        urlBase = urlBase.replace("test/test", "");
+        urlServicio = "@(System.Configuration.ConfigurationManager.AppSettings["UrlService"])";
+        estadoActivo = @((int)CorParques.Transversales.Util.Enumerador.Estados.Activo);
+        contingencia = @(Session["contingencia"] == null ? 0 : (int)Session["contingencia"]);
+    </script>
+
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/General.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/ControlSesion.js"></script>
+    <script src="~/Scripts/core_for_sweetAlert2.js"></script>
+    <script src="~/Scripts/sweetalert2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="@(System.Configuration.ConfigurationManager.AppSettings["UrlService"].Replace("/api/", "/"))signalr/hubs"></script>
+    <script>
+        if(contingencia == 0){
+            $.connection.hub.url = "@(System.Configuration.ConfigurationManager.AppSettings["UrlService"].Replace("/api/", "/"))signalr";
+            $.connection.logging = true;
+            var chat = $.connection.NotificacionesHub;
+        }
+        @{
+            var usuarioInformacion = Session["UsuarioAutenticadoJSON"];
+            var PuntoInformacion = CorParques.Transversales.Util.Utilidades.ObtenerInformacionPunto(System.Configuration.ConfigurationManager.AppSettings["IdPunto"].ToString());
+            //usuarioInformacion.Password = "";
+            //usuarioInformacion.ListaMenu = null;
+            //usuarioInformacion.ListaPerfiles = null;
+            //usuarioInformacion.ListaPuntos = null;
+            //usuarioInformacion.Password2 = "";
+        }
+        var usuarioInfo = JSON.parse('@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usuarioInformacion).Replace("\n",""))');
+        var puntoInfo = JSON.parse('@Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(PuntoInformacion).Replace("\n", ""))');
+    </script>
+    @if ((Session["contingencia"] == null ? 0 : (int)Session["contingencia"]) == 0)
+    {
+        <script src="~/Scripts/SignalRNotificaciones.js"></script>
+    }
+    @RenderSection("scripts", required: false)
+    <script>
+        function cerrarSesion() {
+            $('#frmLogOut').submit();
+        }
+    </script>
+</body>
+</html>

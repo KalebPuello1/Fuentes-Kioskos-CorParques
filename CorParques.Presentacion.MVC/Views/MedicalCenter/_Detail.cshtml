@@ -1,0 +1,607 @@
+﻿@model CorParques.Negocio.Entidades.Procedimiento
+<form id="frmPrint">
+
+    <div class="form-horizontal form-label-left" style="height:400px; overflow-y:auto; overflow-x: hidden ">
+        <fieldset>
+            <legend><b>Caracterización</b></legend>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                        Consecutivo
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.IdProcedimiento, new { @class = "form-control col-md-7 col-xs-12", maxlength = 50, @readonly = true })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                        Categoría
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdCategoriaAtencion, new SelectList(Model.ListaCategoriaAtencion, "Id", "Nombre", Model.IdCategoriaAtencion), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdTipoPaciente">
+                        Tipo de paciente
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdTipoPaciente, new SelectList(Model.ListaTipoPaciente, "Id", "Nombre", Model.IdTipoPaciente), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Triage">
+                        Triage
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.Triage, new SelectList(Model.ListaTriage, "Id", "Nombre", Model.Triage), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCentroMedico">
+                        Ubicación
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdCentroMedico, new SelectList(Model.ListaUbicacion, "Id", "Nombre", Model.IdCentroMedico), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FechaIncidente">
+                        Fecha de incidente <span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.FechaIncidenteDDMMAAAA, new { @class = "form-control col-md-7 col-xs-12 required calendario", maxlength = 50, @readonly = true })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FechaIncidente">
+                        Hora de incidente <span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class='input-group date dateTime'>
+                            @Html.TextBoxFor(model => model.HoraIncidente, new { @class = "form-control required", placeholder = "HH:MM", maxlength = "8", @readonly = true })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><b>Datos del paciente</b></legend>
+
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdTipoDocumentoPaciente">
+                        Tipo de documento
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdTipoDocumentoPaciente, new SelectList(Model.ListaTipoDocumento, "Id", "Nombre", Model.IdTipoDocumentoPaciente), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DocumentoPaciente">
+                        Número documento
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.DocumentoPaciente, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 50, @readonly = true })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NombrePaciente">
+                        Nombre
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.NombrePaciente, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 100, @readonly = true })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ApellidoPaciente">
+                        Apellido
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.ApellidoPaciente, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 100, @readonly = true })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="EdadPaciente">
+                        Edad<span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.EdadPaciente, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 3, onkeydown = "return EsNumero(this);", onchange = "ValidarEdad();", @readonly = true })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="EdadPaciente">
+                        Meses<span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.Meses, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 3, onkeydown = "return EsNumero(this);", onchange = "ValidarEdad();", @readonly = true })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DireccionPaciente">
+                        Dirección
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.DireccionPaciente, new { @class = "form-control col-md-7 col-xs-12", maxlength = 100, @readonly = true })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="TelefonoPaciente">
+                        Celular/Fijo <span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.TelefonoPaciente, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 30, @readonly = true })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="CorreoPaciente">
+                        Email
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.CorreoPaciente, new { @class = "form-control col-md-7 col-xs-12 email", maxlength = 150, @readonly = true })
+                    </div>
+                </div>
+            </div>  
+
+        </fieldset>
+
+        <fieldset>
+            <legend><b>Datos del acompañante</b></legend>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdTipoDocumentoAcudiente">
+                        Tipo de documento
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdTipoDocumentoAcudiente, new SelectList(Model.ListaTipoDocumento, "Id", "Nombre", Model.IdTipoDocumentoAcudiente), "Seleccione...", new { @class = "form-control", disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="DocumentoAcudiente">
+                        Número documento
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.DocumentoAcudiente, new { @class = "form-control col-md-7 col-xs-12", maxlength = 50, @readonly = true })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NombreAcudiente">
+                        Nombre
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.NombreAcudiente, new { @class = "form-control col-md-7 col-xs-12", maxlength = 100, @readonly = true })
+                    </div>
+                </div>
+
+                <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="TelefonoAcudiente">
+                        Celular/Fijo
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.TelefonoAcudiente, new { @class = "form-control col-md-7 col-xs-12 numerico", maxlength = 30, @readonly = true })
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend><b>Procedimiento</b></legend>
+
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Causa">
+                        Motivo consulta
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextAreaFor(model => model.Causa, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 2000, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Sintomas">
+                        Síntomas
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextAreaFor(model => model.Sintomas, new { @class = "form-control col-md-7 col-xs-12", maxlength = 2000, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Alergias">
+                        Alergias
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextAreaFor(model => model.Alergias, new { @class = "form-control col-md-7 col-xs-12", maxlength = 2000, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Tratamiento">
+                        Procedimiento realizado
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextAreaFor(model => model.Tratamiento, new { @class = "form-control col-md-7 col-xs-12", maxlength = 2000, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Tratamiento">
+                        Traslado
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        <label>
+                            @Html.RadioButtonFor(model => model.Traslado, "No", new { disabled = "disabled" }) No
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(model => model.Traslado, "Si", new { disabled = "disabled" }) Si
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            @if (Model.Traslado == "Si")
+            {
+                <div class="row">
+                    <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Tratamiento">
+                            ¿Tiene EPS?
+                        </label>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 col-sm-12 col-xs-12">
+                            <label>
+                                @Html.RadioButtonFor(model => model.Eps, "No", new { disabled = "disabled" }) No
+                            </label>
+                            <label>
+                                @Html.RadioButtonFor(model => model.Eps, "Si", new { disabled = "disabled" }) Si
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                if (Model.Eps == "Si")
+                {
+                    <div class="row">
+                        <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2" for="NombreEPS">
+                                EPS
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextBoxFor(model => model.NombreEps, new { @class = "form-control col-md-7 col-xs-12", maxlength = 50, @readonly = true })
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+
+
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Recomendaciones">
+                        Observaciones
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextAreaFor(model => model.Recomendaciones, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 4000, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-2" for="NombreMedico">
+                        Funcionario
+                    </label>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 col-sm-12 col-xs-12">
+                        @Html.TextBoxFor(model => model.NombreMedico, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 100, @readonly = true, rows = "3" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+
+    <div id="div_print" style="display:none;">
+        <table border="1" class="tablaPrint">
+            <tr>
+                <td colspan="4" style="text-align: center;">
+                    <h2><b>Primeros Auxilios - Corparques Mundo Aventura</b></h2>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">
+                    <h4><b>Caracterización</b></h4>
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Consecutivo</b>
+                </td>
+                <td width="250px" colspan="3">
+                    @Model.IdProcedimiento
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Categoría</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaCategoriaAtencion.Where(x => x.Id == Model.IdCategoriaAtencion).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+                <td width="250px">
+                    <b>Tipo de paciente</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaCategoriaAtencion.Where(x => x.Id == Model.IdCategoriaAtencion).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+            </tr>
+
+            <tr>
+                <td width="250px">
+                    <b>Triage</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaTriage.Where(x => x.Id == Model.Triage).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+                <td width="250px">
+                    <b>Ubicación</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaUbicacion.Where(x => x.Id == Model.IdCentroMedico).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Fecha de incidente</b>
+                </td>
+                <td width="250px">
+                    @Model.FechaIncidenteDDMMAAAA
+                </td>
+                <td width="250px">
+                    <b>Hora de incidente</b>
+                </td>
+                <td width="250px">
+                    @Model.HoraIncidente
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">
+                    <h4><b>Datos del paciente</b></h4>
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Tipo de documento</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaTipoDocumento.Where(x => x.Id == Model.IdTipoDocumentoPaciente).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+                <td width="250px">
+                    <b>Número documento</b>
+                </td>
+                <td width="250px">
+                    @Model.DocumentoPaciente
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Nombre</b>
+                </td>
+                <td width="250px">
+                    @Model.NombrePaciente
+                </td>
+                <td width="250px">
+                    <b>Apellido</b>
+                </td>
+                <td width="250px">
+                    @Model.ApellidoPaciente
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Edad</b>
+                </td>
+                <td width="250px">
+                    @Model.EdadPaciente
+                </td>
+                <td width="250px">
+                    <b>Meses</b>
+                </td>
+                <td width="250px">
+                    @Model.Meses
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Dirección</b>
+                </td>
+                <td width="250px">
+                    @Model.DireccionPaciente
+                </td>
+                <td width="250px">
+                    <b>Celular/Fijo</b>
+                </td>
+                <td width="250px">
+                    @Model.TelefonoPaciente
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Email</b>
+                </td>
+                <td width="250px">
+                    @Model.CorreoPaciente
+                </td>
+                <td width="250px"></td>
+                <td width="250px"></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">
+                    <h4><b>Datos del acompañante</b></h4>
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Tipo de documento</b>
+                </td>
+                <td width="250px">
+                    @Model.ListaTipoDocumento.Where(x => x.Id == Model.IdTipoDocumentoAcudiente).Select(x => x.Nombre).FirstOrDefault()
+                </td>
+                <td width="250px">
+                    <b>Número documento</b>
+                </td>
+                <td width="250px">
+                    @Model.DocumentoAcudiente
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Nombre</b>
+                </td>
+                <td width="250px">
+                    @Model.NombreAcudiente
+                </td>
+                <td width="250px">
+                    <b>Celular/Fijo</b>
+                </td>
+                <td width="250px">
+                    @Model.TelefonoAcudiente
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">
+                    <h4><b>Procedimiento</b></h4>
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Motivo de consulta</b>
+                </td>
+                <td colspan="3">
+                    @Model.Causa
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Síntomas</b>
+                </td>
+                <td colspan="3">
+                    @Model.Sintomas
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Alergias</b>
+                </td>
+                <td colspan="3">
+                    @Model.Alergias
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Procedimiento realizado</b>
+                </td>
+                <td colspan="3">
+                    @Model.Tratamiento
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Traslado</b>
+                </td>
+                <td colspan="3">
+                    @Model.Traslado
+                </td>
+            </tr>
+
+            @if (Model.Traslado == "Si")
+            {
+                <tr>
+                    <td width="250px">
+                        <b>¿Tiene EPS?</b>
+                    </td>
+                    <td width="250px">
+                        @Model.Eps
+                    </td>
+                    <td width="250px">
+                        <b>EPS</b>
+                    </td>
+                    <td width="250px">
+                        @Model.NombreEps
+                    </td>
+                </tr>
+            }
+
+
+
+            <tr>
+                <td width="250px">
+                    <b>Observaciones</b>
+                </td>
+                <td colspan="4">
+                    @Model.Recomendaciones
+                </td>
+            </tr>
+            <tr>
+                <td width="250px">
+                    <b>Funcionario</b>
+                </td>
+                <td width="250px">
+                    @Model.NombreMedico
+                </td>
+                <td colspan="2">
+                    <b>Firma: </b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Firma del paciente o acompañante</b>
+                </td>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: left;">
+                    @Model.Notas
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</form>
