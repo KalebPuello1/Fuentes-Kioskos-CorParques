@@ -681,6 +681,11 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerTodosProductosRestaurante();
         }
+        public IEnumerable<Producto> ObtenerProductosXPuntoSurtido()
+        {
+            return _repositorio.ObtenerProductosXPuntoSurtido();
+        }
+        
 
         public RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo)
         {
