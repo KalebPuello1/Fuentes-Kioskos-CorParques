@@ -20,6 +20,7 @@ namespace CorParques.Negocio.Nucleo
         private readonly IRepositorioUsuario _repositorioUsuario;
         private readonly IRepositorioParametros _repositorioParametros;
         private readonly IEnvioMails _Email;
+        private readonly IRepositorioCodigoFechaAbierta _EmailInv;
 
         #region Constructor
         public ServicioInventario(IRepositorioInventario repositorio, IRepositorioProducto repositorioProducto, IRepositorioParametros repositorioParametros, IEnvioMails email, IRepositorioUsuario repositorioUsuario, IRepositorioCodigoFechaAbierta emailinv)
@@ -28,8 +29,10 @@ namespace CorParques.Negocio.Nucleo
             _repositorioParametros = repositorioParametros;
             _Email = email;
             _repositorioUsuario = repositorioUsuario;
-			_repositorio = repositorio;
-		}
+            _repositorio = repositorio;
+            _EmailInv = emailinv;
+
+        }
 
         public bool Actualizar(TransladoInventario modelo)
         {
@@ -204,10 +207,19 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.CrearSolicitudRetorno(modelo);
         }
-        public bool enviarMail(string to, string subject, string mensaje, MailPriority mpPriority, List<string> attachment) {
-          bool envio;
-          return  envio = _Email.EnviarCorreo(to, subject, $"Gracias por la atención prestada.<br/><br/>{mensaje}", System.Net.Mail.MailPriority.High, attachment);
+        public bool EnviarCorreo(string to, string subject, string mensaje, MailPriority mpPriority, List<string> attachment)
+        {
+            bool envio;
+            return envio = _EmailInv.EnviarCorreo(to, subject, mensaje, mpPriority, attachment);
         }
+
+        public string InsertarDetalleInventarioFisico(IEnumerable<Materiales> _Materiales)
+        {
+            var dato = _repositorio.InsertarDetalleInventarioFisico(_Materiales);
+            return dato;
+        }
+
+
 
         #endregion
     }

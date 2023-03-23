@@ -295,7 +295,7 @@ namespace CorParques.Datos.Dapper
                                col1 = x.IdMedioPago.ToString(),
                                col2 = x.Valor.ToString(),
                                col3 = x.NumReferencia != null ? x.NumReferencia.ToString() : null,
-                               col4 = x.IdFranqicia.ToString(),
+                               col4 = x.IdFranquicia.ToString(),
                                col5 = x.Cambio.ToString(),
                                col6 = x.FechaCreacion.ToString("yyyy-MM-dd hh:mm:ss"),
                            }))

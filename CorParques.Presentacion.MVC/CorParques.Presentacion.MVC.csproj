@@ -962,8 +962,8 @@
     <Content Include="Views\AdminMensajesVisual\_Edit.cshtml" />
     <Content Include="Views\AdminMensajesVisual\_List.cshtml" />
     <Content Include="Views\Reagendamiento\_CheckFactura.cshtml" />
-    <Content Include="Views\ReporteVentasPorConveni\Index.cshtml" />
-    <Content Include="Views\ReporteVentasPorConveni\_List.cshtml" />
+    <Content Include="Views\ReporteVentasPorConvenio\Index.cshtml" />
+    <Content Include="Views\ReporteVentasPorConvenio\_List.cshtml" />
     <Content Include="Views\Productos\PuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_ListPuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_EditPuntosEntrega.cshtml" />

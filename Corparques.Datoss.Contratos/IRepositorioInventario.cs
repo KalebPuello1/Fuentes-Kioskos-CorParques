@@ -29,6 +29,7 @@ namespace CorParques.Datos.Contratos
         string ActualizarPedidoTrasladado(int idPunto, string pedido);
         IEnumerable<TipoGeneral> ConsultarMotivosRetorno();
         string CrearSolicitudRetorno(SolicitudRetorno modelo);
-      
+        //bool EnviarCorreo(string to, string subject, string mensaje, MailPriority mpPriority, List<string> attachmentt);
+        string InsertarDetalleInventarioFisico(IEnumerable<Materiales> _Materiales);
     }
 }

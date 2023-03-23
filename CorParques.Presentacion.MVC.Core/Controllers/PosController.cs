@@ -96,7 +96,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var _ListaTodosProductosSAP = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerTodosProductos");
             ViewBag.ListaTodosProductosSAP = _ListaTodosProductosSAP;
 
-            //Obtienes los productos asociados a un codigoSapTipoProducto
+            //Obtienes los productos asociados a un codigoSapTipoProducto 
             //var _model = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerProductoPorTipoProducto/{_csAyB.CodigoSap}");
 
             var _aybProp = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AYB_Mundo_NaturalPOS");
@@ -808,7 +808,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                 }
 
                                 aplicaImprersionParqueadero = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AplicaImpresionParqueadero");
-
                                 if (aplicaImprersionParqueadero.Valor != "0")
                                 {
                                     List<Producto> productoImpresionParqueadero = new List<Producto>();
@@ -816,7 +815,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
                                     foreach (var item in productoImpresionParqueadero)
                                     {
-
                                         if (productoImpresionParqueadero != null)
                                         {
                                             string sCodBarrasPark = item.IdDetalleProducto.ToString("000000000000");
@@ -834,13 +832,39 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                                 Precio = item.Precio,
                                                 TituloColumnas = "Valido para|Cant"
                                             });
-
                                             objImprimir.ImprimirCupoDebito(objServicios);
                                             error = "PARQUEADERO";
                                         }
                                     }
                                 }
+                                /*Nueva impresion Souvenir*/
+                                //Parametro aplicaImprersionSouvenir = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/aplicaImpresionSouvenir");
+                                //if (aplicaImprersionSouvenir.Valor != "0")
+                                //{
+                                //    Producto productoImpresionSouvenir = new Producto();
+                                //    productoImpresionSouvenir = ListaProductos.Where(x => x.CodSapTipoProducto == idProductoSouvenir.Valor).ToList();
 
+                                //    foreach (var item in productoImpresionSouvenir)
+                                //    {
+                                //        if (productoImpresionSouvenir != null)
+                                //        {
+                                //            TicketImprimir objSouvenir = new TicketImprimir();
+                                //            objSouvenir.TituloRecibo = "Souvenir";
+                                //            objSouvenir.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
+                                //            objSouvenir.TituloColumnas = "Valido para|Cant";
+                                //            objSouvenir.ListaArticulos = new List<Articulo>();
+                                //            objSouvenir.ListaArticulos.Add(new Articulo()
+                                //            {
+                                //                Nombre = productoImpresionSouvenir.Nombre,
+                                //                Cantidad = item.Cantidad,
+                                //                Precio = item.Precio,
+                                //                TituloColumnas = "Valido para|Cant"
+                                //            });
+                                //            objImprimir.ImprimirCupoDebito(objSouvenir);
+                                //            error = "Souvenir";
+                                //        }
+                                //    }
+                                //}
                                 Parametro aplicaImprersionAyB = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AplicaImpresionAyB");
 
                                 if (aplicaImprersionAyB.Valor != "0")
@@ -873,36 +897,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                 }
 
 
-                                /*Nueva impresion Souvenir*/
-                                Parametro aplicaImprersionSouvenir = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/aplicaImpresionSouvenir");
-
-                                if (aplicaImprersionSouvenir.Valor != "0")
-                                {
-                                    foreach (var item in facturaDetalleImprimir.DetalleFactura)
-                                    {
-                                        Producto productoImpresionDescarga = new Producto();
-                                        //valor : 2025 --> idProducto: 685
-                                        productoImpresionDescarga = ListaProductos.Where(x => (idProductoDescarga.Valor.Contains(x.CodSapTipoProducto) && x.Entregado == false && x.IdProducto == item.Id_Producto)).FirstOrDefault();
-
-                                        if (productoImpresionDescarga != null)
-                                        {
-                                            TicketImprimir objAlimento = new TicketImprimir();
-                                            objAlimento.TituloRecibo = "Souvenir";
-                                            objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
-                                            objAlimento.TituloColumnas = "Valido para|Cant";
-                                            objAlimento.ListaArticulos = new List<Articulo>();
-                                            objAlimento.ListaArticulos.Add(new Articulo()
-                                            {
-                                                Nombre = productoImpresionDescarga.Nombre,
-                                                Cantidad = item.Cantidad,
-                                                Precio = item.Precio,
-                                                TituloColumnas = "Valido para|Cant"
-                                            });
-                                            objImprimir.ImprimirCupoDebito(objAlimento);
-                                            error = "Souvenir";
-                                        }
-                                    }
-                                }
+                                
 
 
                                 if (!Contingencia)
