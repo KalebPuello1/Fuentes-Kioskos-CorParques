@@ -22,6 +22,13 @@ namespace CorParques.Datos.Dapper
 
         }
 
+        public IEnumerable<Puntos> ObtenerPuntosSurtido()
+        {
+
+            return _cnn.Query<Puntos>("SP_ObtenerPuntosSurtido", commandType: System.Data.CommandType.StoredProcedure).ToList();
+
+        }
+
         public IEnumerable<Puntos> ObtenerPuntosParaAperturaElementos()
         {
             return _cnn.Query<Puntos>("SP_RetornarPuntosFechaElementos"

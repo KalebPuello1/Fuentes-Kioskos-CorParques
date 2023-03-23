@@ -11,6 +11,8 @@ namespace CorParques.Negocio.Contratos
     public interface IServicioApertura : IServicioBase<Apertura>
     {
         IEnumerable<Puntos> ObtenerPuntosSinApertura(DateTime? Fecha = null);
+        IEnumerable<Puntos> ObtenerPuntosSurtido();
+        
         IEnumerable<Puntos> ObtenerPuntosConApertura(DateTime? Fecha = null);
 
         IEnumerable<Puntos> ObtenerPuntosParaAperturaElementos();
