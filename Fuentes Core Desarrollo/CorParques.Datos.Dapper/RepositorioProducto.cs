@@ -522,18 +522,10 @@ namespace CorParques.Datos.Dapper
         public DescargueBoletaControl ObtenerListaDescargue(string CodBarra)
         {
             var _rta = new DescargueBoletaControl();
-            try
-            {
-                var rta = _cnn.QueryMultiple("SP_ObtenerProductosBoleteria", new { codigoBarras = CodBarra }, commandType: System.Data.CommandType.StoredProcedure);
-                _rta.Productos = rta.Read<Producto>();
-                _rta.Mensaje = rta.Read<string>().Single();
-                return _rta;
-            }
-            catch (Exception ex)
-            {
-                Utilidades.RegistrarErrorContingencia(ex, "RepositorioProducto_ObtenerListaDescargue");
-                return null;
-            }
+            var rta = _cnn.QueryMultiple("SP_ObtenerProductosBoleteria", new { codigoBarras = CodBarra }, commandType: System.Data.CommandType.StoredProcedure);
+            _rta.Productos = rta.Read<Producto>();
+            _rta.Mensaje = rta.Read<string>().Single();
+            return _rta;
         }
 
 
