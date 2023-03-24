@@ -91,6 +91,22 @@ namespace CorParques.Datos.Dapper
             return objProducto;
 
         }
+        public Producto ObtenerProductoPtoEntrega(int idProducto)
+        {
+            Producto objProducto = new Producto();
+
+            objProducto = _cnn.Query<Producto>("SP_ObtenerProductoPtoEntrega",
+                                                param: new { IdProducto = idProducto },
+                                                commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            if (objProducto != null)
+            {
+                objProducto.objListaRecetaProducto = ObtenerRecetaProducto(idProducto);
+            }
+
+            return objProducto;
+
+        }
 
         public IEnumerable<TipoGeneral> ObtenerProductosDonacion()
         {
@@ -196,6 +212,22 @@ namespace CorParques.Datos.Dapper
             return _lis;
         }
 
+        public IEnumerable<Producto> ObtenerProductosPtoEntrega()
+        {
+            IEnumerable<Producto> _lis = new List<Producto>();
+
+            try
+            {
+                _lis = _cnn.Query<Producto>("SP_ObtenerProductosPtoEntrega", commandType: CommandType.StoredProcedure);
+
+            }
+            catch
+            {
+                throw;
+            }
+
+            return _lis;
+        }
         public IEnumerable<TipoGeneral> ObtenerLineaProducto()
         {
             return _cnn.GetList<LineaProducto>().Select(x => new TipoGeneral { Id = x.Id, Nombre = x.Nombre, CodSAP = x.CodigoSap });
@@ -216,7 +248,21 @@ namespace CorParques.Datos.Dapper
 
             return rta.Single();
         }
+        public bool ActualizarProductoPuntosEntrega(Producto modelo)
+        {
+            var rta = _cnn.Query<bool>("SP_ActualizarProductoPuntosEntrega", commandType: CommandType.StoredProcedure, param: new
+            {
+                IdProducto = modelo.IdProducto,
+                IdUsuarioModificacion = modelo.IdUsuarioModificacion,
+                IdPunto = modelo.hdListPuntos
+                //Nombre = modelo.Nombre,
+                //IdEstado = modelo.IdEstado,
+                //IdLineaProducto = modelo.IdLineaProducto
+            });
 
+            return rta.Single();
+        }
+        
         /// <summary>
         /// Obtener Factura
         /// </summary>
