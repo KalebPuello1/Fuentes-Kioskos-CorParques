@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.CierreElementos>
+
+<div class="x_content" id="div_Taquillero">
+    <div class="item form-group">
+        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="Taquillero">
+            Supervisor <span>*</span>
+        </label>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            @Html.DropDownList("DDL_Usuario", new SelectList(ViewBag.Usuarios, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2" })
+        </div>
+        <div class="col-md-12">
+            <br />
+        </div>
+        <div id="ContenidoElementos">
+            @Html.Partial("_DetalleElementos_Nido", Model)
+        </div>
+    </div>
+</div>

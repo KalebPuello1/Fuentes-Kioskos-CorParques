@@ -1,0 +1,62 @@
+﻿@model CorParques.Negocio.Entidades.NotaCredito
+
+@{
+    ViewBag.Title = "Nota Crédito";
+    ViewBag.SubTitle = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Pos.css" rel="stylesheet" />
+
+<form id="frmNotaCredito">
+    <div class="row" style="padding: 15px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 id="IdNombreSupervisor"></h3>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Digitar el número tal  como aparece en la factura</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control required" placeholder="# Factura" id="txtNumeroFactura" maxlength="14" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12 col.sm-12 col-xs-12" id="listaProductos">
+                <div id="listView">
+                    @Html.Partial("_NotaCredito", Model)
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" class="btn btn-success" value="Buscar" id="btnAceptarNotaCredito" />
+                <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelarNotaCredito" />
+            </div>
+        </div>
+
+    </div>
+</form>
+@section Scripts{
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/NotaCredito.js"></script>
+    <script>
+        EjecutarAjax(urlBase + "Cuenta/ObtenerLoginSupervisor", "GET", null, "printPartialModal", {
+            title: "Confirmación supervisor", hidesave: true, modalLarge: false, OcultarCierre: true
+        });
+
+        function ObtenerIdSupervisor(id, nombre) {
+            
+            IdSupervisor = id;
+            $("#IdNombreSupervisor").html("Supervisor: " + nombre);
+        }
+    </script>
+
+}

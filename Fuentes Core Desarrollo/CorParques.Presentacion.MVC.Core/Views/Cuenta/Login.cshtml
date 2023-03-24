@@ -36,7 +36,9 @@
         <div class="login_wrapper">
             <div class="animate form login_form">
                 <section class="login_content">
+
                     <form id="frmLogin" action="@Url.Action("Login","Cuenta")" method="post" autocomplete="off">
+
 
                         <h1>Iniciar sesión</h1>
                         @*<div class="form-group">
@@ -57,8 +59,15 @@
                                 <input type="text" class="required" id="txtUser" name="user" style="width:0px; height:0px; border:0px; background-color:transparent;" placeholder="Acerque su carnet al lector." autofocus />
                             </div>
                         </div>
+
+
                         <div style="text-align:center;">
                             <p class="label label-danger" id="lblError" style="display:none; font-size:20px;"></p>
+                        </div>
+
+
+                        <div class="form-group center">
+                            <a onclick="document.getElementById('txtUserM').value = ''" class="btn btn-primary btnDefault" id="BtnIngresarManual">Ingresar manual</a>
                         </div>
 
                         @*<div class="form-group center">
@@ -72,6 +81,45 @@
                             </div>
                         </div>
                     </form>
+
+                    @* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *@
+
+                    <div id="FrmLoginManual" action="@Url.Action("Login","Cuenta")" method="post" autocomplete="off">
+
+                        <h1>Iniciar sesión</h1>
+                        <h1>manual</h1>
+
+
+                        <div class="form-group">
+                            <div>
+                                <input onfocus="this.value=''" type="text" class="form-control required" id="txtUserM" name="userM" maxlength="50" placeholder="Digíte su n° de usuario..." />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*<div>
+                                    <input type="password" class="form-control required Password2" id="Password2M" name="pwdM" maxlength="50" placeholder="Digíte su contraseña..." />
+                                </div>*@
+                        </div>
+
+                        <div style="text-align:center;">
+                            <p class="label label-danger" id="lblErrorM" style="display:none; font-size:20px;"></p>
+                        </div>
+
+                        <div>
+                            <a id="btnValidarSegundaClaveM" href="javascript:void(0)" class="btn btn-success">Aceptar</a>
+                            <a id="btnCancelarM" href="javascript:void(0)" class="btn btn-danger">Cancelar</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="separator">
+                            <div>
+                                <h1></h1>
+                                <p>©2017 Todos los derechos reservados. Corparques.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </section>
             </div>
         </div>

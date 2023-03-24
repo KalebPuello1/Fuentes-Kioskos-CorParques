@@ -1,0 +1,50 @@
+﻿@model CorParques.Negocio.Entidades.ControlParqueadero
+
+@{
+    ViewBag.Title = "Ingresar al Parquedero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Ingresar", "Parqueadero", FormMethod.Post))
+{
+    <div class="form" id="formIngresoParqueadero">
+        @*<div class="item form-group">*@
+            
+            <div class="row">
+                <div class="col-md-2">
+                    @*<a href="javascript:void(0)" id="lnkSalir">
+                        <b style="font-size:xx-large" class="fa fa-share-square"></b> 
+                    </a>*@
+                    <button type="button" id="lnkSalir" class="btn btn-danger">Salida Vehiculo</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <br />
+                    <label class="control-label" for="Placa">Placa <span>*</span></label>
+                    @Html.TextBoxFor(model => model.Placa, new { @id = "textBoxPlaca", @class = "form-control required", @style = "text-transform:uppercase", @autocomplete = "off", placeholder = "", maxlength=10 })
+                </div>
+
+                @Html.HiddenFor(model => model.IdTipoVehiculo, new { @id = "hiddenIdTipoVehiculo" })
+                <div class="col-md-4">
+                    <br />
+                    <div id="listView">
+                        @Html.Partial("_ListTipoVehiculo", Model)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="button" id="btnEnviarIngreso" class="btn btn-success">Guardar</button>
+                    <button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+                </div>
+            </div>
+        @*</div>*@
+    </div>
+}
+
+@section scripts{
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/ParqueaderoIngreso.js"></script>
+}

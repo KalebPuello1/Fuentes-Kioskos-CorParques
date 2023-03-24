@@ -42,3 +42,25 @@ C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.T
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.csproj.CopyComplete
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.dll
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Debug\CorParques.Transversales.Util.pdb

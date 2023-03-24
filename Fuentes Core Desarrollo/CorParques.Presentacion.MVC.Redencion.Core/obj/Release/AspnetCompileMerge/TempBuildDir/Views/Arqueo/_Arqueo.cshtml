@@ -1,0 +1,178 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Arqueo>
+
+@{
+    var ListNotaCredito = (CorParques.Negocio.Entidades.TipoGeneral)ViewBag.NotaCredito;
+    var ListAnulaciones = (CorParques.Negocio.Entidades.TipoGeneral)ViewBag.Anulaciones;
+    var ListaBrazalete = (IEnumerable<CorParques.Negocio.Entidades.CierreBrazalete>)ViewBag.Brazaletes;
+    double TotalVentas = 0;
+    double Base = 0;
+    double Recolectado = 0;
+    double BaseCaja = 0;
+
+    if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            TotalVentas += item.Total;
+            Base = item.Base;
+            Recolectado = item.RecoleccionBase;
+            BaseCaja = item.TotalCajaBase;
+        }
+    }
+}
+
+@if (Model != null)
+{
+
+    <h2><label>Total Ventas:  </label><label class="formato_moneda">  @TotalVentas </label></h2>
+
+    <br />
+    <label>Base</label>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table jambo_table">
+                            <tr class="headings">
+                                <th>Base</th>
+                                <th>Recaudo Base</th>
+                                <th>Base en caja</th>
+
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td class="formato_moneda">@Base</td>
+                                    <td class="formato_moneda">@Recolectado</td>
+                                    <td class="formato_moneda">@BaseCaja</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <label>Contenido en caja</label>
+            <br />
+            <table class="table jambo_table">
+                <tr class="headings">
+                    <th>Forma recaudo</th>
+                    <th>Total recaudo</th>
+                    <th>Recolección</th>
+                    <th>Total en caja</th>
+                    <th style="width:50px">Revisión supervisor </th>
+                    <th>Diferencia</th>
+                </tr>
+                <tbody id="bodyElementosApertura">
+                    @if (Model != null)
+                                    {
+                                        int contador = 0;
+                                        foreach (var item in Model)
+                                        {
+
+                                    <tr>
+                                        <td class="Tipo">@item.Tipo</td>
+                                        <td class="formato_moneda">@item.Total</td>
+                                        <td class="formato_moneda">@item.Recoleccion</td>
+                                        <td class="formato_moneda">@item.MontoCaja</td>
+                                        <td><input type="text" id="Cantidad_@contador" data-id="@item.MontoCaja" class="Numero mon" onkeyup="Total(this);" /> </td>
+                                        <td><div id="Total_@contador" data-codsap="" class="Valor" data-id="@contador"> </div></td>
+                                    </tr>
+                                            contador++;
+                                        }
+                                    }
+
+                </tbody>
+            </table>
+
+    if (ListNotaCredito != null)
+    {
+
+        <label>Notas Crédito</label>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table jambo_table">
+                        <tr class="headings">
+                            <th>Cantidad</th>
+                            <th>Valor</th>
+                        </tr>
+                        <tbody id="bodyElementosApertura">
+                            <tr>
+                                <td>@ListNotaCredito.Id</td>
+                                <td class="formato_moneda"><label>@ListNotaCredito.Nombre</label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    if (ListAnulaciones != null)
+    {
+
+        <label>Anulaciones</label>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table jambo_table">
+                        <tr class="headings">
+                            <th>Cantidad</th>
+                            <th>Valor</th>
+                        </tr>
+                        <tbody id="bodyElementosApertura">
+                            <tr>
+                                <td>@ListAnulaciones.Id</td>
+                                <td class="formato_moneda"><label>@ListAnulaciones.Nombre</label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+    if (ListaBrazalete != null)
+    {
+
+        <label> Brazaletes </label>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table jambo_table">
+                        <tr class="headings">
+                            <th>Codigo Sap</th>
+                            <th>Nombre</th>
+                            <th>Asignados</th>
+                            <th>Total vendidos</th>
+                            <th>Ajustes</th>
+                            <th>Caja</th>
+                            <th>Revision</th>
+                            <th>Diferencia</th>
+                        </tr>
+                        <tbody>
+                            @{int contador = 0; }
+                            @foreach (var item in ListaBrazalete)
+                            {
+                                <tr>
+                                    <td> @item.CodigoSap </td>
+                                    <td> @item.TipoBrazalete </td>
+                                    <td> @item.Asignados </td>
+                                    <td> @item.TotalVendidos </td>
+                                    <td> @item.TotalDiferencia </td>
+                                    <td> @item.EnCaja </td>
+                                    <td><input type="text" id="CantidadBrazalete_3" data-id="@item.EnCaja" class="Numero" onkeyup="Total(this);" /> </td>
+                                    <td><div id="TotalBrazalete_3" class="ValorBrazalete" data-codsap="@item.CodigoSap" data-id="@contador"> </div></td>
+                                </tr>
+                                contador++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+}

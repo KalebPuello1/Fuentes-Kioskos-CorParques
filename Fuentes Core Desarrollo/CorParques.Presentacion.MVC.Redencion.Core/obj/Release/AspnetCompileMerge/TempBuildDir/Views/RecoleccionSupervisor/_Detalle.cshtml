@@ -1,0 +1,311 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.CabeceraDetalleRecoleccion>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuario = ViewBag.Usuario;
+    var IdRecolecciones = ViewBag.IdRecolecciones;
+    var IdApertura = ViewBag.IdApertura;
+    var IdUsuarioCreacion = ViewBag.IdUsuarioCreacion;
+    int total = 0;
+}
+<script src="~/Vendors/bootstrap/dist/js/bootstrap.3.3.7.min.js"></script>
+<script src="~/Vendors/jquery/dist/jquery-1.11.1.min.js"></script>
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    var contador = 1;
+    <input type="text" id="txtUsuario" name="txtUsuario" value="@usuario" hidden />
+    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header btn-primary">
+                    <h4 class="modal-title">Detalle Recolección</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        @foreach (var item in Model)
+                        {
+                            <div class="panel">
+                                <a class="panel-heading" role="tab" id="headingOne-@contador" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne-@contador" aria-expanded="true" aria-controls="collapseOne">
+                                    <h4 class="panel-title">Recolección @contador</h4>
+                                </a>
+                                <div id="collapseOne-@contador" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#Sobre</th>
+                                                    <th>Tipo</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var detalle in item.objDetalle)
+                                                {
+                                                    <tr>
+                                                        <th scope="row">@detalle.NumeroSobre</th>
+                                                        @if (detalle.TipoRecoleccion == "Documentos" || detalle.TipoRecoleccion == "Voucher")
+                                                        {
+                                                            <td>Sobre @detalle.TipoRecoleccion</td>
+                                                            <td>@string.Format(" {0:C0}", detalle.Total)</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (detalle.TipoRecoleccion == "Novedad")
+                                                            {
+                                                                <td>Sobre @detalle.Tipo @detalle.TipoRecoleccion</td>}
+                                                            else
+                                                            {
+                                                                <td>Sobre @string.Concat(detalle.Tipo, "s") @detalle.TipoRecoleccion</td>}
+                                                            <td>@string.Format(" {0:C0}", detalle.Total)</td>                                                            
+
+                                                        }
+
+                                                        @{total += detalle.Total;}
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            contador++;
+                        }
+                    </div>
+                    <h2>
+                        Total: @string.Format(" {0:C0}", total)
+                    </h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnOk" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    //Modal de aprobación
+    <div id="modalCRUD" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header btn-primary">
+                    <h4 class="modal-title">Confirmación taquillero</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="control-label">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <input type="password" class="form-control required" placeholder="Contraseña" id="txtPassword" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="ccol-md-12 col-sm-12 col-xs-12">
+                            <label class="control-label">Observaciones</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <textarea rows="2" cols="40" class="form-control" placeholder="Observaciones" id="txtObservaciones" maxlength="500"></textarea>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarLogin" />
+                            <a id="btnCancelar" href="javascript:void(0)" onclick="CancelLogin()" class="btn btn-danger">Cancelar</a>
+                            <input type="text" id="IdApertura" name="IdApertura" value="@IdApertura" hidden />
+                            <input type="text" id="IdUsuarioCreacion" name="IdUsuarioCreacion" value="@IdUsuarioCreacion" hidden />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/General.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myModal").modal();
+        $("#btnOk").click(function () {
+
+            abrirModal("modalCRUD");
+            //EjecutarLogin($("#txtUsuario").val());
+        });
+
+        $("#btnAceptarLogin").click(function () {
+            if ($('#txtPassword').val() == "") {
+                $('#txtPassword').attr("data-mensajeerror", "Este campo es obligatorio");
+                $('#txtPassword').addClass("errorValidate");
+            };
+            //if ($('#txtObservaciones').val() == "") {
+            //    $('#txtObservaciones').attr("data-mensajeerror", "Este campo es obligatorio");
+            //    $('#txtObservaciones').addClass("errorValidate");
+            //};
+            mostrarTooltip()
+            if ($('#txtPassword').val() != "") {
+                var usuario = $("#txtUsuario").val();
+                var clave = $('#txtPassword').val()
+                var observacion = $('#txtObservaciones').val();
+                ValidaClave(usuario, clave, observacion)
+            }
+        });
+
+        $("#txtPassword").keypress(function (event) {
+            if (event.which == 13) {
+                if ($('#txtPassword').val() == "") {
+                    $('#txtPassword').attr("data-mensajeerror", "Este campo es obligatorio");
+                    $('#txtPassword').addClass("errorValidate");
+                };
+
+                mostrarTooltip()
+                if ($('#txtPassword').val() != "") {
+                    var usuario = $("#txtUsuario").val();
+                    var clave = $('#txtPassword').val()
+                    var observacion = $('#txtObservaciones').val();
+                    ValidaClave(usuario, clave, observacion)
+                }
+            }
+        });
+    });
+
+    function EjecutarLogin(usuario) {
+        $("#lblError").hide();
+        $("#Cambiopwd").hide();
+        $("#Password2").val("");
+        $('#Observaciones').val("");
+        EjecutarAjax(urlBase + "Cuenta/Login", "POST", JSON.stringify({ user1: usuario }), "SuccessLogin", null);
+    }
+
+    function ValidaClave(usuario, clave, observacion) {
+        if (validarFormulario("modalCRUD .modal-body")) {
+            EjecutarAjax(urlBase + "RecoleccionSupervisor/ValidaClave", "POST", JSON.stringify({ usuario: usuario, clave: clave, observacion: observacion }), "SuccessLogin", null);
+        }
+    }
+
+    function SuccessLogin(data) {
+        if (data.Correcto) {
+            if (data.Mensaje === "OK") {
+                iniciarProceso();
+                GuardarObservacion();
+                cerrarModal("modalCRUD");
+                cerrarModal("myModal");
+                return;
+            }
+            abrirModal("modalCRUD");
+            return;
+        }
+        else {
+            abrirModal("modalCRUD");
+            if (data.Mensaje === "Usuario o contraseña incorrectos") {
+                MostrarMensaje("Importante", "Contraseña incorrecta", "error");
+            }
+            return;
+        }
+        $("#txtUser").val("");
+        $("#Password2").val("");
+        $("#lblError").html(data.Mensaje);
+        $("#lblError").show();
+        $('#ObservacionTaquillero').val("");
+        $('#ObservacionSupervisor').val("");
+    }
+
+    function mensajeCancelar(data, parametros) {
+        
+        if (data != "1")
+            MostrarMensaje("Importante", "Se presentó un error actualizando el estado de la recolección, intente nuevamente.", "error");
+        document.location = urlBase + "RecoleccionSupervisor/Index";
+    }
+
+    function CancelLogin() {
+        cerrarModal("modalCRUD");
+        $("#txtUser").val("");
+        $("#Password2").val("");
+        $("#lblError").hide();
+        $('#ObservacionTaquillero').val("");
+        $('#ObservacionSupervisor').val("");
+        document.location = urlBase + "RecoleccionSupervisor/Index";
+        
+        //EjecutarAjax(urlBase + "RecoleccionSupervisor/RegresarRecoleccion", "POST", JSON.stringify({ IdApertura: $('#IdApertura').val() }), "mensajeCancelar", null);
+    }
+
+    function GuardarObservacion(usuario, clave, observacion) {
+        if (validarFormulario("modalCRUD .modal-body")) {
+            var IdApertura = $('#IdApertura').val();
+            var IdUsuarioCreacion = $('#IdUsuarioCreacion').val();
+            var observacion = $('#txtObservaciones').val();
+            EjecutarAjax(urlBase + "RecoleccionSupervisor/GuardaObservacion", "POST", JSON.stringify({ observacion: observacion, IdApertura: IdApertura, IdUsuarioCreacion: IdUsuarioCreacion }), "SuccessObservacion", null);
+        }
+    }
+
+    function SuccessReturn(data) {
+        document.location = urlBase + "RecoleccionSupervisor/Index";
+    }
+
+    function SuccessEnd(data) {
+        if (data == "") {
+            MostrarMensajeRedireccion("Importante", "Su operación fue exitosa.", "RecoleccionSupervisor/Index", "success");
+        }
+        else {
+            MostrarMensaje("Importante", data, "error");
+        }
+    }
+
+    function SuccessObservacion(data) {
+        if (data.Correcto) {
+            if (data.Mensaje === "OK") {
+                cerrarModal("modalCRUD");
+                cerrarModal("myModal");
+
+                MostrarMensajeRedireccion("Importante", "Su operación fue exitosa.", "RecoleccionSupervisor/Index", "success");
+                return;
+            }
+            abrirModal("modalCRUD");
+            return;
+        }
+        else {
+            abrirModal("modalCRUD");
+            if (data.Mensaje === "Usuario o contraseña incorrectos") {
+                MostrarMensaje("Importante", "Contraseña incorrecta", "error");
+            }
+            return;
+        }
+        $("#txtUser").val("");
+        $("#Password2").val("");
+        $("#lblError").html(data.Mensaje);
+        $("#lblError").show();
+        $('#ObservacionTaquillero').val("");
+        $('#ObservacionSupervisor').val("");
+    }
+    function MensajeRedireccionCerrar(Titulo, Mensaje, UrlRedireccion, Tipo) {
+        var Type = "";
+        if (Tipo != undefined) {
+            Type = Tipo;
+        }
+        swal({
+            title: Titulo,
+            text: Mensaje,
+            showCancelButton: true,
+            closeOnConfirm: true,
+            type: Type,
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        }).then(function () {
+            if (UrlRedireccion != null) {
+                if (urlBase.length > 1) {
+                    window.location = urlBase + UrlRedireccion;
+                } else if (UrlRedireccion.substr(0, 1) == "/") {
+                    window.location = UrlRedireccion;
+                } else {
+                    window.location = "/" + UrlRedireccion;
+                }
+            }
+        }).catch(swal.noop);
+    }
+</script>

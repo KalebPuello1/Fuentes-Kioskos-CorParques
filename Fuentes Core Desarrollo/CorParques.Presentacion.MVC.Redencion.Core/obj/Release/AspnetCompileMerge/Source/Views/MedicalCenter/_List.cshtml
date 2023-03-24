@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Procedimiento>
+
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Consecutivo
+            </th>
+            <th>
+                Categoría
+            </th>
+            <th>
+                Ubicación 
+            </th>
+            <th>
+                Tipo documento
+            </th>
+            <th>
+                Número de documento
+            </th>
+            <th>
+                Nombre paciente
+            </th>             
+            <th>
+                Fecha Atención
+            </th>               
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdProcedimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UbicacionMedica)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoDocumento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocumentoPaciente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePaciente) @Html.DisplayFor(modelItem => item.ApellidoPaciente)
+                    </td>                 
+                    <td>
+                        @item.FechaIncidente.ToString("yyyy/MM/dd HH:mm")
+                    </td> 
+                    <td style="text-align:center; width:50px">
+                        <a class="lnkDetail" data-id="@item.IdProcedimiento" href="javascript:void(0)"><b class="fa fa-eye"></b></a>
+                        <a class="lnkEdit" data-id="@item.IdProcedimiento" href="javascript:void(0)"><b class="fa fa-pencil-square"></b></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

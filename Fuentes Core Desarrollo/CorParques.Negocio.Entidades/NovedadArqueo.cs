@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CorParques.Negocio.Entidades
 {
-    [Table("TB_NOTIFICACION")]
+    [Table("TB_NovedadArqueo")]
     public class NovedadArqueo
     {
         [Key]
@@ -20,6 +20,9 @@ namespace CorParques.Negocio.Entidades
         public int TipoNovedad { get; set; }
         public double Valor { get; set; }
         public DateTime FechaCreado { get; set; }
+
+        //FALTA ID_APERTURA EN EL MODELO
+
         public int UsuarioCreado { get; set; }
         public int? UsuarioModificado { get; set; }
         public DateTime? FechaModificado { get; set; }

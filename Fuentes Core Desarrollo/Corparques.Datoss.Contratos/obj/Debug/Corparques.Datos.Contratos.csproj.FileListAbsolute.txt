@@ -20,3 +20,14 @@ C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.D
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CopyComplete
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.dll
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Debug\Corparques.Datos.Contratos.pdb

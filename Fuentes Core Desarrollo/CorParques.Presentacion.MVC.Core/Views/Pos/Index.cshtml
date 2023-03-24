@@ -422,8 +422,8 @@
 
                 <div class="tipoProducto productos" id="Alimentos">
                     @Html.Partial("_ListaProductos", Model)
-                </div>
 
+                </div>
                 <div class="tipoProducto productos" id="Souvenir">
                     @Html.Partial("_ListaProductos", ListSouvenir)
                 </div>
@@ -698,14 +698,14 @@
 
         <script src="~/Scripts/General.js"></script>
         <script>
-        @*@if (ViewBag.Apertura != null)
+        @if (ViewBag.Apertura != null)
         {
             if (!(bool)ViewBag.Apertura)
             {
                 @Html.Raw("MostrarMensajeRedireccion('Importante', 'El taquillero no tiene apertura', 'Home/Index', 'warning');");
 
             }
-        }*@
+        }
             $('[data-toggle="tooltip"]').tooltip();
         </script>
 

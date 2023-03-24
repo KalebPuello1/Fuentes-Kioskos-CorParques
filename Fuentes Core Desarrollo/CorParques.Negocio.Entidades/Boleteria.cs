@@ -54,6 +54,11 @@ namespace CorParques.Negocio.Entidades
         [Column("EsMedioPago")]
         public bool EsMedioPago { get; set; }
 
+        [Column("App")]
+        public int App { get; set; }
+
+        [Column("Origen")]
+        public int Origen { get; set; }
 
         [Column("IdUsuarioBloqueo")]
         public int? IdUsuarioBloqueo { get; set; }
