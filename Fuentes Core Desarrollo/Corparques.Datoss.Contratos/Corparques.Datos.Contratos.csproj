@@ -102,6 +102,7 @@
     <Compile Include="IRepositorioReporteSoporteIT.cs" />
     <Compile Include="IRepositorioReporteUsuarioApp.cs" />
     <Compile Include="IRepositorioReporteVentasPorConvenio.cs" />
+    <Compile Include="IRepositorioReporteFANVendidas.cs" />
     <Compile Include="IRepositorioReporte_SI_Consumo_SF_FechaAbierta.cs" />
     <Compile Include="IRepositorioTipoRedencionCortesia.cs" />
     <Compile Include="IRepositorioUsuarioVisitante.cs" />

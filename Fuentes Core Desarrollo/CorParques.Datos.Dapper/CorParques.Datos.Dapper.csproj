@@ -71,6 +71,7 @@
     <Compile Include="RepositorioReporteSoporteIT.cs" />
     <Compile Include="RepositorioReporteUsuarioApp.cs" />
     <Compile Include="RepositorioReporteVentasPorConvenio.cs" />
+    <Compile Include="RepositorioReporteFANVendidas.cs" />
     <Compile Include="RepositorioReporte_SI_Consumo_SF_FechaAbierta.cs" />
     <Compile Include="RepositorioTipoRedencionCortesia.cs" />
     <Compile Include="RepositorioUsuarioVisitante.cs" />

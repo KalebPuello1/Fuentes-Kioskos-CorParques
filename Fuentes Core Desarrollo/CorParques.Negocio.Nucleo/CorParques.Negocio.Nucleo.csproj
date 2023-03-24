@@ -79,6 +79,7 @@
     <Compile Include="ServicioReporteVentasDiarias.cs" />
     <Compile Include="ServicioReporteRecoleccion.cs" />
     <Compile Include="ServicioReporteVentasPorConvenio.cs" />
+    <Compile Include="ServicioReporteFANVendidas.cs" />
     <Compile Include="ServicioReporteVentasPorProducto.cs" />
     <Compile Include="ServicioReporteVentasPorHora.cs" />
     <Compile Include="ServicioReporteRedFechaAbierta.cs" />

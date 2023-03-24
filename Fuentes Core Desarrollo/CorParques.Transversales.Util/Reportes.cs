@@ -960,6 +960,28 @@ namespace CorParques.Transversales.Util
             return GenerarReporteExcel(listas, elementosMostrar, "ReporteVentasPorConvenio");
         }
 
+        public string GenerarReporteFanVendidas(IEnumerable<ReporteFANVendidas> listas)
+        {
+            List<Parametro> elementosMostrar = new List<Parametro>();
+            elementosMostrar.Add(new Parametro { Nombre = "IdBoleteria", Valor = "IdBoleteria" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdProducto", Valor = "IdProducto" });
+            elementosMostrar.Add(new Parametro { Nombre = "Consecutivo", Valor = "Consecutivo" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdSolicitudBoleteria", Valor = "IdSolicitudBoleteria" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdEstado", Valor = "IdEstado" });
+            elementosMostrar.Add(new Parametro { Nombre = "Valor", Valor = "Valor" });
+            elementosMostrar.Add(new Parametro { Nombre = "CodigoVenta", Valor = "CodigoVenta" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaImpresion", Valor = "FechaImpresion" });
+            elementosMostrar.Add(new Parametro { Nombre = "Documento", Valor = "Documento" });
+            elementosMostrar.Add(new Parametro { Nombre = "Nombre", Valor = "Nombre" });
+            elementosMostrar.Add(new Parametro { Nombre = "Correo", Valor = "Correo" });
+            elementosMostrar.Add(new Parametro { Nombre = "Telefono", Valor = "Telefono" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaNacimiento", Valor = "FechaNacimiento" });
+            elementosMostrar.Add(new Parametro { Nombre = "Genero", Valor = "Genero" });
+            elementosMostrar.Add(new Parametro { Nombre = "Direccion", Valor = "Direccion" });
+
+            return GenerarReporteExcel(listas, elementosMostrar, "ReporteTarjetasFANVendidas");
+        }
+
         #endregion
     }
 }

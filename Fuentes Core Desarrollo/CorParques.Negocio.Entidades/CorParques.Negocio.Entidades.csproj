@@ -84,6 +84,7 @@
     <Compile Include="ReportePedidoRestaurante.cs" />
     <Compile Include="ReporteVentasPorConvenio.cs" />
     <Compile Include="ReporteVentasPorConvenioFiltros.cs" />
+    <Compile Include="ReporteFANVendidas.cs" />
     <Compile Include="Reporte_SI_Consumo_SF_FechaAbierta.cs" />
     <Compile Include="SolicitudCodigo.cs" />
     <Compile Include="TipoCortesia.cs" />
