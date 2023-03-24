@@ -39,9 +39,14 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 if (Codigo.StartsWith("BC"))
                 {
                     var codBarras = Codigo.Replace("BC", "");
-                    ViewBag.ImpresionEnLinea = false;
+                    var rta = await GetAsync<DescargueBoletaControl>($"Pos/ObtenerListaProductoBoleta/{codBarras}/{IdUsuarioLogueado}");
+
+                    if (rta.Mensaje.Contains("boleta no"))
+                        ViewBag.ImpresionEnLinea = false;
+                    else
+                        ViewBag.ImpresionEnLinea = true;
+
                     ViewBag.Consecutivos = Codigo;
-                    //var rta = await GetAsync<DescargueBoletaControl>($"Pos/ObtenerListaProductoBoleta/{codBarras}/{IdUsuarioLogueado}");
                 }
                 else if (Codigo.StartsWith("Blt"))
                 {
@@ -243,8 +248,8 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             if (Codigo.StartsWith("BC"))
             {
                 string codBoletaCtrl = Codigo.Replace("BC", "");
-                //Imprimir bol boleta control
-                return null;
+                var rta = await DescargueBoleta(codBoletaCtrl);
+                return rta;
             }
             else if (Codigo.StartsWith("Blt"))
             {
@@ -618,6 +623,115 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             }
             return Json(respuesta, JsonRequestBehavior.AllowGet);
         }
+
+        private async Task<JsonResult> DescargueBoleta(string codBoletaCtrl)
+        {
+            ImpresionEnLinea impresion = new ImpresionEnLinea();
+            PosController pos = new PosController();
+            List<Producto> lp = new List<Producto>();
+            List<ImpresionEnLineaConsecutivos> listConsecutivos = new List<ImpresionEnLineaConsecutivos>();
+            RespuestaViewModel respuestaViewModel = new RespuestaViewModel();
+            //ImprimirBoletaControl modelo = new ImprimirBoletaControl();
+
+            IEnumerable<Producto> brazaletes = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerPasaportesActivos");
+            var productosImpresion = await GetAsync<List<Producto>>($"Pos/VerPasaportesCodigoPedido/{codBoletaCtrl}");
+            impresion.listaProductos = productosImpresion.OrderBy(x => x.CodSapTipoProducto == "2000").ToList();
+
+            foreach (var item in productosImpresion)
+            {
+                Producto temp = await GetAsync<Producto>($"Pos/ValidarImpresionEnLinea/{item.CodigoSap}");
+                if (item.CodSapTipoProducto == "2000" && temp.Nombre != "No existe el producto o es exeption")
+                {
+                    Producto producto = new Producto();
+                    item.AplicaImpresionLinea = true;
+                    Producto productoImpresion = brazaletes.Where(x => x.CodigoSap == item.CodigoSap).First();  //
+                    productoImpresion.IdUsuarioModificacion = IdUsuarioLogueado;                                //
+                    var respuesta = await PostAsync<Producto, string>("Pos/RegistrarCodigoBoleteriaImpresionLinea", productoImpresion);
+                    impresion.producto = item;
+                    producto = await pos.asignarBoleta(impresion, item, temp, brazaletes, respuesta);
+                    if (producto != null)
+                    {
+                        ImpresionEnLineaConsecutivos consecutivoAdicion = new ImpresionEnLineaConsecutivos
+                        {
+                            idProducto = producto.IdProducto,
+                            consecutivos = new string[1],
+                            primero = producto.CodBarraInicio
+                        };
+                        consecutivoAdicion.consecutivos[0] = producto.CodBarraInicio;
+                        listConsecutivos.Add(consecutivoAdicion);
+                    }
+                    lp.Add(item);
+                }
+                else
+                {
+                    item.UsuarioCreacion = IdUsuarioLogueado.ToString();
+                    item.IdUsuarioModificacion = IdUsuarioLogueado;
+                    lp.Add(item);
+                }
+            }
+
+            impresion.listConsecutivos = listConsecutivos;
+
+            if (lp.Count() == productosImpresion.Count())
+            {
+                ImpresionEnLinea registroRollo = new ImpresionEnLinea();
+                List<Producto> l_productos = new List<Producto>();
+                int restantes = await ConsultarRestantes();
+                ImprimirBoletaControl modelo = new ImprimirBoletaControl
+                {
+                    ListaProductos = productosImpresion,
+                    CodBarraInicio = codBoletaCtrl,
+                    CodBarraFinal = "",
+                    IdUsuario = IdUsuarioLogueado
+                };
+
+                var rta = await PostAsync<ImprimirBoletaControl, RedencionBoletaControl>("Pos/ObtenerCodBarrasBoletaControl", modelo);//
+                if (rta.Correcto)
+                {
+                    foreach (var item in productosImpresion.Where(x => x.AplicaImpresionLinea))
+                    {
+                        Producto productoImpresion = brazaletes.Where(x => x.CodigoSap == item.CodigoSap).First();
+                        var rtaImpresion = imprimirImpresionEnLinea(item, productoImpresion, item.CodBarraInicio);
+                        if (!rtaImpresion.Equals("")) respuestaViewModel.Elemento += item.CodBarraInicio + "|";
+                        else
+                        {
+                            restantes -= 1;
+                            l_productos.Add(item);
+                        }
+                    }
+
+                    var objRespuesta = (RedencionBoletaControl)rta.Elemento;
+                    if (objRespuesta.modeloImprimir != null)
+                    {
+                        ServicioImprimir objImprimir = new ServicioImprimir();
+                        foreach(var item in objRespuesta.modeloImprimir)
+                        {
+                            var objTicket = new TicketImprimir();
+                            objTicket.TituloRecibo = item.TituloRecibo;
+                            objTicket.CodigoBarrasProp = item.CodigoBarrasProp;
+                            objTicket.TituloColumnas = item.TituloColumnas;
+                            objTicket.ListaArticulos = new List<Articulo>();
+                            objTicket.ListaArticulos.Add(new Articulo() { Nombre = item.Nombre, Cantidad = 1, Precio = item.Precio, TituloColumnas = item.TituloColumnas });
+                            objImprimir.ImprimirCupoDebito(objTicket);
+                        }
+                    }
+                }
+
+                if (respuestaViewModel.Elemento == null)
+                {
+                    registroRollo.listaProductos = l_productos;
+                    //await pos.registrarRolloInventario(registroRollo, IdUsuarioLogueado);
+                    respuestaViewModel.Correcto = true;
+                }
+                else
+                {
+                    respuestaViewModel.Correcto = false;
+                    respuestaViewModel.Mensaje = "Error imprimiendo los pasaportes en linea";
+                }
+            }
+            return Json(respuestaViewModel, JsonRequestBehavior.AllowGet);
+        }
+
         public string pruebaImpError()
         {
             return "Error imprimiendo en linea";
