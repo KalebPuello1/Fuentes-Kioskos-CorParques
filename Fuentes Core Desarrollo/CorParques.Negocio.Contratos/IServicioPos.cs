@@ -27,10 +27,18 @@ namespace CorParques.Negocio.Contratos
         string InsertarCompra(PagoFactura modelo, ref string Error);
         string ValidarCompra(PagoFactura modelo);
         Producto ObtenerProducto(int IdProducto);
+        Producto ObtenerProductoPtoEntrega(int IdProducto);
+        Producto ObtenerProductoPtoFactura(int IdProducto);
+
         IEnumerable<Producto> ObtenerProductos();
+        IEnumerable<Producto> ObtenerProductosPtoEntrega();
+        IEnumerable<Producto> ObtenerProductosPtoFactura();
+        
         IEnumerable<TipoGeneral> ObtenerLineaproductos();
         IEnumerable<TipoGeneral> ObtenerProductosDonacion();
         bool ActualizarProducto(Producto modelo);
+        bool ActualizarProductoPuntosEntrega(Producto modelo);
+        bool ActualizarProductoPuntosFactura(Producto modelo);
         Factura ObtenerFactura(string codigoFactura);
         Factura ObtenerFactura(int idFactura);
         int GuardarNotaCredito(NotaCredito modelo);
@@ -51,6 +59,10 @@ namespace CorParques.Negocio.Contratos
         string DescargarProductosInstitucional(ImprimirBoletaControl modelo);
         string DescargueBoletaFactura(List<Producto> listaProductos);
         IEnumerable<Producto> ObtenerTodosProductos();
+
+        IEnumerable<Producto> ObtenerProductosXPuntoSurtido();
+
+        
         IEnumerable<Producto> ObtenerTodosProductosRestaurante();
         
         RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo);

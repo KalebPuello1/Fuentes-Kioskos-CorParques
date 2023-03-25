@@ -156,5 +156,12 @@ namespace CorParques.Negocio.Entidades
         [Editable(false)]
         public DateTime FechaBoleteria { get; set; }
 
+        public string IdPuntos { get; set; }
+        public string NombrePuntos { get; set; }
+
+        public List<Puntos> ListaPuntos { get; set; }
+        public string hdListPuntos { get; set; }
+        public int IdPunto { get; set; }
+
     }
 }

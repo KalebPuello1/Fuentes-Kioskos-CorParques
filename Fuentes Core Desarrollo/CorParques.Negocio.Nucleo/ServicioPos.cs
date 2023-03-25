@@ -512,6 +512,14 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerProducto(IdProducto);
         }
+        public Producto ObtenerProductoPtoEntrega(int IdProducto)
+        {
+            return _repositorio.ObtenerProductoPtoEntrega(IdProducto);
+        }
+        public Producto ObtenerProductoPtoFactura(int IdProducto)
+        {
+            return _repositorio.ObtenerProductoPtoFactura(IdProducto);
+        }
 
         public IEnumerable<TipoGeneral> ObtenerProductosDonacion()
         {
@@ -522,7 +530,15 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerProductos();
         }
-
+        public IEnumerable<Producto> ObtenerProductosPtoEntrega()
+        {
+            return _repositorio.ObtenerProductosPtoEntrega();
+        }
+        public IEnumerable<Producto> ObtenerProductosPtoFactura()
+        {
+            return _repositorio.ObtenerProductosPtoFactura();
+        }
+        
         public IEnumerable<TipoGeneral> ObtenerLineaproductos()
         {
             return _repositorio.ObtenerLineaProducto();
@@ -531,6 +547,14 @@ namespace CorParques.Negocio.Nucleo
         public bool ActualizarProducto(Producto modelo)
         {
             return _repositorio.ActualizarProducto(modelo);
+        }
+        public bool ActualizarProductoPuntosEntrega(Producto modelo)
+        {
+            return _repositorio.ActualizarProductoPuntosEntrega(modelo);
+        }
+        public bool ActualizarProductoPuntosFactura(Producto modelo)
+        {
+            return _repositorio.ActualizarProductoPuntosFactura(modelo);
         }
 
         public Factura ObtenerFactura(string codigoFactura)
@@ -657,6 +681,11 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerTodosProductosRestaurante();
         }
+        public IEnumerable<Producto> ObtenerProductosXPuntoSurtido()
+        {
+            return _repositorio.ObtenerProductosXPuntoSurtido();
+        }
+        
 
         public RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo)
         {

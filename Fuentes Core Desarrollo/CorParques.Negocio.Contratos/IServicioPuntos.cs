@@ -14,6 +14,7 @@ namespace CorParques.Negocio.Contratos
         bool Eliminar(int id);
         IEnumerable<Puntos> ObtenerxTipoPunto(int IdTipoPunto);
         IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario);
+        IEnumerable<Puntos> ObtenerPuntosXProducto(int IdProducto);
         
         bool ActualizaHoraIdPunto(string HoraInicio, string HoraFin, int IdTipoPunto);
 
