@@ -288,7 +288,6 @@
     <Content Include="Scripts\FacturacionExterno.js" />
     <Content Include="Scripts\Facturacion.js" />
     <Content Include="Scripts\ProductoPtoEntrega.js" />
-    <Content Include="Scripts\ProductoPtoFactura.js" />
     <Content Include="Scripts\Reagendamiento.js" />
     <Content Include="Scripts\LoginExterno.js" />
     <Content Include="Scripts\Login.js" />
@@ -968,9 +967,6 @@
     <Content Include="Views\Productos\PuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_ListPuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_EditPuntosEntrega.cshtml" />
-    <Content Include="Views\Productos\PuntosFactura.cshtml" />
-    <Content Include="Views\Productos\_ListPuntosFactura.cshtml" />
-    <Content Include="Views\Productos\_EditPuntosFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Contratos\CorParques.Negocio.Contratos.csproj">

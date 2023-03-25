@@ -161,7 +161,7 @@ namespace CorParques.Negocio.Entidades
 
         public List<Puntos> ListaPuntos { get; set; }
         public string hdListPuntos { get; set; }
-        public int IdPunto { get; set; }
+        
 
     }
 }

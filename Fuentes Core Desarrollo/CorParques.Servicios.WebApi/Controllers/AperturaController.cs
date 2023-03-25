@@ -37,15 +37,7 @@ namespace CorParques.Servicios.WebApi.Controllers
                             : Request.CreateResponse(HttpStatusCode.OK, list);
         }
         //
-        [HttpGet]
-        [Route("api/Apertura/ObtenerPuntosSurtido")]
-        public HttpResponseMessage ObtenerPuntosSurtido()
-        {
-            var list = _service.ObtenerPuntosSurtido();
-            return list.Count() == 0 ? Request.CreateResponse(HttpStatusCode.NotFound)
-                            : Request.CreateResponse(HttpStatusCode.OK, list);
-        }
-        
+
         [HttpGet]
         [Route("api/Apertura/ObtenerPuntosParaAperturaElementos")]
         public HttpResponseMessage ObtenerPuntosParaAperturaElementos()

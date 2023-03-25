@@ -19,8 +19,6 @@ namespace CorParques.Negocio.Entidades
         private string strTituloTicket = string.Empty;
         private string strPieDePagina = string.Empty;
 
-        private string strDetallePtoEntrega = string.Empty;
-
         private int idInterno = 0;
         private DataTable objTablaDetalle;
         private string strColumnaTotalizar = string.Empty;
@@ -52,11 +50,7 @@ namespace CorParques.Negocio.Entidades
             get { return strTituloColumnas; }
             set { strTituloColumnas = value; }
         }
-        public string DetallePtoEntrega
-        {
-            get { return strDetallePtoEntrega; }
-            set { strDetallePtoEntrega = value; }
-        }
+
         public IList<Articulo> ListaArticulos
         {
             get { return objListaArticulos; }

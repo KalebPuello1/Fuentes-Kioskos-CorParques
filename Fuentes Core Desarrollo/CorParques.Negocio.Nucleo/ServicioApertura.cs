@@ -57,11 +57,7 @@ namespace CorParques.Negocio.Nucleo
         {           
             return _repositorio.ObtenerPuntosSinApertura(Fecha);
         }
-        public IEnumerable<Puntos> ObtenerPuntosSurtido()
-        {
-            return _repositorio.ObtenerPuntosSurtido();
-        }
-        
+
         public IEnumerable<Puntos> ObtenerPuntosAperturaEnProceso()
         {
             return _repositorio.ObtenerPuntosAperturaEnProceso();

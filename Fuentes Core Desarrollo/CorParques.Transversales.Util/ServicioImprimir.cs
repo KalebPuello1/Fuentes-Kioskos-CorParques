@@ -387,30 +387,6 @@ namespace CorParques.Transversales.Util
                 objRecibo.TituloRecibo = objTicket.TituloRecibo;
                 objRecibo.TituloColumnas = objTicket.TituloColumnas;
                 objRecibo.ListaArticulos = objTicket.ListaArticulos;
-                objRecibo.DetallePtoEntrega = objTicket.DetallePtoEntrega;
-                objRecibo.Usuario = objTicket.Usuario;
-                objRecibo.ImprimirTicket();
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(string.Concat("Error en ImprimirTicketCortesias_ServicioImprimir ", ex.Message));
-            }
-            finally
-            {
-                objRecibo = null;
-            }
-        }
-
-        public void ImprimirCupoDebitoDetallePunto(TicketImprimir objTicket)
-        {
-            Ticket objRecibo = new Ticket();
-
-            try
-            {
-                objRecibo.CodigoBarrasProp = objTicket.CodigoBarrasProp;
-                objRecibo.TituloRecibo = objTicket.TituloRecibo;
-                objRecibo.TituloColumnas = objTicket.TituloColumnas;
-                objRecibo.ListaArticulos = objTicket.ListaArticulos;
                 objRecibo.Usuario = objTicket.Usuario;
                 objRecibo.ImprimirTicket();
             }

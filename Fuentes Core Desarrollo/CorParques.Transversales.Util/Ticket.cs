@@ -51,7 +51,6 @@ namespace CorParques.Transversales.Util
         private IList<Articulo> objListaArticulos;
         private string strCodigoBarras = string.Empty;
         private string strTituloTicket = string.Empty;
-        private string strDetallePtoEntrega = string.Empty;
         private string strLogoParque = string.Empty;
         private string strPosicionTitulos;
 
@@ -121,12 +120,6 @@ namespace CorParques.Transversales.Util
         {
             get { return strTituloTicket; }
             set { strTituloTicket = value; }
-        }
-
-        public string DetallePtoEntrega
-        {
-            get { return strDetallePtoEntrega; }
-            set { strDetallePtoEntrega = value; }
         }
 
         public DataTable TablaDetalle
@@ -251,11 +244,6 @@ namespace CorParques.Transversales.Util
                     AgregarLinea(LineasTotales(), objFont);
                     AgregarLinea(AgregaTotales("Total", dblTotal), objFont);
                 }
-                if (strDetallePtoEntrega.Trim().Length > 0)
-                {
-                    AgregarLinea(TextoCentro("Pto Entrega:" + strDetallePtoEntrega));
-                }
-              
                 AgregarLinea("");
             }
             catch (Exception ex)
