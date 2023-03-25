@@ -1,0 +1,72 @@
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe.config
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\es\System.Net.Http.Formatting.resources.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.AssemblyReference.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormCentroMedico.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormControlPrqueadero.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMain.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMDI.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormNotificacionesEnvio.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormParqueaderoIngreso.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormTeclado.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.Properties.Resources.resources
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.GenerateResource.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CoreCompileInputs.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CopyComplete
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.exe
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe.config
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\bin\Debug\es\System.Net.Http.Formatting.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormCentroMedico.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormControlPrqueadero.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMain.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMDI.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormNotificacionesEnvio.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormParqueaderoIngreso.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormTeclado.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.Properties.Resources.resources
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.GenerateResource.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CopyComplete
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.exe
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.exe
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Presentacion.WinForms.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\System.Net.Http.Formatting.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\bin\Debug\es\System.Net.Http.Formatting.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormCentroMedico.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormControlPrqueadero.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMain.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormMDI.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormNotificacionesEnvio.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormParqueaderoIngreso.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.FormTeclado.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.Properties.Resources.resources
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.GenerateResource.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.exe
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.WinForms\obj\Debug\CorParques.Presentacion.WinForms.pdb

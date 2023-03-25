@@ -1,0 +1,45 @@
+﻿
+@model CorParques.Negocio.Entidades.ImagenAdmin
+
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+<link href="~/Vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.CodPantalla)
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">
+        Imagen
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div id="dropzoneElement" class="dropzone"></div>
+        @Html.HiddenFor(model => model.NombreImagen)
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">
+        Frecuencia (Seg.)
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        @Html.TextBoxFor(model => model.Frecuencia, new { @class = "form-control" })
+        @*<input id="Frecuencia" name="Frecuencia" class="form-control" type="number" />*@
+    </div>
+</div>
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+    <button type="submit" href="javascript:void(0)" id="btnConsultarRest"  onclick="GuardarPantallasXcategoria()" class="right btn btn-success">Guardar</button>
+    <a href="javascript:void(0)" id="btnLimpiarRest" onclick="LimpiarPantallasXcategoria()" class="right btn btn-danger">Limpiar</a>
+</div>
+
+
+
+
+
+<script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/Vendors/switchery/dist/switchery.min.js"></script>
+<script>
+    $(function () {
+        setFileLoad(true);
+
+    });
+</script>
+

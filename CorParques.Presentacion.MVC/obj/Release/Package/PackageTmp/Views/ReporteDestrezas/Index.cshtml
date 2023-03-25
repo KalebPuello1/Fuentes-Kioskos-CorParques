@@ -1,0 +1,160 @@
+﻿@model CorParques.Negocio.Entidades.ReporteDestrezaFiltros
+
+@{
+    ViewBag.Title = "Destrezas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<div class="x_content">
+    <div id="listview">
+        @Html.Partial("_list", Model)
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/ReporteDestrezas.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+}
+
+@*<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">*@
+
+
+@*@if (Model != null)
+{
+    if (listFiltros != null)
+    {
+        <input type="hidden" name="Filtros" value="@listFiltros" id="Filtros">
+        <input type="hidden" name="consulta" value="1" id="consulta">
+    }
+    else
+    {
+        <input type="hidden" name="consulta" value="0" id="consulta">
+    }
+
+    <form id="frmBusqueda" method="post" action="@Url.Action("ObtenerDatosReporte","ReporteDestrezas")">
+        <div class="row" id="divFechas">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Fecha Inicial
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class='input-group date' id='datetimepickerIni'>
+                        <input type='text' class="form-control fechaIni required" id="txtFechaInicial" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.FechaInicial)
+            </div>
+
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Fecha Final
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class='input-group date' id='datetimepickerFin'>
+                        <input type='text' class="form-control fechaFin required" id="txtFechaFinal" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.FechaFinal)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Punto
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select id="selectPunto" class="form-control setSelect2">
+                        <option value="">Seleccione...</option>
+                        @if (listPuntos != null && listPuntos.Count() > 0)
+                        {
+                            foreach (var item in listPuntos)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+                @Html.HiddenFor(model => model.CodigoPunto)
+            </div>
+
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Series</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select class="form-control setSelect2" name="selectSeries" id="selectSeries">
+                        <option value="">Seleccione</option>
+                        @if (listProductos != null && listProductos.Count() > 0)
+                        {
+                            foreach (var item in listProductos)
+                            {
+                                <option value="@item.IdProducto">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.CodigoSeries)
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo Boleta</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control" id="txtTipoBoleta" />
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.NombreTipoBoleta)
+
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Cliente
+                </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    <input type="text" class="form-control" id="txtCliente" />
+                </div>
+                @Html.HiddenFor(model => model.NombreCliente)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            </div>
+
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div style="text-align:right;">
+                        <button type="button" class="right btn btn-success" id="btnBuscar">Consultar</button>
+                        <button type="button" class="right btn btn-danger" id="btnLimpiar">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+    </form>
+    <div class="x_content">
+        <div id="listview">
+            @Html.Partial("_list", Model)
+        </div>
+    </div>
+}*@
+
+
+

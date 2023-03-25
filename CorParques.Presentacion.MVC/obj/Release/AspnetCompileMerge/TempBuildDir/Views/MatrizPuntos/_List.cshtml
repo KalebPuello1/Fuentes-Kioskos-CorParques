@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>            
+            <th>
+                Producto
+            </th>       
+            <th>
+                Puntos
+            </th>
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>     
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>               
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodSAP)
+                    </td>                                  
+                    <td style="text-align:center; width:50px">                        
+                        <a class="lnkDisable" data-id="@item.Id" href="javascript:void(0)"><b class="fa fa-times-circle"></b></a>                    
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

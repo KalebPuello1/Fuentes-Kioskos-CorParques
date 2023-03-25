@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Cortesía empleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmCortesias">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input type="text" placeholder="Documento empleado" id="DocEmpleado" class="form-control required Numerico" />
+        </div>
+    </div>
+    <div id="MostrarDatos" style="display: none;">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h2 id="NombreEmpleado"></h2><br />
+                <label>Cortesías disponibles <label id="lblCantidadCortesias">0</label> </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" placeholder="Código producto" class="form-control Numerico" id="txtCodigo" />
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12" id="listProductos">
+        </div>
+    </div>
+
+    <br />
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <input type="button" id="btnAceptar" class="btn btn-success" value="Buscar" />
+            <input type="button" id="btnCancelar" class="btn btn-danger" value="Cancelar" />
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/CortesiaEmpleado.js"></script>
+
+}

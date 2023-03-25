@@ -1,0 +1,44 @@
+﻿@model CorParques.Negocio.Entidades.CortesiaPunto
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(model => model.IdCortesiaPunto)
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdPuntoDestreza">
+                Punto <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdPuntoDestreza, new SelectList(Model.ListaDestrezas, "Id", "Nombre", Model.IdPuntoDestreza), "Seleccione...", new { @class = "form-control required setSelect2" })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdPuntoAtraccion">
+                Atracción / Destreza <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdProducto, new SelectList(Model.ListaAtracciones, "Id", "Nombre", Model.IdProducto), "Seleccione...", new { @class = "form-control required setSelect2" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Cantidad">
+                Cantidad <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Cantidad, new { @class = "form-control col-md-7 col-xs-12 required", onkeypress = "return EsNumero(this);", maxlength = "9" })
+            </div>
+        </div> 
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdEstado">
+                Estado <span>*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required" })
+            </div>
+        </div>
+
+    </div>    
+</form>
+<script>
+    asignarSelect2();
+</script>

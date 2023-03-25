@@ -1,0 +1,41 @@
+﻿@model CorParques.Negocio.Entidades.Grupo
+
+<form>
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+            Grupo Notificación <span>*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "50" })
+        </div>
+    </div>
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+            Descripción <span>*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "300" })
+        </div>
+    </div>
+    <div class="item col-md-12 col-sm-12 col-xs-12">
+        <label class="control-label col-md-12 col-sm-12 col-xs-12" for="Password">
+            Puntos <span>*</span>
+        </label>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <input id="puntosAutocomplete" type="text" class="form-control col-md-6 col-sm-6 col-xs-12" />
+            <input id="tagsPuntos" type="text" class="tags form-control required" />
+        </div>
+    </div>
+   
+    @Html.HiddenFor(model => model.PuntosAsociados, new { id = "hdf_UsuariosSeleccionados", value = "" })
+</form>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+<script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<script>
+    $(document).ready(function () {
+       var dataPuntos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Puntos.Select(x => new { label = x.Nombre, value = x.Id,category = x.TipoPunto }).ToArray()));
+
+        InitPartialCreate(dataPuntos);
+    });
+</script>

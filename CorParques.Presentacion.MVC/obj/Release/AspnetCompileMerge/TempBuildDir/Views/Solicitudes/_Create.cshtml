@@ -1,0 +1,59 @@
+﻿@model  CorParques.Negocio.Entidades.SolicitudBoleteria
+@{ 
+    var TipoProducto = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.listTipoProducto;
+}
+
+<form id="frmSolicitarImpresion" style="padding: 5px;">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            @Html.Label("* Tipo producto")
+
+            <select id="ddlTipoProducto" class="form-control required">
+                <option value="">Seleccione</option>
+                @foreach (var item in TipoProducto)
+                {
+                    <option value="@item.CodSAP">@item.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            @Html.LabelFor(m => m.IdProducto, "* Producto")
+            <select id="IdProducto" name="IdProducto" class="form-control required">
+               <option value="">Seleccione</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            @Html.LabelFor(m => m.FechaUsoInicialDDMMYYY, "* Fecha")
+            @Html.TextBoxFor(m => m.FechaUsoInicialDDMMYYY,  new
+            {
+                @class = "form-control required calendarioMinimoHoy",
+                maxlength = "12",
+                @data_valor = "FechaInicial",
+                @data_comparar = "FechaUsoFinalDDMMYYY",
+                @data_mensaje = "La fecha de inicio de uso  debe ser menor o igual a la fecha final de uso"
+            })
+       </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            @Html.LabelFor(m => m.Cantidad, "* Cantidad")
+            @Html.TextBoxFor(m => m.Cantidad, new { @class = "form-control MascaraNumero required", maxlength = "10", @Value="" })
+        </div>
+    </div>
+  
+    <div class="row">
+        <div id="divColValor" style="display: none;" class="col-md-6 col-sm-6 col-xs-6">
+            @Html.LabelFor(m => m.Valor, "* Valor")
+            @Html.TextBoxFor(m => m.strvalor, new { @class = "form-control MascaraTipoMoneda" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            @Html.TextAreaFor(m => m.Observaciones, new { @class= "form-control", placeholder = "Observaciones", maxlength = "500" })
+        </div>
+    </div>
+</form>
+<script>
+    setEventEdit();
+</script>

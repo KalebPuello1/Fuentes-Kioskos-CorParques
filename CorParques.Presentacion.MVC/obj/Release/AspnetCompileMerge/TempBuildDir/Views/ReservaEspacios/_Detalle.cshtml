@@ -1,0 +1,136 @@
+﻿@model CorParques.Negocio.Entidades.ReservaEspacios
+
+@if (Model != null)
+{
+    <link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+    <div class="" id="div_principal" style="height:400px;  overflow-y:auto; overflow-x: hidden ">
+        <form id="frm_EditarReserva">
+            <div class="form-horizontal form-label-left">                
+                <div class="row">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                            Número Reserva
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.IdReservaEspacios, new { @class = "form-control col-md-7 col-xs-12", @readonly=true})
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                            Fecha Reserva
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.FechaReserva, new { @class = "form-control col-md-7 col-xs-12", maxlength = 10, @readonly = true })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="IdTipoPaciente">
+                            Hora Inicial
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group date dateTime'>
+                                @Html.TextBoxFor(model => model.HoraInicio, new { @class = "form-control", placeholder = "HH:MM", maxlength = "8" , @readonly = true })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="IdTipoPaciente">
+                            Hora Final
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group date dateTime'>
+                                @Html.TextBoxFor(model => model.HoraFin, new { @class = "form-control", placeholder = "HH:MM", maxlength = "8", @readonly = true })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Triage">
+                            Tipo Espacio
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownListFor(model => model.IdTipoEspacio, new SelectList(Model.ListaTipoEspacio, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required" , disabled= "disabled" })
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Triage">
+                            Espacio
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.DropDownListFor(model => model.IdEspacio, new SelectList(Model.ListaEspacios, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="codigosappedido">
+                            Número Pedido
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.CodigoSapPedido, new { @class = "form-control col-md-7 col-xs-12", maxlength = 50, @readonly=true })
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="codigosappedido">
+                            Nombre Cliente
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.NombrePersona, new { @class = "form-control col-md-7 col-xs-12", maxlength = 100, @readonly = true })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="codigosappedido">
+                            Tipo Reserva
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            @Html.TextBoxFor(model => model.TipoReserva, new { @class = "form-control col-md-7 col-xs-12", @readonly = true })
+                        </div>
+                    </div>                  
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1">
+                        <div id="DetallePedido">
+                            @Html.Partial("_DetallePedido", Model.DetallePedido)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Observaciones">
+                            Observaciones
+                        </label>
+                        <div class="col-md-10 col-sm-12 col-xs-12">
+                            @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control col-md-7 col-xs-12", maxlength = 500, rows = "3", @readonly = true })
+                        </div>
+                    </div>
+                </div>                
+            </div>           
+        </form>
+    </div>
+    @section scripts{
+        <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+        <script src="~/Scripts/ReservaEspacios.js"></script>        
+
+    }
+}

@@ -1,0 +1,105 @@
+﻿@model List<CorParques.Negocio.Entidades.Puntos>
+<form>
+    <div class="form-horizontal form-label-left">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="Producto">
+                        Punto <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <select class="form-control required setSelect2" name="IdPunto" id="IdPunto">
+                            <option value="">Seleccione...</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Id" data-pref="@(item.Consecutivo?.Replace("-",""))">@item.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="Puntos">
+                        Resolucion <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12 required numerico" name="Resolucion" maxlength="20" id="Resolucion" value="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="Producto">
+                        Prefijo <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12  required" name="Prefijo"  maxlength="6"id="Prefijo" value="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="ConsecutivoInicial">
+                        Consecutivo inicial <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12  required numerico rango" maxlength="10" data-valor = "min" data-comparar = "ConsecutivoFinal" name="ConsecutivoInicial" id="ConsecutivoInicial" value="" data-mensaje = "consecutivo inicio debe ser menor o igual que consecutivo fin."  />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="ConsecutivoFinal">
+                        Consecutivo final <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12  required numerico rango" maxlength="10" data-valor = "max" data-comparar = "ConsecutivoInicial" name="ConsecutivoFinal" id="ConsecutivoFinal" value="" data-mensaje = "consecutivo fin debe ser mayor o igual que consecutivo inicio." />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="FechaInicial">
+                        Fecha inicial <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12  required calendario rangoFechas" data-valor = "FechaInicial" 
+                               data-comparar = "FechaFinal" name="FechaInicio" id="FechaInicio" value=""  
+                               data-mensaje = "Fecha inicio vigencia debe ser menor o igual que fecha fin vigencia." />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+
+            <div class="col-md-6 col-lg-6 col-xs-12">
+                <div class="item form-group">
+                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="FechaFinal">
+                        Fecha final <span>*</span>
+                    </label>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <input type="text" class="form-control col-md-6 col-xs-12  required calendario rangoFechas" data-valor = "FechaFinal" 
+                               data-comparar = "FechaInicio" name="FechaFinal" id="FechaFinal" value="" 
+                               data-mensaje = "Fecha fin vigencia debe ser mayor o igual que fecha inicio vigencia."/>
+                    </div>
+                    <input type="hidden" id="hdMeses" value="@ViewBag.Meses" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script>
+    asignarSelect2();
+    cambiofecha();
+    cambioPunto();
+</script>

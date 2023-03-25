@@ -1,0 +1,91 @@
+﻿@model CorParques.Negocio.Entidades.Usuario
+
+@*<link href="~/Vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <link href="~/Vendors/iCheck/skins/flat/blue.css" rel="stylesheet">*@
+@{
+
+    var lista = ViewBag.lista as IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>;
+    var listaPunto = ViewBag.listaPunto as IEnumerable<CorParques.Negocio.Entidades.Puntos>;
+    var listaEstado = ViewBag.Estados as IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>;
+    var listaTipoPunto = ViewBag.ListaTipoPunto as IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>;
+    var listaEmpleados = ViewBag.listaEmpleados as IEnumerable<CorParques.Negocio.Entidades.EstructuraEmpleado>;
+   
+
+}
+<link href="~/Content/Ubicaciones.css" rel="stylesheet" />
+
+<form>
+    <div class="form-horizontal form-label-left">
+        <div class="item form-group col-md-10 col-sm-10 col-xs-12">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="Nombre">
+                Empleado <span>*</span>
+            </label>
+            <div class="col-md-10 col-sm-10 col-xs-12">
+                <select id="ddlEmpleado" class="form-control required setSelect2" disabled>
+                    <option value="">Seleccione...</option>
+                    @foreach (var item in ViewBag.listaEmpleados)
+                    {
+                        @*EDSP 11/11/2017*@
+                        //<option value="@item.Texto" data-id="@item.IdEstructuraEmpleado" @(item.Texto.Contains($"{Model.Nombre} {Model.Apellido}")|| Model.NombreUsuario.Contains(item.Texto.Split(' ')[0]) ?"selected='selected'":"" )>@item.Texto</option>
+                        <option value="@item.Texto" data-cargo="@item.CodigoSapCargo" @(item.IdEstructuraEmpleado == Model.IdEstructuraEmpleado ? "selected='selected'" : "" )>@item.Texto</option>
+                    }
+                </select>
+            </div>
+            @Html.HiddenFor(model=> model.Id)
+            <input type="hidden" name="Id" id="IdEmpleado" value="" />
+            <input type="hidden" name="Nombre" id="Nombre" value="@Model.Nombre" />
+            <input type="hidden" name="Apellido" id="Apellido" value="@Model.Apellido" />
+        </div>
+
+        <div class="row form-horizontal form-label-left">
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
+                    Perfiles<span>*</span>
+                </label>
+                <div class="col-md-12 col-sm-12 col-xs-12" style="height:200px; width:420px; overflow-y:auto;">
+                    <div class="checkbox treeview">
+                        <br />
+                        <ul>
+                            @foreach (var item in lista)
+                            {
+                                if (Model.Perfiles.Count(x => x.IdPerfil == item.Id) > 0)
+                                {
+
+                                    <li>
+                                        <input class="perfil" id="chkPerfil_@item.Id" name="chkPerfiles" type="checkbox" value="@item.Id" data-id="@item.Id" checked />@item.Nombre
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <input class="perfil" id="chkPerfil_@item.Id" name="chkPerfiles" type="checkbox" value="@item.Id" data-id="@item.Id" />@item.Nombre
+                                    </li>
+                                }
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Hidden("hdListaPerfiles", string.Join(",", Model.ListaPerfiles.Select(x => x.Id).ToArray()))
+
+</form>
+
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+<script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var dataperfil=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(lista.Select(x => new { label = x.Nombre, value = x.Id }).ToArray()));
+        var dataPuntos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(listaPunto.Select(x => new { label = x.Nombre, value = x.Id,category = x.TipoPunto }).ToArray()));
+
+        InitPartialCreate(dataperfil,dataPuntos);
+        asignarSelect2();
+        AsignarEventoEmpleado();
+    });
+</script>

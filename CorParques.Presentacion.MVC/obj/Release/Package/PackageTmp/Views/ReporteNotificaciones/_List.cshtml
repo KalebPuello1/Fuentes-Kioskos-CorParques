@@ -1,0 +1,54 @@
+﻿
+<form id="frmReporteNotificaciones">
+    <div class="row" id="divFechas">
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                Fecha Inicial
+            </label>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class='input-group date required' id='datetimepickerIni'>
+                    <input type='text' class="form-control fechaIni required" id="txtFechaInicial" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                Fecha Final
+            </label>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class='input-group date required' id='datetimepickerFin'>
+                    <input type='text' class="form-control fechaFin required" id="txtFechaFinal" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            </label>
+            <div class="col-md-12 col-sm-8 col-xs-12">
+                <div style="text-align:right;">
+                    <button type="button" class="right btn btn-success" id="btnGrid" style="display:none;">Vista Previa</button>
+                    <a class="btn btn-success" id="btnConsultar">
+                        <i class="fa fa-file-excel-o"></i> Exportar a Excel
+                    </a>
+                    <button type="button" class="right btn btn-danger" id="btnLimpiar">Limpiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row" id="div_grilla"></div>
+</form>

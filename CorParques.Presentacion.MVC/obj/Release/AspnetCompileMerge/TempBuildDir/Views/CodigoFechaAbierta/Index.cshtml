@@ -1,0 +1,122 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.CodigoFechaAbierta>
+
+
+@{
+    var f = "lol";
+    ViewBag.Title = "Codigos virtuales";
+    var n = 0;
+    var data = "";
+}
+<!--DataTable-->
+
+@if (ViewBag.Alert != null)
+{
+    <div class="alert alert-dismissable alert-info">
+        <button type="button" class="close" data-dismiss="alert">
+            &times;
+        </button>
+        <strong>Aviso!</strong> @ViewBag.Alert
+    </div>
+}
+
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<!--Me Styles-->
+<link type="text/css" href="~/Content/FactConfig.css" />
+<style>
+    input:invalid {
+        border: 2px dashed red;
+    }
+    
+</style>
+@section scripts{
+    <!--Me Scripts-->
+    <script type="text/javascript" src="~/Scripts/Facturacion.js"></script>
+    <!--DataTable -->
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+}
+
+<!--- -->
+<br />
+<div class="col-md-12 col-xs-12 pull-5 col-sm-12">
+    <div class="dataTables_filter pull-left w-5 col-xs-12 col-md-12 col-sm-12 container p-5" style="right:36px">
+        <form class="p-5 pull-left container col-md-12 col-xs-12 col-sm-12">
+            <label class="pull-left col-md-2 p-5 col-xs-12 col-sm-4">N° Pedido</label>
+            <input id="factura" class="pull-left input-sm col-sm-4 col-xs-12 col-md-3 ml-4" min="1000000000" max="100000000000000000" type="number" value="" />
+            <div class="col-md-3 col-xs-12 col-sm-3">
+                <div class="col-md-12 col-xs-12 col-sm-12 p-5 pull-right">
+                    <div class="form-check pull-right" id="ch">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="chk" name="Redimir" value="redimir" class="form-check-input" />
+                            Redimidos
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button id="busc" class="pull-left btn col-xs-12 col-sm-12 col-md-3" style="background-color:#5e2d4f; color:white;">Buscar</button>
+        </form>
+        <hr />
+    </div>
+    <br />
+    <br />
+    <hr />
+    <!--<div class="col-md-4 col-xs-12 col-sm-4 p-5 pull-right">
+        <form class="col-md-12 col-xs-12 float-left">
+        <button class="btn col-xs-12 col-sm-12 col-md-12" id="reg" style="background-color:#5e2d4f; color:white;" type="button" data-toggle="modal" data-target="#hide">Registrar</button>
+        </form>
+        </div>
+      </div>
+    -->
+
+    <div>
+        <div id="listView">
+            @Html.Partial("_check", Model)
+        </div>
+    </div>
+</div>
+<!-- Esto es una modal que se activa cuando exportamos los datos -->
+<!--
+<div class="modal fade" id="hide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width:360px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Bienvenido</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="">
+                    <input id="MeCorr" placeholder="Correo electronico" class="input-sm btn-block" value="" />
+                     //Este boton de abajo se debe editar ->
+                    //<button id="corr" class="btn btn-block" style="background-color:#5e2d4f; color:white;">Enviar</button>//
+                </form>
+            </div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    <button id="save" type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+</div>
+        </div>
+    </div>
+</div>
+-->
+<br />
+<br />
+<br />
+<br />
+<hr />
+<div>
+    <div class="col-md-4 col-xs-12 col-sm-4 p-5 pull-right">
+        <button class="btn col-xs-12 col-sm-12 col-md-12" id="reg" style="background-color:#5e2d4f; color:white;" type="button" data-toggle="modal" data-target="#hide">Exportar</button>
+    </div>
+    <a class="btn col-xs-12 col-sm-12 col-md-12" id="datar" style="background-color:#006400; color: white;" download> Descargar Excel </a>
+    <!--<button id="activa" style="display:none">s</button>-->
+</div>
+<!-- end -->

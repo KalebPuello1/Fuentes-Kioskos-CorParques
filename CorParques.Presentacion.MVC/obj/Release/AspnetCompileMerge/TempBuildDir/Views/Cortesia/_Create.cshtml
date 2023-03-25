@@ -1,0 +1,117 @@
+﻿@model CorParques.Negocio.Entidades.UsuarioVisitanteViewModel
+
+
+@{
+    var listaTipoDocumento = ViewBag.lista as IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>;
+}
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+<form>
+    <div class="form-horizontal form-label-left">
+        @Html.HiddenFor(m => m.Archivo)
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="TipoDocumento">
+                Tipo Documento
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <select id="TipoDocumento" class="form-control required setSelect2" required name="TipoDocumento" asp-for="TipoDocumento">
+                    @foreach (var item in ViewBag.lista)
+                    {
+
+                        <option value="@item.Nombre" data-id="@item.Id">@item.Nombre</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NumeroDocumento">
+                Numero Documento
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.NumeroDocumento, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 50, id = "NumeroDocumento" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombres">
+                Nombres
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 250, id = "Nombres" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Apellidos">
+                Apellidos
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Apellidos, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 250, id = "Apellidos" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Correo">
+                Correo
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Correo, new { @class = "form-control col-md-7 col-xs-12 email required", maxlength = 250, id = "Correo" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Telefono">
+                Telefono
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 50, id = "Telefono" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="NumeroTicket">
+                Numero Ticket
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.NumeroTicket, new { @class = "form-control col-md-7 col-xs-12", maxlength = 250, id = "NumeroTicket" })
+            </div>
+        </div>
+        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="CantidadCortesias">
+                Cantidad Cortesias
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Cantidad, new { @class = "form-control col-md-7 col-xs-12 required numerico", maxlength = 100, id = "Cantidad" })
+            </div>
+        </div>
+        <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12" for="SoporteCorreos">
+                Soporte Correos
+            </label>
+            <div class="col-md-10 col-sm-10 col-xs-12">
+                <div class="row">
+                    <div class="col-ms-10 col-sm-10 col-xs-12">
+                        <div id="dropzoneElements" class="dropzone"></div>
+                        <input type="hidden" id="Imagen" name="Imagen" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item form-group col-md-12 col-sm-12 col-xs-12 pull-left">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 pull-left" for="Descripcion">
+                Descripcion
+            </label>
+            <div class="col-md-10 col-sm-10 col-xs-12 pull-left">
+                @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 10000, @rows = "4", id = "Descripcion" })
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="BotonGuardarUsuario()" id="btnSaveUsuario"><i class="fa fa-"></i>Guardar</button>
+            <button type="button" class="btn btn-danger" onclick="BotonCancelarUsuario()" id="btnCancelarUsuario">Cancelar</button>
+        </div>
+    </div>
+
+</form>
+
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+<script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+<script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/Scripts/Cortesia.js"></script>
+<script src="~/Scripts/General.js"></script>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Redenciones Fecha Abierta";
+    var Productos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Productos;
+    var Vendedores = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Vendedores;
+}
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Inicial</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerIni">
+            <input type="text" class="form-control FInicial required" id="FInicial">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Fecha Final</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div class="input-group date" id="datetimepickerFin">
+            <input type="text" class="form-control FFinnal required" id="FFinnal">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    @*<label class="control-label col-md-4 col-sm-4 col-xs-4">Atracción</label>*@
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Producto redimido:</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="SapTipoProducto" id="SapTipoProducto">
+            <option value="">* Seleccione</option>
+            @foreach (CorParques.Negocio.Entidades.TipoGeneral item in Productos)
+            {
+                <option value="@item.CodSAP">@item.Nombre</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-md-6 col-sm-6 col-xs-12">
+    @*<label class="control-label col-md-4 col-sm-4 col-xs-4">Área</label>*@
+    <label class="control-label col-md-4 col-sm-4 col-xs-4">Asesor:</label>
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <select class="form-control setSelect2" name="SapAsesor" id="SapAsesor">
+            <option value="">* Seleccione</option>
+            @foreach (CorParques.Negocio.Entidades.TipoGeneral item in Vendedores)
+            {
+                <option value="@item.CodSAP">@item.Nombre</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+    <a href="javascript:void(0)" id="btnConsultar" class="right btn btn-success">Consultar</a>
+    <a href="javascript:void(0)" id="btnLimpiar" class="right btn btn-danger">Limpiar</a>
+</div>

@@ -1,0 +1,89 @@
+﻿@model CorParques.Negocio.Entidades.UbicacionPunto
+@{
+    var ListaPuntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.Puntos;
+    var ListaEstados = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Estados;
+}
+<link href="~/Content/Ubicaciones.css" rel="stylesheet" />
+@if (Model != null)
+{
+    <form id="frmEdit">
+        <div class="form-horizontal form-label-left" style="height:400px; overflow-y:auto; overflow-x: hidden ">
+            @Html.HiddenFor(model => model.IdUbicacionPunto)
+
+
+            <div class="item form-group">
+                @Html.HiddenFor(model => model.IdPunto)
+                @Html.HiddenFor(model => model.IdUsuarioCreacion)
+                @Html.HiddenFor(model => model.FechaCreacion)
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                    Ubicación <span>*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", placeholder = "Digite el nombre para la atracción", maxlength = 150 })
+                </div>
+            </div>
+
+
+            <div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        Punto <span>*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        @Html.DropDownListFor(model => model.IdPunto, new SelectList(ListaPuntos, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @onchange = "OnChangeEvent(this);" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Estado <span>*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.HiddenFor(model => model.IdEstado)
+                    @Html.DropDownListFor(model => model.IdEstado, new SelectList(ListaEstados, "Id", "Nombre"), "Seleccione...", new { @class = "form-control required setSelect2", @onchange = "OnChangeEvent(this);" })
+                </div>
+            </div>
+
+            <div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        Requiere Auxiliar
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12 checkbox check-box chk">
+                        <label style="font-size: 1.5em">
+                            @if (@Model.RequiereAuxiliar)
+                            {
+                                <input type="checkbox" value="@Model.RequiereAuxiliar" checked id="RequiereAuxiliar">
+                            }
+                            else
+                            {
+                                <input type="checkbox" value="@Model.RequiereAuxiliar" id="RequiereAuxiliar">
+                            }
+                            <span class="cr cr2"><i class="cr-icon fa fa-check"></i></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+<script>
+    $(function () {
+        asignarSelect2();
+        $('.form-label-left').css('height', '200px');
+        $('#RequiereAuxiliar').click(function () {            
+            $("#RequiereAuxiliar").val(this.checked);
+        });
+    });
+</script>
+<style>
+    .chk .cr2 {
+        cursor: pointer;
+        margin-left: .5em;
+    }
+
+    .chk label {
+        padding-left: 0;
+    }
+</style>

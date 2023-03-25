@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.ReservaEspacios>
+    <div class="x_content" id="div_FechaReserva">
+        <div class="item form-group">
+            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="fecha">
+                Fecha <span>*</span>
+            </label>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <input type="text" id="txtFechaReserva" class="form-control col-md-7 col-xs-12 required calendario" maxlength="10" value="@ViewBag.FechaActual" />
+            </div>
+            <div class="col-md-12">
+                <br />
+            </div>
+            <div id="ListaReservas">
+                @if (Model != null)
+                {
+                    @Html.Partial("_List",Model)
+                }
+            </div>
+        </div>
+    </div>

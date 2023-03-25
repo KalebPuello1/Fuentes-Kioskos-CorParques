@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.AuxiliarPunto>
+
+
+<div class="form-group">
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" class="right btn btn-success" value="Agregar" id="btn_Agregar" />
+                <input type="button" class="right btn btn-danger" value="Retirar" id="btn_Remover" />
+            </div>
+            <br />
+            <br />
+            <br />
+        </div>        
+    </div>
+
+
+    <table class="table table-striped table-bordered" id="datatable-base" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Ubicación
+                </th>
+                <th style="width:50px">
+                    Certificado
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreEmpleado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UbicacionPunto)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(Model => item.Certificado, new { disabled = "disabled" })
+                            @Html.HiddenFor(Model => item.Documento)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    @*Muestra pop up para agregar un auxiliar*@
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header btn-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label>Acerque el carnet al lector de código de barras</label>
+                        <input type="text" id="txt_DocumentoEmpleado" placeholder="Acerque su carnet al lector." autofocus style="width:0px; height:0px; border:0px; background-color:transparent; top:10000px" maxlength="20" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

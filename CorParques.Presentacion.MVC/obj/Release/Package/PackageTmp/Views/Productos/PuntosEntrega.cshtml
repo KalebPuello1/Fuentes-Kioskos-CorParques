@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+@{
+    ViewBag.Title = "Productos";
+    ViewBag.SubTitle = "Módulo para actualizar los productos.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<div class="x_content">
+    <div id="listView">
+        @Html.Partial("_ListPuntosEntrega", Model)
+    </div>
+</div>
+@{
+    var listapuntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.ListaPuntos;
+
+}
+@section scripts{
+
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Scripts/General.js"></script>
+    <script src="~/Scripts/ProductoPtoEntrega.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.autComp.js"></script>
+    <script src="~/Vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <script>
+        var dataPuntosParcial=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(listapuntos.Select(x => new { label = x.Nombre, value = x.Id,category = x.TipoPunto }).ToArray()));
+    </script>
+}
+

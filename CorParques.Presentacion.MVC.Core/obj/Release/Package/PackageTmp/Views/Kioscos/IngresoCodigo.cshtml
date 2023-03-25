@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "IngresoCodigo";
+    Layout = "~/Views/Shared/_LayoutKiosco.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Kioscos/General.css" />
+<a href="javascript:RedireccionAtras()" style="text-decoration: none; position: fixed; top: 24%; left: 2px;">
+    <div class="backButton">
+        <div class="bckTriangulo"></div>
+    </div>
+    <p class="bckBtn-text">Atras</p>
+</a>
+
+<div class="d-flex flex-column justify-content-center text-center mt-5" id="contenedor-cod">
+
+    <div class="mt-5">
+        <h2 style="font-weight: bold;">Escanee el c&oacute;digo en el lector o dig&iacute;telo para continuar</h2>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-7">
+            <div class="d-flex flex-column justify-content-center">
+                <input id="input-codigo" type="text" class="input-large">
+                <input id="input-codBarras" type="text" autofocus class="input-lector">
+
+                <div class="panel">
+
+                    <div><button class="btn btn-dark" onclick="presionar(this)">1</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">2</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">3</button></div>
+
+                    <div><button class="btn btn-dark" onclick="presionar(this)">4</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">5</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">6</button></div>
+
+                    <div><button class="btn btn-dark" onclick="presionar(this)">7</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">8</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">9</button></div>
+
+                    <div><button class="btn btn-primary btn-blue" onclick="ConsultarBoleta()">Entrar</button></div>
+                    <div><button class="btn btn-dark" onclick="presionar(this)">0</button></div>
+                    <div><button class="btn btn-back" onclick="borrar()"><i class="fa-sharp fa-solid fa-delete-left"></i></button></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="video">
+                <video width="100%" height="auto" autoplay controls style="border-radius:5px;">
+                    <source src="~/Carpeta/ Video.extension" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/Kioscos.js"></script>
+<script>
+    //$(".loader-wrapper").css("display", "none");
+    var inicializadointerval = false;
+    var codigo = "";
+    document.getElementById("input-codigo").innerHTML = "";
+
+    function presionar(e) {
+        tecla = e.innerHTML;
+        codigo += tecla;
+        document.getElementById("input-codigo").value = codigo;
+    }
+
+    function borrar() {
+        if (codigo.length > 0) {
+            codigo = codigo.substring(0, codigo.length - 1);
+            document.getElementById("input-codigo").value = codigo;
+        }
+    }
+
+    $(function () {
+
+        $('#input-codBarras').focus();
+
+        $("#input-codBarras").keyup(function () {
+            if (!inicializadointerval) {
+                inicializadointerval = true;
+                var refreshIntervalId = setInterval(function () { ConsultarCodBarras(); inicializadointerval = false; clearInterval(refreshIntervalId); }, 300);
+            }
+        });
+
+        $('#input-codBarras').focusout(function () {
+            setTimeout(function () { $('#input-codBarras').focus() }, 300);
+        });
+    });
+
+    function RedireccionAtras() {
+        window.location.replace("/Kioscos");
+    }
+</script>
+
+

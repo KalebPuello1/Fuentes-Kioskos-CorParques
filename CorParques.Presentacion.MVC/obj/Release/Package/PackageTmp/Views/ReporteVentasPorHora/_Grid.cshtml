@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.ReporteVentasPorHora>
+
+
+<div class="row" id="div_tabla">
+    <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Punto
+                </th>
+                <th>
+                    Tipo de producto
+                </th>
+                <th>
+                    Rango de Hora
+                </th>
+                <th>
+                    Código de Producto
+                </th>
+                <th>
+                    Nombre del Producto
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Valor sin Impuesto
+                </th>
+                <th>
+                    Valor con Impuesto
+                </th>
+                <th>
+                    % Participación
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Punto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hora)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NombreProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td style="text-align:left;">
+                            @string.Format("{0:C0}", long.Parse(item.ValorSinImpuesto))
+                        </td>
+                        <td style="text-align:left;">
+                            @string.Format("{0:C0}", long.Parse(item.ValorConImpuesto))
+                        </td>
+                        <td style="text-align:left;">
+                            @string.Format("{0:0.0000}", item.PParticipacion)
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-6 col-sm-3 col-xs-12" for="valorsinimpuesto">
+            Total Ventas Sin Impuesto
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @string.Format("{0:C0}", Model.Sum(x => long.Parse(x.ValorSinImpuesto)))
+        </div>
+    </div>    
+</div>
+<div class="row">
+    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-6 col-sm-3 col-xs-12" for="valorconimpuesto">
+            Total Ventas Con Impuesto
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @string.Format("{0:C0}", Model.Sum(x => long.Parse(x.ValorConImpuesto)))
+        </div>
+    </div>
+</div>

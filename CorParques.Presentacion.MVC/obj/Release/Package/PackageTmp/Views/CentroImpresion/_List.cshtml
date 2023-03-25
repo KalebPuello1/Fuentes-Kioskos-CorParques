@@ -1,0 +1,42 @@
+﻿@model List<CorParques.Negocio.Entidades.SolicitudBoleteria>
+
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Fecha solicitud</th>
+            <th>Código SAP</th>
+            <th>Asesor</th>
+            <th>Cliente</th>
+            <th>Tipo producto</th>
+            <th>Producto</th>
+            <th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            <th>Cantidad</th>
+            <th style="width:10px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FechaCreacion.ToString("yyyy/MM/dd HH:mm")</td>
+                <td>@(item.CodigoVenta ?? "")</td>
+                <td>@item.Vendedor</td>
+                <td>@item.Cliente</td>
+                <td>@item.NombreTipoProducto</td>
+                <td>@item.NombreProducto</td>
+                <td>@item.FechaInicioEvento.ToString("yyyy/MM/dd") </td>
+                <td>@item.FechaFinEvento.ToString("yyyy/MM/dd")</td>
+                <td>@item.Cantidad</td>
+                <td>
+                    @if (!item.Vencido)
+                    {
+                        <a class="Imprimir"  href="javascript:void(0)" data-id="@item.IdSolicitudBoleteria" data-codigoventa="@(item.CodigoVenta ?? "")" data-BoletaControl="@item.EsBoletaControl"><b class="fa fa-print"></b></a>
+                    }
+                    <a class="Eliminar" href="javascript:void(0)" data-id="@item.IdSolicitudBoleteria" data-codigoventa="@(item.CodigoVenta ?? "")" data-BoletaControl="@item.EsBoletaControl"><b class="fa fa-trash-o"></b></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

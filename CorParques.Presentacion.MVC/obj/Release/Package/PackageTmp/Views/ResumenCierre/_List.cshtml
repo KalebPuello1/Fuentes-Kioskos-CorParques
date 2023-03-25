@@ -1,0 +1,42 @@
+﻿@model List<CorParques.Negocio.Entidades.ResumenCierre>
+
+@if (Model != null )
+{ 
+    <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Punto</th>
+                <th>Dinero</th>
+                <th>Elementos</th>
+                <th>Inventario</th>             
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (@item.Dinero.ToUpper() =="OK" && @item.Elementos.ToUpper() == "OK" && item.Inventario.ToUpper() == "OK") { 
+                <tr>
+                    <td><font color="#07CE0D">@item.Nombre</font></td>
+                    <td><font color="#07CE0D">@item.Dinero</font></td>
+                    <td><font color="#07CE0D">@item.Elementos</font></td>
+                    <td><font color="#07CE0D">@item.Inventario</font></td>                    
+                </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td><font color="#D70404">@item.Nombre</font></td>
+                        <td><font color="#D70404">@item.Dinero</font></td>
+                        <td><font color="#D70404">@item.Elementos</font></td>
+                        <td><font color="#D70404">@item.Inventario</font></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+<script>
+    if (typeof SetParametroTabla != 'undefined')
+        SetParametroTabla();
+</script>
+

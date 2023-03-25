@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Usuario>
+
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Correo Eléctronico</th>
+            <th>Fecha de creación</th>
+            <th>Estado</th>
+            <th style="width:50px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(
+                                string.Concat(item.Nombre," ",item.Apellido))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.FechaCreacion)*@
+                        @item.FechaCreacion.ToString("dd/MM/yyyy")
+
+                    </td>
+                    <td>
+                        @((CorParques.Transversales.Util.Enumerador.Estados)item.IdEstado)
+                    </td>
+
+                    <td style="text-align:center; width:50px">
+                        @if (item.Logueado)
+                        {
+                            <a class="lnkDesbloquear" data-id="@item.Id" href="javascript:void(0)"><b class="fa fa-lock"></b></a>
+                        }
+                        <a class="lnkEdit" data-id="@item.Id" href="javascript:void(0)"><b class="fa fa-pencil-square"></b></a>
+                        <a class="lnkResetpsw" data-id="@item.Id" href="javascript:void(0)"><b class="fa fa-eraser"></b></a>
+                        @if (item.IdEstado == 1)
+                        {
+                            <a class="lnkDisable" data-id="@item.Id" href="javascript:void(0)"><b class="fa fa-times-circle"></b></a>
+                        }
+                        
+                    </td>
+                    
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+

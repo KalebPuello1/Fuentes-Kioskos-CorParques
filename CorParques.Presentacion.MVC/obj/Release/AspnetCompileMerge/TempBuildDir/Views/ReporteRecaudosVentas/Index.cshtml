@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Reporte recaudos ventas core";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_content">
+    <div id="listView">
+        @Html.Partial("_List")
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+    <script src="~/Scripts/ReporteRecaudosVentas.js"></script>
+
+}

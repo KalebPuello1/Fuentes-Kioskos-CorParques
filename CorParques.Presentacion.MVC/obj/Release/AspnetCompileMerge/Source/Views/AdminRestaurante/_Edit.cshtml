@@ -1,0 +1,63 @@
+﻿
+@model CorParques.Negocio.Entidades.Producto
+
+<link href="~/Vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+<link href="~/Vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+
+<form id="frmCreate">
+    <div class="form-horizontal form-label-left" style="overflow-y:auto; overflow-x: hidden ">
+        @Html.HiddenFor(model => model.IdProducto)
+
+
+
+
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Nombre
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12", maxlength = 500, @readonly = true })
+            </div>
+        </div>
+
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">
+                Valor
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Precio, new { @class = "form-control col-md-7 col-xs-12 required numerico", @readonly = true, maxlength = 10 })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo producto
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.Id_TipoProdRestaurante, new SelectList(ViewBag.TipoProductosRestaurante, "Id", "Nombre"), "Seleccione...", new { @class = "form-control " })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                Tipo Acompañamiento
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.Id_TipoAcomp, new SelectList(ViewBag.TipoAcompaRestaurante, "Id", "Nombre"), "N.A.", new { @class = "form-control " })
+            </div>
+        </div>
+
+       
+
+
+    </div>
+</form>
+<script src="~/Vendors/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/Vendors/switchery/dist/switchery.min.js"></script>
+<script>
+    $(function () {
+        setFileLoad(true);
+        setEventStatus();
+    });
+</script>
+

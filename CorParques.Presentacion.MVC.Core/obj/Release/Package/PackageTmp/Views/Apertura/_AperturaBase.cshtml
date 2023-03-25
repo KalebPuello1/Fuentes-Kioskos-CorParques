@@ -1,0 +1,114 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+
+<form id="frmtest" method="post" action="@Url.Action("Insert","Apertura")">
+
+    <div class="row ">
+        <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-1 col-sm-2 col-xs-12" for="fechainicial">
+                Fecha
+            </label>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                @*<input type="text" class="form-control col-md-7 col-xs-12 required calendario" maxlength="50" onchange="CambioFecha(this);" />*@
+                @Html.TextBoxFor(modelItem => Model.FechaString, new { @class = "form-control required calendario15dias CalendarioCrear", maxlength = 50 })
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="item col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-1 col-sm-2 col-xs-12" for="Password">
+                Puntos <span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input id="puntosAutocomplete" type="text" class="form-control" />
+                <input id="tagsPuntos" type="text" class="tags form-control required"/>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div id="listView">
+        <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Tipo
+                    </th>
+                    <th>
+                        Denominación
+                    </th>
+                    <th width="50px">
+                        Cantidad
+                    </th>
+                    <th width="200px">
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{int Contador = 0; }
+                @foreach (var item in Model.TiposDenominacion)
+                {
+                    <tr>
+                        <td>
+                            <input type="hidden" name="AperturaBase[@Contador].IdTipoDenominacion" value="@item.IdTipoDenominacion" />
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+                        <td>
+                            <div id="Denominacion_@Contador" style="display:none">
+                                @Html.DisplayFor(modelItem => item.Denominacion)
+                            </div>
+                            <div class="formato_moneda">
+                                @Html.DisplayFor(modelItem => item.Denominacion)
+                            </div>
+                        </td>
+                        <td width="50px" style="padding:1px">
+                            <input type="text" name="AperturaBase[@Contador].CantidadNido" id="Cantidad_@Contador" value="0" class="form-control" onkeydown="placeholdercero(this);" onkeypress="return EsNumero(this);" onkeyup="SumarTotal(this);" onfocusout="SumarTotal(this);" maxlength="9" />
+                        </td>
+                        <td>
+                            <input type="hidden" name="AperturaBase[@Contador].TotalNido" id="TotalNido_@Contador" value="0" />
+                            <div id="Total_@Contador" class="limpiar">
+
+                            </div>
+                        </td>
+
+                    </tr>
+                    Contador++;
+                }
+                <tr>
+                    <td colspan="3">
+                        Total:
+                    </td>
+                    <td><div id="Total" class="limpiar FontBoldBig" >0</div></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    @Html.Hidden("hdListPuntos")
+
+    <div class="row ">
+        <div class="item col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-2 col-sm-2 col-xs-2" for="Password">
+                Observaciones:
+            </label>
+            <div class="col-md-10 col-sm-10 col-xs-10">
+                @Html.TextAreaFor(modelItem => Model.ObservacionNido, new { @class = "form-control col-md-9 col-sm-9 col-xs-12 limpiar", cols = "20", maxlength = 2000, rows = "3" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div style="text-align:right;">
+        <a href="javascript:void(0)" id="btnSaveTest" class="right btn btn-success">Guardar</a>
+        <a href="javascript:void(0)" id="btnCancel" class="right btn btn-danger">Cancelar</a>        
+    </div>
+</form>
+
+<script>
+    //$(function () {
+    //    Inicializar();
+        //var dataPuntos=@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ListaPuntos.Select(x => new { label = x.Nombre, value = x.Id,category = x.TipoPunto }).ToArray()));
+    //    InitPartialCreate(dataPuntos);
+    //});
+</script>

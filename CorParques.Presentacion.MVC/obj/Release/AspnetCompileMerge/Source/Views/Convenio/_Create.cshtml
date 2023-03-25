@@ -1,0 +1,99 @@
+﻿@model CorParques.Negocio.Entidades.Convenio
+<form id="frm_convenios">
+    <div class="form-horizontal form-label-left" >
+        <div class="row">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
+                    Nombre <span>*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = "100" })
+                </div>
+            </div>
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="codsapconveniopedido">
+                    Código SAP Pedido
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.CodSapPedido, new { @class = "form-control col-md-7 col-xs-12", maxlength = "100" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FechaInicio">
+                    Fecha Inicio <span>*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.FechaInicialString, new { @class = "form-control col-md-7 col-xs-12 required calendario rangoFechas", maxlength = 12, @data_valor = "FechaInicial", @data_comparar = "FechaFinalString", data_mensaje = "Fecha inicio debe ser menor o igual que fecha fin." })
+                </div>
+            </div>
+
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="FechaFin">
+                    Fecha Fin <span>*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.FechaFinalString, new { @class = "form-control col-md-7 col-xs-12 required calendario rangoFechas", maxlength = 12, @data_valor = "FechaFinal", @data_comparar = "FechaInicialString", data_mensaje = "Fecha fin debe ser mayor o igual que fecha inicio." })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="item form-group col-md-3 col-sm-6 col-xs-12">
+                <label class="control-label" for="EsCodigoBarras">
+                    Es Código Barras
+                </label>
+                <div class="">
+                    @Html.CheckBoxFor(model => model.EsCodigoBarras)
+                </div>
+            </div>
+            <div class="item form-group col-md-3 col-sm-6 col-xs-12">
+                <label class="control-label" for="ReutilizaCB">
+                    Reutiliza Código Barras
+                </label>
+                <div class="">
+                    @Html.CheckBoxFor(model => model.ReutilizaCodigoBarras)
+                </div>
+            </div>
+            <div class="item form-group col-md-3 col-sm-6 col-xs-12">
+                <label class="control-label" for="Activo">
+                    Activo
+                </label>
+                <div class="">
+                    @Html.CheckBoxFor(model => model.EsActivo)
+                </div>
+            </div>
+        </div>
+        <fieldset>
+            <legend><b>Detalle convenio</b></legend>
+            <table id="tbDetail" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:160px;">Tipo Producto</th>
+                        <th style="width:300px;">Producto</th>
+                        <th style="width:100px; text-align: center;">%</th>
+                        <th style="width:130px;">Valor</th>
+                        <th style="width:90px;">Cantidad</th>
+                        <th style="width:90px;">Cant X Tran</th>
+                        <th style="width:10px;"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7" class="text-right" style="font-size:24px;"><a href="javascript:void(0)" style="color:palegreen" id="btnAddDetail"><i class="glyphicon glyphicon-plus-sign"></i></a></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>      
+        <input type="hidden" id="hdf_Validaciones" value="N" />  
+        <input type="hidden" id="hdf_Productos" value="N" /> 
+    </div>
+</form>
+<script>
+    setEventChange();
+    var _crear = true;
+    //asignarSelect2();
+    var TiposProductos = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ListaTipoProducto))
+    var Productos = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ListaProducto))
+</script>

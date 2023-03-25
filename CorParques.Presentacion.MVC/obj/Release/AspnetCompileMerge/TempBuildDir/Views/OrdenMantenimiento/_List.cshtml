@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Operaciones>
+@{
+    var detalle = ViewBag.Detalle;
+}
+@if (Model != null)
+{
+    <form id="frmList">
+        <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Número de órden</th>
+                    <th>Nombre de la órden</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @if (Model != null)
+            {
+                var list = Model.ToList();
+                <tbody>
+                    @foreach (var item in list)
+                    {
+                        <tr>
+                            <td style="width:160px">
+                                @item.NumeroOrden
+                            </td>
+                            <td style="width:100px">
+                                @item.Descripcion
+                            </td>
+                            <td style="text-align:center; width:50px">
+                                <input type="hidden" name="NumeroOrden" value="@item.NumeroOrden" id="@item.NumeroOrden">
+                                <button type="button" id="btnProcesar" data-id="@item.NumeroOrden" style="margin-right:15px; width:95px;" class="btn btn-success btn-sm procesar" data-toggle="modal" data-target="#modalOrdenes">Procesar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }
+        </table>
+        @if (detalle)
+        {
+            <div id="listView">
+                @Html.Partial("_Wizard", Model)
+            </div>
+        }
+    </form>
+}
+else
+{
+    <div class="well"><h4>El usuario no tiene las certificaciones necesarias o no existen órdenes de mantenimiento.</h4></div>
+}

@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutKiosco.cshtml";
+    var consecutivosBoletas = ViewBag.Consecutivos;
+}
+
+<link rel="stylesheet" href="~/Content/Kioscos/General.css" />
+<link rel="stylesheet" href="~/Content/Kioscos/Menu.css" />
+<link rel="stylesheet" href="~/Content/Kioscos/KeyBoard.css" />
+
+<input type="hidden" id="codigos" value="@consecutivosBoletas" />
+<div id="menu" style="display:block;">
+    <div class="d-flex flex-column justify-content-center text-center mt-5">
+        <a href="javascript:RedireccionAtras()" style="text-decoration: none; position: fixed; top: 24%; left: 2px;">
+            <div class="backButton">
+                <div class="bckTriangulo"></div>
+            </div>
+            <p class="bckBtn-text">Atras</p>
+        </a>
+        <div class="mt-4">
+            <h2 style="font-weight: bold;">Seleccione la opci&oacute;n que desea realizar</h2>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col col-6 d-flex flex-column mt-4">
+
+                <button class="btn-menu btn-print btn-success" @(!ViewBag.ImpresionEnLinea ? "disabled=disabled" : "") onclick="OpcionImprimir()">
+                    <img src="~/Images/Kioscos/print.png" class="img-btn" alt="imagen brazalete menu">
+                    Impresion boletas
+                </button>
+                @*<p style="margin:auto">@ViewBag.Mensaje</p>*@
+
+                <button class="btn-menu btn-blue btn-primary" onclick="OpcionConsultar()">
+                    <img src="~/Images/Kioscos/ask.png" class="img-btn" alt="imagen consulta menu">
+                    Consultas
+                </button>
+            </div>
+
+            <div class="col-md-6 col-6">
+                <div class="video">
+                    <video width="100%" height="auto" autoplay controls style="border-radius:5px;">
+                        <source src="~/Carpeta/ Video.extension" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modales correo y confirmacion de codigo*@
+<div class="modal" tabindex="-1" id="modalCorreo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a href="javascript:AtrasModalCorreo()" style="text-decoration: none; position: fixed; left: 2px;">
+                <div class="backButton">
+                    <div class="bckTriangulo"></div>
+                </div>
+                <p class="bckBtn-text">Atras</p>
+            </a>
+            <div class="modal-container">
+                <div class="row">
+                    <div class="col-7">
+                        <form id="frm-correoConfirmacion">
+                            <input type="text" placeholder="Nombre" id="input-nombre" class="input-correo form-control required" name="" autocomplete="off">
+                            <input type="text" placeholder="Correo" id="input-correo" class="input-correo form-control required" autocomplete="off">
+                        </form>
+                    </div>
+                    <div class="col-5" style="padding: 0px 25px;">
+                        <p style="font-weight: bold;">
+                            Digite cuidadosamente su nombre y correo electr&oacute;nico para enviar all&iacute; sus c&oacute;digos QR que servir&aacute;n como pasaportes f&iacute;sicos en nuestras atracciones.
+                        </p>
+                        @*<label class="mt-4" style="font-weight: bold;">Acepta t&eacute;rminos y condiciones.   </label>*@
+                        <label class="mt-4" style="font-weight: bold;">Acepto la pol&iacute;tica de protecci&oacute;n de datos.   </label>
+                        <input type="checkbox" name="" id="TyC"><br />
+                        <label class="" style="font-weight: bold;">(Cons&uacute;ltela en</label>
+                        <a href="" style="pointer-events:none; cursor:default; text-decoration:underline;">MundoAventura.com</a>
+                        <span style="font-weight:bold;">)</span>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:center; margin-top: 45px;">
+                    <button class="btn-modal btn-purple btn-danger" id="BtnAtrasCorreo" onclick="AtrasModalCorreo()"
+                            style="height: 65px; width: 250px; border-radius: 7px">
+                        Atras
+                    </button>
+                    <button class="btn-modal btn-blue btn-primary" id="EnviarCorreo" disabled
+                            style="height: 65px; width: 250px; border-radius: 7px">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="keyboard" class="softkeys" data-target="input[name='code']"></div>
+</div>
+
+<div class="modal" tabindex="-1" id="modalCodConfirmacion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @*<button onclick="IrAtras()" style="position:absolute; top:2px; left:2px;">Atras</button>*@
+            <a href="javascript:IrAtras()" style="text-decoration: none; position: absolute; top: 2px; left: 2px;">
+                <div class="backButton">
+                    <div class="bckTriangulo"></div>
+                </div>
+                <p class="bckBtn-text">Atras</p>
+            </a>
+            <div class="modal-container" style="transform: translate(0%, 20%);">
+                <div class="row">
+                    <div class="col-6">
+                        <form id="frm-codConfirmacion">
+                            <input type="text" class="input-correo form-control required" id="codConfirmacion" maxlength="6" style="text-align:center;" autocomplete="off" />
+                        </form>
+
+                        <div class="panel" style="margin-top:44px;">
+                            <div><button id="btn1" class="btn btn-dark" onclick="presiona(this)">1</button></div>
+                            <div><button id="btn2" class="btn btn-dark" onclick="presiona(this)">2</button></div>
+                            <div><button id="btn3" class="btn btn-dark" onclick="presiona(this)">3</button></div>
+
+                            <div><button id="btn4" class="btn btn-dark" onclick="presiona(this)">4</button></div>
+                            <div><button id="btn5" class="btn btn-dark" onclick="presiona(this)">5</button></div>
+                            <div><button id="btn6" class="btn btn-dark" onclick="presiona(this)">6</button></div>
+
+                            <div><button id="btn7" class="btn btn-dark" onclick="presiona(this)">7</button></div>
+                            <div><button id="btn8" class="btn btn-dark" onclick="presiona(this)">8</button></div>
+                            <div><button id="btn9" class="btn btn-dark" onclick="presiona(this)">9</button></div>
+
+                            <div><button id="btn" class="btn btn-dark" disabled></button></div>
+                            <div><button id="btn0" class="btn btn-dark" onclick="presiona(this)">0</button></div>
+                            <div>
+                                <button id="btnBorrar" class="btn btn-dark" onclick="borra()" style="background-color: #46474A">
+                                    <i class="fa-sharp fa-solid fa-delete-left"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-6" style="display:flex; flex-direction: column; justify-content: space-between; align-items:center;">
+                        <div class="container-bg">
+                            <p>Digite  el c&oacute;digo recibido en su correo electr&oacute;nico.</p>
+                        </div>
+                        <button class="btn-modal btn-blue btn-primary" style="float:right; width:75%; height:65px; margin-top: 15%"
+                                id="btnEnviarCod" onclick="EnviarCodConfirmacion()">
+                            CONTINUAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show modal-tyc" tabindex="-1" id="modalTyC">
+    <div class="modal-dialog">
+        <div class="modal-content content-tyc">
+            <div class="modal-header">
+                <h4>T&eacute;rminos y condiciones</h4>
+            </div>
+            <div class="modal-body">
+                <p id="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptatibus,
+                    laboriosam harum culpa quibusdam ducimus hic sapiente cupiditate doloribus natus!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button data-target="#modalTyC" data-toggle="modal" class="btn-dark"
+                        style="border-radius: 8px; font-weight:bold;">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var codigoConfir = "";
+        function presiona(e) {
+            tecla = e.innerHTML;
+            codigoConfir += tecla;
+            document.getElementById("codConfirmacion").value = codigoConfir;
+        }
+
+        function borra() {
+            if (codigoConfir.length > 0) {
+                codigoConfir = codigoConfir.substring(0, codigoConfir.length - 1);
+                document.getElementById("codConfirmacion").value = codigoConfir;
+            }
+        }
+
+        function OpcionConsultar() {
+            var consecutivos = $("#codigos").val();
+            window.location.href = "Consulta?Codigo=" + consecutivos;
+        }
+
+        function IrAtras() {
+            document.getElementById("codConfirmacion").value = '';
+            var modalC = document.getElementById('modalCorreo');
+            var modalCod = document.getElementById('modalCodConfirmacion');
+            modalCod.style.display = "none";
+            modalC.style.display = "block";
+        }
+
+        function RedireccionAtras() {
+            window.location.replace("/Kioscos/IngresoCodigo");
+        }
+
+        function AtrasModalCorreo() {
+            var modalC = document.getElementById('modalCorreo');
+            modalC.style.display = "none";
+            menu.style.display = "block";
+            document.getElementById("input-correo").value = '';
+            document.getElementById("input-nombre").value = '';
+            document.getElementById("TyC").checked = false;
+            document.getElementById("EnviarCorreo").disabled = true;
+        }
+
+        $('#keyboard').hide();
+
+        $('#keyboard').click(function (e) {
+            e.stopPropagation();
+        });
+
+        $('#input-nombre').focus(function () {
+            $('#input-correo').prop("name", "");
+            $('#input-nombre').prop("name", "code");
+            $('#keyboard').show(200);
+        });
+
+        $('#input-correo').focus(function () {
+            $('#input-nombre').prop("name", "");
+            $('#input-correo').prop("name", "code");
+            $('#keyboard').show(200);
+        });
+
+        $('#input-nombre').focusout(function () {
+            $('#keyboard').hide(100);
+        });
+
+        $('#input-correo').focusout(function () {
+            $('#keyboard').hide(200);
+        });
+
+    </script>
+
+    <script src="~/Scripts/Kioscos.js"></script>
+    <script src="~/Scripts/KeyBoard.js"></script>
+    <script src="~/Scripts/KeyPad.js"></script>
+}

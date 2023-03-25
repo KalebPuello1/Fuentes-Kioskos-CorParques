@@ -1,0 +1,31 @@
+﻿@model CorParques.Negocio.Entidades.ReservaEspacios
+@{
+    ViewBag.Title = ViewBag.Titulo;
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="x_content" id="div_FechaReserva">
+    <div class="item form-group">
+        <div class="col-md-2 col-sm-2 col-xs-12">
+            <label class="control-label" for="fecha">
+                Número Reserva <span>*</span>
+            </label>
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-12">
+            <input type="text" id="txtNumeroReserva" class="form-control col-md-7 col-xs-12" maxlength="20" onkeypress="return EsNumero(this);" />
+        </div>
+        <div class="col-md-4 col-sm-2 col-xs-12">
+            <a href="javascript:void(0)" id="btnNuevaBusqueda" class="right btn btn-success" style="display:none;">Nueva Búsqueda</a>
+        </div>        
+        <div id="DatosReserva">
+            @if (Model != null)
+            {
+                @Html.Partial("_Editar", Model)
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/ReservaEspacios.js"></script>
+    <script>InicializarPreEdicion(@ViewBag.Editar);</script>
+}

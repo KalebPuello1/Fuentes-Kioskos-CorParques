@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Reporte Pasajeros de Atracciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="x_content">
+    <div id="listView">
+        @Html.Partial("_List")
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/ReportePasajerosAtracciones.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+}

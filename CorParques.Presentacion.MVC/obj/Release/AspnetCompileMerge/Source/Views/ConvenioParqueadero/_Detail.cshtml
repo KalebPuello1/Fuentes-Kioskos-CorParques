@@ -1,0 +1,114 @@
+﻿@model CorParques.Negocio.Entidades.ConvenioParqueadero
+<form>
+    <div class="form-horizontal form-label-left" style="height:400px; overflow-y:auto; overflow-x: hidden ">
+        @Html.HiddenFor(model => model.Id)
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="tipoconvenio">
+                Autorización Para
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdTipoConvenioParqueadero, new SelectList(Model.ListaTipoConvenios, "Id", "Nombre", Model.IdTipoConvenioParqueadero), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+            </div>
+        </div>
+        <div class="item form-group">
+            @if (Model.IdTipoConvenioParqueadero == 1)
+            {
+                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="nombre">
+                    Área
+                </label>               
+            }
+            else
+            {
+                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="nombre">
+                    Empresa
+                </label>                
+            }
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Area, new { @class = "form-control col-md-7 col-xs-12", @readonly = true, maxlength = "100" })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="nombre">
+                Número Documento
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Documento, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 20, @readonly = true })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="nombre">
+                Nombre Propietario
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 150, @readonly = true })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="apellido">
+                Apellido Propietario
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control col-md-7 col-xs-12 required", maxlength = 150, @readonly = true })
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="FechaVigencia">
+                Valida Hasta
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.FechaVigencia, new { @class = "form-control col-md-7 col-xs-12 calendario", maxlength = 10, @readonly = true })
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="tipovehiculo">
+                Estado
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.IdEstado, new SelectList(Model.ListaEstados, "Id", "Nombre", Model.IdEstado), "Seleccione...", new { @class = "form-control required", disabled = "disabled" })
+            </div>
+        </div>
+        @if (Model.objAutorizacionVehiculo.Count() > 0)
+        {
+            <fieldset>
+                <legend><b>Vehículos Asociados</b></legend>
+                <div class="row">
+                    <table id="tb_Vehiculos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th style="padding-left:15px;">
+                                    Tipo Vehículo
+                                </th>
+                                <th>
+                                    Placa
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.objAutorizacionVehiculo != null)
+                            {
+                                foreach (var item in Model.objAutorizacionVehiculo)
+                                {
+                                    <tr id="tr_@item.Placa">
+                                        <td class="IdTipoVehiculo" data-id="@item.IdTipoVehiculo">
+                                            @Html.DisplayFor(modelItem => item.TipoVehiculo)
+                                        </td>
+                                        <td class="Placas">
+                                            @Html.DisplayFor(modelItem => item.Placa)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        }
+
+    </div>
+</form>
+<script>
+    $(function () {
+        setAreaVisibility();
+    });
+</script>

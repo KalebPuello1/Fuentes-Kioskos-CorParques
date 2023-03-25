@@ -1,0 +1,65 @@
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\BouncyCastle.Crypto.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\ClosedXML.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\FastMember.Signed.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\itextsharp.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Zen.Barcode.Core.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\ClosedXML.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\itextsharp.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.xml
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.AssemblyReference.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CoreCompileInputs.cache
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CopyComplete
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.dll
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.pdb
+D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Negocio.Entidades.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.pdb
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\BouncyCastle.Crypto.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\ClosedXML.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\FastMember.Signed.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\itextsharp.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Zen.Barcode.Core.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.pdb
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\ClosedXML.xml
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\CorParques.Negocio.Entidades.pdb
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.xml
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\itextsharp.xml
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.xml
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.AssemblyReference.cache
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CoreCompileInputs.cache
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CopyComplete
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.dll
+D:\Fuentes Core Desarrollo\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\obj\Release\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Transversales.Util\bin\Release\CorParques.Negocio.Entidades.dll
