@@ -85,6 +85,11 @@ namespace CorParques.Negocio.Nucleo
             return _repositorio.ObtenerxIdTipoPunto(IdTipoPunto);
         }
 
+        public IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario)
+        {
+            return _repositorio.ObtenerPuntosXusuario(IdUsuario);
+        }
+
         public bool ActualizaHoraIdPunto(string HoraInicio, string HoraFin, int IdTipoPunto)
         {
             return _repositorio.ActualizaHoraIdPunto(HoraInicio, HoraFin, IdTipoPunto);

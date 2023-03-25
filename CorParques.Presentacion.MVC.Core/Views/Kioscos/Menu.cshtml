@@ -6,7 +6,8 @@
 
 <link rel="stylesheet" href="~/Content/Kioscos/General.css" />
 <link rel="stylesheet" href="~/Content/Kioscos/Menu.css" />
-<link rel="stylesheet" href="~/Content/Kioscos/KeyBoard.css"/>
+<link rel="stylesheet" href="~/Content/Kioscos/KeyBoard.css" />
+
 <input type="hidden" id="codigos" value="@consecutivosBoletas" />
 <div id="menu" style="display:block;">
     <div class="d-flex flex-column justify-content-center text-center mt-5">
@@ -36,7 +37,11 @@
             </div>
 
             <div class="col-md-6 col-6">
-                <div class="video"></div>
+                <div class="video">
+                    <video width="100%" height="auto" autoplay controls style="border-radius:5px;">
+                        <source src="~/Carpeta/ Video.extension" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
     </div>
@@ -56,17 +61,20 @@
                 <div class="row">
                     <div class="col-7">
                         <form id="frm-correoConfirmacion">
-                            <input type="text" placeholder="Nombre" id="input-nombre" class="input-correo form-control required" name="">
-                            <input type="text" placeholder="Correo" id="input-correo" class="input-correo form-control required">
+                            <input type="text" placeholder="Nombre" id="input-nombre" class="input-correo form-control required" name="" autocomplete="off">
+                            <input type="text" placeholder="Correo" id="input-correo" class="input-correo form-control required" autocomplete="off">
                         </form>
                     </div>
                     <div class="col-5" style="padding: 0px 25px;">
                         <p style="font-weight: bold;">
                             Digite cuidadosamente su nombre y correo electr&oacute;nico para enviar all&iacute; sus c&oacute;digos QR que servir&aacute;n como pasaportes f&iacute;sicos en nuestras atracciones.
                         </p>
-                        <label class="mt-4" style="font-weight: bold;">Acepta t&eacute;rminos y condiciones.   </label>
+                        @*<label class="mt-4" style="font-weight: bold;">Acepta t&eacute;rminos y condiciones.   </label>*@
+                        <label class="mt-4" style="font-weight: bold;">Acepto la pol&iacute;tica de protecci&oacute;n de datos.   </label>
                         <input type="checkbox" name="" id="TyC"><br />
-                        <a href="" class="info">ver Mas informaci&oacute;n</a>
+                        <label class="" style="font-weight: bold;">(Cons&uacute;ltela en</label>
+                        <a href="" style="pointer-events:none; cursor:default; text-decoration:underline;">MundoAventura.com</a>
+                        <span style="font-weight:bold;">)</span>
                     </div>
                 </div>
                 <div style="display:flex; justify-content:center; margin-top: 45px;">
@@ -99,7 +107,7 @@
                 <div class="row">
                     <div class="col-6">
                         <form id="frm-codConfirmacion">
-                            <input type="text" class="input-correo form-control required" id="codConfirmacion" maxlength="6" style="text-align:center;" />
+                            <input type="text" class="input-correo form-control required" id="codConfirmacion" maxlength="6" style="text-align:center;" autocomplete="off" />
                         </form>
 
                         <div class="panel" style="margin-top:44px;">
@@ -140,6 +148,27 @@
     </div>
 </div>
 
+<div class="modal fade show modal-tyc" tabindex="-1" id="modalTyC">
+    <div class="modal-dialog">
+        <div class="modal-content content-tyc">
+            <div class="modal-header">
+                <h4>T&eacute;rminos y condiciones</h4>
+            </div>
+            <div class="modal-body">
+                <p id="">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptatibus,
+                    laboriosam harum culpa quibusdam ducimus hic sapiente cupiditate doloribus natus!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button data-target="#modalTyC" data-toggle="modal" class="btn-dark"
+                        style="border-radius: 8px; font-weight:bold;">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section scripts{
     <script>
@@ -164,8 +193,6 @@
 
         function IrAtras() {
             document.getElementById("codConfirmacion").value = '';
-            //cerrarModal("modalCodConfirmacion");
-            //abrirModal("modalCorreo");
             var modalC = document.getElementById('modalCorreo');
             var modalCod = document.getElementById('modalCodConfirmacion');
             modalCod.style.display = "none";
@@ -178,7 +205,6 @@
 
         function AtrasModalCorreo() {
             var modalC = document.getElementById('modalCorreo');
-            //cerrarModal("modalCorreo");
             modalC.style.display = "none";
             menu.style.display = "block";
             document.getElementById("input-correo").value = '';
@@ -193,25 +219,8 @@
             e.stopPropagation();
         });
 
-        //$(function () {
-        //    $('#input-nombre').focus(function () {
-        //        $('#keyboard').show();
-        //        $('#input-correo').prop("name", "");
-        //        $('#input-nombre').prop("name", "code");
-        //    });
-        //    $('#input-correo').click(function () {
-        //        $('#keyboard').show();
-        //        $('#input-nombre').prop("name", "");
-        //        $('#input-correo').prop("name", "code");
-        //    });
-        //    $(document).click(function () {
-        //        $('#keyboard').hide();
-
-        //    });
-        //});
-
         $('#input-nombre').focus(function () {
-            $('#input-correo').prop("name","");
+            $('#input-correo').prop("name", "");
             $('#input-nombre').prop("name", "code");
             $('#keyboard').show(200);
         });

@@ -57,6 +57,7 @@ namespace CorParques.Negocio.Contratos
         string DescargarProductosInstitucional(ImprimirBoletaControl modelo);
         string DescargueBoletaFactura(List<Producto> listaProductos);
         IEnumerable<Producto> ObtenerTodosProductos();
+        IEnumerable<Producto> ObtenerProductosXPuntoSurtido();
         IEnumerable<Producto> ObtenerTodosProductosRestaurante();
         
         RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo);

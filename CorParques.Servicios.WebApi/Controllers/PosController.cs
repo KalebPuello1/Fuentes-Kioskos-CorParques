@@ -450,6 +450,16 @@ namespace CorParques.Servicios.WebApi.Controllers
             return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
                             : Request.CreateResponse(HttpStatusCode.OK, item);
         }
+
+        [HttpGet]
+        [Route("api/Pos/ObtenerProductosXPuntoSurtido")]
+        public HttpResponseMessage ObtenerProductosXPuntoSurtido()
+        {
+            var item = _service.ObtenerProductosXPuntoSurtido();
+            return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, item);
+        }
+
         [HttpGet]
         [Route("api/Pos/ObtenerTodosProductosRestaurante")]
         public HttpResponseMessage ObtenerTodosProductosRestaurante()

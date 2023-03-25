@@ -607,6 +607,13 @@ namespace CorParques.Datos.Dapper
                 commandType: CommandType.StoredProcedure).ToList();
             return rta;
         }
+        public IEnumerable<Producto> ObtenerProductosXPuntoSurtido()
+        {
+            var rta = _cnn.Query<Producto>("SP_ObtenerProductosXPuntoSurtido",
+                null,
+                commandType: CommandType.StoredProcedure).ToList();
+            return rta;
+        }
         public IEnumerable<Producto> ObtenerTodosProductosRestaurante()
         {
             var rta = _cnn.Query<Producto>("SP_ObtenerTodosProductosRestaurante",

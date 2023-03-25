@@ -15,6 +15,8 @@ namespace CorParques.Negocio.Contratos
         IEnumerable<Puntos> ObtenerxTipoPunto(int IdTipoPunto);
         bool ActualizaHoraIdPunto(string HoraInicio, string HoraFin, int IdTipoPunto);
 
+        IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario);
+
         IEnumerable<Puntos> ObtenerPuntosRecaudo();
 
         // RDSH: Retorna todos los puntos activos para almacenarlos en cache.        

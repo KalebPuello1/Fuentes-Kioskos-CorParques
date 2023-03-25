@@ -64,7 +64,8 @@ namespace CorParques.Datos.Contratos
 
         IEnumerable<Producto> ObtenerTodosProductos();
         IEnumerable<Producto> ObtenerTodosProductosRestaurante();
-        
+        IEnumerable<Producto> ObtenerProductosXPuntoSurtido();
+
         RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo);
 
         Factura ObtenerUltimaFactura(int IdPunto);
