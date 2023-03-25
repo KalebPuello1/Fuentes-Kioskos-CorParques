@@ -26,16 +26,20 @@ namespace CorParques.Datos.Contratos
 
         Producto ObtenerProducto(int idProducto);
         Producto ObtenerProductoPtoEntrega(int idProducto);
-        
+        Producto ObtenerProductoPtoFactura(int idProducto);
+
         IEnumerable<Producto> ObtenerProductos();
 
         IEnumerable<Producto> ObtenerProductosPtoEntrega();
+        IEnumerable<Producto> ObtenerProductosPtoFactura();
 
         
 
         bool ActualizarProducto(Producto modelo);
         bool ActualizarProductoPuntosEntrega(Producto modelo);
-        
+
+        bool ActualizarProductoPuntosFactura(Producto modelo);
+
         int GuardarNotaCredito(NotaCredito modelo);
 
         TipoGeneral ObtenerNotaCredito(int IdUsuario);
@@ -63,6 +67,9 @@ namespace CorParques.Datos.Contratos
         string DescargueBoletaFactura(List<Producto> listaProductos);
 
         IEnumerable<Producto> ObtenerTodosProductos();
+        IEnumerable<Producto> ObtenerProductosXPuntoSurtido();
+
+        
         IEnumerable<Producto> ObtenerTodosProductosRestaurante();
         
         RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo);

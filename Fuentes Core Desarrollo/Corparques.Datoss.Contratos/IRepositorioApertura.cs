@@ -11,6 +11,8 @@ namespace CorParques.Datos.Contratos
 	public interface IRepositorioApertura : IRepositorioBase<Apertura>
 	{
         IEnumerable<Puntos> ObtenerPuntosSinApertura(DateTime? Fecha);
+        IEnumerable<Puntos> ObtenerPuntosSurtido();
+        
         IEnumerable<Puntos> ObtenerPuntosConApertura(DateTime? Fecha);
 
         IEnumerable<Puntos> ObtenerPuntosParaAperturaElementos();        
