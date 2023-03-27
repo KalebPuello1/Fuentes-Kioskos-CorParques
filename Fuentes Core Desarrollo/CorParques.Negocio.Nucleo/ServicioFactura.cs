@@ -77,6 +77,11 @@ namespace CorParques.Negocio.Nucleo
             return resultado;
         }
 
+        public IEnumerable<DetalleFactura> ObtenerDetallesConsecutivoConvenioDia(string consecutivoConvenio)
+        {
+            return _repositorio.ObtenerDetallesConsecutivoConvenioDia(consecutivoConvenio);
+        }
+
         #endregion
     }
 }

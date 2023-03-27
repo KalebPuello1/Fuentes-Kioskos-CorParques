@@ -97,8 +97,9 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                     return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Usuario se encuentra inactivo." }, JsonRequestBehavior.AllowGet);
                 }
 
-                //Geyner Lopez - Valida que el usuario no se encuentre logueado
-                if ((user.Logueado) && (user.IdPuntoLogueado != idPuntoConfigurado))
+                bool valid = user.ListaPerfiles.Exists(e => e.Nombre == "Supervisor");
+
+                if ((user.Logueado) && (user.IdPuntoLogueado != idPuntoConfigurado) && (!valid))
                 {
                     string NombreAtraccion;
                     var item = await GetAsync<Puntos>($"Puntos/GetById/{user.IdPuntoLogueado}");
@@ -115,6 +116,106 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
             }
         }
+
+
+        [AllowAnonymous]
+        public ActionResult LoginManual()
+        {
+            return View();
+
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<ActionResult> LoginManual(string usuario1, string password1, string ChangePwd2, string ConfirmPwd2)
+        {
+            ViewBag.Validar = false;
+            var idPuntoConfigurado = IdPunto;
+
+            //RDSH: Valida que el punto este en estado activo para continuar con el proceso de login.
+            var objPunto = await GetAsync<Puntos>($"Puntos/GetById/{IdPunto}");
+
+
+            //VALIDACION DEL PUNTO --------------------------------------------------------------------------------------------------------------------
+            if (objPunto != null)
+            {
+                if (objPunto.EstadoId.Equals((int)Enumerador.Estados.Mantenimiento))
+                {
+                    //[Route("api/Puntos/ObservacionesMantenimiento/{IdPunto}")]
+
+                    var strObservacionMto = await GetAsync<string>($"Puntos/ObservacionesMantenimiento/{IdPunto}");
+
+                    if (!string.IsNullOrEmpty(strObservacionMto))
+                    {
+                        return Json(new RespuestaViewModel { Correcto = false, Mensaje = string.Concat("[M]", strObservacionMto.Trim()) }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new RespuestaViewModel { Correcto = false, Mensaje = "El punto se encuentra en mantenimiento." }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                else if (objPunto.EstadoId != ((int)Enumerador.Estados.Activo))
+                {
+                    return Json(new RespuestaViewModel { Correcto = false, Mensaje = "El punto no esta disponible para iniciar sesión." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new RespuestaViewModel { Correcto = false, Mensaje = string.Concat("Punto con el código: ", ConfigurationManager.AppSettings["IdPunto"].ToString(), ", no se encuentra en la base de datos.") }, JsonRequestBehavior.AllowGet);
+            }
+
+            //Validacion parametros ************************************************************************************************************************************************************************************************************************************
+            password1 = Encripcion.Encriptar(password1, ConfigurationManager.AppSettings["llaveEncripcion"]);
+            var user = await GetAsync<Usuario>($"Usuario/GetByUserPwd?pwd={Server.UrlEncode(password1)}&user={usuario1}&Punto={idPuntoConfigurado}");
+            //Validacion parametros ************************************************************************************************************************************************************************************************************************************
+
+            if (user != null)
+            {
+                if (user.IdEstado != (int)Enumerador.Estados.Activo)
+                {
+                    return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Usuario se encuentra inactivo." }, JsonRequestBehavior.AllowGet);
+                }
+
+                //Geyner Lopez - Valida que el usuario no se encuentre logueado
+                if ((user.Logueado) && (user.IdPuntoLogueado != idPuntoConfigurado))
+                {
+                    string NombreAtraccion;
+                    var item = await GetAsync<Puntos>($"Puntos/GetById/{user.IdPuntoLogueado}");
+                    NombreAtraccion = item.Nombre;
+                    return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Usuario tiene sesion activa en " + NombreAtraccion }, JsonRequestBehavior.AllowGet);
+                }
+
+                return await ValidaIngreso(user, true);
+
+            }
+
+            if (user.CambioPassword)
+            {
+                if (ChangePwd2.Length > 0 && ConfirmPwd2.Length > 0)
+                {
+                    if (ChangePwd2 == ConfirmPwd2)
+                    {
+                        user.CambioPassword = false;
+                        user.Password2 = Encripcion.Encriptar(ChangePwd2, ConfigurationManager.AppSettings["llaveEncripcion"]);
+                        var userLogueado = PutAsync<Usuario, string>("Usuario/ActualizarUsuario", user);
+                        return await ValidaIngreso(user, false);
+                    }
+                    else
+                    {
+                        return Json(new RespuestaViewModel { Correcto = false, Mensaje = "El cambio de contraseña no es correcto" }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                return Json(new RespuestaViewModel { Correcto = true, Mensaje = "Cambiopwd" }, JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Usuario o contraseña incorrectos" }, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
 
         [HttpPost]
         public ActionResult LogOut()
@@ -307,8 +408,8 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var _listUsuarios = await GetAsync<IEnumerable<Usuario>>($"Usuario/ObtenerUsuariosPorPerfil?idsPerfil={strPerfiles}");
             IEnumerable<TipoGeneral> Usuarios = _listUsuarios.Select(x => new TipoGeneral { Id = x.Id, Nombre = string.Concat(x.Nombre, " ", x.Apellido) });
             return PartialView("_LoginSupervisor", Usuarios);
-        }
 
+        }
 
         //FIN EDSP Obtener Vista Parcial Supervisor
 

@@ -53,7 +53,7 @@ namespace CorParques.Servicios.WebApi.Controllers
             return list.Count() == 0 ? Request.CreateResponse(HttpStatusCode.NotFound)
                             : Request.CreateResponse(HttpStatusCode.OK, list);
         }
-        
+
 
         [HttpGet]
         [Route("api/Puntos/GetAllSimple")]

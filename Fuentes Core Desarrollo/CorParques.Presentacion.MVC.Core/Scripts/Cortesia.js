@@ -1,6 +1,7 @@
 ﻿var objUsuario;
 var listProductos = [];
 var inicializadointerval = false;
+var IdDetalleCortesia = 0;
 $(".Numerico").mask("00000000000000");
 
 //Consultar cortesias disponibles para usuarios visitantes
@@ -35,11 +36,11 @@ $(function () {
             if (listProductos.length == 0) {
                 MostrarMensaje("Importante", "Debe seleccionar un producto", "warning");
             } else {
-                if ($("#btnHabilitarImpresionLinea").val() == "Activar Imp en línea") {
-                    EjecutarAjax(urlBase + "Cortesia/GuardarCortesiaUsuarioVisitante", "POST", JSON.stringify({ usuarioVisitante: objUsuario, productos: listProductos }), "RespuestaGuardarCortesia", null);
+                if ($("#btnHabilitarImpresionLinea").val() == "Activar Imp en línea") {                    
+                    EjecutarAjax(urlBase + "Cortesia/GuardarCortesiaUsuarioVisitante", "POST", JSON.stringify({ usuarioVisitante: objUsuario, productos: listProductos, IdDetalle: IdDetalleCortesia }), "RespuestaGuardarCortesia", null);
                 }
                 else {
-                    EjecutarAjax(urlBase + "Cortesia/GuardarCortesiaUsuarioVisitanteImpresionLinea", "POST", JSON.stringify({ usuarioVisitante: objUsuario, productos: listProductos }), "RespuestaGuardarCortesia", null);
+                    EjecutarAjax(urlBase + "Cortesia/GuardarCortesiaUsuarioVisitanteImpresionLinea", "POST", JSON.stringify({ usuarioVisitante: objUsuario, productos: listProductos }), "RespuestaGuardarCortesia", null);                    
                 }
                 
             }
@@ -199,8 +200,8 @@ function ConsultarBoleta() {
     var numdocument = $("#txtNumdocumentoV"); 
     var IDtipoCorteV = $("#txtTipoCortesiaV");
     var numerotarjeta = $("#txtNumTarjetaFAN");
-    if (obj.length > 0) {
-        EjecutarAjax(urlBase + "Cortesia/ObtenerProducto", "POST", JSON.stringify({ CodBarra: obj.val(), Documento: numdocument.val(), numtarjeta: numerotarjeta.val(), productos: listProductos, IdTipoCortesia: IDtipoCorteV.val(), impresionLinea:0 }), "successObtenerProducto", null);
+    if (obj.length > 0) {        
+        EjecutarAjax(urlBase + "Cortesia/ObtenerProducto", "POST", JSON.stringify({ CodBarra: obj.val(), Documento: numdocument.val(), numtarjeta: numerotarjeta.val(), productos: listProductos, IdTipoCortesia: IDtipoCorteV.val(), impresionLinea: 0, IdDetalle: IdDetalleCortesia }), "successObtenerProducto", null);
         obj.val("");
     }
 }
@@ -328,4 +329,8 @@ function CancelarDescargoProductos(id) {
 }
 function RespuestaGuardarQR(rta) {
     MostrarMensajeRedireccion("Importante", "Operación realizada con éxito.", "Cortesia/Index", "success");
+}
+
+function Seleccionar(idDetalle) {
+    IdDetalleCortesia = idDetalle;    
 }

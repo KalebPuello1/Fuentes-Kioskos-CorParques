@@ -74,6 +74,16 @@ namespace CorParques.Servicios.WebApi.Controllers
             return item == null ? Request.CreateResponse(HttpStatusCode.NotFound)
                            : Request.CreateResponse(HttpStatusCode.OK, item);
         }
-        
+
+        [HttpGet]
+        [Route("api/Factura/ObtenerDetallesConsecutivoConvenioDia/{Consecutivo}")]
+        public HttpResponseMessage ObtenerDetallesConsecutivoConvenioDia(string Consecutivo)
+        {
+            var item = _service.ObtenerDetallesConsecutivoConvenioDia(Consecutivo);
+
+            return item.Count() == 0 ? Request.CreateResponse(HttpStatusCode.NotFound)
+                            : Request.CreateResponse(HttpStatusCode.OK, item);
+        }
+
     }
 }

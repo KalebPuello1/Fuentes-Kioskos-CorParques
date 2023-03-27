@@ -56,6 +56,14 @@ namespace CorParques.Negocio.Entidades
         [Column("IdApertura")]
         public string IdApertura { get; set; }
 
+        [Column("Contingencia")]
+        public int Contingencia { get; set; }
+
+        [Column("TipoFactura")]
+        public int TipoFactura { get; set; }
+
+
+
         [Editable(false)]
         public IEnumerable<DetalleFactura> DetalleFactura { get; set; }
 

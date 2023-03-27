@@ -713,6 +713,7 @@
     <Content Include="Views\Kioscos\Consulta.cshtml" />
     <Content Include="Vendors\bootstrap_4.6.2\dist\css\bootstrap.min.css.map" />
     <Content Include="Vendors\bootstrap_4.6.2\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Views\Pos\_DetalleCortesias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Entidades\CorParques.Negocio.Entidades.csproj">

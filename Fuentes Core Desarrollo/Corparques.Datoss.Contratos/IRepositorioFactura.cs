@@ -33,7 +33,7 @@ namespace CorParques.Datos.Contratos
         string ValidarAlerta(int usuario, int producto);
         string GenerarNumeroFactura(int IdPunto);
         IEnumerable<FacturaValidaUsoRespuesta> ValidarUsoFactura(string codigoFactura);
-
+        IEnumerable<DetalleFactura> ObtenerDetallesConsecutivoConvenioDia(string consecutivoConvenio);
 
     }
 }

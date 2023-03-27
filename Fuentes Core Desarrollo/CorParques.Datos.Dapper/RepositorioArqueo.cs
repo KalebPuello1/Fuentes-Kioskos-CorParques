@@ -22,7 +22,6 @@ namespace CorParques.Datos.Dapper
 
         public bool InsertarNovedadArqueo(NovedadArqueo modelo)
         {
-
             try
             {
                 _cnn.Query<bool>("SP_InsertarNovedadArqueo", param: new { IdPunto = modelo.IdPunto, IdEstado = modelo.IdEstado, IdTaquillero = modelo.IdTaquillero,
@@ -37,7 +36,5 @@ namespace CorParques.Datos.Dapper
             }
             
         }
-
-
     }
 }

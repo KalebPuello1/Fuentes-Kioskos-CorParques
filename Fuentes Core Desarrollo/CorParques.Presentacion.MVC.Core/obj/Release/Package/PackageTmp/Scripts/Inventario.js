@@ -4,9 +4,19 @@ var arregloObsevaciones = "";
 var arregloNombres = "";
 var arregloDiferencia = "";
 var arregloTeorico = "";
-var arregloCamtidadDisponible = "";
+var arregloCantidadDisponible = "";
 var arregloTipoMovimiento = "";
 
+var IdSupervisorGlobal = "";
+
+var ArchivoExcelGlobal = "";
+
+var observaciones = [];
+var nombres = [];
+var diferencia = [];
+var arregloTeorico = [];
+var arregloCantidadDisponible = [];
+var arregloTipoMovimiento = [];
 
 $(function () {
 
@@ -65,7 +75,6 @@ $(function () {
 
         MostrarConfirm("Importante!", "¿Está seguro de realizar el traslado? ", "SolicitarLogin", "");
 
-        //Colocar linea porque marlon esta bravo
 
         $("#IdMateriales").addClass("required");
         $("#CantidadMaterial").addClass("required");
@@ -85,40 +94,13 @@ $(function () {
 
         if (!validarFormulario("frmInventarioFisico *")) {
             return false;
+
+
+        } else {
+
+            MostrarConfirm("Importante!", "¿Esta seguro de guardar el Inventario Físico?", "SolicitarLoginAjuste", "");
         }
 
-        var long = $($("tbody").children()).length 
-       
-       for (var i = 0; i < long; i++)
-       {
-           //Estas condicionales se deben corregir
-           if ($($("tbody").children()[i]).children()[11].children[0].innerText != "0,00") {
-               if (i == 0 && $($("tbody").children()[i]).children()[11].children[0].innerText != "0,00") {
-                   arregloObsevaciones = "," +$("#" + $($("tbody").children()[i]).children()[14].children[0].id).val();
-                   arregloNombres = "," + $($("tbody").children()[i]).children()[7].innerText;
-                   arregloDiferencia = ";" + $($("tbody").children()[i]).children()[11].children[0].innerText
-                   arregloTeorico = "," + $($("tbody").children()[i]).children()[8].innerText
-                   arregloCamtidadDisponible = "," + $("#" + $($("tbody").children()[i]).children()[10].children[0].id).val()
-                   arregloTipoMovimiento = "," + $($("tbody").children()[i]).children()[12].children[0].innerText
-               }
-               else {
-                   //Estas condicionales se deben asignar
-                   if (i != 0 && $($("tbody").children()[i]).children()[11].children[0].innerText != "0,00") {
-                       arregloObsevaciones += "," + $("#" + $($("tbody").children()[i]).children()[14].children[0].id).val();
-                       arregloNombres += "," + $($("tbody").children()[i]).children()[7].innerText;
-                       arregloDiferencia += ";" + $($("tbody").children()[i]).children()[11].children[0].innerText
-                       arregloTeorico += "," + $($("tbody").children()[i]).children()[8].innerText
-                       arregloCamtidadDisponible += "," + $("#" + $($("tbody").children()[i]).children()[10].children[0].id).val()
-                       arregloTipoMovimiento += "," + $($("tbody").children()[i]).children()[12].children[0].innerText
-                   }
-               }
-           }
-        }
-        MostrarConfirm("Importante!", "¿Esta seguro de realizar el Inventario Físico?", "SolicitarLoginAjuste", "");
-         
-            
-        //Aqui va a venir el methodo para el correo y el ajax 
-        
     });
 
     $("#txtSearch").keyup(function () {
@@ -142,9 +124,12 @@ $(function () {
 
 });
 
-function ObtenerIdSupervisor(id) {    
+function ObtenerIdSupervisor(id) {
+
     GuardarInventario(id);
+
 }
+
 
 function InicializarMateriales() {
 
@@ -319,41 +304,12 @@ function SolicitarLoginAjuste() {
 
 }
 
-function SolicitarLogin()
-{
+function SolicitarLogin() {
     MensajeConfirm = "¿Está de acuerdo con el inventario que está recibiendo?";
     EjecutarAjax(urlBase + "Cuenta/ObtenerLoginCormfirmacion", "GET", { Mensaje: MensajeConfirm }, "printPartialModal", { title: "Confirmación inventario", hidesave: true, modalLarge: false });
 }
 
-function GuardarInventario(id) {
-    
-    $(".IdSupervisor").each(function (index, element) {
-        element.value = id;
-    });
-    var _obj="[";
-    $.each($("#frmInventarioFisico #tbInventarioFisico tbody tr"), function (i, v) {
-        var item="{";
-        $.each($(v).find("input"), function (j, data) {
-            if ($(data).attr("name")!==undefined)
-                item += '"' + $(data).attr("name") + '":"' + $(data).val().toString().replace('.',',') + '",';
-        });
-        $.each($(v).find("select"), function (j, data) {
-            if ($(data).attr("name") !== undefined)
-                item += '"' + $(data).attr("name") + '":"' + $(data).val() + '",';
-        });
-        $.each($(v).find("textarea"), function (j, data) {
-            if ($(data).attr("name") !== undefined)
-                item += '"' + $(data).attr("name") + '":"' + encodeURI($(data).val() == "" ? "Ajuste por conteo" : $(data).val()) + '",';
-        });
-        item = item.substring(0, item.length - 1) + "},";
-        _obj += item;
-    });
-    _obj = _obj.substring(0, _obj.length - 1) + "]";
-    _obj = JSON.parse(_obj);
 
-    EjecutarAjaxJson(urlBase + "Inventario/GuardarInventario", "POST", { modelo: _obj }, "SuccessInventarioFisico", null);
-
-}
 
 function GuardarAlistamiento() {
 
@@ -388,6 +344,218 @@ function GuardarAlistamiento() {
     //EjecutarAjax(urlBase + "Inventario/Guardar", "GET", listatraslados, "success", null);
     EjecutarAjax(urlBase + "Inventario/Guardar", "POST", JSON.stringify({ modelo: listatraslados }), "success", null);
 
+}
+
+function GuardarInventario(id) {
+
+    IdSupervisorGlobal = id;
+
+    $(".IdSupervisor").each(function (index, element) {
+        element.value = id;
+    });
+
+    var _obj = "[";
+    $.each($("#frmInventarioFisico #tbInventarioFisico tbody tr"), function (i, v) {
+
+        var item = "{";
+
+        $.each($(v).find("input"), function (j, data) {
+            if ($(data).attr("name") !== undefined)
+                item += '"' + $(data).attr("name") + '":"' + $(data).val().toString().replace('.', ',') + '",';
+        });
+
+        $.each($(v).find("select"), function (j, data) {
+            if ($(data).attr("name") !== undefined)
+                item += '"' + $(data).attr("name") + '":"' + $(data).val() + '",';
+        });
+
+        $.each($(v).find("textarea"), function (j, data) {
+            if ($(data).attr("name") !== undefined)
+                item += '"' + $(data).attr("name") + '":"' + encodeURI($(data).val() == "" ? "Ajuste por conteo" : $(data).val()) + '",';
+        });
+
+        item = item.substring(0, item.length - 1) + "},";
+        _obj += item;
+    });
+
+    _obj = _obj.substring(0, _obj.length - 1) + "]";
+    _obj = JSON.parse(_obj);
+
+
+
+    EjecutarAjaxJson(urlBase + "Inventario/GuardarInventario", "POST", { modelo: _obj }, "RegistrarInventarioFisico", null); 
+
+    
+}
+
+
+function RegistrarInventarioFisico() {
+
+    var IdSupervisorRegistro = IdSupervisorGlobal;
+
+    if (!validarFormulario("frmInventarioFisico *")) {
+        return false;
+    }
+
+    var ArrayInputs = new Array();
+
+    var objeto = new Object();
+
+    var long = $($("tbody").children()).length
+
+    var InputsValues = document.getElementsByClassName('datoInput'),
+        NamesValues = [].map.call(InputsValues, function (dataInput) {
+            ArrayInputs.push(dataInput.value);
+        });
+
+    var InputsString = ArrayInputs.toString();
+
+
+    for (var i = 0; i < long; i++) {
+
+
+
+        if ($($("tbody").children()[i]).children()[11].children[0].innerText != "") {
+
+            if (i >= 0 && $($("tbody").children()[i]).children()[11].children[0].innerText != "") {
+
+                arregloObsevaciones += "," + $("#" + $($("tbody").children()[i]).children()[14].children[0].id).val();
+
+                arregloNombres += "," + $($("tbody").children()[i]).children()[7].innerText;
+
+                arregloDiferencia += ";" + $($("tbody").children()[i]).children()[11].children[0].innerText
+
+                arregloTeorico += "," + $($("tbody").children()[i]).children()[8].innerText
+
+                arregloCantidadDisponible = InputsString;
+
+                arregloTipoMovimiento += "," + $($("tbody").children()[i]).children()[12].children[0].innerText
+            }
+           
+        }
+
+        var Diferencia = arregloDiferencia.slice(1);
+
+        observaciones = arregloObsevaciones.split(",");
+        nombres = arregloNombres.split(",");
+        CantidadTeorico = arregloTeorico.split(",");
+        TipoMovimiento = arregloTipoMovimiento.split(",");
+
+        observaciones.shift();
+        nombres.shift();
+        CantidadTeorico.shift();
+        TipoMovimiento.shift();
+
+        ObservacionesFisico = observaciones.toString();
+        NombresFisico = nombres.toString();
+        ArregloTeoricoFisico = CantidadTeorico.toString();
+        TipoMovimientos = TipoMovimiento.toString();
+
+        objeto.ObservacionesFisico = ObservacionesFisico;
+        objeto.NombresFisico = NombresFisico;
+        objeto.ArregloTeoricoFisico = ArregloTeoricoFisico;
+        objeto.ArregloInventarioFisico = arregloCantidadDisponible;
+        objeto.Diferencias = Diferencia;
+        objeto.TipoMovimientos = TipoMovimientos;
+        objeto.id_Supervisor = IdSupervisorRegistro;
+
+
+    }
+
+    EjecutarAjax(urlBase + "Inventario/RegistrarInventarioFisico", "GET", objeto, "ImprimirReporte", null);
+
+}
+
+
+function ImprimirReporte() {
+
+    var ArrayInputs = new Array();
+
+    var objeto = new Object();
+
+    var IdSupervisorReporte = IdSupervisorGlobal;
+
+    var long = $($("tbody").children()).length
+
+    var InputsValues = document.getElementsByClassName('datoInput'),
+        NamesValues = [].map.call(InputsValues, function (dataInput) {
+            ArrayInputs.push(dataInput.value);
+        });
+ 
+    var InputsString = ArrayInputs.toString();
+
+    var objeto = new Object();
+
+    for (var i = 0; i < long; i++) {
+
+
+        if ($($("tbody").children()[i]).children()[11].children[0].innerText != "") {
+
+            if (i >= 0 && $($("tbody").children()[i]).children()[11].children[0].innerText != "") {
+
+
+                arregloObsevaciones += "," + $("#" + $($("tbody").children()[i]).children()[14].children[0].id).val();
+
+                arregloNombres += "," + $($("tbody").children()[i]).children()[7].innerText;
+
+                arregloDiferencia += ";" + $($("tbody").children()[i]).children()[11].children[0].innerText
+
+                arregloTeorico += "," + $($("tbody").children()[i]).children()[8].innerText
+
+                arregloCantidadDisponibleV2 = InputsString;
+
+                arregloTipoMovimiento += "," + $($("tbody").children()[i]).children()[12].children[0].innerText
+            }
+        }
+
+        var Diferencia = arregloDiferencia.slice(1);
+
+        observaciones = arregloObsevaciones.split(",");
+        nombres = arregloNombres.split(",");
+        CantidadTeorico = arregloTeorico.split(",");
+        TipoMovimiento = arregloTipoMovimiento.split(",");
+
+
+        observaciones.shift();
+        nombres.shift();
+        CantidadTeorico.shift();
+        TipoMovimiento.shift();
+
+
+        ObservacionesFisico = observaciones.toString();
+        NombresFisico = nombres.toString();
+        ArregloTeoricoFisico = CantidadTeorico.toString();
+        TipoMovimientos = TipoMovimiento.toString();
+
+        objeto.ObservacionesFisico = ObservacionesFisico;
+        objeto.NombresFisico = NombresFisico;
+        objeto.ArregloTeoricoFisico = ArregloTeoricoFisico;
+        objeto.ArregloInventarioFisico = arregloCantidadDisponibleV2;
+        objeto.Diferencias = Diferencia;
+        objeto.TipoMovimientos = TipoMovimientos;
+        objeto.id_Supervisor = IdSupervisorReporte;
+    }
+
+    EjecutarAjax(urlBase + "Inventario/GenerarArchivo", "GET", objeto, "CargarTabla", null);
+}
+
+function CargarTabla(datos, params) {
+
+    ArchivoExcelGlobal = datos;
+
+    if (datos.length > 0) {
+
+        if (datos.indexOf("Error") >= 0) {
+            MostrarMensaje("Importante", datos);
+        }
+        else {
+
+            SuccessInventarioFisico();
+        }
+    }
+    else {
+        MostrarMensaje("Importante", "No hay información para exportar.");
+    }
 }
 
 
@@ -429,43 +597,80 @@ function success(rta) {
     }
 }
 
-function SuccessInventarioFisico(rta) {
-    if (rta.Correcto) {
-        if (arregloObsevaciones != "" && arregloNombres != "" && arregloDiferencia != "") {
-            $.ajax({
-                method: 'GET',
-                url: urlBase + 'Inventario/CreaYenviaMail',
-                async: false,
-                data: { Observaciones: arregloObsevaciones, Nombres: arregloNombres, Diferencia: arregloDiferencia, ArregloTeorico: arregloTeorico, ArregloCamtidadDisponible: arregloCamtidadDisponible, ArregloTipoMovimiento: arregloTipoMovimiento },
-                success: (e) => {
-                    arregloObsevaciones = "";
-                    arregloNombres = "";
-                    arregloDiferencia = "";
-                    arregloTeorico = "";
-                    arregloCamtidadDisponible = "";
-                    arregloTipoMovimiento = "";
-                    console.log(e)
-                },
-                error: (e) => {
-                    arregloObsevaciones = "";
-                    arregloNombres = "";
-                    arregloDiferencia = "";
-                    arregloTeorico = "";
-                    arregloCamtidadDisponible = "";
-                    arregloTipoMovimiento = "";
-                    console.log(e)
-                }
-            })
+function SuccessInventarioFisico() {
+
+    var objeto = new Object();
+
+        var _Observaciones = arregloObsevaciones;
+        var _Nombres = arregloNombres;
+        var _Diferencia = arregloDiferencia;
+        var Cantidad_Teorica = arregloTeorico;
+        var Cantidad_fisica = arregloCantidadDisponible;
+        var Tipo_Movimiento = arregloTipoMovimiento;
+        
+        var Id = IdSupervisorGlobal;
+
+        var ArchivoGlobalCorreo = ArchivoExcelGlobal;
+
+        var Diferencia = _Diferencia.slice(1);
+
+        if (_Observaciones != "" && _Nombres != "" && _Diferencia != "" && Cantidad_Teorica != "" && Cantidad_fisica != "" && Tipo_Movimiento != "") {
+
+
+            var ArrayObservaciones = _Observaciones.split(",");
+            var ArrayNombres = _Nombres.split(",");
+            var ArrayDiferencia = Diferencia.split(";");
+            var ArrayCantidadTeorica = Cantidad_Teorica.split(",");
+            var ArrayTipoMovimiento = Tipo_Movimiento.split(",");
+
+            ArrayObservaciones.shift();
+            ArrayNombres.shift();
+            ArrayCantidadTeorica.shift();
+            ArrayTipoMovimiento.shift();
+
+            StrObservaciones = ArrayObservaciones.toString();
+            StrNombres = ArrayNombres.toString();
+            StrCantidadTeorica = ArrayCantidadTeorica.toString();
+            StrTipoMovimiento = ArrayTipoMovimiento.toString();
+
+            objeto.ObservacionesFisico = StrObservaciones;
+            objeto.NombresFisico = StrNombres;
+            objeto.ArregloTeoricoFisico = ArregloTeoricoFisico;
+            objeto.ArregloInventarioFisico = Cantidad_fisica;
+            objeto.Diferencia = Diferencia;
+            objeto.TipoMovimientos = StrTipoMovimiento;
+            objeto.id_Supervisor = Id;
+
+            EjecutarAjax(urlBase + "Inventario/CreaYenviaMail", "GET", objeto, "EnvioCorreo", null);
+
         }
 
+        window.location = urlBase + 'Inventario/Download?Data=' + ArchivoGlobalCorreo;
+
         MostrarMensajeRedireccion("Importante", "Su operación fue exitosa.", "Home", "success");
+}
+
+function EnvioCorreo(datos, params) {
+
+    if (datos.length > 0) {
+
+        if (datos.indexOf("Error") >= 0) {
+
+            MostrarMensaje("Importante", datos);
+        }
+        else {
+
+            MostrarMensaje("Importante", "Envío de correo realizado con exito", "success")
+
+            window.location = urlBase + "Inventario";
+        }
     }
     else {
 
-        MostrarMensaje("Fallo al guardar", rta.Mensaje);
-
+        MostrarMensaje("Importante", "No hay información para exportar.");
     }
 }
+
 
 function SucessAdd(data) {
 
@@ -511,6 +716,75 @@ function CancelarLogin() {
 }
 
 function Diferencia(ctr) {
+
+    var ValorDeferencia = 0;
+    if (ctr.value != "")
+        ValorDeferencia = parseFloat(ctr.value.toString().replace(',', '.')) - parseFloat($(ctr).data("id").toString().replace(',', '.'));
+
+    var contador = $(ctr).data("contador");
+    $('#CodSapMotivo_' + contador).html("");
+    var item = '<option value=' + "" + '>' + "Seleccione..." + '</option>';
+    $('#CodSapMotivo_' + contador).append(item);
+    if (ValorDeferencia > 0) {
+        $("#CodSapMotivo_" + contador).addClass("required");
+        /*$("#Observaciones_" + contador).addClass("required");*/
+        $("#Observaciones_" + contador).removeClass("required");
+        $("#Movimiento_" + contador).html("Entrada por Ajuste");
+        $("#CodSapAjuste_" + contador).val("C");
+        if (listaMotivos != null) {
+            var listitems;
+            $.each(listaMotivos, function (key, value) {
+                if (value.CodSapAjuste == "C") {
+                    listitems += '<option value=' + value.CodSapMotivo + '>' + value.Descripcion + '</option>';
+                }
+            });
+        }
+        $('#CodSapMotivo_' + contador).append(listitems);
+    }
+    if (ValorDeferencia < 0) {
+        $("#CodSapMotivo_" + contador).addClass("required");
+        /*$("#Observaciones_" + contador).addClass("required");*/
+        $("#Observaciones_" + contador).removeClass("required");
+        $("#Movimiento_" + contador).html("Salida por Ajuste");
+        $("#CodSapAjuste_" + contador).val("B");
+        if (listaMotivos != null) {
+            var listitems;
+            $.each(listaMotivos, function (key, value) {
+                if (value.CodSapAjuste == "B") {
+                    listitems += '<option value=' + value.CodSapMotivo + '>' + value.Descripcion + '</option>';
+                }
+            });
+        }
+        $('#CodSapMotivo_' + contador).append(listitems);
+    }
+    if (ValorDeferencia == 0) {
+        $("#CodSapMotivo_" + contador).removeClass("required");
+        $("#Observaciones_" + contador).removeClass("required");
+
+        $("#Movimiento_" + contador).html("0");
+        $("#CodSapAjuste_" + contador).val("0");
+    }
+
+    if (ValorDeferencia >= 0) {
+        $("#Cantidad_" + contador).val(ValorDeferencia);
+    } else {
+        $("#Cantidad_" + contador).val(ValorDeferencia * (-1));
+    }
+
+    var Valor = ValorDeferencia * $("#Costohidden_" + contador).val();
+
+    if (Valor.toString() != "")
+        Valor = parseFloat(Valor.toString().replace(',', '.')).toFixed(2).toString().replace('.', ',')
+
+    $("#Costo_" + contador).html(Valor);
+    if (ValorDeferencia.toString() != "")
+        ValorDeferencia = parseFloat(ValorDeferencia.toString().replace(',', '.')).toFixed(2)
+
+    $("#Diferencia_" + contador).html(ValorDeferencia.toString().replace('.', ','));
+
+}
+
+function DiferenciaInventarioFisico(ctr) {
 
     var ValorDeferencia = 0;
     if (ctr.value != "")

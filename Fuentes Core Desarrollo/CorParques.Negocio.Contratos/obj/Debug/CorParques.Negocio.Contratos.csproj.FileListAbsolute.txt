@@ -9,3 +9,25 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.CopyComplete
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Contratos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Contratos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.CopyComplete
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Contratos\obj\Debug\CorParques.Negocio.Contratos.pdb

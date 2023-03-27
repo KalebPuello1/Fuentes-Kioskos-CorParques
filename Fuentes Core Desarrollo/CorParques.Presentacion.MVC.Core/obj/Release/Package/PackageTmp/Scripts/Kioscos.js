@@ -33,8 +33,11 @@ function Reimprimir() {
 
 function successCodImp(data) {
     $(".loader-wrapper").css("display", "none");
+    var pag = document.getElementById('pag');
     if (data.Correcto) {
-        $("#modalSuccess").modal('show');
+        var modalSuccess = document.getElementById('modalSuccess');
+        pag.style.display = "none";
+        modalSuccess.style.display = "block";
     }
     else {
         var codigos = document.getElementById('codigos');
@@ -42,17 +45,20 @@ function successCodImp(data) {
 
         var msgError = document.getElementById('msgError');
         msgError.innerHTML = data.Mensaje.toString();
-        $("#modalError").modal('show');
+        var modalErr = document.getElementById('modalError');
+
+        pag.style.display = "none";
+        modalErr.style.display = "block";
     }
 }
 
 function successCod1(data) {
-    $(".loader-wrapper").css("display", "none");
+    codigo = "";
     if (data.redirectToUrl != null) {
+        $(".loader-wrapper").css("display", "block");
         window.location.href = data.redirectToUrl;
     }
     else {
-        //$("#mymodal").modal('show');
         MostrarMensaje("¡Error!", "El codigo ingresado no corresponde a ningun producto.", "error");
     }
 }
@@ -62,7 +68,12 @@ function RedireccionImprCorrecta() {
 }
 
 function RedireccionImprError() {
-    $("#modalError").modal('hide');
+    var modalErr = document.getElementById('modalError');
+    var pag = document.getElementById('pag');
+    var btnBack = document.getElementById('BackImp');
+    modalErr.style.display = "none";
+    pag.style.display = "block";
+    btnBack.style.display = 'none';
     document.getElementById('btn-continuar').disabled = true;
     document.getElementById('btn-supervisor').hidden = false;
     document.getElementById('btn-reimpresion').hidden = true;
@@ -91,10 +102,13 @@ function ObtenerIdSupervisor(id) {
     IdSupervisorLogueado = id;
 }
 
+//OpcionImprimir
 function OpcionImprimir() {
-    var consecutivos = $("#codigos").val();
-    abrirModal("modalCorreo");
-    var nombre = document.getElementById("input-nombre");  
+    var menu = document.getElementById('menu');
+    var modalC = document.getElementById('modalCorreo');
+    menu.style.display = "none";
+    modalC.style.display = "block";
+    var nombre = document.getElementById("input-nombre");
     var correo = document.getElementById("input-correo");
     var enviar = document.getElementById("EnviarCorreo");
     var tyc = document.getElementById("TyC");
@@ -117,14 +131,9 @@ function OpcionImprimir() {
                 MostrarMensaje("¡Importante!", "El campo correo no es correcto.", "warning");
             }
         }
-    });
-
-    $('#BtnAtrasCorreo').click(function () {
-        cerrarModal("modalCorreo");
-        document.getElementById("input-correo").value = '';
-        document.getElementById("input-nombre").value = '';
-        document.getElementById("TyC").checked = false;
-        document.getElementById("EnviarCorreo").disabled = true;
+        else {
+            tyc.checked = false;
+        }
     });
 }
 
@@ -136,9 +145,10 @@ function successEnviarCorreo(data) {
         document.getElementById("TyC").checked = false;
         document.getElementById("EnviarCorreo").disabled = true;
         document.getElementById("codConfirmacion").value = '';
-        cerrarModal("modalCorreo");
-        abrirModal("modalCodConfirmacion");
-
+        var modalC = document.getElementById('modalCorreo');
+        var modalCod = document.getElementById('modalCodConfirmacion');
+        modalC.style.display = "none";
+        modalCod.style.display = "block";
     }
     else {
         document.getElementById("input-correo").value = '';
@@ -160,6 +170,7 @@ function successCodConfirmacion(data) {
     if (data.Estado) {
         document.getElementById("codConfirmacion").value = '';
         var consecutivos = $("#codigos").val();
+        $(".loader-wrapper").css("display", "block");
         window.location.href = "ImpresionBoleta?Codigo=" + consecutivos;
     }
     else {

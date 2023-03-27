@@ -20,3 +20,14 @@ D:\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Release\Corparques.Da
 D:\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.csproj.CopyComplete
 D:\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.dll
 D:\Fuentes Core Desarrollo\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\bin\Release\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.Datoss.Contratos\obj\Release\Corparques.Datos.Contratos.pdb

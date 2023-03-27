@@ -104,7 +104,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 consultas.Factura = factura;
                 consultas.FacturaImprimir = facturaImp;
                 var boletasFactura = factura.DetalleFactura
-                    .Where(x => x.Id_Producto == 7681 || x.Id_Producto == 8291 || x.Id_Producto == 8292 || x.Id_Producto == 8293).ToList();
+                   .Where(x => x.CodSapTipoProducto == "2000" || x.CodSapTipoProducto == "2005").ToList();
                 if (boletasFactura.Count() > 0)
                 {
                     consultas.Boleta = await GetAsync<Boleteria>($"Boleteria/GetById/{boletasFactura.First().IdDetalleProducto}");
@@ -245,8 +245,10 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 //if (producto.CodSapTipoProducto != "2000") strMensaje = "El producto no corresponde a un brazalete para impresion en linea";//
                 //if (rta.Nombre == "No existe el producto o es exeption") strMensaje = "Invalido impresión en linea";//
                 if (producto.IdEstado != 1) strMensaje = "Producto inactivo";
-                if (boleta.IdEstado != 2 && (boleta.IdEstado != 1 && (DateTime.Today < boleta.FechaUsoInicial) || (DateTime.Today > boleta.FechaUsoFinal)))
-                    strMensaje = "Estado boleta invalida";
+                if (boleta.IdEstado != 1 && boleta.IdEstado != 2)
+                    strMensaje = "Estado boleta Invalida";
+                if (boleta.IdEstado == 1 && (DateTime.Now < boleta.FechaUsoInicial) || (DateTime.Now > boleta.FechaUsoFinal))
+                    strMensaje = "La boleta no tiene vigencia";
                 if (DateTime.Now < boleta.FechaInicioEvento || DateTime.Now > boleta.FechaFinEvento) strMensaje = "La boleta no tiene vigencia";
             }
             else strMensaje = "Producto invalido";

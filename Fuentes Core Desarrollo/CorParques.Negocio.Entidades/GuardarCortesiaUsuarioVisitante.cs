@@ -16,5 +16,6 @@ namespace CorParques.Negocio.Entidades
         public List<Producto> ListaProductos { get; set; }
 
         public List<DetalleCortesia> ListaProductosAPP { get; set; }
+        public int IdDetalleCortesia { get; set; }
     }
 }

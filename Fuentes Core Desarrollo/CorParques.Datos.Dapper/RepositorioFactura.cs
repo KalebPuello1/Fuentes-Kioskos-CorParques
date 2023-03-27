@@ -182,7 +182,8 @@ namespace CorParques.Datos.Dapper
                 _factura = rta.Read<Factura>().Single();
                 if (_factura != null)
                     _factura.DetalleFactura = rta.Read<DetalleFactura>();
-
+                _cnn.Close();
+                _cnn.Open();
                 _factura.IdConvenio = IdConvenio;
                 _factura.ConsecutivoConvenio = ConsecutivoConvenio;
                 _cnn.Update(_factura);
@@ -207,7 +208,7 @@ namespace CorParques.Datos.Dapper
                         }
                     }
                 }
-
+                _cnn.Close();
             }
             catch (Exception ex)
             {
@@ -294,7 +295,7 @@ namespace CorParques.Datos.Dapper
                                col1 = x.IdMedioPago.ToString(),
                                col2 = x.Valor.ToString(),
                                col3 = x.NumReferencia != null ? x.NumReferencia.ToString() : null,
-                               col4 = x.IdFranqicia.ToString(),
+                               col4 = x.IdFranquicia.ToString(),
                                col5 = x.Cambio.ToString(),
                                col6 = x.FechaCreacion.ToString("yyyy-MM-dd hh:mm:ss"),
                            }))
@@ -458,6 +459,15 @@ namespace CorParques.Datos.Dapper
             }
 
             return facturas;
+        }
+
+        public IEnumerable<DetalleFactura> ObtenerDetallesConsecutivoConvenioDia(string consecutivoConvenio)
+        {
+            IEnumerable<DetalleFactura> _detalles = new List<DetalleFactura>();
+
+            _detalles = _cnn.Query<DetalleFactura>("SP_ConsultarDetallesFacturasConsecutivoConvenioDia", new { ConsecutivoConvenio = consecutivoConvenio }, commandType: System.Data.CommandType.StoredProcedure).ToList();
+
+            return _detalles;
         }
 
     }

@@ -155,15 +155,20 @@ function SucessChange(data) {
 function Total(ctr) {
 
     var split = ctr.id.split('_');
+
     var id = split[1];
+
     var montoCaja = $(ctr).data("id");
+
     var ctrValor;
+
     if (ctr.value == "") {
         ctrValor = 0;
     } else {
         ctrValor = ctr.value.replace(/\./g, "");
     }
     var Valor = parseInt(ctrValor) - parseInt(montoCaja);
+
     if (Valor == 0) {
         $(ctr).parent().next().children().html("");
     } else {

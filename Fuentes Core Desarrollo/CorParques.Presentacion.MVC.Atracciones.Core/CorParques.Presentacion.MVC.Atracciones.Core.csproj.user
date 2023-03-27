@@ -9,6 +9,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <NameOfLastUsedPublishProfile>D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Atracciones.Core\Properties\PublishProfiles\core.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

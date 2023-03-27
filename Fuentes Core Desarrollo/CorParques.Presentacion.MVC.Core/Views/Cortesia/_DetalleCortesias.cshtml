@@ -21,7 +21,7 @@
                 <th>Descrip cortesía</th>
                 <th>Consecutivo Boleta</th>
                 <th>Fecha Uso</th>
-
+                <th>Sel</th>
             }
 
 
@@ -32,56 +32,79 @@
     <tbody>
         @if (Model != null)
         {
+            var mesActual = int.Parse(DateTime.Now.ToString("MM")).ToString();
+
+            var añoActual = int.Parse(DateTime.Now.ToString("yyyy")).ToString();
+
+            var meses = Model.ListDetalleCortesia.Where(x => x.Activo == true && x.FechaFinal.Month.ToString() == mesActual).Count();
+
+            var hoy = DateTime.Now.ToShortDateString();
+
+            var ultimaFechaEntrega = Model.ListDetalleCortesia.Where(x => x.FechaEntrega.ToShortDateString() == hoy).Select(x => x.FechaEntrega).FirstOrDefault().ToShortDateString();
+
+
             foreach (var item in Model.ListDetalleCortesia)
             {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoSap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            @*<td>
-            @item.FechaFinal.ToString("dd/MM/yyyy")
-        </td>*@
-            @if (Model.IdTipoCortesia == 2)
-            {
-                if (item.Activo == false && item.Aprobacion == false)
-                {
+                <tr>
 
-                    <td>REDIMIDO</td>
-                }
-                else if (item.FechaFinal < DateTime.Now)
+                @if (item.FechaFinal.Month.ToString() == mesActual && item.FechaFinal.Year.ToString() == añoActual && item.Activo == true && ultimaFechaEntrega != hoy)
                 {
-                    <td>VENCIDO</td>
-                }
-                else
-                {
-                    <td>PENDIENTE</td>
-                }
+                    var ff = item.FechaEntrega.ToShortDateString();
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoSap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    @*<td>
+                @item.FechaFinal.ToString("dd/MM/yyyy")
+                </td>*@
 
-                <td>@dtinfo.GetMonthName(item.FechaInicial.Month).ToUpper()</td>
-                <td>@Html.DisplayFor(modelItem => item.FechaInicial.Year)</td>
-                <td>@Html.DisplayFor(modelItem => item.DescripcionBeneficioFAN)</td>
+                    if (Model.IdTipoCortesia == 2)
+                    {
+                        if (item.Activo == false && item.Aprobacion == false)
+                        {
 
-                if (item.Consecutivo != null)
-                {
-                    <td>@Html.DisplayFor(modelItem => item.Consecutivo)</td>
-                    <td>@Html.DisplayFor(modelItem => item.FechaEntrega)</td>
+                            <td>REDIMIDO</td>
+                        }
+                        else if (item.FechaFinal < DateTime.Now)
+                        {
+                            <td>VENCIDO</td>
+                        }
+                        else
+                        {
+                            <td>PENDIENTE</td>
+                        }
+
+                        <td>@dtinfo.GetMonthName(item.FechaInicial.Month).ToUpper()</td>
+                        <td>@Html.DisplayFor(modelItem => item.FechaInicial.Year)</td>
+                        <td>@Html.DisplayFor(modelItem => item.DescripcionBeneficioFAN)</td>
+
+                        if (item.Consecutivo != null)
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.Consecutivo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FechaEntrega)</td>
+                        }
+                        else
+                        {
+                            <td></td>
+                            <td></td>
+                            if (meses > 1 && item.FechaFinal.Month.ToString() == mesActual)
+                            {
+                                <td><input type="radio" name="btnSeleccionar" onclick="Seleccionar(@item.IdDetalleCortesia)"></td>
+                            }
+
+                        }
+                    }
+
                 }
-                else
-                {
-                    <td></td>
-                    <td></td>
-                }
+                </tr>
             }
-
-        </tr>
-            }
-        }
+         }
 
     </tbody>
 </table>
+

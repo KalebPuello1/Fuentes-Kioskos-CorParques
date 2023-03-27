@@ -12,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zen.Barcode;
 using static CorParques.Transversales.Util.Enumerador;
+using System.Data;
 
 namespace CorParques.Presentacion.MVC.Core.Controllers
 {
@@ -53,8 +54,8 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var rta = await PostAsync<CortesiaViewModel, UsuarioVisitanteViewModel>("Cortesia/ObtenerCortesiaUsuarioVisitante", cortesia);
             return PartialView("_DetalleCortesias", rta.Elemento);
         }
-
-        public async Task<JsonResult> ObtenerProducto(string CodBarra, string Documento, string numtarjeta, List<Producto> productos, int IdTipoCortesia, int impresionLinea)
+    
+        public async Task<JsonResult> ObtenerProducto(string CodBarra, string Documento, string numtarjeta, List<Producto> productos, int IdTipoCortesia, int impresionLinea, int IdDetalle)
         {
             Producto _producto = new Producto();
             UsuarioVisitanteViewModel listacortesi = new UsuarioVisitanteViewModel();
@@ -72,14 +73,12 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaTarjetaFAN/{numtarjeta}");
                 if (listacortesi != null)
                 {
-                    if (listacortesi.ListDetalleCortesia != null)
+                    if (listacortesi.ListDetalleCortesia != null && IdDetalle == 0)
                     {
                         listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.FechaInicial <= DateTime.Now && l.FechaFinal >= DateTime.Now && l.Activo == true).ToArray();
-                        if (listacortesi.ListDetalleCortesia.Count() == 0)
-                        {
-                            _blnAplicaCortesiaFAN = true;
-                           
-                        }
+                    }
+                    if (IdDetalle != 0) {
+                        listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.IdDetalleCortesia == IdDetalle && l.Activo == true).ToArray();
                     }
 
                 }
@@ -233,8 +232,8 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
 
         }
-
-        public async Task<JsonResult> GuardarCortesiaUsuarioVisitante(UsuarioVisitanteViewModel usuarioVisitante, List<Producto> productos)
+        
+        public async Task<JsonResult> GuardarCortesiaUsuarioVisitante(UsuarioVisitanteViewModel usuarioVisitante, List<Producto> productos, int IdDetalle)
         {
             var obj = new GuardarCortesiaUsuarioVisitante()
             {
@@ -242,7 +241,8 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 Documento = usuarioVisitante.NumeroDocumento,
                 ListaProductos = productos,
                 TipoCortesia = usuarioVisitante.IdTipoCortesia,
-                ValorGenerico = usuarioVisitante.TipoDocumento
+                ValorGenerico = usuarioVisitante.TipoDocumento,
+                IdDetalleCortesia = IdDetalle
             };
             var rta = await PostAsync<GuardarCortesiaUsuarioVisitante, string>("Cortesia/GuardarCortesiaUsuarioVisitante", obj);
             if (rta.Correcto && string.IsNullOrEmpty(rta.Elemento.ToString()))
@@ -254,6 +254,32 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 inventario.Productos = productos;
                 await PostAsync<Inventario, string>("Inventario/ActualizarInventario", inventario);
             }
+
+            //Aqui se imprime el ticket comprobante redenciónn de cortesia
+
+            var usuarioAutenticado = (CorParques.Negocio.Entidades.Usuario)Session["UsuarioAutenticado"];
+
+            ServicioImprimir objImprimir = new ServicioImprimir();
+
+            TicketImprimir objRedencionCortesia = new TicketImprimir();
+            objRedencionCortesia.TituloRecibo = "Boleta Redención de Cortesia";
+
+            var consecutivo = usuarioVisitante.ListDetalleCortesia.ToList()[0].Consecutivo;
+
+            DataTable tablaDatos = new DataTable();
+            tablaDatos.Columns.Add("Taquillero", typeof(string));
+            tablaDatos.Columns.Add("Documento", typeof(string));
+            tablaDatos.Columns.Add("Nombres", typeof(string));
+            tablaDatos.Columns.Add("Cortesia", typeof(string));
+            tablaDatos.Columns.Add("Consecutivo", typeof(string));
+            tablaDatos.Rows.Add(usuarioAutenticado.Nombre + " " + usuarioAutenticado.Apellido,
+                usuarioVisitante.NumeroDocumento,
+                usuarioVisitante.Nombres + " " + usuarioVisitante.Apellidos,
+                usuarioVisitante.Observacion,
+                consecutivo);
+            objRedencionCortesia.TablaDetalle = tablaDatos;
+
+            objImprimir.ImprimirComprobanteRedencion(objRedencionCortesia);
 
             if (!string.IsNullOrEmpty(rta.Elemento.ToString()))
             {

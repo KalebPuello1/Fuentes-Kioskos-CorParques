@@ -13,6 +13,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using System.Net.Http;
+using System.Data;
 
 namespace CorParques.Presentacion.MVC.Core.Controllers
 {
@@ -27,8 +28,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
             //Proceso POS 
             Session["PosCont"] = true;
-
-
+            
             //Validar tiempo 
 
             Stopwatch _time = new Stopwatch();
@@ -96,7 +96,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var _ListaTodosProductosSAP = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerTodosProductos");
             ViewBag.ListaTodosProductosSAP = _ListaTodosProductosSAP;
 
-            //Obtienes los productos asociados a un codigoSapTipoProducto
+            //Obtienes los productos asociados a un codigoSapTipoProducto 
             //var _model = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerProductoPorTipoProducto/{_csAyB.CodigoSap}");
 
             var _aybProp = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AYB_Mundo_NaturalPOS");
@@ -339,8 +339,9 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                 CodSapTarjetaRecargable = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapTarjetaRecargable"), // codigo sap cliente fan
                 CodSapPrecioTarjeta = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapPlasticoTarjeta"),// codigo sap cliente fan
                 CodSapReposicionTarjeta = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CodSapRepoTarjeta"),
-                AplicaDescargue = existepunto
-            };
+                AplicaDescargue = existepunto,
+                MejoraUbin = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/Mejora Cortesia Ubin") // Mejora Cortesia UBIN
+        };
 
             ViewBag.TransaccionRedebanHabilitada = ConfigurationManager.AppSettings["FlujoRedeban"].ToString();
             _time.Stop();
@@ -450,7 +451,11 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                                     , string CodSapConvenio = ""
                                                     , string ConsecutivoConvenio = ""
                                                     , int IdConvenio = 0
-                                                    , string Donante = ""
+                                                    , List<Producto> productosCortesia = null
+                                                    , string numTarjeta =""
+                                                    , UsuarioVisitanteViewModel usuarioCortesia = null
+                                                    ,int IdDetalleCortesia = 0
+                                                    , string Donante = ""                                                   
                                                     )
         {
             //Esto es validacion para impresion en linea
@@ -803,7 +808,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                 }
 
                                 aplicaImprersionParqueadero = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AplicaImpresionParqueadero");
-
                                 if (aplicaImprersionParqueadero.Valor != "0")
                                 {
                                     List<Producto> productoImpresionParqueadero = new List<Producto>();
@@ -811,7 +815,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
                                     foreach (var item in productoImpresionParqueadero)
                                     {
-
                                         if (productoImpresionParqueadero != null)
                                         {
                                             string sCodBarrasPark = item.IdDetalleProducto.ToString("000000000000");
@@ -829,13 +832,39 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                                 Precio = item.Precio,
                                                 TituloColumnas = "Valido para|Cant"
                                             });
-
                                             objImprimir.ImprimirCupoDebito(objServicios);
                                             error = "PARQUEADERO";
                                         }
                                     }
                                 }
+                                /*Nueva impresion Souvenir*/
+                                //Parametro aplicaImprersionSouvenir = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/aplicaImpresionSouvenir");
+                                //if (aplicaImprersionSouvenir.Valor != "0")
+                                //{
+                                //    Producto productoImpresionSouvenir = new Producto();
+                                //    productoImpresionSouvenir = ListaProductos.Where(x => x.CodSapTipoProducto == idProductoSouvenir.Valor).ToList();
 
+                                //    foreach (var item in productoImpresionSouvenir)
+                                //    {
+                                //        if (productoImpresionSouvenir != null)
+                                //        {
+                                //            TicketImprimir objSouvenir = new TicketImprimir();
+                                //            objSouvenir.TituloRecibo = "Souvenir";
+                                //            objSouvenir.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
+                                //            objSouvenir.TituloColumnas = "Valido para|Cant";
+                                //            objSouvenir.ListaArticulos = new List<Articulo>();
+                                //            objSouvenir.ListaArticulos.Add(new Articulo()
+                                //            {
+                                //                Nombre = productoImpresionSouvenir.Nombre,
+                                //                Cantidad = item.Cantidad,
+                                //                Precio = item.Precio,
+                                //                TituloColumnas = "Valido para|Cant"
+                                //            });
+                                //            objImprimir.ImprimirCupoDebito(objSouvenir);
+                                //            error = "Souvenir";
+                                //        }
+                                //    }
+                                //}
                                 Parametro aplicaImprersionAyB = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/AplicaImpresionAyB");
 
                                 if (aplicaImprersionAyB.Valor != "0")
@@ -868,36 +897,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                                 }
 
 
-                                /*Nueva impresion Souvenir*/
-                                Parametro aplicaImprersionSouvenir = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/aplicaImpresionSouvenir");
-
-                                if (aplicaImprersionSouvenir.Valor != "0")
-                                {
-                                    foreach (var item in facturaDetalleImprimir.DetalleFactura)
-                                    {
-                                        Producto productoImpresionDescarga = new Producto();
-                                        //valor : 2025 --> idProducto: 685
-                                        productoImpresionDescarga = ListaProductos.Where(x => (idProductoDescarga.Valor.Contains(x.CodSapTipoProducto) && x.Entregado == false && x.IdProducto == item.Id_Producto)).FirstOrDefault();
-
-                                        if (productoImpresionDescarga != null)
-                                        {
-                                            TicketImprimir objAlimento = new TicketImprimir();
-                                            objAlimento.TituloRecibo = "Souvenir";
-                                            objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
-                                            objAlimento.TituloColumnas = "Valido para|Cant";
-                                            objAlimento.ListaArticulos = new List<Articulo>();
-                                            objAlimento.ListaArticulos.Add(new Articulo()
-                                            {
-                                                Nombre = productoImpresionDescarga.Nombre,
-                                                Cantidad = item.Cantidad,
-                                                Precio = item.Precio,
-                                                TituloColumnas = "Valido para|Cant"
-                                            });
-                                            objImprimir.ImprimirCupoDebito(objAlimento);
-                                            error = "Souvenir";
-                                        }
-                                    }
-                                }
+                                
 
 
                                 if (!Contingencia)
@@ -1082,6 +1082,45 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
                     }
                     MensajeBoletasRestantes += "\n\r ****   Verifique que no se acabo el limite de rollo";
                 }
+                if (numTarjeta != "" && productosCortesia != null)
+                {
+                    
+                    var obj = new GuardarCortesiaUsuarioVisitante()
+                    {
+                        idUsuario = IdUsuarioLogueado,
+                        Documento = usuarioCortesia.NumeroDocumento,
+                        ListaProductos = productosCortesia,
+                        TipoCortesia = usuarioCortesia.IdTipoCortesia,
+                        ValorGenerico = usuarioCortesia.TipoDocumento,
+                        IdDetalleCortesia = IdDetalleCortesia
+                    };
+                    var rta = await PostAsync<GuardarCortesiaUsuarioVisitante, string>("Cortesia/GuardarCortesiaUsuarioVisitante", obj);
+                    //Aqui se imprime el ticket comprobante redenciónn de cortesia
+
+                    var usuarioAutenticado = (CorParques.Negocio.Entidades.Usuario)Session["UsuarioAutenticado"];
+
+                    ServicioImprimir objImprimir = new ServicioImprimir();
+
+                    TicketImprimir objRedencionCortesia = new TicketImprimir();
+                    objRedencionCortesia.TituloRecibo = "Boleta Redención de Cortesia";
+
+                    var consecutivo = usuarioCortesia.ListDetalleCortesia.ToList()[0].Consecutivo;
+
+                    DataTable tablaDatos = new DataTable();
+                    tablaDatos.Columns.Add("Taquillero", typeof(string));
+                    tablaDatos.Columns.Add("Documento", typeof(string));
+                    tablaDatos.Columns.Add("Nombres", typeof(string));
+                    tablaDatos.Columns.Add("Cortesia", typeof(string));
+                    tablaDatos.Columns.Add("Consecutivo", typeof(string));
+                    tablaDatos.Rows.Add(usuarioAutenticado.Nombre + " " + usuarioAutenticado.Apellido,
+                        usuarioCortesia.NumeroDocumento,
+                        usuarioCortesia.Nombres + " " + usuarioCortesia.Apellidos,
+                        usuarioCortesia.Observacion,
+                        consecutivo);
+                    objRedencionCortesia.TablaDetalle = tablaDatos;
+
+                    objImprimir.ImprimirComprobanteRedencion(objRedencionCortesia);
+                }
             }
             catch (Exception ex)
             {
@@ -1160,10 +1199,12 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
                     var mesmas = MesCumple + 1;
 
-                    if (MesCumple > mesActual)
+                    if (MesCumple >= mesActual)
                     {
-                        fechaInicialSet = Convert.ToDateTime("01-" + "- " + MesCumple + "- " + System.DateTime.Now.Year);
-                        fechaFinalSet = Convert.ToDateTime("01-" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
+                        //fechaInicialSet = Convert.ToDateTime("01-" + "- " + MesCumple + "- " + System.DateTime.Now.Year);                        
+                        //fechaFinalSet = Convert.ToDateTime("01-" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
+                        fechaInicialSet = Convert.ToDateTime("01" + "- " + MesCumple + "- " + System.DateTime.Now.Year);
+                        fechaFinalSet = Convert.ToDateTime("01" + "- " + mesmas + "- " + System.DateTime.Now.Year).AddDays(-1);
                     }
                     else
                     {
@@ -1770,7 +1811,7 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
 
         [HttpGet]
         public async Task<JsonResult> ObtenerDetallesConsecutivoConvenioDia(string Consecutivo)
-        {
+        {            
             var resultado = await GetAsync<IEnumerable<DetalleFactura>>($"Factura/ObtenerDetallesConsecutivoConvenioDia/{Consecutivo}");
 
             return Json(new { resultado = resultado }, JsonRequestBehavior.AllowGet);
@@ -1782,6 +1823,188 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var resultado = await GetAsync<String>($"TarjetaRecargable/ConsultarVencimientoTarjeta/{Tarjeta}");
 
             return Json(new { resultado = resultado }, JsonRequestBehavior.AllowGet);
+        }        
+
+        [HttpGet]
+        public async Task<ActionResult> ObtenerDetalleCortesia(string documento, int IdTipoCortesia, string numeroTarjetaFAN)
+        {
+            CortesiaViewModel cortesia = new CortesiaViewModel();
+            if (IdTipoCortesia == 1)
+            {
+                cortesia.documento = documento;
+            }
+            if (IdTipoCortesia == 5)
+            {
+                cortesia.documentoEjecutivo = documento;
+            }
+            if (IdTipoCortesia == 2)
+            {
+                cortesia.numTarjeta = numeroTarjetaFAN;
+            }
+
+            var rta = await PostAsync<CortesiaViewModel, UsuarioVisitanteViewModel>("Cortesia/ObtenerCortesiaUsuarioVisitante", cortesia);
+            return PartialView("_DetalleCortesias", rta.Elemento);
+        }
+
+        
+        public async Task<JsonResult> ObtenerProductoCortesia(string CodBarra, string Documento, string numtarjeta, List<Producto> productos, int IdTipoCortesia, int impresionLinea, int IdDetalle)
+        {
+            Producto _producto = new Producto();
+            UsuarioVisitanteViewModel listacortesi = new UsuarioVisitanteViewModel();
+            if (IdTipoCortesia == 1)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaUsuarioVisitante2/{Documento}");
+            }
+            if (IdTipoCortesia == 5)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaUsuarioVisitanteEjecutivo/{Documento}");
+            }
+            if (IdTipoCortesia == 2)
+            {
+                listacortesi = await GetAsync<UsuarioVisitanteViewModel>($"Cortesia/ObtenerCortesiaTarjetaFAN/{numtarjeta}");
+                if (listacortesi != null)
+                {
+                    if (listacortesi.ListDetalleCortesia != null && IdDetalle == 0)
+                    {
+                        listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.FechaInicial <= DateTime.Now && l.FechaFinal >= DateTime.Now && l.Activo == true).ToArray();
+                    }
+                    if (IdDetalle != 0)
+                    {
+                        listacortesi.ListDetalleCortesia = listacortesi.ListDetalleCortesia.Where(l => l.IdDetalleCortesia == IdDetalle && l.Activo == true).ToArray();
+                    }
+
+                }
+            }
+
+
+            var resultCortesiasDispo = new List<Producto>();
+            if (listacortesi != null)
+            {
+                resultCortesiasDispo = (from t in listacortesi.ListDetalleCortesia
+                                        group t by new { t.CodigoSap }
+                                        into grp
+                                        select new Producto()
+                                        {
+                                            CodigoSap = grp.Key.CodigoSap,
+                                            Cantidad = grp.Sum(t => t.Cantidad)
+                                        }).ToList();
+            }
+
+            var _prod = await GetAsync<Producto>($"Pos/ObtenerBrazaleteConsecutivo/{CodBarra}/{(Session["UsuarioAutenticado"] as Usuario).Id}/0");
+            var productoagregar = new Producto();
+            if (impresionLinea == 1 && listacortesi != null)
+            {
+                if (listacortesi.ListDetalleCortesia != null)
+                {
+
+
+                    var prueba = listacortesi.ListDetalleCortesia.Where(l => l.CodigoSap == CodBarra).ToArray();
+                    if (prueba.Count() > 0)
+                    {
+                        productoagregar = (from t in prueba
+                                           group t by new { t.CodigoSap, t.IdProducto, t.IdDetalleCortesia, t.Nombre, t.CodSapTipoProducto }
+                                       into grp
+                                           select new Producto()
+                                           {
+                                               CodigoSap = grp.Key.CodigoSap,
+                                               Cantidad = grp.Sum(t => t.Cantidad),
+                                               IdProducto = grp.Key.IdProducto,
+                                               IdDetalleProducto = grp.Key.IdDetalleCortesia,
+                                               ConseutivoDetalleProducto = grp.Key.CodigoSap,
+                                               Nombre = grp.Key.Nombre,
+                                               CodSapTipoProducto = grp.Key.CodSapTipoProducto
+                                           }).FirstOrDefault();
+                    }
+
+                }
+            }
+
+            if (_prod != null)
+            {
+                _producto = _prod;
+                if (_prod.IdProducto > 0)
+                {
+                    if (productos == null)
+                    {
+                        productos = new List<Producto>();
+                    }
+                    _producto.Cantidad = 1;
+                    productos.Add(_producto);
+                }
+                else if (impresionLinea == 1)
+                {
+                    if (productoagregar != null)
+                    {
+                        _producto = productoagregar;
+                        if (productos == null)
+                        {
+                            productos = new List<Producto>();
+                        }
+                        _producto.Cantidad = 1;
+                        productos.Add(_producto);
+                    }
+                }
+
+            }
+            var resultProdCargado = new List<Producto>();
+            if (productos != null)
+            {                
+                resultProdCargado = (from t in productos
+                                     group t by new { t.CodigoSap, t.IdProducto }
+                           into grp
+                                     select new Producto()
+                                     {
+                                         CodigoSap = grp.Key.CodigoSap,
+                                         Cantidad = grp.Sum(t => t.Cantidad)
+                                     }).ToList();
+
+            }
+            bool _banderadisponible = true;
+            if (resultCortesiasDispo != null && resultProdCargado != null)
+            {
+                foreach (var item in resultProdCargado)
+                {
+                    foreach (var item2 in resultCortesiasDispo)
+                    {
+                        if (item.CodigoSap == item2.CodigoSap && item.Cantidad > item2.Cantidad)
+                        {
+                            _banderadisponible = false;
+                        }
+                    }
+                }
+            }
+
+            Parametro _productos = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/ProductosCortesiasPQRS");
+
+
+
+            //Validar si el producto aplica
+            //bool _blnAplica = false;
+
+            //if (listacortesi != null && listacortesi.ListDetalleCortesia != null && _producto.IdProducto > 0)
+            //{
+            //    foreach (var item in listacortesi.ListDetalleCortesia)
+            //    {
+            //        if (item.CodigoSap == _producto.CodigoSap)
+            //            _blnAplica = true;
+            //    }
+            //}
+
+
+
+
+            //if (!_blnAplica && _producto.IdProducto > 0)
+            //    _producto = new Producto() { MensajeValidacion = "Producto no valido!" };
+            //else if (!_banderadisponible)
+            //    _producto = new Producto() { MensajeValidacion = "No se pueden cargar mas productos de ese tipo!" };
+
+            if (!_banderadisponible)
+                _producto = new Producto() { MensajeValidacion = "No se pueden cargar mas productos de ese tipo!" };
+
+
+            return Json(_producto, JsonRequestBehavior.AllowGet);
+
+
         }
 
         #endregion

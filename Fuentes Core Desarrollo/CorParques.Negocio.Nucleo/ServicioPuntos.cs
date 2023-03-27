@@ -74,10 +74,7 @@ namespace CorParques.Negocio.Nucleo
         {
             return _repositorio.ObtenerListaJoin();
         }
-        public IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario)
-        {
-            return _repositorio.ObtenerPuntosXusuario(IdUsuario);
-        }
+
         public IEnumerable<Puntos> ObtenerxTipoPunto(int IdTipoPunto)
         {
             return _repositorio.ObtenerxTipoPunto(IdTipoPunto);
@@ -86,6 +83,11 @@ namespace CorParques.Negocio.Nucleo
         public IEnumerable<TipoGeneral> ObtenerxIdTipoPunto(int IdTipoPunto)
         {
             return _repositorio.ObtenerxIdTipoPunto(IdTipoPunto);
+        }
+
+        public IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario)
+        {
+            return _repositorio.ObtenerPuntosXusuario(IdUsuario);
         }
 
         public bool ActualizaHoraIdPunto(string HoraInicio, string HoraFin, int IdTipoPunto)

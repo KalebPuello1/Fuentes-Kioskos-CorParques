@@ -30,6 +30,8 @@ namespace CorParques.Negocio.Contratos
         IEnumerable<SolicitudRetorno> ObtenerPedidosEntregaAsesor(int idPunto);
         IEnumerable<TipoGeneral> ConsultarMotivosRetorno();
         string CrearSolicitudRetorno(SolicitudRetorno modelo);
-        bool enviarMail(string to, string subject, string mensaje, MailPriority mpPriority, List<string> attachmentt);
+        bool EnviarCorreo(string to, string subject, string mensaje, MailPriority mpPriority, List<string> attachmentt);
+        string InsertarDetalleInventarioFisico(IEnumerable<Materiales> _Materiales);
+        
     }
 }

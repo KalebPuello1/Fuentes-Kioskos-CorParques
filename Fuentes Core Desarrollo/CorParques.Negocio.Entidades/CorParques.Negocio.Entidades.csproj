@@ -65,6 +65,7 @@
     <Compile Include="ComplejidadCortesia.cs" />
     <Compile Include="ConsultaMovimientoBoletaControl.cs" />
     <Compile Include="CortesiaViewModel.cs" />
+    <Compile Include="DetalleCorreo.cs" />
     <Compile Include="DetalleCortesia.cs" />
     <Compile Include="ImagenAdmin.cs" />
     <Compile Include="ListaCortesia.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="ReimpresionReciboCajaV.cs" />
     <Compile Include="ProductoxAcompanamiento.cs" />
     <Compile Include="ReporteBonoRegalo.cs" />
+    <Compile Include="ReporteInventarioFisico.cs" />
     <Compile Include="ReportePedidoRestaurante.cs" />
     <Compile Include="ReporteVentasPorConvenio.cs" />
     <Compile Include="ReporteVentasPorConvenioFiltros.cs" />

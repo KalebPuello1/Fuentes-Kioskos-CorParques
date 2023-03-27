@@ -653,6 +653,36 @@ namespace CorParques.Transversales.Util
             }
         }
 
+        public string ImprimirTicketPreFactura(TicketImprimir objTicket)
+        {
+            Ticket objRecibo = new Ticket();
+            string strRetorno = string.Empty;
+
+            try
+            {
+                objRecibo.TituloRecibo = objTicket.TituloRecibo;
+                objRecibo.AdicionarContenido(objTicket.AdicionarContenidoHeader);
+                objRecibo.TituloColumnas = objTicket.TituloColumnas;
+                objRecibo.AdicionarContenido(objTicket.PieDePagina);
+                objRecibo.ListaArticulos = objTicket.ListaArticulos;
+                objRecibo.Usuario = objTicket.Usuario;
+
+                //objRecibo.ImprimirTicket();
+                objRecibo.ImprimirTicketPreFactura();
+            }
+            catch (Exception ex)
+            {
+                strRetorno = string.Concat("Error en ImprimirTicketPreFactura_ServicioImprimir ", ex.Message);
+            }
+            finally
+            {
+                objRecibo = null;
+            }
+
+            return strRetorno;
+
+        }
+
         /// <summary>
         /// RDSH: Impresion de varios tickets en un solo recibo.
         /// </summary>
@@ -682,6 +712,39 @@ namespace CorParques.Transversales.Util
 
             return strRetorno;
 
+        }
+
+        public void ImprimirComprobanteRedencion(TicketImprimir objTicket)
+        {
+            Ticket objRecibo = new Ticket();
+
+            try
+            {
+                //objRecibo.CodigoBarrasProp = objTicket.CodigoBarrasProp;
+                objRecibo.TituloRecibo = objTicket.TituloRecibo;
+                //objRecibo.TituloColumnas = objTicket.TituloColumnas;
+                //objRecibo.ListaArticulos = objTicket.ListaArticulos;
+                //objRecibo.Usuario = objTicket.Usuario;
+                //objRecibo.ImprimirTicket();
+                //DataTable datos = new DataTable("TblDatos");                
+
+                objRecibo.AdicionarContenido("Taquillero: " + objTicket.TablaDetalle.Rows[0]["Taquillero"]);
+                objRecibo.AdicionarContenido("");
+                objRecibo.AdicionarContenido("No Documento: "+objTicket.TablaDetalle.Rows[0]["Documento"]);
+                objRecibo.AdicionarContenido("Nombres: " + objTicket.TablaDetalle.Rows[0]["Nombres"]);
+                objRecibo.AdicionarContenido("Cortesia: " + objTicket.TablaDetalle.Rows[0]["Cortesia"]);
+                objRecibo.AdicionarContenido("Consecutivo: " + objTicket.TablaDetalle.Rows[0]["Consecutivo"]);
+                objRecibo.AdicionarFirma(objTicket.PieDePagina);
+                objRecibo.ImprimirTicketRedencion();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(string.Concat("Error en ImprimirTicketCortesias_ServicioImprimir ", ex.Message));
+            }
+            finally
+            {
+                objRecibo = null;
+            }
         }
 
         #endregion

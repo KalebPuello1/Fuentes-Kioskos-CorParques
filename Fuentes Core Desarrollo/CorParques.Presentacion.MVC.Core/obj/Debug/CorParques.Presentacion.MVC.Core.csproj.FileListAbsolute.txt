@@ -73,3 +73,153 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.CopyComplete
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\csc.exe
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\vbc.exe
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\VBCSCompiler.exe
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.dll.config
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Antlr3.Runtime.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Negocio.Entidades.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Contratos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Util.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Newtonsoft.Json.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.Mvc.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Net.Http.Formatting.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Helpers.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Mvc.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Optimization.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Razor.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Deployment.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Razor.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\WebActivator.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\WebActivatorEx.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\WebGrease.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Zen.Barcode.Core.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\itextsharp.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\ClosedXML.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\BouncyCastle.Crypto.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\DocumentFormat.OpenXml.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\FastMember.Signed.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Negocio.Entidades.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Contratos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Util.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Newtonsoft.Json.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.Mvc.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Net.Http.Formatting.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Helpers.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Mvc.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Optimization.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.Razor.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Deployment.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Razor.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\Antlr3.Runtime.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\itextsharp.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\ClosedXML.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\DocumentFormat.OpenXml.xml
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Helpers.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Mvc.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Optimization.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Razor.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.CopyComplete
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\csc.exe
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\System.Collections.Immutable.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\System.Reflection.Metadata.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\vbc.exe
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\VBCSCompiler.exe
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\roslyn\VBCSCompiler.exe.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.dll.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Presentacion.MVC.Core.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Antlr3.Runtime.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Microsoft.Web.Infrastructure.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.Mvc.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Net.Http.Formatting.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Helpers.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Mvc.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Optimization.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Razor.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Deployment.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Razor.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\WebActivator.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\WebActivatorEx.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\WebGrease.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\SimpleInjector.Integration.Web.Mvc.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Net.Http.Formatting.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Helpers.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Mvc.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Optimization.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.Razor.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Deployment.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\System.Web.WebPages.Razor.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\Antlr3.Runtime.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Net.Http.Formatting.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Helpers.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Mvc.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Optimization.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.Razor.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.Deployment.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Presentacion.MVC.Core\obj\Debug\CorParques.Presentacion.MVC.Core.pdb

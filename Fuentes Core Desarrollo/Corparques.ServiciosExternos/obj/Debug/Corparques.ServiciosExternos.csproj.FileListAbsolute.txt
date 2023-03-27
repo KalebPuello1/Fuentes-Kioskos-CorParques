@@ -5,3 +5,17 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.CoreCompileInputs.cache
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll.config
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.pdb
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.AssemblyReference.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.CoreCompileInputs.cache
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.dll
+C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\bin\Debug\Corparques.ServiciosExternos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\Corparques.ServiciosExternos\obj\Debug\Corparques.ServiciosExternos.pdb

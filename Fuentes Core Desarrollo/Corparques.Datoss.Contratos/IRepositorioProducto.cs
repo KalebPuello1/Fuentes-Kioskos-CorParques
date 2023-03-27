@@ -25,11 +25,17 @@ namespace CorParques.Datos.Contratos
         //bool ActualizarBrazaleteEstado(List<Producto> lista);
 
         Producto ObtenerProducto(int idProducto);
-
+        Producto ObtenerProductoPtoEntrega(int idProducto);
+        
         IEnumerable<Producto> ObtenerProductos();
 
-        bool ActualizarProducto(Producto modelo);
+        IEnumerable<Producto> ObtenerProductosPtoEntrega();
 
+        
+
+        bool ActualizarProducto(Producto modelo);
+        bool ActualizarProductoPuntosEntrega(Producto modelo);
+        
         int GuardarNotaCredito(NotaCredito modelo);
 
         TipoGeneral ObtenerNotaCredito(int IdUsuario);
@@ -58,7 +64,8 @@ namespace CorParques.Datos.Contratos
 
         IEnumerable<Producto> ObtenerTodosProductos();
         IEnumerable<Producto> ObtenerTodosProductosRestaurante();
-        
+        IEnumerable<Producto> ObtenerProductosXPuntoSurtido();
+
         RedencionBoletaControl RedencionBoletaControl(ImprimirBoletaControl modelo);
 
         Factura ObtenerUltimaFactura(int IdPunto);
