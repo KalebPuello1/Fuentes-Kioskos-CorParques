@@ -1594,11 +1594,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 });
 
 $('#btnImprimirPreFactura').click(function () {
-    console.log('Mesa', $('#IdPuntoOrigen').val());
-    //console.log('Total', document.getElementById("totalPedido").innerText);
     var total = document.getElementById("totalPedido").innerText;
     if (lstProductosCompra.length > 0) {
-        //var lst_productos = JSON.stringify(lstProductosCompra);
         EjecutarAjaxJson(urlBase + "PedidoA/ImprimirPreFactura", "post",
             { ListaProductos: lstProductosCompra, IdMesa: _idmesa, Total: total },
             "successImpresionPreFactura", null);

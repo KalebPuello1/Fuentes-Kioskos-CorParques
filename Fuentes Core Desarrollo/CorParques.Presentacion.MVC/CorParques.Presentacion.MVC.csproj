@@ -966,14 +966,11 @@
     <Content Include="Views\Reagendamiento\_CheckFactura.cshtml" />
     <Content Include="Views\ReporteVentasPorConveni\Index.cshtml" />
     <Content Include="Views\ReporteVentasPorConveni\_List.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\ReporteFANVendidas\_List.cshtml" />
     <Content Include="Views\ReporteFANVendidas\Index.cshtml" />
-=======
     <Content Include="Views\Productos\PuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_ListPuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_EditPuntosEntrega.cshtml" />
->>>>>>> 9544a6c58568346a3db8e03fd096ab63a0efc96e
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Contratos\CorParques.Negocio.Contratos.csproj">

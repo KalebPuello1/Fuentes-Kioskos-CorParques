@@ -610,7 +610,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             try
             {
                 objTicket.TituloRecibo = IdMesa;
-                objTicket.TituloColumnas = "Producto|Cant";
+                objTicket.TituloColumnas = "Producto|Cant|Precio";
                 objTicket.Usuario = string.Concat((Session["UsuarioAutenticado"] as Usuario).Nombre, " ", (Session["UsuarioAutenticado"] as Usuario).Apellido);
                 objTicket.ListaArticulos = new List<Articulo>();
                 foreach (var producto in ListaProductos)
@@ -630,7 +630,9 @@ namespace CorParques.Presentacion.MVC.Controllers
             {
                 Correcto = false;
             }
+
             return Json(Correcto, JsonRequestBehavior.AllowGet);
+
         }
     }
 }
