@@ -5,8 +5,8 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>D:\Publicaciones\Core</_PublishTargetUrl>
-    <History>True|2023-02-04T15:45:16.4984310Z;True|2023-01-05T12:18:45.4719077-05:00;True|2022-12-19T08:53:48.5753630-05:00;True|2022-11-25T11:27:54.7583320-05:00;True|2022-10-25T21:04:22.5798913-05:00;True|2022-09-27T20:04:04.2776253-05:00;False|2022-09-22T23:22:19.2276011-05:00;False|2022-09-22T23:21:33.6387860-05:00;True|2022-09-22T22:26:06.1075588-05:00;True|2022-09-20T11:16:51.2352003-05:00;True|2022-08-25T10:30:23.8444676-05:00;True|2022-08-17T09:57:48.5099844-05:00;True|2022-08-10T16:24:03.4619360-05:00;True|2022-06-23T08:52:53.9325959-05:00;True|2022-06-16T13:04:47.9825968-05:00;True|2022-06-15T07:49:51.7239506-05:00;True|2022-06-13T09:22:59.3674494-05:00;True|2022-06-09T10:44:22.4921235-05:00;True|2022-06-01T13:53:44.2971080-05:00;True|2022-05-31T12:00:18.9411425-05:00;True|2022-04-14T08:25:38.3068482-05:00;True|2022-04-01T17:16:53.6782450-05:00;</History>
+    <_PublishTargetUrl>D:\Publicaciones\Redencion</_PublishTargetUrl>
+    <History>True|2023-03-24T19:52:28.9333681Z;True|2023-02-04T10:45:16.4984310-05:00;True|2023-01-05T12:18:45.4719077-05:00;True|2022-12-19T08:53:48.5753630-05:00;True|2022-11-25T11:27:54.7583320-05:00;True|2022-10-25T21:04:22.5798913-05:00;True|2022-09-27T20:04:04.2776253-05:00;False|2022-09-22T23:22:19.2276011-05:00;False|2022-09-22T23:21:33.6387860-05:00;True|2022-09-22T22:26:06.1075588-05:00;True|2022-09-20T11:16:51.2352003-05:00;True|2022-08-25T10:30:23.8444676-05:00;True|2022-08-17T09:57:48.5099844-05:00;True|2022-08-10T16:24:03.4619360-05:00;True|2022-06-23T08:52:53.9325959-05:00;True|2022-06-16T13:04:47.9825968-05:00;True|2022-06-15T07:49:51.7239506-05:00;True|2022-06-13T09:22:59.3674494-05:00;True|2022-06-09T10:44:22.4921235-05:00;True|2022-06-01T13:53:44.2971080-05:00;True|2022-05-31T12:00:18.9411425-05:00;True|2022-04-14T08:25:38.3068482-05:00;True|2022-04-01T17:16:53.6782450-05:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -28,28 +28,28 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/24/2017 08:43:06</publishTime>
     </File>
     <File Include="bin/CorParques.Negocio.Entidades.dll">
-      <publishTime>02/02/2023 09:21:59</publishTime>
+      <publishTime>03/24/2023 14:46:44</publishTime>
     </File>
     <File Include="bin/CorParques.Negocio.Entidades.pdb">
-      <publishTime>02/02/2023 09:21:59</publishTime>
+      <publishTime>03/24/2023 14:46:44</publishTime>
     </File>
     <File Include="bin/CorParques.Presentacion.MVC.Core.dll">
-      <publishTime>02/06/2023 16:42:20</publishTime>
+      <publishTime>03/24/2023 14:52:22</publishTime>
     </File>
     <File Include="bin/CorParques.Presentacion.MVC.Core.pdb">
-      <publishTime>02/06/2023 16:42:20</publishTime>
+      <publishTime>03/24/2023 14:52:22</publishTime>
     </File>
     <File Include="bin/CorParques.Transversales.Contratos.dll">
-      <publishTime>02/06/2023 16:33:31</publishTime>
+      <publishTime>03/24/2023 14:46:44</publishTime>
     </File>
     <File Include="bin/CorParques.Transversales.Contratos.pdb">
-      <publishTime>02/06/2023 16:33:31</publishTime>
+      <publishTime>03/24/2023 14:46:44</publishTime>
     </File>
     <File Include="bin/CorParques.Transversales.Util.dll">
-      <publishTime>02/06/2023 16:33:32</publishTime>
+      <publishTime>03/24/2023 14:52:19</publishTime>
     </File>
     <File Include="bin/CorParques.Transversales.Util.pdb">
-      <publishTime>02/06/2023 16:33:32</publishTime>
+      <publishTime>03/24/2023 14:52:19</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>06/06/2017 17:59:20</publishTime>
@@ -175,790 +175,790 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/01/2014 05:10:28</publishTime>
     </File>
     <File Include="Content/bootstrap-datetimepicker.min.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/custom.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/jquery-ui.min.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/kioscos.css">
-      <publishTime>01/25/2023 17:57:50</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/loader.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/OrdenMantenimiento.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/Pos.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/select2.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/sweetalert.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Content/sweetalert2.css">
-      <publishTime>03/25/2022 18:18:03</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>03/25/2022 18:18:02</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/font.css">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara-bg.png">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara-thumb.png">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara.eot">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara.png">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara.ttf">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/Harabara.woff">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/index.html">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Harabara/readme.txt">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="fonts/Ubuntu.woff2">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:38</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>03/25/2022 18:18:02</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Images/Acceso_Correcto.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Images/Acceso_Denegado.png">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Images/CORECORP.png">
       <publishTime>07/06/2022 12:39:09</publishTime>
     </File>
     <File Include="Images/GreenCircle.png">
-      <publishTime>03/25/2022 18:18:04</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Images/icn_flecha_menu.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/Ikaro app.jpg">
-      <publishTime>01/25/2023 17:57:51</publishTime>
+      <publishTime>02/21/2023 09:33:36</publishTime>
     </File>
     <File Include="Images/logo.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/logo_ma_color.jpg">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/logo_verde.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/LOOP-MUNDO-AVENTURA_.gif">
-      <publishTime>03/25/2022 18:18:12</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/mapabase.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/RedCircle.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Images/talanquera.png">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>09/05/2022 09:30:38</publishTime>
+      <publishTime>02/21/2023 09:33:44</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
       <publishTime>01/04/2022 17:16:40</publishTime>
     </File>
     <File Include="Scripts/AccesoAtraccion.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AccesoAtracciones.js">
-      <publishTime>09/23/2022 17:58:55</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AccesoDestrezas.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AdicionPedidos.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AjusteInventario.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AlistamientoPendiente.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AnulacionFactura.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AnulacionRedebanFactura.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Apertura.js">
-      <publishTime>07/22/2022 12:41:59</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AperturaElementos.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Arqueo.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AsignacionBoleta.js">
-      <publishTime>05/31/2022 09:07:35</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/AuxiliarPunto.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/BloqueoTarjeta.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datetimepicker.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Brinks.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierreNido.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierrePunto.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierrePuntoNido.js">
-      <publishTime>03/25/2022 18:18:05</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierrePuntoSupervisor.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierreSupervisor.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CierreTaquilla.js">
-      <publishTime>02/01/2023 16:01:48</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ControlSesion.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/core_for_sweetAlert2.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Cortesia.js">
-      <publishTime>01/30/2023 06:45:51</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CortesiaDestreza.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/CortesiaEmpleado.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/custom.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/DescargueBoleta.js">
-      <publishTime>05/31/2022 09:07:36</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/DescargueMasivoBoleta.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/DescargueMaterial.js">
-      <publishTime>10/25/2022 20:03:53</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/EntregaInventario.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/EntregaInventarioReabastecimiento.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/EntregaPremios.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Fidelizacion.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/General.js">
-      <publishTime>10/25/2022 20:28:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/HistoricoBoleteria.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Inventario.js">
-      <publishTime>02/01/2023 16:58:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/InventarioOperacion.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/jquery-ui.min.autComp.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/jquery-ui.min.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/jquery.signalR-2.2.2.min.js">
-      <publishTime>09/24/2022 20:22:37</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/jquery.smartWizard.js">
-      <publishTime>09/24/2022 20:22:37</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Kioscos.js">
-      <publishTime>01/25/2023 17:57:50</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Login.js">
-      <publishTime>02/06/2023 15:14:36</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/MedicalCenter.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/moment.min.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/NotaCredito.js">
-      <publishTime>10/25/2022 20:28:03</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Notificacion.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ParqueaderoIngreso.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ParqueaderoReimprimir.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/PedidoA.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Pos.js">
-      <publishTime>02/03/2023 16:57:20</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ReabasteElementos.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Recambio.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Recoleccion.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RecoleccionGeneral.js">
-      <publishTime>03/25/2022 18:18:06</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RecoleccionNido.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RecoleccionSupervisor.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RedimirPuntos.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RegistroFallas.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RegistroTorniquete.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Reimpresion.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ReimpresionBrazalete.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ReimpresionReciboCajaV.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/ReservaSkycoaster.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/RetornoPedidos.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/SalidaPedidos.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/select2.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/SignalRNotificaciones.js">
-      <publishTime>11/23/2022 11:50:27</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/sweetalert.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/sweetalert2.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/TrasladoPedidos.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/Vyucoom.js">
-      <publishTime>06/09/2022 09:31:40</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/webcam.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Scripts/WizardOrdenesMantenimiento.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/bootstrap/dist/css/bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/bootstrap/dist/js/bootstrap.3.3.7.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/bootstrap/dist/js/bootstrap.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-buttons/js/dataTables.buttons.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-responsive/js/dataTables.responsive.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net-scroller/js/dataTables.scroller.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/datatables.net/js/jquery.dataTables.min.js">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/dropzone/dist/min/dropzone.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/dropzone/dist/min/dropzone.min.js">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/css/font-awesome.min.css">
-      <publishTime>03/25/2022 18:18:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/fontawesome-webfont.eot">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/fontawesome-webfont.svg">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/fontawesome-webfont.ttf">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/fontawesome-webfont.woff">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/fontawesome-webfont.woff2">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/fonts/FontAwesome.otf">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/animated.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/bordered-pulled.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/core.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/fixed-width.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/font-awesome.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/icons.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/larger.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/list.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/mixins.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/path.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/rotated-flipped.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/screen-reader.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/stacked.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/less/variables.less">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/font-awesome.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_animated.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_bordered-pulled.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_core.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_fixed-width.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_icons.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_larger.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_list.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_mixins.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_path.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_rotated-flipped.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_screen-reader.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_stacked.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/font-awesome/scss/_variables.scss">
-      <publishTime>03/25/2022 18:18:08</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/.gitignore">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/.jshintrc">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/.ruby-version">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/.travis.yml">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/bower.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/CHANGELOG.md">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/component.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/composer.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/deploy.rb">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/docker-compose.yml">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/Dockerfile">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/Gruntfile.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/LICENSE">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/package.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/package.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/README.md">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/src/jquery.mask.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/jquery.mask.test.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/qunit.css">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/qunit.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/sinon-1.10.3.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/sinon-qunit-1.0.0.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/sinon-qunit.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-1.11.1.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-1.7.2.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-1.8.3.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-1.9.1.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-2.1.1.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-jquery-3.0.0.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/test-for-zepto.html">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/zepto/data.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/zepto/event.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jQuery-Mask-Plugin-master/test/zepto/zepto.min.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jquery.tagsinput/src/jquery.tagsinput.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jquery/dist/jquery-1.11.1.min.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/jquery/dist/jquery.min.js">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/.bower.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/.gitignore">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/bower.json">
-      <publishTime>03/25/2022 18:18:09</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/COPYING">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.animate.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.brighttheme.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.buttons.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.buttons.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.callbacks.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.confirm.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.desktop.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.history.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.history.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.material.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.mobile.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.mobile.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.nonblock.css">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.nonblock.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.reference.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/dist/pnotify.tooltip.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/libtests/browserify/index.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/pnotify/README.md">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/animated-overlay.gif">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_diagonals-thick_18_b81900_40x40.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_flat_10_000000_40x100.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_glass_100_f6f6f6_1x400.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_glass_100_fdf5ce_1x400.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_glass_65_ffffff_1x400.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_gloss-wave_35_f6a828_500x100.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_highlight-soft_100_eeeeee_1x100.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-icons_222222_256x240.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-icons_228ef1_256x240.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-icons_ef8c08_256x240.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-icons_ffd27a_256x240.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/images/ui-icons_ffffff_256x240.png">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/jquery-ui-1.10.4.custom.css">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-1.10.1.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-1.10.2.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-1.11.0.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-1.9.0.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-2.1.0.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-ui-1.10.4.custom.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery-ui-1.10.4.custom.min.js">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/jquery.PrintArea.js">
-      <publishTime>03/25/2022 18:18:10</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/print_plugin/PrintArea.css">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/switchery/dist/switchery.min.css">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Vendors/switchery/dist/switchery.min.js">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/AdicionPedidos/Index.cshtml">
       <publishTime>05/24/2022 11:17:35</publishTime>
@@ -1153,28 +1153,28 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2022 18:18:13</publishTime>
     </File>
     <File Include="Views/Cuenta/Login.cshtml">
-      <publishTime>02/06/2023 15:14:38</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Cuenta/_CambioClave.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Cuenta/_Clave.cshtml">
-      <publishTime>01/27/2023 08:44:07</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/DescargueBoleta/Index.cshtml">
-      <publishTime>05/24/2022 11:17:35</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/DescargueBoleta/_ListaProductos.cshtml">
-      <publishTime>05/24/2022 11:17:35</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/DescargueMaterial/Index.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/DescargueMaterial/_ListaProductos.cshtml">
-      <publishTime>09/29/2022 11:01:47</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/DescargueMaterialMasivo/Index.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Destrezas/Index.cshtml">
       <publishTime>03/25/2022 18:18:13</publishTime>
@@ -1189,16 +1189,16 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2022 18:18:13</publishTime>
     </File>
     <File Include="Views/Errores/Err403.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Errores/Err404.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Errores/Err500.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Errores/Index.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Fidelizacion/Index.cshtml">
       <publishTime>03/25/2022 18:18:13</publishTime>
@@ -1210,13 +1210,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2022 18:18:13</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>03/25/2022 18:18:13</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/07/2022 12:20:32</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Inventario/Ajustes.cshtml">
       <publishTime>03/25/2022 18:18:13</publishTime>
@@ -1465,25 +1465,25 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2022 18:18:15</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
-      <publishTime>03/25/2022 18:18:15</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/07/2022 12:42:35</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutKiosco.cshtml">
-      <publishTime>01/25/2023 17:57:50</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_Login.cshtml">
-      <publishTime>03/25/2022 18:18:15</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_LoginConfirm.cshtml">
-      <publishTime>03/25/2022 18:18:15</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_LoginSupervisor.cshtml">
-      <publishTime>02/01/2023 17:06:46</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Shared/_LoginSupervisorCarnet.cshtml">
-      <publishTime>03/25/2022 18:18:15</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/TrasladoPedidos/Index.cshtml">
       <publishTime>03/25/2022 18:18:15</publishTime>
@@ -1492,19 +1492,19 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/25/2022 18:18:15</publishTime>
     </File>
     <File Include="Views/Vyucoom/Index.cshtml">
-      <publishTime>06/09/2022 09:31:40</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Vyucoom/_DetallePago.cshtml">
-      <publishTime>05/04/2022 19:33:15</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>03/25/2022 18:18:11</publishTime>
+      <publishTime>02/21/2023 09:33:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/06/2023 16:42:20</publishTime>
+      <publishTime>03/24/2023 14:52:23</publishTime>
     </File>
   </ItemGroup>
 </Project>

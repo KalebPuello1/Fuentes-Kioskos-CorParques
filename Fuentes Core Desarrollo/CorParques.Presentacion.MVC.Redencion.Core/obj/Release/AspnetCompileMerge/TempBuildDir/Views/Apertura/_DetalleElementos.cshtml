@@ -1,0 +1,43 @@
+﻿@model CorParques.Negocio.Entidades.Apertura
+
+@if (Model != null && Model.AperturaElemento != null && Model.AperturaElemento.Count() > 0 && Model.AperturaElemento.Where(x => !x.EsReabastecimiento).Count() > 0)
+{
+    <label> Elementos</label>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table jambo_table">
+                    <tr class="headings">
+                        <th>Tipo</th>
+                        <th>Código de barras</th>
+                        <th>Observaciones</th>
+                        @if (Model.BitacoraElemento)
+                        {
+                            <th>Taquillero</th>
+                        }
+                        <th hidden></th>
+                    </tr>
+                    <tbody id="bodyElementosApertura">
+                        @foreach (var item in Model.AperturaElemento.Where(x => !x.EsReabastecimiento))
+                        {
+
+                            <tr>
+                                <td>@item.Elemento.Nombre</td>
+                                <td>@item.CodigoBarras</td>
+                                <td>@item.Observacion</td>
+                                @if (Model.BitacoraElemento)
+                                {
+                                    <td hidden><input type="checkbox" class="ElementosTaquillero" checked="@item.ValidTaquilla" readonly  /> </td>
+                                }
+                                <td hidden><input type="checkbox" class="Elementos" data-id="@item.Id|@Model.Id" /> </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+

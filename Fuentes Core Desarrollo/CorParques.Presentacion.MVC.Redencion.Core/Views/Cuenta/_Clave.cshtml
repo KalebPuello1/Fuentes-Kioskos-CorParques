@@ -1,0 +1,70 @@
+﻿@{
+
+    var PuntosLogin = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.PuntosLogin;
+
+}
+<form>
+
+    <div class="form-horizontal form-label-left">
+        <div class="item form-group">
+
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                Contraseña:
+            </label>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="password" class="form-control required password2" id="Password2" name="Password2" placeholder="Digíte su contraseña" maxlength="15" />
+            </div>
+
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                Punto:
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                <select id="IdPuntoLogin" name="IdPuntoLogin" class="form-control setSelect2 required">
+                    <option value="">* Seleccione...</option>
+                    @if (PuntosLogin != null)
+                    {
+
+                        foreach (var item in PuntosLogin)
+                        {
+                            <option value="@item.Id">@item.Nombre</option>
+                        }
+
+                    }
+
+                </select>
+            </div>
+        </div>
+
+        <div id="Cambiopwd" style="display:none">
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                    Nueva Contraseña:
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="password" class="form-control " id="Changepwd" name="Changepwd" placeholder="Digíte su nueva contraseña" maxlength="15" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                    Confirme nueva contraseña:
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="password" class="form-control " id="ConfirChangepwd" name="ConfirChangepwd" placeholder="Confirme su nueva contraseña" maxlength="15" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+@section script{
+    <script>
+        setearfocus();
+    </script>
+
+
+}

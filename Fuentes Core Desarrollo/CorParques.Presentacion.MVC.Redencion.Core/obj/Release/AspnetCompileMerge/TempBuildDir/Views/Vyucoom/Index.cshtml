@@ -1,0 +1,206 @@
+﻿
+@model IEnumerable<CorParques.Negocio.Entidades.Vyucoom>
+
+@{
+    ViewBag.Title = "Vyucomm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuario = (Session["UsuarioAutenticado"] as CorParques.Negocio.Entidades.Usuario);
+    var contingencia = Session["contingencia"] == null ? 0 : (int)Session["contingencia"];
+    var MPago = (IEnumerable<CorParques.Negocio.Entidades.MediosPago>)ViewBag.MediosDePago;
+    var Clientes = (IEnumerable<CorParques.Negocio.Entidades.Cliente>)ViewBag.Cliente;
+    var valorFijo = ViewBag.valorFijo;
+    var precio = ViewBag.valor;
+    var propina = (CorParques.Negocio.Entidades.Parametro)ViewBag.parametro;
+}
+
+<link href="~/Vendors/pnotify/dist/pnotify.brighttheme.css" rel="stylesheet" />
+<link href="~/Vendors/pnotify/dist/pnotify.css" rel="stylesheet" />
+
+
+<div class="row container">
+    <div class="col-md-1 col-lg-1 col-xs-1 container">
+        <input type="hidden" id="inputCodSapTipoProductoAgrupaCantidad" value="@ViewBag.CodSapTipoProductoAgrupaCantidad" />
+        <input type="hidden" id="inputCodSapProductoAgrupaCantidad" value="@ViewBag.CodSapProductoAgrupaCantidad" />
+        <input type="hidden" id="inputCodSapProductosDonaciones" value="@ViewBag.donacion" />
+        <input type="hidden" id="inpuntTransaccionRedebanHabilitada" value="@ViewBag.TransaccionRedebanHabilitada" />
+    </div>
+
+    @*Productos y Detalle*@
+    <div class="col-md-8 col-lg-8 col-xs-8 center-margin">
+        <div class="container">
+            <form class="row border">
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <div id="Clientee">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Cliente:
+                            </label>
+                            <div class="col-md-9 col-sm-6 col-xs-12">
+                                <input class="form-control required" id="NomClientePed" value="" disabled/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Codigo Pedido:
+                        </label>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <!--<div class='input-group' id=''>-->
+                            <input type='text' class="form-control required" id="CodPedido" />
+                            <!--</div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Aqui va -->
+                <!-- Aqui va total y vendedor-->
+                <!---->
+                <!---->
+
+                <div id="NueCliente" style="display:none" class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <!-- <div class="row"> -->
+                    <!--<div style="display:inline-block" class="col-md-5 col-sm-5 col-xs-12">-->
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Nuevo cliente:
+                        </label>
+                        <div class="form-group col-md-9 col-sm-6 col-xs-12">
+                            <input class="col-md-8 col-sm-12 col-xs-12 TipoPago form-control required" type="text" id="NomCliente" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Identificacion cliente:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="col-md-8 col-sm-12 col-xs-12 TipoPago form-control required" type="text" id="IdeCliente" placeholder="    " />
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Monto a pagar:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input class="col-md-8 col-sm-12 col-xs-12 TipoPago form-control required" type="text" id="IdApagar" placeholder="Monto a pagar" />
+                        </div>
+                    </div>
+                    <input type="button" style="display:inline-block" class="col-md-12 col-sm-12 col-xs-12 btn btn-success" id="agregarCliente" value="Agregar nuevo cliente" />
+                    <!--</div> -->
+                </div>
+
+                <!---->
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12" id="Mostrar" style="display:none">
+                    <hr />
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Total:
+                        </label>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group'>
+                                <h1 style="font-weight: bold; display: inline-block;">$</h1><h1 style="font-weight: bold; display: inline-block;" id='precio'>@precio</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Vendedor:
+                        </label>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group' id=''>
+                                @(usuario == null ? "" : usuario.Nombre)
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+                    <br />
+                    <div class="item form-group col-md-12 col-sm-12 col-xs-12" style="display:none">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12">
+                            Producto:
+                        </label>
+
+                        <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                            <div class='input-group' id=''>
+                                @valorFijo.Valor
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+
+                <div class="item form-group col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                    @Html.Partial("_DetallePago", MPago)
+                </div>
+
+                <!---->
+                <br />
+                <br />
+                <!---->
+                <!--
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="button" class="btn btn-primary" value="Pagar" id="btnPagar" />
+                    </div>
+                </div>
+                            -->
+                <!---->
+            </form>
+        </div>
+    </div>
+    <!---->
+    <div class="row">
+        <div class="col-xs-12 col-md-9 col-lg-9 center-margin">
+            <div class="table-responsive">
+                <br /><br />
+                <table class="table jambo_table">
+                    <thead>
+                        <tr>
+                            <th>Forma de pago</th>
+                            <th># Recibo</th>
+                            <th># Referencia</th>
+                            <th>Franquicia</th>
+                            <th style="text-align: right;">Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyPagos">
+                    </tbody>
+                </table>
+                <div class="container" id="refPagos">
+                    <div id="total"></div>
+                    <br />
+                    <!--<div id="TotalBase"></div>-->
+                    <br />
+                    <div id="cambio"></div>
+                    <!--<div id="TotalImpuestos"></div> -->
+                    <br />
+                    <!-- <div id="TotalBase"></div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="button" class="btn btn-success" value="Pagar" id="btnPagar" />
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelar" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    @*<div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <input type="button" class="btn btn-primary" value="Pagar" id="btnPagar" />
+            </div>
+        </div>*@
+
+    <!---->
+</div>
+@section scripts{
+    <script>
+            var ValorPropina = @Html.Raw(Json.Encode(propina));
+            parametros = @Html.Raw(Json.Encode(ViewBag.parametros));
+    </script>
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/Vyucoom.js"></script>
+}

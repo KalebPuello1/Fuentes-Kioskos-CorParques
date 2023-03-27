@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Redimir producto con puntos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row form-horizontal form-label-lef" id="frmFidel">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Tarjeta
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtCod" name="Tarjeta" class="form-control required numerico" value="" maxlength="20" />
+            </div>
+        </div>
+
+        <div class="otherField" style="display:none;">
+            <select id="ddlProductos" class="form-control setSelect2">
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6 otherField" style="display:none">
+        <img src="#" style="width:150px; height:120px" id="snapshot"></img>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Nombre<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtName" name="Nombre" class="form-control required" value="" disabled="disabled" />
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Correo<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtMail" name="Correo" class="form-control required mail" value="" disabled="disabled" />
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Telefono<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtPhone" name="Telefono" class="form-control required numerico" value="" maxlength="10" disabled="disabled" />
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Fecha de Nacimiento<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtBirthday" name="FechaNacimiento" class="form-control required calendario" value="" disabled="disabled" />
+            </div>
+        </div>
+
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Genero<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtGender" name="Genero" class="form-control required" value="" disabled="disabled" />
+            </div>
+        </div>
+        <div class="item form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="IdCategoriaAtencion">
+                Puntos<span>*</span>
+            </label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" id="txtPuntos" name="Puntos" class="form-control required" value="" disabled="disabled" />
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-md-12 otherField" style="display:none">
+        <input type="hidden" id="hdConsecutivo" value="" />
+        <a href="#" id="btnGuardar" class="btn btn-success">Redimir producto</a>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/RedimirPuntos.js"></script>
+}
+

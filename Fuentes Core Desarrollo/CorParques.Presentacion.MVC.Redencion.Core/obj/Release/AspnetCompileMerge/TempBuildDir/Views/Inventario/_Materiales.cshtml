@@ -1,0 +1,98 @@
+﻿@model CorParques.Negocio.Entidades.TransladoInventario
+
+@if (Model.Materiales != null)
+{
+
+    <div>
+        <div class="item col-md-1 col-sm-3 col-xs-3">
+            <label class="control-label" for="Password">
+                Materiales:
+            </label>
+        </div>
+        <div class="item col-md-4 col-sm-9 col-xs-9">
+            <select id="IdMateriales" class="form-control required setSelect2">
+                <option value="">* Materiales</option>
+
+                @if (Model.Materiales.Count() > 0)
+                {
+                    foreach (var item in Model.Materiales)
+                    {
+                        <option data-id="@item.CantidadDisponible" data-codsap="@item.CodigoSap" data-nombre="@item.Nombre"  data-unidad="@item.Unidad" value="@item.CodigoSap">@(@item.CodigoSap + "|" + @item.Nombre)</option>
+                    }
+                }
+
+            </select>
+        </div>
+
+        <div class="item col-md-1 col-sm-3 col-xs-3">
+            <label class="control-label" for="Password">
+                Cantidad:
+            </label>
+        </div>
+
+        <div class="item col-md-2 col-sm-9 col-xs-9">
+            <input type="text" class="required form-control" id="CantidadMaterial" onkeypress="return validateFloatKeyPress(this, event);" />
+        </div>
+
+        @*<div style="text-align:center">*@
+        <div class="col-md-1 col-sm-4 col-xs-4">
+            <a href="javascript:void(0)" id="btnAgregar" class="right btn btn-success">Agregar</a>
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        <div id="datatable-responsive_filter" class="dataTables_filter">
+            <label>Buscar:<input type="search" id="txtSearchMateri" class="form-control input-sm" placeholder="" aria-controls="datatable-responsive"></label>
+        </div>
+    </div>
+
+    <table class="table table-striped  table-bordered" id="tbTrasladoInventario" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Codigo Sap</th>
+                <th>Materiales</th>
+                <th>Cantidad disponible</th>
+                <th>Unidad</th>
+                <th>Cantidad a trasladar</th>
+                <th style="width:50px"></th>
+            </tr>
+        </thead>
+        <tbody id="bodyTableTrasladoInventario">
+            @if (Model != null)
+            {
+                if (Model.MaterialesAplicados != null)
+                {
+                    int contador = 0;
+                    foreach (var item in Model.MaterialesAplicados)
+                    {
+                        <tr>                            
+                            <input type="hidden" name="[@contador].IdPuntoOrigen" class="PuntoOrigen" />
+                            <input type="hidden" name="[@contador].IdPuntoDestino" class="PuntoDestino" />
+                            <input type="hidden" name="[@contador].CodSapMaterial" value="@item.CodigoSap" />
+                            <input type="hidden" name="[@contador].Cantidad" value="@item.Cantidad" class="cantidad" />
+                            <input type="hidden" name="[@contador].UnidadMedida" value="@item.Unidad" />
+                            <input type="hidden" name="[@contador].idUsuario" class="idUsuario" />
+                            <td>@item.CodigoSap</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.CantidadDisponible</td>
+                            <td>@item.Unidad</td>
+                            <td>@item.Cantidad</td>
+                            @*<td><input type="text" class="Numero" name="[@contador].Cantidad" value="" /> </td>*@
+                            <td style="text-align:center; width:50px">
+                                <a class="lnkDisable" data-id="@item.CodigoSap" href="javascript:void(0)"><b class="fa fa-trash-o"></b></a>
+                            </td>
+                        </tr>
+                        contador++;
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+}
+
+
+<script src="~/Scripts/jquery-ui.min.js"></script>

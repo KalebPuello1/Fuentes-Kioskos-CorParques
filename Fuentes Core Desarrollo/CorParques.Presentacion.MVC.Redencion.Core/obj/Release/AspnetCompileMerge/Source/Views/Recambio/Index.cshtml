@@ -1,0 +1,143 @@
+﻿@model CorParques.Negocio.Entidades.Recambio
+@{
+    var listUsuarios = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.usuarios;
+    ViewBag.Title = "Recambio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Usuario = ViewBag.Usuario;
+}
+
+<form id="frmRecambio" method="post" action="@Url.Action("Insertar","Recambio")">
+    <input type="text" id="txtUsuario" name="txtUsuario" value="" hidden />
+    <div class="form-group">
+        <div class="row">
+            <div class="item col-md-12 col-sm-12 col-xs-12">
+                <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                    <span>* </span>Usuario:
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <select id="ddlUsuarios" onchange="OnChangeEvent(this);" class="form-control required setSelect2">
+                        <option value="">Seleccione el usuario</option>
+                        @if (listUsuarios != null && listUsuarios.Count() > 0)
+                        {
+                            foreach (var item in listUsuarios)
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+          </div>
+    </div>
+    <br />
+    <div class="row ">
+        <div class="item col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                <span>* </span>Valor:
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                @if (Model != null)
+                {
+                    <input type="text" class="form-control required moneda" id="txtValor" value="@Model.Valor" onkeypress="return EsNumero(this);" maxlength="11"/>
+                }
+                else
+                {
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control required moneda" id="txtValor" placeholder="000" value="" onkeypress="return EsNumero(this);" maxlength="11" />
+                    </div>
+                }
+            </div>
+        </div>
+        <br /><br /><br />
+        <div class="item col-md-12 col-sm-12 col-xs-12">
+            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                <span>* </span>Observaciones:
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                @if (Model != null)
+                {
+                    @Html.TextAreaFor(modelItem => Model.ObservacionRecambio, new { @class = "form-control col-md-9 col-sm-9 col-xs-12 limpiar required", cols = "20", maxlength = 500, rows = "3" })
+                }
+                else
+                {
+                    @Html.TextArea("ObservacionRec", null, new { @class = "form-control col-md-9 col-sm-9 col-xs-12 limpiar required", cols = "20", maxlength = 500, rows = "6", placeholder = "Observaciones" })
+                }
+            </div>
+        </div>
+    </div>
+    @if (Model != null)
+    {
+        <input type="text" class="form-control required" id="txtCantidad" value="@Model.Valor" hidden>
+        <input type="text" class="form-control required" id="txtObservacionSupervisor" value="@Model.ObservacionRecambio" hidden>
+        <input type="text" class="form-control required" id="txtUsuario" name="@Model.IdUsuarioAsignacion" value="" hidden>
+    }
+    <br />
+    <div class="col-md-8 col-sm-8 col-xs-8">
+        <div style="text-align:right;">
+            <button type="button" class="btn btn-fill btn btn-success" id="btnOK">Guardar</button>
+            <button type="button" class="btn btn-danger" id="btnCancelar" href="javascript:void(0)">Cancelar</button>
+        </div>
+    </div>
+
+        <div id="modalCRUD" class="modal fade" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header btn-primary">
+                        <h4 class="modal-title">Confirmación <label id="lblUsuario" contextmenu=""></label> </h4>
+                        
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="control-label">Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="password" class="form-control required" placeholder="Contraseña" id="txtPassword" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="control-label">Observaciones</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                
+                                @if (Model != null)
+                                {
+                                    @Html.TextAreaFor(modelItem => Model.ObservacionAprovado, new { @class = "form-control col-md-9 col-sm-9 col-xs-12", cols = "20", maxlength = 500, rows = "3", placeholder = "Observaciones", id = "txtObservaciones" })
+                                    <input type="hidden" id="ObservacionAprovado" value="@Model.ObservacionAprovado" maxlength="500" placeholder="Observaciones" />
+                                }
+                                else
+                                {
+                                    @Html.TextArea("ObservacionAprov", null, new { @class = "form-control col-md-9 col-sm-9 col-xs-12 limpiar", cols = "20", maxlength = 500, rows = "3", placeholder = "Observaciones" })
+                                }
+
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="button" class="btn btn-fill btn btn-success" value="Aceptar" id="btnAceptarLogin" />
+                                <button type="button" class="btn btn-danger" id="btnCancelarLogin" href="javascript:void(0)">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+
+</form>
+@section scripts{
+    <script src="~/Scripts/Recambio.js"></script>
+<script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+<script src="~/Vendors/pnotify/dist/pnotify.js"></script>
+}
+
+
+

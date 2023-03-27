@@ -1,0 +1,151 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.MediosPago>
+@{
+    var TipoPago = (List<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.list;
+    var TipoFranquicia = (List<CorParques.Negocio.Entidades.Franquicia>)ViewBag.franquicia;
+    var contigencia = Session["contingencia"] == null ? 0 : (int)Session["contingencia"];
+    //var MPagoo = ViewBag.MediosDePago;
+    var MPagoo = ViewBag.MediosDePago;
+    var MPagooo = Model;
+}
+<div class="form" id="formSalidaParqueadero">
+    <div class="row">
+        <div class="row">
+            <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                    Forma Pago:
+                </label>
+                <div class="col-md-9 col-sm-6 col-xs-12" id="">
+                    <select onchange="selectMedioPagoChange();" class="col-md-12 form-control setSelect2" id="selectMedioPago" name="cliente" >
+                        <option id="fPago" value="0"> --Seleccione Forma Pago-- </option>
+                        @if (Model != null && Model.Count() > 0)
+                            {
+                                foreach (var la in Model)
+                                {
+                                @*if (@la.IdEstado == 1)
+                                { 
+                                  <option value="@la.Id">@la.Nombre</option>
+                                }*@
+                              if (@la.Id == 1 || @la.Id == 2 || @la.Id == 4 || @la.Id == 6) { 
+                                <option value="@la.Id">@la.Nombre</option>
+                                }
+                        }
+                        }
+                        </select>
+                        </div>
+                        </div>
+                        <div class="item form-group col-md-6 col-sm-6 col-xs-12">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                        Monto:
+                        </label>
+                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <input id="inputValorPago" maxlength="10" type="text" class="col-md-8 col-sm-12 col-xs-12 TipoPago form-control required" />
+                        </div>
+                        </div>
+                        <!--Referencias para tarjeta-->
+                        <div class="col-xs-12 col-md-6 col-lg-6" style="display: none;" id="colReferencia">
+                        <br />
+                        <label class="control-label" id="NumRelacionado"># Referencia</label>
+                        <input id="inputReferencia" maxlength="20" type="text" class="form-control" />
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-6" style="display: none;" id="colFranquicia">
+                        <br />
+                        <label class="control-label" for="SPago">Franquicia</label>
+                        <select id="selectFranquicia" class="form-control">
+                        <option value="">--Seleccione--</option>
+                        @foreach (var item in TipoFranquicia)
+                        {
+                        <option value="@item.Id">@item.Nombre</option>
+                        }
+                        </select>
+                        </div>
+                        <!--Aqui termina-->
+                        </div>
+                        <hr />
+                        <!---->
+
+                        <div class="row" style="display:block">
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                        <br />
+                        <!--<input id="btAgregarPago" onclick="AgregarPagoo()" class="btn btn-success" style="margin-bottom: 0;" type="button" value="Agregar" />-->
+                        <input id="btAgregarPago" onclick="AgregarPagoo()" class="btn btn-success" style="margin-bottom: 0;" type="button" value="Agregar" />
+                        </div>
+                        </div>
+
+                        <!---->
+                        <!--<div class="row">-->
+                        <!--
+                        <div class="col-xs-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                        <br /><br />
+                        <table class="table jambo_table">
+                        <thead>
+                        <tr>
+                        <th>Forma de pago</th>
+                        <th># Recibo</th>
+                        <th># Referencia</th>
+                        <th>Franquicia</th>
+                        <th style="text-align: right;">Valor</th>
+                        <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tableBodyPagos">
+                        </tbody>
+                        </table>
+                        <div id="cambio"></div>
+                        </div>
+                        </div>
+                        -->
+                        <!-- </div> -->
+                        </div>
+                        </div>
+                        <!---->
+                        <div class="modal fade" id="myModalConfirmarSupervisorRedeban" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header btn-primary">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Confirmación supervisor/recolector</h4>
+                        </div>
+                        <div class="row">
+                        <div class="modal-body">
+                        <div>
+                        <label>Acerque el carnet al lector de código de barras</label>
+                        <input type="text" id="txt_DocumentoEmpleado" placeholder="Acerque su carnet al lector." autofocus style="width:0px; height:0px; border:0px; background-color:transparent; top:10000px" maxlength="20" />
+                        </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="modal-body" id="divPassword" style="display:none">
+                        <div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nombre">
+                        Contraseña:
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="password" class="form-control " id="Password" name="Password" placeholder="Digíte su contraseña" />
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <br />
+                        <div class="row" style="text-align:right">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarLoginRedeban" />
+                        <input type="button" class="btn btn-primary" value="Limpiar" id="btnLimpiarRedeban" />
+                        <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelarLoginRedeban" />
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <!---->
+
+                        @section scripts{
+                        <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+                        <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+                        <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+                        <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+                        <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+                        <script src="~/Scripts/jquery.smartWizard.js"></script>
+                        <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+
+                        }

@@ -1,0 +1,52 @@
+﻿
+<form id="frmLoginConfirm">  
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">            
+                <h2> @ViewBag.Mensaje </h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <input type="password" class="form-control required" placeholder="* Contraseña" id="txtPassword"  autofocus/>
+            <div id="Mensaje"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <input type="button" class="btn btn-success" value="Aceptar" id="btnAceptarLogin" /> 
+            <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelarLogin" />
+        </div>
+    </div>
+    
+</form>
+<script>
+
+    $('#modalCRUD').on('keypress', function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            //$(this).trigger('submit');
+        }
+    });
+
+    $("#btnAceptarLogin").click(function () {
+        if (validarFormulario("frmLoginConfirm")) {
+            Login($("#txtPassword").val());
+        }
+    });
+
+    $("#btnCancelarLogin").click(function () {
+        CancelarLogin();
+    });
+
+    $("input[type=password], input[type=text]").keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {            
+            if (validarFormulario("frmLoginConfirm")) {
+                Login($("#txtPassword").val());
+            }
+        }
+    });
+</script>
+

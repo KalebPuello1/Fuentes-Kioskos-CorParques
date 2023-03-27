@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CorParques.Negocio.Entidades.Producto>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="text" value="" class="form-control txtBuscador" placeholder="Digite el nombre del premio para buscar" />
+            <span class="input-group-btn">
+                <button type="button" id="btnLimpiar" class="btn btn-primary">X</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div style="max-height: 550px; overflow-y: scroll; width: 100%;" class="well well-small">
+            @if (Model != null && Model.Count() > 0)
+            {
+
+
+                int Cont = 1; // Dividisiones
+                int _cont = 0;
+                int _final = Model.Count();
+
+                @Html.Raw("<div class='row' style='padding-top: 5px;'>")
+                foreach (var item in Model)
+                {
+                    var Row = Cont == 1;
+                    @*if (Row)
+                        {
+                            @Html.Raw("<div class='row row-eq-height' style='padding-top: 5px;'>")
+                        }*@
+                    <div class="col-md-4 col-sm-4 col-xs-12 ProductoGrilla_Generic" data-id="@item.IdProducto">
+                        <a>
+                            @if (!string.IsNullOrEmpty(item.Imagen))
+                            {
+                                <div class="MenuTiposProducto_Generic">
+                                    <img src="@($"{System.Configuration.ConfigurationManager.AppSettings["RutaImagenes"]}/productos/{item.Imagen}")" style="max-height:100px" /><br />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="MenuTiposProducto_Generic" style="height: 70px; width:300px;">
+                                    <div class="icon" style="left: 18px;height: 70px;"><i class="fa fa-picture-o"></i></div>
+                                </div>
+                            }
+                            <div style="text-align:center;">
+                                <label id="Producto_@item.IdProducto">@item.Nombre</label>
+                            </div>                            
+                            @*@if (item.TipoProducto.Trim() == "Uso Atracciones" || item.TipoProducto.Trim() == "Uso Destrezas")
+                                {
+                                    <label>@item.TipoProducto.Replace("Uso ", "")</label>
+                                }*@
+                            @*<h6 class="precioPos">@item.Precio</h6> <br />*@
+                        </a>
+                        @*<div class="DescripcionProd">
+                            <div style="visibility:hidden"># @item.Codigo</div>
+                        </div>*@
+                        <input type="hidden" id="hdf_@item.IdProducto" value="@item.CodigoSap" />
+                    </div>
+
+                }
+
+                @Html.Raw("</div>")
+            }
+        </div>
+    </div>
+</div>

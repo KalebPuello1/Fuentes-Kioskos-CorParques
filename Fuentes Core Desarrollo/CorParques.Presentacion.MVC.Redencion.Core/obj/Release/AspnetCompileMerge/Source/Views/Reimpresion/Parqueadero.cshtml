@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Reimpresión Parqueadero";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="form" id="formIngresoParqueadero">
+        <div class="row">
+            <div class="col-md-2">
+                <br />
+                <label class="control-label" for="Placa">Placa <span>*</span></label>
+                <input type="text" id="textBoxPlaca" class="form-control required" style="text-transform: uppercase;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <br />
+                <button type="button" id="btnEnviarIngreso" class="btn btn-success">Reimprimir</button>
+                <button type="button" id="btnCancelar" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+        
+    </div>
+
+
+@section scripts{
+    <script src="~/Vendors/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="~/Scripts/ParqueaderoReimprimir.js"></script>
+}
