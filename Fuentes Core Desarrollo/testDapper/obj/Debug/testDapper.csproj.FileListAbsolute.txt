@@ -34,39 +34,111 @@ D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarro
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CopyComplete
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.dll
 D:\Usuarios\BCaicedo\Documents\Visual Studio 2019\dev.azure\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll.config
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Zen.Barcode.Core.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\FastMember.Signed.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.pdb
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.xml
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.AssemblyReference.cache
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CoreCompileInputs.cache
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CopyComplete
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.dll
-C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes GIT\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\testDapper.dll.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Datos.Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Dapper.SimpleCRUD.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Datos.Dapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Dapper.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Dapper.SimpleCRUD.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Dapper.SimpleCRUD.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\obj\Debug\testDapper.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\obj\Debug\testDapper.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\obj\Debug\testDapper.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\obj\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\testDapper\obj\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll.config
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\testDapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Zen.Barcode.Core.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\BouncyCastle.Crypto.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\FastMember.Signed.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Datos.Dapper.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Negocio.Entidades.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Corparques.Datos.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Contratos.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\CorParques.Transversales.Util.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.pdb
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Dapper.SimpleCRUD.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\Newtonsoft.Json.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\itextsharp.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\ClosedXML.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.AssemblyReference.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CoreCompileInputs.cache
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.csproj.CopyComplete
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.dll
+D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes Rama Principal - PRD\Fuentes Core Desarrollo\testDapper\obj\Debug\testDapper.pdb
