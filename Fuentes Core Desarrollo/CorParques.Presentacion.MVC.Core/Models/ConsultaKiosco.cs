@@ -11,7 +11,6 @@ namespace CorParques.Presentacion.MVC.Core.Models
         public Boleteria Boleta { get; set; }
         public DetalleBoleta DetalleBoleta { get; set; }
         public Factura Factura { get; set; }
-        public FacturaImprimir FacturaImprimir { get; set; }
         public ConsultaMovimientoBoletaControl BolControl { get; set; }
     }
 }
