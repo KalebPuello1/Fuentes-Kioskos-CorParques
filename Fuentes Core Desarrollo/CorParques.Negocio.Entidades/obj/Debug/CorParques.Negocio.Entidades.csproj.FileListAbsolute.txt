@@ -16,11 +16,3 @@ C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.N
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CopyComplete
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.dll
 C:\Users\jaime\source\FuentesCoreCorparques\Fuentes Core Desarrollo\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.pdb
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.dll
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\bin\Debug\CorParques.Negocio.Entidades.pdb
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.dll
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\bin\Debug\Newtonsoft.Json.xml
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CoreCompileInputs.cache
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.csproj.CopyComplete
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.dll
-D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Negocio.Entidades\obj\Debug\CorParques.Negocio.Entidades.pdb

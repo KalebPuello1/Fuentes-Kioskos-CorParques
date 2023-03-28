@@ -109,22 +109,6 @@ namespace CorParques.Datos.Dapper
             }
             return envio;
         }
-
-        public bool EnviarCorreoInv(string sTo, string sSubject, string sMensaje, MailPriority mpPriority, List<string> attachmentList)
-        {
-            bool env = EnviarCorreo(sTo, sSubject, sMensaje, System.Net.Mail.MailPriority.High, attachmentList);
-            bool envio;
-            if (env)
-            {
-                envio = true;
-            }
-            else
-            {
-                envio = false;
-            }
-            return envio;
-        }
-
         public string EnviarCorreoCodConfirmacion(string correo, string CodConfirma)
         {
             //bool env = EnviarQR.EnviarCorreo(correo,$"CodigoQR {nom}","Gracias por ser parte de nuestra familia",System.Net.Mail.MailPriority.High,imgQR);
@@ -344,7 +328,7 @@ namespace CorParques.Datos.Dapper
                 ms.Dispose();
                 ms.Close();
                 return true;
-                //MessageBox.Show("Entro al correo");
+                MessageBox.Show("Entro al correo");
             }
             catch (Exception ex)
             {

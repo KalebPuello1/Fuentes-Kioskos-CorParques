@@ -204,6 +204,7 @@
     <Compile Include="Controllers\ReporteUsuarioAppController.cs" />
     <Compile Include="Controllers\ReporteVentasDiarias.cs" />
     <Compile Include="Controllers\ReporteRecoleccionController.cs" />
+    <Compile Include="Controllers\ReporteFANVendidas.cs" />
     <Compile Include="Controllers\ReporteVtasPorConvenio.cs" />
     <Compile Include="Controllers\Reporte_SI_Consumo_SF_FechaAbiertaControllerController.cs" />
     <Compile Include="Controllers\ResolucionFacturaController.cs" />

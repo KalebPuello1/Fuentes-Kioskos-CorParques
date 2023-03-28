@@ -75,6 +75,7 @@
     <Compile Include="IServicioReporteVentasDiarias.cs" />
     <Compile Include="IServicioReporteRecoleccion.cs" />
     <Compile Include="IServicioReporteVentasPorConvenio.cs" />
+    <Compile Include="IServicioReporteFANVendidas.cs" />
     <Compile Include="IServicioReporteVentasPorProducto.cs" />
     <Compile Include="IServicioReporteVentasPorHora.cs" />
     <Compile Include="IServicioReporteCostoProducto.cs" />

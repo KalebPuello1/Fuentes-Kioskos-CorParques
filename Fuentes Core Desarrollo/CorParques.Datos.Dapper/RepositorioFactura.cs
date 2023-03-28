@@ -295,7 +295,7 @@ namespace CorParques.Datos.Dapper
                                col1 = x.IdMedioPago.ToString(),
                                col2 = x.Valor.ToString(),
                                col3 = x.NumReferencia != null ? x.NumReferencia.ToString() : null,
-                               col4 = x.IdFranquicia.ToString(),
+                               col4 = x.IdFranqicia.ToString(),
                                col5 = x.Cambio.ToString(),
                                col6 = x.FechaCreacion.ToString("yyyy-MM-dd hh:mm:ss"),
                            }))
@@ -443,6 +443,27 @@ namespace CorParques.Datos.Dapper
 
             return values.ToString();
         }
+        public bool FlujoRedebanXPunto(int IdPunto)
+        {
+            var result = _cnn.Query($"select Activo from dbo.TB_ActivacionRedeban where IdPunto = {IdPunto}");
+
+            if (result.Count() > 0)
+            {
+
+            
+            var firstRow = result.FirstOrDefault();
+            var Heading = ((IDictionary<string, object>)firstRow).Keys.ToArray();
+            var details = ((IDictionary<string, object>)firstRow);
+            bool values = (bool)details[Heading[0]];
+
+            return values;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
 
         public IEnumerable<FacturaValidaUsoRespuesta> ValidarUsoFactura(string codigoFactura)
         {

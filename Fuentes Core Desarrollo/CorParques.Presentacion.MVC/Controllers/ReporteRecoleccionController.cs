@@ -68,7 +68,7 @@ namespace CorParques.Presentacion.MVC.Controllers
             return null;
         }
       [HttpGet]
-        //public async Task<string> GenerarArchivo(ReporteRecoleccion modelo)
+        //public async Task<string> GenerarArchivo(ReporteRecoleccion  modelo)
         public async Task<string> GenerarArchivo(string Fecha, string IdTaquillero, string IdSupervisor)
         {
       string strRetorno = string.Empty;

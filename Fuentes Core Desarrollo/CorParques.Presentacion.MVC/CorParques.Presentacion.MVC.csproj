@@ -200,6 +200,7 @@
     <Compile Include="Controllers\ReporteTarjetasRecargablesController.cs" />
     <Compile Include="Controllers\ReporteRecoleccionController.cs" />
     <Compile Include="Controllers\ReporteVentasPorConvenioController.cs" />
+    <Compile Include="Controllers\ReporteFANVendidasController.cs" />
     <Compile Include="Controllers\ReporteVentasPorProductoController.cs" />
     <Compile Include="Controllers\ReporteDestrezasController.cs" />
     <Compile Include="Controllers\ReporteVentasPorHoraController.cs" />
@@ -288,6 +289,7 @@
     <Content Include="Scripts\FacturacionExterno.js" />
     <Content Include="Scripts\Facturacion.js" />
     <Content Include="Scripts\ProductoPtoEntrega.js" />
+    <Content Include="Scripts\ProductoPtoFactura.js" />
     <Content Include="Scripts\Reagendamiento.js" />
     <Content Include="Scripts\LoginExterno.js" />
     <Content Include="Scripts\Login.js" />
@@ -335,6 +337,7 @@
     <Content Include="Scripts\Destrezas.js" />
     <Content Include="Scripts\ReportePasajerosAtracciones.js" />
     <Content Include="Scripts\ReporteVentasDirectas.js" />
+    <Content Include="Scripts\ReporteFanVendidas.js" />
     <Content Include="Scripts\ReporteVentasPorProducto.js" />
     <Content Include="Scripts\Reporte_SI_Consumo_SF_FechaAbierta.js" />
     <Content Include="Scripts\ReservaEspacios.js" />
@@ -962,11 +965,16 @@
     <Content Include="Views\AdminMensajesVisual\_Edit.cshtml" />
     <Content Include="Views\AdminMensajesVisual\_List.cshtml" />
     <Content Include="Views\Reagendamiento\_CheckFactura.cshtml" />
-    <Content Include="Views\ReporteVentasPorConvenio\Index.cshtml" />
-    <Content Include="Views\ReporteVentasPorConvenio\_List.cshtml" />
+    <Content Include="Views\ReporteVentasPorConveni\Index.cshtml" />
+    <Content Include="Views\ReporteVentasPorConveni\_List.cshtml" />
+    <Content Include="Views\ReporteFANVendidas\_List.cshtml" />
+    <Content Include="Views\ReporteFANVendidas\Index.cshtml" />
     <Content Include="Views\Productos\PuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_ListPuntosEntrega.cshtml" />
     <Content Include="Views\Productos\_EditPuntosEntrega.cshtml" />
+    <Content Include="Views\Productos\PuntosFactura.cshtml" />
+    <Content Include="Views\Productos\_ListPuntosFactura.cshtml" />
+    <Content Include="Views\Productos\_EditPuntosFactura.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Contratos\CorParques.Negocio.Contratos.csproj">

@@ -343,7 +343,6 @@ namespace CorParques.Transversales.Util
             elementosMostrar.Add(new Parametro { Nombre = "NotaCredito", Valor = "Valor nota crédito" });
             elementosMostrar.Add(new Parametro { Nombre = "NumNotaCredito", Valor = "Número nota crédito" });
             elementosMostrar.Add(new Parametro { Nombre = "Convenio", Valor = "Convenio" });
-            elementosMostrar.Add(new Parametro { Nombre = "SupervisorNotaCredito", Valor = "SupervisorNotaCredito" });
             listaMapeo[0] = elementosMostrar;
 
             elementosMostrar = new List<Parametro>();
@@ -357,6 +356,9 @@ namespace CorParques.Transversales.Util
             elementosMostrar.Add(new Parametro { Nombre = "Franquicia", Valor = "Franquicia" });
             elementosMostrar.Add(new Parametro { Nombre = "NumAprobacion", Valor = "Número de aprobación" });
             elementosMostrar.Add(new Parametro { Nombre = "TotalRecibido", Valor = "Valor pagado por medio de pago" });
+            //elementosMostrar.Add(new Parametro { Nombre = "Anulaciones", Valor = "Anulaciones" });
+            //elementosMostrar.Add(new Parametro { Nombre = "NumNotaCredito", Valor = "Número nota crédito" });
+            //elementosMostrar.Add(new Parametro { Nombre = "Propina", Valor = "Propina" });
             elementosMostrar.Add(new Parametro { Nombre = "TipoCliente", Valor = "Tipo de cliente" });
             elementosMostrar.Add(new Parametro { Nombre = "idCliente", Valor = "Id Cliente" });
             elementosMostrar.Add(new Parametro { Nombre = "Nombre", Valor = "Cliente" });
@@ -374,42 +376,6 @@ namespace CorParques.Transversales.Util
             return GenerarReporteExcelMultiHojas(listas, listaMapeo, nombreHojas, "ReporteVentasDirectas", camposDecimales);
             //return GenerarReporteExcelVariasHojas(listas, listaMapeo, nombreHojas, nombreLibro, false);
         }
-
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        public string GenerarReporteInventarioFisico(IEnumerable<Materiales> lista)
-        {
-
-            List<Parametro> elementosMostrar = new List<Parametro>();
-            elementosMostrar.Add(new Parametro { Nombre = "CodigoSap", Valor = "CodigoSap" });
-            elementosMostrar.Add(new Parametro { Nombre = "Nombre", Valor = "Nombre material" });
-            elementosMostrar.Add(new Parametro { Nombre = "CantidadTeorica", Valor = "Inventario teórico" });
-            elementosMostrar.Add(new Parametro { Nombre = "Unidad", Valor = "Unidad" });
-            elementosMostrar.Add(new Parametro { Nombre = "CantidadFisica", Valor = "Inventario Físico" });
-            elementosMostrar.Add(new Parametro { Nombre = "Diferencia", Valor = "Diferencia" });
-            elementosMostrar.Add(new Parametro { Nombre = "Observacion", Valor = "Observaciones" });
-            elementosMostrar.Add(new Parametro { Nombre = "CodigoSapAlmacen", Valor = "Código Sap Almacen" });
-            elementosMostrar.Add(new Parametro { Nombre = "TipoMovimiento", Valor = "Tipo movimiento" });
-            elementosMostrar.Add(new Parametro { Nombre = "NombrePunto", Valor = "Nombre punto" });
-            elementosMostrar.Add(new Parametro { Nombre = "NombreUsuario", Valor = "Nombre usuario logueado" });
-            elementosMostrar.Add(new Parametro { Nombre = "FechaInventario", Valor = "Fecha reporte inventario" });
-            elementosMostrar.Add(new Parametro { Nombre = "NombreSupervisor", Valor = "Nombre Supervisor" });
-
-            return GenerarReporteExcel(lista, elementosMostrar, "InventarioFisico", decimales: new string[] { "G", "I" });
-
-        }
-
-        //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
 
         public string GenerarReporteRecoleccion(IEnumerable<ReporteRecoleccion> lista)
         {
@@ -992,6 +958,28 @@ namespace CorParques.Transversales.Util
             elementosMostrar.Add(new Parametro { Nombre = "Cantidad", Valor = "Cantidad" });
 
             return GenerarReporteExcel(listas, elementosMostrar, "ReporteVentasPorConvenio");
+        }
+
+        public string GenerarReporteFanVendidas(IEnumerable<ReporteFANVendidas> listas)
+        {
+            List<Parametro> elementosMostrar = new List<Parametro>();
+            elementosMostrar.Add(new Parametro { Nombre = "IdBoleteria", Valor = "IdBoleteria" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdProducto", Valor = "IdProducto" });
+            elementosMostrar.Add(new Parametro { Nombre = "Consecutivo", Valor = "Consecutivo" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdSolicitudBoleteria", Valor = "IdSolicitudBoleteria" });
+            elementosMostrar.Add(new Parametro { Nombre = "IdEstado", Valor = "IdEstado" });
+            elementosMostrar.Add(new Parametro { Nombre = "Valor", Valor = "Valor" });
+            elementosMostrar.Add(new Parametro { Nombre = "CodigoVenta", Valor = "CodigoVenta" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaImpresion", Valor = "FechaImpresion" });
+            elementosMostrar.Add(new Parametro { Nombre = "Documento", Valor = "Documento" });
+            elementosMostrar.Add(new Parametro { Nombre = "Nombre", Valor = "Nombre" });
+            elementosMostrar.Add(new Parametro { Nombre = "Correo", Valor = "Correo" });
+            elementosMostrar.Add(new Parametro { Nombre = "Telefono", Valor = "Telefono" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaNacimiento", Valor = "FechaNacimiento" });
+            elementosMostrar.Add(new Parametro { Nombre = "Genero", Valor = "Genero" });
+            elementosMostrar.Add(new Parametro { Nombre = "Direccion", Valor = "Direccion" });
+
+            return GenerarReporteExcel(listas, elementosMostrar, "ReporteTarjetasFANVendidas");
         }
 
         #endregion

@@ -2,7 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
-    <NameOfLastUsedPublishProfile>D:\Usuarios\BLeon\Desktop\Versiones de Fuentes\Fuentes organizadas\CorParques.Servicios.WebApi\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\Fuentes Core Desarrollo\CorParques.Servicios.WebApi\Properties\PublishProfiles\APICORE.pubxml</NameOfLastUsedPublishProfile>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />

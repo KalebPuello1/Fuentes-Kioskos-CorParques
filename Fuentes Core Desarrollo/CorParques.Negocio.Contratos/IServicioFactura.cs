@@ -16,6 +16,8 @@ namespace CorParques.Negocio.Contratos
         DiccionarioContigencia ObtenerDiccionarioContigencia();
         Factura ObtenerUltimaFactura(string CodSapPunto);
 
+        bool FlujoRedebanXPunto(int IdPunto);
+
         RespuestaTransaccionRedaban ObtenerIdFranquiciaRedeban(string CodFranquicia);
         
         string GenerarNumeroFactura(int IdPunto);

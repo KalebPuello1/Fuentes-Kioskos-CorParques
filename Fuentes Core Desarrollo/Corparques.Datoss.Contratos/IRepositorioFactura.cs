@@ -32,6 +32,10 @@ namespace CorParques.Datos.Contratos
         Factura ObtenerUltimaFactura(string CodSapPunto);
         string ValidarAlerta(int usuario, int producto);
         string GenerarNumeroFactura(int IdPunto);
+
+        bool FlujoRedebanXPunto(int IdPunto);
+
+        
         IEnumerable<FacturaValidaUsoRespuesta> ValidarUsoFactura(string codigoFactura);
         IEnumerable<DetalleFactura> ObtenerDetallesConsecutivoConvenioDia(string consecutivoConvenio);
 

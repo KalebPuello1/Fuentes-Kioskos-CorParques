@@ -39,6 +39,21 @@ namespace CorParques.Presentacion.MVC.Controllers
             ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Apertura/ObtenerPuntosSinApertura");
             return PartialView("_ListPuntosEntrega", _model);
         }
+
+        public async Task<ActionResult> PuntosFactura()
+        {
+            var _model = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductosPtoFactura");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Apertura/ObtenerPuntosSinApertura");
+            return View(_model);
+        }
+        public async Task<ActionResult> GetListPuntosFactura()
+        {
+
+            var _model = await GetAsync<IEnumerable<Producto>>("Pos/ObtenerProductosPtoFactura");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Apertura/ObtenerPuntosSinApertura");
+            return PartialView("_ListPuntosFactura", _model);
+        }
+
         public async Task<ActionResult> GetById(int id)
         {
             var item = await GetAsync<Producto>($"Pos/ObtenerProducto/{id}");
@@ -68,6 +83,29 @@ namespace CorParques.Presentacion.MVC.Controllers
 
             return Json(new RespuestaViewModel { Correcto = rta != string.Empty, Mensaje = rta }, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<ActionResult> GetByIdPuntosFactura(int id)
+        {
+            var item = await GetAsync<Producto>($"Pos/ObtenerProductoPtoFactura/{id}");
+            ViewBag.Estados = await GetAsync<IEnumerable<TipoGeneral>>($"Estado/ObtenerEstados/{(int)Enumerador.ModulosAplicacion.Puntos}");
+            ViewBag.LineaProductos = await GetAsync<IEnumerable<TipoGeneral>>("Pos/ObtenerLineaProductos");
+            ViewBag.ListaPuntos = await GetAsync<List<Puntos>>("Puntos/GetAll");
+            return PartialView("_EditPuntosFactura", item);
+        }
+        public async Task<ActionResult> UpdatePuntosFactura(Producto modelo)
+        {
+            //Pos / ActualizarProducto
+
+            modelo.IdUsuarioModificacion = (Session["UsuarioAutenticado"] as Usuario).Id;
+            var imageOrigin = modelo.Imagen;
+
+
+
+            var rta = await PutAsync<Producto, string>("Pos/ActualizarProductoPuntosFactura", modelo);
+
+            return Json(new RespuestaViewModel { Correcto = rta != string.Empty, Mensaje = rta }, JsonRequestBehavior.AllowGet);
+        }
+
         public async Task<ActionResult> Update(Producto modelo)
         {
             //Pos / ActualizarProducto

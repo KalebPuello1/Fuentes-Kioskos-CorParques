@@ -1,9 +1,6 @@
 ﻿var user = 0;
 var userhistorico = "";
 var inicializadointerval = false;
-
-document.getElementById("FrmLoginManual").style.display = "none";
-
 $(function () {
     //InhabilitarCopiarPegarCortar("txtUser");
     $("#btnValidarSegundaClave").click(function () {
@@ -48,7 +45,6 @@ $(function () {
 function EjecutarLogin() {
 
     $("#lblError").hide();
-    $("#lblErrorM").hide();
     $("#Cambiopwd").hide();
     $("#Changepwd").removeClass("password");
     $("#ConfirChangepwd").removeClass("required");
@@ -102,19 +98,10 @@ function SuccessLogin(data) {
     if (data.Mensaje.indexOf("[M]") >= 0) {
         $("#lblError").html("El punto se encuentra en mantenimiento");
         $("#lblError").show();
-
-        $("#lblErrorM").html("El punto se encuentra en mantenimiento");
-        $("#lblErrorM").show();
     } else {
         $("#lblError").html(data.Mensaje);
         $("#lblError").show();
-
-        $("#lblErrorM").html(data.Mensaje);
-        $("#lblErrorM").show();
-
     }
-
-
 }
 
 function CancelLogin() {
@@ -125,11 +112,9 @@ function CancelLogin() {
     $("#Changepwd").val("");
     $("#ConfirChangepwd").val("");
     $("#lblError").hide();
-    $("#lblErrorM").hide();
     $("#Cambiopwd").hide();
     $("#Changepwd").removeClass("password");
     $("#ConfirChangepwd").removeClass("required");
-
 }
 
 function MostrarCambioPwd() {
@@ -137,60 +122,6 @@ function MostrarCambioPwd() {
     $("#Cambiopwd").show();
     $("#Changepwd").addClass("password");
     $("#ConfirChangepwd").addClass("required");
-
 }
 
-//****************************************************************************************************************************************************************************************************************
-
-$("#BtnIngresarManual").click(function () {
-
-    document.getElementById("FrmLoginManual").style.display = "block";
-    document.getElementById("frmLogin").style.display = "none";
-    document.getElementById("IniManual").style.display = "none";
-    document.getElementById("lblError").style.display = "block  ";
-
-});
-
-$("#btnValidarSegundaClaveM").click(function () {
-
-    var EjecutarAjaxUsuario = EjecutarAjax(urlBase + "Cuenta/Login", "POST", JSON.stringify({ user1: $("#txtUserM").val() }), "SuccessLogin", null);
-    var u = document.getElementById("txtUserM").value;
-
-
-    if (u == "") {
-        alert("¡ CAMPO N° DE USUARIO VACIO !");
-    } else {
-        EjecutarAjaxUsuario
-    }
-});
-
-$("#txtUserM").keypress(function (event) {
-
-    if (event.which == 13) {
-
-        var EjecutarAjaxUsuario = EjecutarAjax(urlBase + "Cuenta/Login", "POST", JSON.stringify({ user1: $("#txtUserM").val() }), "SuccessLogin", null);
-        var u = document.getElementById("txtUserM").value;
-
-
-        if (u == "") {
-            alert("¡ CAMPO N° DE USUARIO VACIO !");
-        } else {
-            EjecutarAjaxUsuario
-        }
-
-    }
-});
-
-$("#btnCancelarM").click(function () {
-    CancelManual()
-});
-
-function CancelManual() {
-
-    document.getElementById("FrmLoginManual").style.display = "none";
-    document.getElementById("frmLogin").style.display = "block";
-    document.getElementById("IniManual").style.display = "block";
-
-    CancelLogin();
-}
 

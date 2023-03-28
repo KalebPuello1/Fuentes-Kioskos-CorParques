@@ -9,11 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Configuration;
-using System.IO;
-using System.Net;
-using System.Net.Mail;
-using System.Windows.Forms;
 
 namespace CorParques.Datos.Dapper
 {
@@ -198,80 +193,9 @@ namespace CorParques.Datos.Dapper
         }
         public string CrearSolicitudRetorno(SolicitudRetorno modelo)
         {
-            return _cnn.Query<string>("SP_CrearSolicitudPedidoRetorno", new
-            {
-                @Pedido = modelo.CodSapPedido,
-                @Usuario = modelo.UsuarioCrea
-                                                                        ,
-                @Motivo = int.Parse(modelo.Motivo),
-                @Observacion = modelo.Observacion,
-                @Accion = modelo.Id
-            }, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
+            return _cnn.Query<string>("SP_CrearSolicitudPedidoRetorno", new { @Pedido = modelo.CodSapPedido, @Usuario= modelo.UsuarioCrea
+                                                                        ,@Motivo=int.Parse(modelo.Motivo), @Observacion =modelo.Observacion,@Accion = modelo.Id}, commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault();
         }
-
-
-
-        public string InsertarDetalleInventarioFisico(IEnumerable<Materiales> _Materiales)
-        {
-            Materiales ObjInsercion = new Materiales();
-            string producto;
-
-            var CodigoSap = "";
-            DateTime Fecha_Inventario;
-            var InventarioTeorico = "";
-            var InventarioFisico = "";
-            var Diferencia = "";
-            var Tipo_Movimiento = "";
-            var CodSapAlmacen = "";
-            int IdPunto = 0;
-            var Observaciones = "";
-            int IdUsuario = 0;
-
-
-            try
-            {
-
-                foreach (var item in _Materiales)
-                {
-                    CodigoSap = item.CodigoSap;
-                    Fecha_Inventario = item.FechaInventario;
-                    InventarioTeorico = item.CantidadTeorica;
-                    InventarioFisico = item.CantidadFisica;
-                    Diferencia = item.Diferencia;
-                    Tipo_Movimiento = item.TipoMovimiento;
-                    CodSapAlmacen = item.CodigoSapAlmacen;
-                    IdPunto = item.id_Punto;
-                    Observaciones = item.Observacion;
-                    IdUsuario = item.Id_Supervisor;
-
-
-                    _cnn.Query("SP_InsertarDetalleInventarioFisico", commandType: System.Data.CommandType.StoredProcedure, param: new
-                    {
-
-                        @CodigoSap = CodigoSap,
-                        @Fecha_Inventario = Fecha_Inventario,
-                        @InventarioTeorico = InventarioTeorico,
-                        @InventarioFisico = InventarioFisico,
-                        @Diferencia = Diferencia,
-                        @TipoMovimiento = Tipo_Movimiento,
-                        @CodSapAlmacen = CodSapAlmacen,
-                        @IdPunto = IdPunto,
-                        @Observaciones = Observaciones,
-                        @IdUsuario = IdUsuario
-
-                    });
-
-                }
-
-                producto = "Exitoso";
-            }
-
-            catch (Exception e)
-            {
-                producto = "fallo";
-
-            }
-            return producto;
-        }
+       
     }
 }

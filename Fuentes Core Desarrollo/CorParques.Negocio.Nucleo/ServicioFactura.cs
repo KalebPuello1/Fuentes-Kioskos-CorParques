@@ -76,6 +76,12 @@ namespace CorParques.Negocio.Nucleo
             var resultado= _repositorio.GenerarNumeroFactura(IdPunto);
             return resultado;
         }
+        public bool FlujoRedebanXPunto(int IdPunto)
+        {
+            var resultado = _repositorio.FlujoRedebanXPunto(IdPunto);
+            return resultado;
+        }
+        
 
         public IEnumerable<DetalleFactura> ObtenerDetallesConsecutivoConvenioDia(string consecutivoConvenio)
         {

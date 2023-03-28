@@ -36,8 +36,8 @@ namespace CorParques.Negocio.Entidades
         [Column("FechaModificacion")]
         public DateTime FechaModificacion { get; set; }
 
-        [Column("IdFranquicia")]
-        public int IdFranquicia { get; set; }
+        [Column("IdFranqicia")]
+        public int IdFranqicia { get; set; }
 
         [Column("Cambio")]
         public long Cambio { get; set; }

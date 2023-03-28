@@ -182,70 +182,30 @@ namespace CorParques.Servicios.WebApi.Controllers
                             : Request.CreateResponse(HttpStatusCode.OK, "");
         }
 
-
-        [HttpPost]
-        [Route("api/Inventario/EmailInventarioFisico")]
-        public HttpResponseMessage EmailInventarioFisico(DetalleCorreo correo)
+        [HttpGet]
+        [Route("api/Inventario/maill/{to}/{subject}/{mensaje}/{attachmentt}")]
+        public string Maill(string to, string subject, string mensaje, string attachmentt)
         {
             string rutaReporte = string.Empty;
             List<string> attachment = new List<string>();
 
-            var to = correo.To;
-            var subject = correo.Subject;
-            var mensaje = correo.Mensaje;
-            var attachmentt = correo.Attachmentt;
-
-            var EnvioCorreo = "";
-
             EnvioMails enviarMails = new EnvioMails();
             rutaReporte = Utilidades.RutaReportes();
-            string rutaFinal = rutaReporte + attachmentt;
+            string rutaFinal = rutaReporte + attachmentt + ".xlsx";
             attachment.Add(rutaFinal);
             bool envio = false;
 
-
-
-            envio = _serviceInventario.EnviarCorreo(to, subject, mensaje, System.Net.Mail.MailPriority.High, attachment);
-
-
-            if (envio == true)
+            envio = _serviceInventario.enviarMail(to, subject, mensaje, System.Net.Mail.MailPriority.High, attachment);
+            if (envio)
             {
-                return EnvioCorreo != "fallo" ? Request.CreateResponse(HttpStatusCode.OK, EnvioCorreo) :
-                Request.CreateResponse(HttpStatusCode.NotFound);
+                return rutaFinal;
             }
-
-            return EnvioCorreo != "fallo" ? Request.CreateResponse(HttpStatusCode.OK, EnvioCorreo) :
-                Request.CreateResponse(HttpStatusCode.NotFound);
+            else
+            {
+                return rutaFinal + ", no envio";
+            }
         }
 
-        [HttpGet]
-        [Route("api/Inventario/ObtenerCodSapAlmacen/{idPunto}")]
-        public HttpResponseMessage ObtenerCodSapAlmacen(int idPunto)
-        {
-            var obtenerCodSapAlmacen = _serviceInventario.ObtenerCodSapAlmacen(idPunto);
-            return string.IsNullOrEmpty(obtenerCodSapAlmacen) ? Request.CreateResponse(HttpStatusCode.NotFound, obtenerCodSapAlmacen)
-                            : Request.CreateResponse(HttpStatusCode.OK, obtenerCodSapAlmacen);
-        }
-
-
-        [HttpGet]
-        [Route("api/Inventario/ObtenerCodSapAlmacenInventarioFisico/{idPunto}")]
-        public HttpResponseMessage ObtenerCodSapAlmacenInventarioFisico(int idPunto)
-        {
-            var obtenerCodSapAlmacen = _serviceInventario.ObtenerCodSapAlmacen(idPunto);
-
-            return obtenerCodSapAlmacen == null ? Request.CreateResponse(HttpStatusCode.NotFound)
-                            : Request.CreateResponse(HttpStatusCode.OK, obtenerCodSapAlmacen);
-        }
-
-        [HttpPost]
-        [Route("api/Inventario/InsertarDetalleInventarioFisico")]
-        public HttpResponseMessage InsertarDetalleInventarioFisico(IEnumerable<Materiales> _Materiales)
-        {
-            var modificado = _serviceInventario.InsertarDetalleInventarioFisico(_Materiales);
-            return modificado != "fallo" ? Request.CreateResponse(HttpStatusCode.OK, modificado) :
-                Request.CreateResponse(HttpStatusCode.NotFound);
-        }
 
     }
 }

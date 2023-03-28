@@ -62,210 +62,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             return PartialView("_Login");
         }
 
-
-
-        [HttpGet]
-        public async Task<string> GenerarArchivo(Materiales modelo)
-        {
-            int Id_Supervisor = modelo.Id_Supervisor;
-
-            var usuario = await GetAsync<Usuario>($"Usuario/GetById?id={Id_Supervisor}&Punto={0}");
-            var NombreSupervisor = usuario.Nombre + " " + usuario.Apellido;
-
-            var Idpunto = IdPunto;
-            var NombreDePunto = NombrePunto;
-            var IdUserLogueado = IdUsuarioLogueado;
-            var NombreUsuario = NombreUsuarioLogueado;
-
-            var FechaInventario = DateTime.Now;
-            var CodSapAlmacen = await GetAsync<string>($"Inventario/ObtenerCodSapAlmacenInventarioFisico/{Idpunto}");
-
-            string[] observaciones = new string[0];
-            string[] nombres = new string[0];
-            string[] diferencia = new string[0];
-            string[] arregloTeorico = new string[0];
-            string[] arregloCamtidadDisponible = new string[0];
-            string[] arregloTipoMovimiento = new string[0];
-
-            string strRetorno = string.Empty;
-
-            Transversales.Util.Reportes objReportes = new Transversales.Util.Reportes();
-
-
-            ReporteInventarioFisico ObjReporte = new ReporteInventarioFisico();
-
-            var NombreMateriales = ObjReporte.NombresFisicoR = modelo.NombresFisico;
-            var CantidadFisica = ObjReporte.ArregloInventarioFisicoR = modelo.ArregloInventarioFisico;
-            var CantidadTeorica = ObjReporte.ArregloTeoricoFisicoR = modelo.ArregloTeoricoFisico;
-            var Observaciones = ObjReporte.ObservacionesFisicoR = modelo.ObservacionesFisico;
-            var Diferencias = ObjReporte.DiferenciasR = modelo.Diferencias;
-            var TipoMovimientos = ObjReporte.TipoMovimientosR = modelo.TipoMovimientos;
-            var IdSupervisorr = ObjReporte.IdSupervisor = modelo.Id_Supervisor;
-
-            observaciones = Observaciones.Split(',');
-            nombres = NombreMateriales.Split(',');
-            diferencia = Diferencias.Split(';');
-            arregloTeorico = CantidadTeorica.Split(',');
-            arregloCamtidadDisponible = CantidadFisica.Split(',');
-            arregloTipoMovimiento = TipoMovimientos.Split(',');
-
-            try
-            {
-                IEnumerable<Materiales> _Materiales = await GetAsync<IEnumerable<Materiales>>($"Inventario/ObtenerMaterialesxPunto/{IdPunto}");
-
-                int a = 0;
-
-                foreach (var item in _Materiales)
-                {
-
-                    item.CantidadFisica = arregloCamtidadDisponible[a];
-                    item.CantidadTeorica = arregloTeorico[a];
-                    item.Observacion = observaciones[a];
-                    item.Diferencia = diferencia[a];
-                    item.TipoMovimiento = arregloTipoMovimiento[a];
-                    item.FechaInventario = FechaInventario;
-                    item.NombrePunto = NombreDePunto;
-                    item.NombreUsuario = NombreUsuario;
-                    item.CodigoSapAlmacen = CodSapAlmacen;
-                    item.id_Punto = Idpunto;
-                    item.IdUsuario = IdUserLogueado;
-                    item.Id_Supervisor = Id_Supervisor;
-                    item.NombreSupervisor = NombreSupervisor;
-
-                    a++;
-                }
-
-                if (_Materiales != null)
-                {
-                    if (_Materiales.Count() > 0)
-                        strRetorno = objReportes.GenerarReporteInventarioFisico(_Materiales);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                if (ex.Message.Contains("Se produjo una excepción de tipo 'System.OutOfMemoryException'."))
-                {
-                    strRetorno = string.Concat("Error generando reporte: ", "Muchos datos para exportar - MAX 4 - 12 dias para consultar ");
-                }
-                else
-                {
-                    strRetorno = string.Concat("Error generando reporte: ", ex.Message);
-                }
-            }
-
-            if (strRetorno.Contains("Error en GenerarReporte: Se produjo una excepción de tipo 'System.OutOfMemoryException'."))
-            {
-                strRetorno = string.Concat("Error generando reporte: ", "Muchos datos para exportar - MAX 4 - 12 dias para consultar ");
-            }
-
-            return strRetorno;
-        }
-
-        [HttpGet]
-        public async Task<string> RegistrarInventarioFisico(Materiales modelo)
-        {
-            //variables:
-
-            int Id_Supervisor = modelo.Id_Supervisor;
-            var usuario = await GetAsync<Usuario>($"Usuario/GetById?id={Id_Supervisor}&Punto={0}");
-            var NombreSupervisor = usuario.Nombre + " " + usuario.Apellido;
-
-
-            var Idpunto = IdPunto;
-            var NombreDePunto = NombrePunto;
-            var IdUserLogueado = IdUsuarioLogueado;
-            var NombreUsuario = NombreUsuarioLogueado;
-            var FechaInventario = DateTime.Now;
-            var CodSapAlmacen = await GetAsync<string>($"Inventario/ObtenerCodSapAlmacenInventarioFisico/{Idpunto}");
-
-            string[] observaciones = new string[0];
-            string[] nombres = new string[0];
-            string[] diferencia = new string[0];
-            string[] arregloTeorico = new string[0];
-            string[] arregloCamtidadDisponible = new string[0];
-            string[] arregloTipoMovimiento = new string[0];
-
-            string strRetorno = string.Empty;
-            Transversales.Util.Reportes objReportes = new Transversales.Util.Reportes();
-
-
-            ReporteInventarioFisico ObjReporte = new ReporteInventarioFisico();
-
-            var NombreMateriales = ObjReporte.NombresFisicoR = modelo.NombresFisico;
-            var CantidadFisica = ObjReporte.ArregloInventarioFisicoR = modelo.ArregloInventarioFisico;
-            var CantidadTeorica = ObjReporte.ArregloTeoricoFisicoR = modelo.ArregloTeoricoFisico;
-            var Observaciones = ObjReporte.ObservacionesFisicoR = modelo.ObservacionesFisico;
-            var Diferencias = ObjReporte.DiferenciasR = modelo.Diferencias;
-            var TipoMovimientos = ObjReporte.TipoMovimientosR = modelo.TipoMovimientos;
-            var IdSupervisor = ObjReporte.IdSupervisor = modelo.Id_Supervisor;
-
-            observaciones = Observaciones.Split(',');
-            nombres = NombreMateriales.Split(',');
-            diferencia = Diferencias.Split(';');
-
-            arregloTeorico = CantidadTeorica.Split(',');
-            arregloCamtidadDisponible = CantidadFisica.Split(',');
-            arregloTipoMovimiento = TipoMovimientos.Split(',');
-
-            try
-            {
-                IEnumerable<Materiales> _Materiales = await GetAsync<IEnumerable<Materiales>>($"Inventario/ObtenerMaterialesxPunto/{IdPunto}");
-
-                int a = 0;
-
-                foreach (var item in _Materiales)
-                {
-
-                    item.CantidadFisica = arregloCamtidadDisponible[a];
-                    item.CantidadTeorica = arregloTeorico[a];
-                    item.Observacion = observaciones[a];
-                    item.Diferencia = diferencia[a];
-                    item.TipoMovimiento = arregloTipoMovimiento[a];
-                    item.FechaInventario = FechaInventario;
-                    item.NombrePunto = NombreDePunto;
-                    item.NombreUsuario = NombreUsuario;
-                    item.CodigoSapAlmacen = CodSapAlmacen;
-                    item.id_Punto = Idpunto;
-                    item.IdUsuario = IdUserLogueado;
-                    item.Id_Supervisor = IdSupervisor;
-                    item.NombreSupervisor = NombreSupervisor;
-
-
-                    a++;
-                }
-
-                var dato = await PostAsync<IEnumerable<Materiales>, string>("Inventario/InsertarDetalleInventarioFisico", _Materiales);
-
-                if (dato == null && dato.Correcto == false)
-                {
-                    strRetorno = string.Concat("Error generando inserción: ", "Inventario físico nó se pudo insertar correctamente");
-                }
-            }
-            catch (Exception ex)
-            {
-                strRetorno = string.Concat("Error generando inserción de los datos: ", ex.Message);
-            }
-            return strRetorno;
-
-        }
-
-        [HttpGet]
-        public virtual FileContentResult Download(string Data)
-        {
-            FileContentResult objFileContentResult = null;
-            try
-            {
-                objFileContentResult = File(Transversales.Util.Utilidades.ObtenerBytesArchivo(Data), System.Net.Mime.MediaTypeNames.Application.Octet, Data);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return objFileContentResult;
-        }
-
-
         public async Task<ActionResult> AdicionarMaterial(TransladoInventario modelo, int IdPunto, string ListMateriales)
         {
 
@@ -334,7 +130,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             var respuesta = await PostAsync<IEnumerable<AjustesInventario>, string>("Inventario/ActualizarAjusteInventario", modelo.Where(x => x.Cantidad > 0));
             if (respuesta.Mensaje == null)
                 return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Se presento un error al realizar el ajuste. Por favor intentelo de nuevo" }, JsonRequestBehavior.AllowGet);
-
             return Json(new RespuestaViewModel { Correcto = true }, JsonRequestBehavior.AllowGet);
 
         }
@@ -378,7 +173,6 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             }
 
             if (await PostAsync<IEnumerable<AjustesInventario>, string>("Inventario/InsertarAjusteInventario", modelo) != null)
-
                 return Json(new RespuestaViewModel { Correcto = true }, JsonRequestBehavior.AllowGet);
             return Json(new RespuestaViewModel { Correcto = false, Mensaje = "Se presento un error al realizar el translado. Por favor intentelo de nuevo" });
         }
@@ -399,348 +193,99 @@ namespace CorParques.Presentacion.MVC.Core.Controllers
             return View(_Materiales);
         }
 
-        
-        public async Task<ActionResult> CreaYenviaMail(Materiales modelo)
 
-        {
-            //variables:
-
-            int Id_Supervisor = modelo.Id_Supervisor;
-
-            var usuario = await GetAsync<Usuario>($"Usuario/GetById?id={Id_Supervisor}&Punto={0}");
-            var NombreSupervisor = usuario.Nombre + " " + usuario.Apellido;
-
-            var Idpunto = IdPunto;
-            var NombreDePunto = NombrePunto;
-            var IdUserLogueado = IdUsuarioLogueado;
-            var NombreUsuario = NombreUsuarioLogueado;
-            var FechaInventario = DateTime.Now;
-            var CodSapAlmacen = await GetAsync<string>($"Inventario/ObtenerCodSapAlmacenInventarioFisico/{Idpunto}");
-
-
-            string[] observaciones = new string[0];
-            string[] nombres = new string[0];
-            string[] diferencias = new string[0];
-            string[] arregloTeorico = new string[0];
-            string[] arregloCamtidadDisponible = new string[0];
-            string[] arregloTipoMovimiento = new string[0];
-
-            string strRetorno = string.Empty;
-            Transversales.Util.Reportes objReportes = new Transversales.Util.Reportes();
-
-
-            ReporteInventarioFisico ObjReporte = new ReporteInventarioFisico();
-
-            var NombreMateriales = ObjReporte.NombresFisicoR = modelo.NombresFisico;
-            var CantidadFisica = ObjReporte.ArregloInventarioFisicoR = modelo.ArregloInventarioFisico;
-            var CantidadTeorica = ObjReporte.ArregloTeoricoFisicoR = modelo.ArregloTeoricoFisico;
-            var Observaciones = ObjReporte.ObservacionesFisicoR = modelo.ObservacionesFisico;
-            var Diferencias = ObjReporte.DiferenciasR = modelo.Diferencia;
-            var TipoMovimientos = ObjReporte.TipoMovimientosR = modelo.TipoMovimientos;
-
-            observaciones = Observaciones.Split(',');
-            nombres = NombreMateriales.Split(',');
-            diferencias = Diferencias.Split(';');
-            arregloTeorico = CantidadTeorica.Split(',');
-            arregloCamtidadDisponible = CantidadFisica.Split(',');
-            arregloTipoMovimiento = TipoMovimientos.Split(',');
-
-            try
+        //Enviar y crear email
+            [HttpGet]
+            public async Task<string> CreaYenviaMail(string Observaciones, string Nombres, string Diferencia, string ArregloTeorico, string ArregloCamtidadDisponible, string ArregloTipoMovimiento)
             {
-                
-                IEnumerable<Materiales> _Materiales = await GetAsync<IEnumerable<Materiales>>($"Inventario/ObtenerMaterialesxPunto/{IdPunto}");
-
-                int a = 0;
-
-                foreach (var item in _Materiales)
+                string[] observaciones = new string[0];
+                string[] nombres = new string[0];
+                string[] diferencia = new string[0];
+                string[] arregloTeorico = new string[0];
+                string[] arregloCamtidadDisponible = new string[0];
+                string[] arregloTipoMovimiento = new string[0];
+                try
                 {
-
-                    item.CantidadFisica = arregloCamtidadDisponible[a];
-                    item.CantidadTeorica = arregloTeorico[a];
-                    item.Observacion = observaciones[a];
-                    item.Diferencia = diferencias[a];
-                    item.TipoMovimiento = arregloTipoMovimiento[a];
-                    item.FechaInventario = FechaInventario;
-                    item.NombrePunto = NombreDePunto;
-                    item.NombreUsuario = NombreUsuario;
-                    item.CodigoSapAlmacen = CodSapAlmacen;
-                    item.id_Punto = Idpunto;
-                    item.IdUsuario = IdUserLogueado;
-                    item.Id_Supervisor = Id_Supervisor;
-                    item.NombreSupervisor = NombreSupervisor;
-
-                    a++;
+                    observaciones = Observaciones.Split(',');
+                    nombres = Nombres.Split(',');
+                    diferencia = Diferencia.Split(';');
+                    arregloTeorico = ArregloTeorico.Split(',');
+                    arregloCamtidadDisponible = ArregloCamtidadDisponible.Split(',');
+                    arregloTipoMovimiento = ArregloTipoMovimiento.Split(',');
+                } catch (Exception e)
+                {
+                    return "Existe un error " + e;
                 }
 
-                if (_Materiales != null)
+                Reportes reportes = new Reportes();
+                Parametro _parametro = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CORREOALVERTENCIA");//PROPINA
+
+                string preto =  _parametro.Valor;
+                string subject = "Inventario Físico";
+                string mensaje = "Adjunto Inventario Físico";
+                List<Inventario> inv = new List<Inventario>();
+                string nombreExcel = "lol";
+                string f = "";
+                if (observaciones.Length != 0 && nombres.Length != 0 && diferencia.Length != 0)
                 {
-                    if (_Materiales.Count() > 0)
-                        strRetorno = objReportes.GenerarReporteInventarioFisico(_Materiales);
+                    for (var l = 0; (l < observaciones.Length && l < nombres.Length); l++)
+                    {
+                        if (observaciones[l] != "" && nombres[l] != "" && nombres[l] != "")
+                        {
+                            Inventario i = new Inventario();
+                            i.Perfil = NombreUsuarioLogueado;
+                            i.Motivo = observaciones[l] == "No hay datos para mostrar"? "Inventario en 0,00" : "Cierre punto";
+                            i.Observacion = observaciones[l];
+                            i.NProducto = nombres[l];
+                            i.Diferencia = diferencia[l];
+                            i.arregloTeorico = arregloTeorico[l];
+                            i.arregloCantidadDisponible = arregloCamtidadDisponible[l];
+                            i.arregloTipoMovimiento = arregloTipoMovimiento[l];
+                            nombreExcel = "Inventario";
+                            inv.Add(i);
+                        }
+                    }
                 }
 
-            }
-            catch (Exception e)
-            {
-                return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-            }
+                string nombreUsuario = NombreUsuarioLogueado;
+                List<Parametro> par = new List<Parametro>();
+                par.Add(new Parametro() { Nombre = "NProducto", Valor = "Nombre Producto" });
+                par.Add(new Parametro() { Nombre = "Diferencia", Valor = "Diferencia" });
+                par.Add(new Parametro() { Nombre = "Motivo", Valor = "Motivo" });
+                par.Add(new Parametro() { Nombre = "Observacion", Valor = "Observacion" });
+                par.Add(new Parametro() { Nombre = "Perfil", Valor = "Usuario Ajuste"});
+                par.Add(new Parametro() { Nombre = "arregloTeorico", Valor = "Inventario Teorico" });
+                par.Add(new Parametro() { Nombre = "arregloCantidadDisponible", Valor = "Inventario Real" });
+                par.Add(new Parametro() { Nombre = "arregloTipoMovimiento", Valor = "Tipo Movimiento" });
+                string Nom = reportes.GenerarReporteExcel(inv, par, nombreExcel);
+                string[] n = Nom.Split('.');
+                string attachmentt = n[0];
 
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ TAQUILLAS ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            if (CodSapAlmacen == "C253")
-            {
-
-                Parametro _parametro1 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoTaquillas");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro1.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
+                string data = "";
+            
+                data = await GetAsync<string>($"Inventario/Maill/{preto}/{subject}/{mensaje}/{attachmentt}");
+                string[] ff = data.Split(',');
+                if (ff.Length > 0)
                 {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
+                    foreach (var t in ff) {
+                        if (t != "") {
+                            if (System.IO.File.Exists(t))
+                            {
+                                System.IO.File.Delete(t);
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
+                    if (System.IO.File.Exists(data))
+                    {
+                        System.IO.File.Delete(data);
+                    }
                 }
-             }
 
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ DESTREZAS ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-
-            else if (CodSapAlmacen == "C238" || CodSapAlmacen == "C239" || CodSapAlmacen == "C240" || CodSapAlmacen == "C241" || CodSapAlmacen == "C242" || CodSapAlmacen == "C243"
-
-                || CodSapAlmacen == "C244" || CodSapAlmacen == "C245" || CodSapAlmacen == "C246" || CodSapAlmacen == "C247" || CodSapAlmacen == "C248" || CodSapAlmacen == "C249"
-
-                || CodSapAlmacen == "C250" || CodSapAlmacen == "C251")
-
-                {
-
-                Parametro _parametro2 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoDestrezas");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro2.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
-                {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
-                }
-                else
-                {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-                }
-            }
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ SOUVENIRES ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-
-            else if (CodSapAlmacen == "C234" || CodSapAlmacen == "C261" || CodSapAlmacen == "C269" || CodSapAlmacen == "C270")
-                {
-
-                Parametro _parametro3 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoSouvenires");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro3.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
-                {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
-                }
-                else
-                {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-                }
+                return data;
             }
 
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ A Y B ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-
-            else if (CodSapAlmacen == "C207" || CodSapAlmacen == "C209" || CodSapAlmacen == "C212" || CodSapAlmacen == "C213" || CodSapAlmacen == "C214" || CodSapAlmacen == "C215"
-
-                    || CodSapAlmacen == "C216" || CodSapAlmacen == "C217" || CodSapAlmacen == "C219" || CodSapAlmacen == "C220" || CodSapAlmacen == "C223" || CodSapAlmacen == "C224"
-
-                    || CodSapAlmacen == "C253" || CodSapAlmacen == "C231" || CodSapAlmacen == "C232" || CodSapAlmacen == "C233" || CodSapAlmacen == "C235" || CodSapAlmacen == "C200"
-
-                    || CodSapAlmacen == "C211" || CodSapAlmacen == "C218" || CodSapAlmacen == "C230" || CodSapAlmacen == "C268")
-            {
-
-                Parametro _parametro3 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoAyB");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro3.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
-                {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
-                }
-                else
-                {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-                }
-            }
-
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ ARAZA ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-
-            else if (CodSapAlmacen == "C203")
-            {
-
-                Parametro _parametro3 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoAraza");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro3.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
-                {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
-                }
-                else
-                {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-                }
-            }
-            //------------------------------------------------------------------------------------------------------------------------------------------
-            //-------------------------------------------------------[ MUNDO NATURAL ]----------------------------------------------------------------------
-            //------------------------------------------------------------------------------------------------------------------------------------------
-
-            else if (CodSapAlmacen == "C103" || CodSapAlmacen == "C105")
-            {
-
-                Parametro _parametro3 = await GetAsync<Parametro>($"Parameters/ObtenerParametroPorNombre/CorreoInventarioFisicoMundoNatural");
-
-                DateTime MyDateTime = FechaInventario;
-                int year = MyDateTime.Year;
-                int month = MyDateTime.Month;
-                int day = MyDateTime.Day;
-
-                var FechaEditada = string.Format("{0}/{1}/{2}", day, month, year);
-
-                string to = _parametro3.Valor;
-                string subject = "INVENTARIO FÍSICO - PUNTO " + NombreDePunto + " - FECHA - " + FechaEditada;
-                string mensaje = "Adjunto el reporte Excel del inventario fisico generado en el punto : " + NombreDePunto;
-                string attachmentt = strRetorno;
-
-                DetalleCorreo objDetalleCorreo = new DetalleCorreo();
-                
-
-                objDetalleCorreo.To = to;
-                objDetalleCorreo.Subject = subject;
-                objDetalleCorreo.Mensaje = mensaje;
-                objDetalleCorreo.Attachmentt = attachmentt;
-
-                var dato = await PostAsync<DetalleCorreo, string>("Inventario/EmailInventarioFisico", objDetalleCorreo);
-
-                if (!dato.Elemento.ToString().Contains("fallo"))
-                {
-                    return Json(new { dato = "Su operación fue satisfactoria", success = "success", ObjDetalleCorreo = objDetalleCorreo, to = objDetalleCorreo.To, subject = objDetalleCorreo.Subject, mensaje = objDetalleCorreo.Mensaje, attachmentt = objDetalleCorreo.Attachmentt });
-                }
-                else
-                {
-                    return Json(new { dato = "Su operación falló - no se logró modificar las fechas correctamente", error = "error" });
-                }
-            }
-
-
-            return Json(new { dato = "Debe ser el siguiente punto", error = "error" });
-
-
-            }
-        }
     }
-
-
-
-
+}
