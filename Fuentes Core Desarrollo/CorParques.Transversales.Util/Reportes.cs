@@ -982,6 +982,28 @@ namespace CorParques.Transversales.Util
             return GenerarReporteExcel(listas, elementosMostrar, "ReporteTarjetasFANVendidas");
         }
 
+        public string GenerarReporteCortesias(IEnumerable<ReporteCortesias> listas)
+        {
+            List<Parametro> elementosMostrar = new List<Parametro>();            
+            elementosMostrar.Add(new Parametro { Nombre = "NumTarjetaFAN", Valor = "NumTarjetaFAN" });
+            elementosMostrar.Add(new Parametro { Nombre = "NumeroDocumento", Valor = "NumeroDocumento" });
+            elementosMostrar.Add(new Parametro { Nombre = "Nombres", Valor = "Nombres" });
+            elementosMostrar.Add(new Parametro { Nombre = "Apellidos", Valor = "Apellidos" });
+            elementosMostrar.Add(new Parametro { Nombre = "Correo", Valor = "Correo" });
+            elementosMostrar.Add(new Parametro { Nombre = "Telefono", Valor = "Telefono" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaCreacion", Valor = "FechaCreacion" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaInicial", Valor = "FechaInicial" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaFinal", Valor = "FechaFinal" });
+            elementosMostrar.Add(new Parametro { Nombre = "Observacion", Valor = "Observacion" });
+            elementosMostrar.Add(new Parametro { Nombre = "TipoCortesia", Valor = "TipoCortesia" });
+            elementosMostrar.Add(new Parametro { Nombre = "Nombre_Producto", Valor = "Nombre_Producto" });
+            elementosMostrar.Add(new Parametro { Nombre = "FechaEntrega", Valor = "FechaEntrega" });
+            elementosMostrar.Add(new Parametro { Nombre = "Consecutivo", Valor = "Consecutivo" });
+            elementosMostrar.Add(new Parametro { Nombre = "Producto_Entregado", Valor = "Producto_Entregado" });            
+
+            return GenerarReporteExcel(listas, elementosMostrar, "ReporteCortesias");
+        }
+
         #endregion
     }
 }

@@ -202,7 +202,9 @@ function LimpiarRepo() {
 function LimpiarCortesia() {
     $("#NumTarjeta").val("");
     $("#txtCodigo").val("");    
-
+    $("#CedulaVisitante").html("");
+    $("#NombreVisitante").html("");
+    $("#lblCantidadCortesias").html("");
     $("#Detallecortesia").html("");
 
     $(".otherField").hide();
@@ -227,6 +229,14 @@ $("#btnSaveRepo").click(function () {
 $("#btnCancelCortesia").click(function () {
     cerrarModal("modalRedencionCortesia");
     LimpiarCortesia();
+    
+    var $selectPosConvenioSAP = $("#selectPosConvenioSAP").select2();
+
+    $selectPosConvenioSAP.val('').trigger("change");
+    $("#selectPosConvenioSAP").select2({
+        placeholder: "Seleccione el convenio"
+    });
+
 })
 
 $("#btnSaveCortesia").click(function () {
@@ -794,6 +804,9 @@ function Limpiar() {
     listaDetallePago = [];
     lstProductosCompra = [];
     listDetalleConvenio = [];
+
+    LimpiarCortesia();
+    LimpiarFan();
 
     $.each($(".TipoPago:input[type=text]"), function (i, item) {
         $(this).val("");
@@ -1409,6 +1422,7 @@ $(function () {
     $("#btnDetallePago").click(function () {
         EjecutarAjax(urlBase + "Pos/DetallePagos", "GET", null, "succesLoadMediosPago", { title: "Detalle del Pago", url: "", metod: "GET", func: "loadCalendar", func2: "loadCalendar", hidesave: true });
     });
+    inicializar();
 });
 
 function succesLoadMediosPago(data, obj) {
@@ -3706,4 +3720,43 @@ function BuscarIdBrazaleteCortesia(id) {
     });
 
     return objReturn;
+}
+
+function inicializar() {    
+    InhabilitarCopiarPegarCortar("inputConvenioCodBarrasSAP");
+    InhabilitarCopiarPegarCortar("inputValorPago");
+    
+    InhabilitarCopiarPegarCortar("CodTarjeta");
+    InhabilitarCopiarPegarCortar("ValorRecargaTR");
+    InhabilitarCopiarPegarCortar("TRecargable");
+    InhabilitarCopiarPegarCortar("ValorCompraRecargaFan");
+    InhabilitarCopiarPegarCortar("txtDoc");
+    InhabilitarCopiarPegarCortar("txtName");
+    InhabilitarCopiarPegarCortar("txtMail");
+    InhabilitarCopiarPegarCortar("txtPhone");
+    InhabilitarCopiarPegarCortar("txtAddress");
+    InhabilitarCopiarPegarCortar("txtBirthday");
+    InhabilitarCopiarPegarCortar("DocClienteTR");
+    InhabilitarCopiarPegarCortar("ValorCompraRecarga");
+    InhabilitarCopiarPegarCortar("NombreCliente");
+    InhabilitarCopiarPegarCortar("CorreoCliente");
+    InhabilitarCopiarPegarCortar("DocClienteRepo");
+    InhabilitarCopiarPegarCortar("TRecargableRepo");
+    InhabilitarCopiarPegarCortar("txtDonante");
+    InhabilitarCopiarPegarCortar("txtCodigo");
+    InhabilitarCopiarPegarCortar("txtNumdocumentoV");
+    InhabilitarCopiarPegarCortar("txtTipoCortesiaV");
+    InhabilitarCopiarPegarCortar("txtNumTarjetaFAN");
+    InhabilitarCopiarPegarCortar("txtPropina");
+    InhabilitarCopiarPegarCortar("ValorCupoDebito");
+    InhabilitarCopiarPegarCortar("inputReferencia");
+    InhabilitarCopiarPegarCortar("txt_DocumentoEmpleado");
+    InhabilitarCopiarPegarCortar("inputCodigoReservaParqueadero");
+    InhabilitarCopiarPegarCortar("inputCodigoParqueadero");
+}
+
+function InhabilitarCopiarPegarCortar(control) {
+    $("#" + control).bind("cut copy paste", function (e) {
+        e.preventDefault();
+    });
 }

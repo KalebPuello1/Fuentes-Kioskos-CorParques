@@ -3,14 +3,7 @@
 @{
     ViewBag.Title = "Reporte Tarjetas FAN Vendidas";
     ViewBag.SubTitle = "";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    //var listPuntos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Puntos;
-    //var Productos = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Productos;
-    //var CentroBeneficio = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.CentroBeneficio;
-
-
-
-    //var listFiltros = ViewBag.Filtros;
+    Layout = "~/Views/Shared/_Layout.cshtml";    
 }
 
 <link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
@@ -20,16 +13,7 @@
 
 
 @if (Model != null)
-{
-    @*if (listFiltros != null)
-    {
-        <input type="hidden" name="Filtros" value="@listFiltros" id="Filtros">
-        <input type="hidden" name="consulta" value="1" id="consulta">
-    }
-    else
-    {
-        <input type="hidden" name="consulta" value="0" id="consulta">
-    }*@
+{    
 
 <form id="frmBusqueda" method="get" action="@Url.Action("ObtenerDatosReporte","ReporteFANVendidas")">        
         <div class="row" id="divFechas">

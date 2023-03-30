@@ -197,6 +197,7 @@
     <Compile Include="Controllers\RedebanController.cs" />
     <Compile Include="Controllers\ReimpresionReciboCajaVController.cs" />
     <Compile Include="Controllers\ReporteDonacionesController.cs" />
+    <Compile Include="Controllers\ReporteCortesias.cs" />
     <Compile Include="Controllers\ReporteNotificacionesController.cs" />
     <Compile Include="Controllers\ReporteAprovechamientoFAController.cs" />
     <Compile Include="Controllers\ReporteSoporteITController.cs" />

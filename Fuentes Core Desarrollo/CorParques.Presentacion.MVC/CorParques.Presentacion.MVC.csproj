@@ -179,6 +179,7 @@
     <Compile Include="Controllers\PlaneacionController.cs" />
     <Compile Include="Controllers\ReagendamientoController.cs" />
     <Compile Include="Controllers\ReporteBonoRegaloController.cs" />
+    <Compile Include="Controllers\ReporteCortesiasController.cs" />
     <Compile Include="Controllers\ReporteInventarioGeneralController.cs" />
     <Compile Include="Controllers\ReporteMovimientoInventarioController.cs" />
     <Compile Include="Controllers\ReportePedidoRestauranteController.cs" />
@@ -288,7 +289,6 @@
     <Content Include="Scripts\DescargueMasivoBoleta.js" />
     <Content Include="Scripts\FacturacionExterno.js" />
     <Content Include="Scripts\Facturacion.js" />
-    <Content Include="Scripts\ProductoPtoEntrega.js" />
     <Content Include="Scripts\Reagendamiento.js" />
     <Content Include="Scripts\LoginExterno.js" />
     <Content Include="Scripts\Login.js" />
@@ -305,6 +305,7 @@
     <Content Include="Scripts\ReporteControlCaja.js" />
     <Content Include="Scripts\ReporteAprovechamientoFA.js" />
     <Content Include="Scripts\ReporteBoleteria.js" />
+    <Content Include="Scripts\ReporteCortesias.js" />
     <Content Include="Scripts\ReporteSoporteIT.js" />
     <Content Include="Scripts\ReporteTarjetasRecargables.js" />
     <Content Include="Scripts\ReporteDonaciones.js" />
@@ -966,14 +967,10 @@
     <Content Include="Views\Reagendamiento\_CheckFactura.cshtml" />
     <Content Include="Views\ReporteVentasPorConveni\Index.cshtml" />
     <Content Include="Views\ReporteVentasPorConveni\_List.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\ReporteFANVendidas\_List.cshtml" />
     <Content Include="Views\ReporteFANVendidas\Index.cshtml" />
-=======
-    <Content Include="Views\Productos\PuntosEntrega.cshtml" />
-    <Content Include="Views\Productos\_ListPuntosEntrega.cshtml" />
-    <Content Include="Views\Productos\_EditPuntosEntrega.cshtml" />
->>>>>>> 9544a6c58568346a3db8e03fd096ab63a0efc96e
+    <Content Include="Views\ReporteCortesias\_List.cshtml" />
+    <Content Include="Views\ReporteCortesias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CorParques.Negocio.Contratos\CorParques.Negocio.Contratos.csproj">

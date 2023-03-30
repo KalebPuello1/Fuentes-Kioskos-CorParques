@@ -34,7 +34,7 @@ $(function () {
     $("#btnBuscar").click(function () {
         if (validarFormulario("frmBusqueda")) {            
             var objeto = new Object();            
-            objeto.fechaInicial = $("#txtFechaInicial").val();
+            objeto.fechaInicial = $("#txtFechaInicial").val();                        
             EjecutarAjax(urlBase + "ReporteFANVendidas/ObtenerDatosReporte", "GET", objeto, "GenerarReporte", null);
         }        
         
@@ -89,13 +89,4 @@ function setEventEdit() {
 
 function LimpiarControles() {
     $("#txtFechaInicial").val("");
-    //$("#txtFechaFinal").val("");   
-    //$("#datetimepickerIni").val("").change();
-    //$("#datetimepickerFin").val("").change();    
-    //$("#DDL_Punto").val("").trigger('change');
-    //$("#DDL_CentroBeneficio").val("").trigger('change');
-    //$("#Producto").val("").trigger('change');
-    //$('#txtFechaFinal').prop('disabled', false);    
-    //$("#datatable-responsive_wrapper").hide();
-    //$("#btnExport").hide();
 }

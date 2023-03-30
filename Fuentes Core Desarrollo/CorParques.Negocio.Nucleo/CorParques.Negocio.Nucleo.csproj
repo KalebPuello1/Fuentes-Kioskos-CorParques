@@ -65,6 +65,7 @@
     <Compile Include="ServicioReporteCuadreDiarioFlujoCajasTaq.cs" />
     <Compile Include="ServicioReporteControlCaja.cs" />
     <Compile Include="ServicioReporteDonaciones.cs" />
+    <Compile Include="ServicioReporteCortesias.cs" />
     <Compile Include="ServicioReporteSoporteIT.cs" />
     <Compile Include="ServicioReporteReservaEspacio.cs" />
     <Compile Include="ServicioReporteInventarioGeneral.cs" />

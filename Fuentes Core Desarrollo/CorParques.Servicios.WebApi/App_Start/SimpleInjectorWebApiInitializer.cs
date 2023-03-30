@@ -125,6 +125,7 @@ namespace CorParques.Servicios.WebApi.App_Start
             container.Register<IServicioReporteReservaEspacio, ServicioReporteReservaEspacio>(Lifestyle.Scoped);
             container.Register<IServicioReporteAprovechamientoFA, ServicioReporteAprovechamientoFA>(Lifestyle.Scoped);
             container.Register<IServicioReporteFANVendidas, ServicioReporteFANVendidas>(Lifestyle.Scoped);
+            container.Register<IServicioReporteCortesias, ServicioReporteCortesias>(Lifestyle.Scoped);
 
             container.Register<IServicioConvenio, ServicioConvenio>(Lifestyle.Scoped);
             container.Register<IServicioTipoProducto, ServicioTipoProducto>(Lifestyle.Scoped);
@@ -272,6 +273,7 @@ namespace CorParques.Servicios.WebApi.App_Start
             container.Register<IRepositorioCliente, RepositorioCliente>(Lifestyle.Scoped);
             container.Register<IRepositorioReporteAprovechamientoFA, RepositorioReporteAprovechamientoFA>(Lifestyle.Scoped);
             container.Register<IRepositorioReporteFANVendidas, RepositorioReporteFANVendidas>(Lifestyle.Scoped);
+            container.Register<IRepositorioReporteCortesias, RepositorioReporteCortesias>(Lifestyle.Scoped);
 
             container.Register<IRepositorioCodigoFechaAbierta, RepositorioCodigoFechaAbierta>(Lifestyle.Scoped);
             container.Register<IRepositorioConsumoDeEmpleado, RepositorioConsumoDeEmpleado>(Lifestyle.Scoped);

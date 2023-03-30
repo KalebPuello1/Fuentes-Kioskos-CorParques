@@ -68,6 +68,7 @@
     <Compile Include="RepositorioPlazoCortesia.cs" />
     <Compile Include="RepositorioReagendamiento.cs" />
     <Compile Include="RepositorioReimpresionReciboCajaV.cs" />
+    <Compile Include="RepositorioReporteCortesias.cs" />
     <Compile Include="RepositorioReporteSoporteIT.cs" />
     <Compile Include="RepositorioReporteUsuarioApp.cs" />
     <Compile Include="RepositorioReporteVentasPorConvenio.cs" />

@@ -9,6 +9,6 @@ namespace CorParques.Negocio.Contratos
 {
     public interface IServicioReporteFANVendidas
     {
-        IEnumerable<ReporteFANVendidas> ObtenerReporte(string FechaInicial);
+        IEnumerable<ReporteFANVendidas> ObtenerReporte(string FechaInicial);        
     }
 }

@@ -93,7 +93,7 @@ function RespuestaConsulta(rta, doc) {
        
         $("#CedulaVisitante").html(rta.Elemento.NumeroDocumento);
         $("#CorreoVisitante").html(rta.Elemento.Correo);
-        $("#TelefonoVisitante").html(rta.Telefono);
+        //$("#TelefonoVisitante").html(rta.Telefono);
         $("#lblCantidadCortesias").html(rta.Elemento.Cantidad);
         $("#txtNumdocumentoV").val(rta.Elemento.NumeroDocumento);
         $("#txtNumTarjetaFAN").val(rta.Elemento.NumTarjetaFAN);

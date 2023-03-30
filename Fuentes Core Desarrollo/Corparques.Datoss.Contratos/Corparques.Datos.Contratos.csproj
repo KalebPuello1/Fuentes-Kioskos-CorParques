@@ -99,6 +99,7 @@
     <Compile Include="IRepositorioPlazoCortesia.cs" />
     <Compile Include="IRepositorioReagendamiento.cs" />
     <Compile Include="IRepositorioReimpresionReciboCajaV.cs" />
+    <Compile Include="IRepositorioReporteCortesias.cs" />
     <Compile Include="IRepositorioReporteSoporteIT.cs" />
     <Compile Include="IRepositorioReporteUsuarioApp.cs" />
     <Compile Include="IRepositorioReporteVentasPorConvenio.cs" />
