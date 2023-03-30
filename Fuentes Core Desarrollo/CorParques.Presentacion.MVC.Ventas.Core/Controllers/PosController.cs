@@ -96,8 +96,9 @@ namespace CorParques.Presentacion.MVC.Ventas.Core.Controllers
             //var _csPasaporte = await GetAsync<LineaProducto>($"Pos/ObtenerCodSapPorTipoProducto/{(int)Enumerador.LineaProducto.Pasaporte}");
 
             //Obtiene TODOS LOS PRODUCTOS
-            var _ListaTodosProductosSAP = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerTodosProductos");
-            ViewBag.ListaTodosProductosSAP = _ListaTodosProductosSAP;
+            IEnumerable<Producto> _ListaTodosProductosSAP = new List<Producto>();
+            _ListaTodosProductosSAP = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerProductosXPuntoSurtido");
+            _ListaTodosProductosSAP = _ListaTodosProductosSAP.Where(l => l.IdPunto == IdPunto).ToArray();
 
             //Obtienes los productos asociados a un codigoSapTipoProducto
             //var _model = await GetAsync<IEnumerable<Producto>>($"Pos/ObtenerProductoPorTipoProducto/{_csAyB.CodigoSap}");
@@ -855,6 +856,7 @@ namespace CorParques.Presentacion.MVC.Ventas.Core.Controllers
 
                                 if (aplicaImprersionAyB.Valor != "0")
                                 {
+                                    List<Puntos> listapuntoscargados = new List<Puntos>();
                                     foreach (var item in facturaDetalleImprimir.DetalleFactura)
                                     {
                                         Producto productoImpresionDescarga = new Producto();
@@ -862,22 +864,93 @@ namespace CorParques.Presentacion.MVC.Ventas.Core.Controllers
                                         //productoImpresionDescarga = ListaProductos.Where(x => (x.CodSapTipoProducto == idProductoDescarga.Valor.Split(',')[0] && x.Entregado == false && x.IdProducto == item.Id_Producto)
                                         //                                                   || (x.CodSapTipoProducto == idProductoDescarga.Valor.Split(',')[1] && x.Entregado == false && x.IdProducto == item.Id_Producto)).FirstOrDefault();
 
-                                        if (productoImpresionDescarga != null)
+                                        //consular puntos de entrega del producto 
+                                        var _listPuntos = await GetAsync<IEnumerable<Puntos>>($"Puntos/ObtenerPuntosXProducto/{productoImpresionDescarga.IdProducto}");
+
+                                        if (_listPuntos == null)
                                         {
-                                            TicketImprimir objAlimento = new TicketImprimir();
-                                            objAlimento.TituloRecibo = "Boleta de A&B";
-                                            objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
-                                            objAlimento.TituloColumnas = "Valido para|Cant";
-                                            objAlimento.ListaArticulos = new List<Articulo>();
-                                            objAlimento.ListaArticulos.Add(new Articulo()
+
+
+                                            if (productoImpresionDescarga != null)
                                             {
-                                                Nombre = productoImpresionDescarga.Nombre,
-                                                Cantidad = item.Cantidad,
-                                                Precio = item.Precio,
-                                                TituloColumnas = "Valido para|Cant"
-                                            });
-                                            objImprimir.ImprimirCupoDebito(objAlimento);
-                                            error = "AYB";
+                                                TicketImprimir objAlimento = new TicketImprimir();
+                                                objAlimento.TituloRecibo = "Boleta de A&B";
+                                                objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
+                                                objAlimento.TituloColumnas = "Valido para|Cant";
+                                                objAlimento.ListaArticulos = new List<Articulo>();
+                                                objAlimento.ListaArticulos.Add(new Articulo()
+                                                {
+                                                    Nombre = productoImpresionDescarga.Nombre,
+                                                    Cantidad = item.Cantidad,
+                                                    Precio = item.Precio,
+                                                    TituloColumnas = "Valido para|Cant"
+                                                });
+                                                objImprimir.ImprimirCupoDebito(objAlimento);
+                                                error = "AYB";
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            foreach (var item2 in _listPuntos)
+                                            {
+                                                List<Puntos> validarpuntocargado = new List<Puntos>();
+                                                validarpuntocargado = listapuntoscargados.Where(x => x.Id == item2.Id).ToList();
+                                                if (validarpuntocargado.Count() == 0)
+                                                {
+
+                                                    TicketImprimir objAlimento = new TicketImprimir();
+                                                    objAlimento.ListaArticulos = new List<Articulo>();
+                                                    Puntos puntocargado = new Puntos();
+                                                    int contador = 0;
+                                                    foreach (var item3 in facturaDetalleImprimir.DetalleFactura)
+                                                    {
+
+                                                        Producto productoImpresionDescarga2 = new Producto();
+                                                        productoImpresionDescarga2 = ListaProductos.Where(x => (idProductoDescarga.Valor.Contains(x.CodSapTipoProducto) && x.Entregado == false && x.IdProducto == item3.Id_Producto)).FirstOrDefault();
+                                                        var _listPuntos2 = await GetAsync<IEnumerable<Puntos>>($"Puntos/ObtenerPuntosXProducto/{productoImpresionDescarga2.IdProducto}");
+                                                        if (_listPuntos2 != null)
+                                                        {
+                                                            List<Puntos> respuesta = new List<Puntos>();
+                                                            respuesta = _listPuntos2.Where(x => x.Id == item2.Id).ToList();
+
+                                                            if (respuesta.Count() > 0)
+                                                            {
+                                                                if (productoImpresionDescarga2 != null)
+                                                                {
+                                                                    if (contador == 0)
+                                                                    {
+                                                                        objAlimento.TituloRecibo = "Boleta de A&B";
+                                                                        objAlimento.CodigoBarrasProp = string.Concat(item3.IdDetalleFactura);
+                                                                        objAlimento.TituloColumnas = "Valido para|Cant";
+                                                                        objAlimento.DetallePtoEntrega = item2.Nombre;
+
+                                                                    }
+
+                                                                    objAlimento.ListaArticulos.Add(new Articulo()
+                                                                    {
+                                                                        Nombre = productoImpresionDescarga2.Nombre,
+                                                                        Cantidad = item3.Cantidad,
+                                                                        Precio = item3.Precio,
+                                                                        TituloColumnas = "Valido para|Cant"
+                                                                    });
+
+                                                                    contador++;
+
+
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    puntocargado.Id = item2.Id;
+                                                    listapuntoscargados.Add(puntocargado);
+                                                    objImprimir.ImprimirCupoDebito(objAlimento);
+                                                    error = "AYB";
+
+                                                }
+
+                                            }
                                         }
                                     }
                                 }
@@ -888,28 +961,123 @@ namespace CorParques.Presentacion.MVC.Ventas.Core.Controllers
 
                                 if (aplicaImprersionSouvenir.Valor != "0")
                                 {
+                                    List<Puntos> listapuntoscargados = new List<Puntos>();
                                     foreach (var item in facturaDetalleImprimir.DetalleFactura)
                                     {
                                         Producto productoImpresionDescarga = new Producto();
                                         //valor : 2025 --> idProducto: 685
                                         productoImpresionDescarga = ListaProductos.Where(x => (idProductoDescarga.Valor.Contains(x.CodSapTipoProducto) && x.Entregado == false && x.IdProducto == item.Id_Producto)).FirstOrDefault();
 
-                                        if (productoImpresionDescarga != null)
+
+                                        //consular puntos de entrega del producto 
+                                        var _listPuntos = await GetAsync<IEnumerable<Puntos>>($"Puntos/ObtenerPuntosXProducto/{productoImpresionDescarga.IdProducto}");
+                                        if (_listPuntos == null)
                                         {
-                                            TicketImprimir objAlimento = new TicketImprimir();
-                                            objAlimento.TituloRecibo = "Souvenir";
-                                            objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
-                                            objAlimento.TituloColumnas = "Valido para|Cant";
-                                            objAlimento.ListaArticulos = new List<Articulo>();
-                                            objAlimento.ListaArticulos.Add(new Articulo()
+                                            if (productoImpresionDescarga != null)
                                             {
-                                                Nombre = productoImpresionDescarga.Nombre,
-                                                Cantidad = item.Cantidad,
-                                                Precio = item.Precio,
-                                                TituloColumnas = "Valido para|Cant"
-                                            });
-                                            objImprimir.ImprimirCupoDebito(objAlimento);
-                                            error = "Souvenir";
+                                                TicketImprimir objAlimento = new TicketImprimir();
+                                                objAlimento.TituloRecibo = "Souvenir";
+                                                objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
+                                                objAlimento.TituloColumnas = "Valido para|Cant";
+                                                objAlimento.ListaArticulos = new List<Articulo>();
+                                                objAlimento.ListaArticulos.Add(new Articulo()
+                                                {
+                                                    Nombre = productoImpresionDescarga.Nombre,
+                                                    Cantidad = item.Cantidad,
+                                                    Precio = item.Precio,
+                                                    TituloColumnas = "Valido para|Cant"
+                                                });
+                                                objImprimir.ImprimirCupoDebito(objAlimento);
+                                                error = "Souvenir";
+                                            }
+                                        }
+                                        else
+                                        {
+
+
+                                            foreach (var item2 in _listPuntos)
+                                            {
+                                                List<Puntos> validarpuntocargado = new List<Puntos>();
+                                                validarpuntocargado = listapuntoscargados.Where(x => x.Id == item2.Id).ToList();
+                                                if (validarpuntocargado.Count() == 0)
+                                                {
+
+                                                    TicketImprimir objAlimento = new TicketImprimir();
+                                                    objAlimento.ListaArticulos = new List<Articulo>();
+                                                    Puntos puntocargado = new Puntos();
+                                                    int contador = 0;
+                                                    foreach (var item3 in facturaDetalleImprimir.DetalleFactura)
+                                                    {
+
+                                                        Producto productoImpresionDescarga2 = new Producto();
+                                                        productoImpresionDescarga2 = ListaProductos.Where(x => (idProductoDescarga.Valor.Contains(x.CodSapTipoProducto) && x.Entregado == false && x.IdProducto == item3.Id_Producto)).FirstOrDefault();
+                                                        var _listPuntos2 = await GetAsync<IEnumerable<Puntos>>($"Puntos/ObtenerPuntosXProducto/{productoImpresionDescarga2.IdProducto}");
+                                                        if (_listPuntos2 != null)
+                                                        {
+                                                            List<Puntos> respuesta = new List<Puntos>();
+                                                            respuesta = _listPuntos2.Where(x => x.Id == item2.Id).ToList();
+
+                                                            if (respuesta.Count() > 0)
+                                                            {
+                                                                if (productoImpresionDescarga2 != null)
+                                                                {
+                                                                    if (contador == 0)
+                                                                    {
+                                                                        objAlimento.TituloRecibo = "Souvenir";
+                                                                        objAlimento.CodigoBarrasProp = string.Concat(item3.IdDetalleFactura);
+                                                                        objAlimento.TituloColumnas = "Valido para|Cant";
+                                                                        objAlimento.DetallePtoEntrega = item2.Nombre;
+
+                                                                    }
+
+                                                                    objAlimento.ListaArticulos.Add(new Articulo()
+                                                                    {
+                                                                        Nombre = productoImpresionDescarga2.Nombre,
+                                                                        Cantidad = item3.Cantidad,
+                                                                        Precio = item3.Precio,
+                                                                        TituloColumnas = "Valido para|Cant"
+                                                                    });
+
+                                                                    contador++;
+
+
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    puntocargado.Id = item2.Id;
+                                                    listapuntoscargados.Add(puntocargado);
+                                                    objImprimir.ImprimirCupoDebito(objAlimento);
+                                                    error = "Souvenir";
+
+                                                }
+
+                                            }
+
+
+                                            //foreach (var item2 in _listPuntos)
+                                            //{
+                                            //    if (productoImpresionDescarga != null)
+                                            //    {
+                                            //        TicketImprimir objAlimento = new TicketImprimir();
+                                            //        objAlimento.TituloRecibo = "Souvenir";
+                                            //        objAlimento.CodigoBarrasProp = string.Concat(item.IdDetalleFactura);
+                                            //        objAlimento.TituloColumnas = "Valido para|Cant";
+                                            //        objAlimento.DetallePtoEntrega = item2.Nombre;
+                                            //        objAlimento.ListaArticulos = new List<Articulo>();
+                                            //        objAlimento.ListaArticulos.Add(new Articulo()
+                                            //        {
+                                            //            Nombre = productoImpresionDescarga.Nombre,
+                                            //            Cantidad = item.Cantidad,
+                                            //            Precio = item.Precio,
+                                            //            TituloColumnas = "Valido para|Cant"
+                                            //        });
+                                            //        objImprimir.ImprimirCupoDebito(objAlimento);
+                                            //        error = "Souvenir";
+                                            //    }
+                                            //}
+
                                         }
                                     }
                                 }
