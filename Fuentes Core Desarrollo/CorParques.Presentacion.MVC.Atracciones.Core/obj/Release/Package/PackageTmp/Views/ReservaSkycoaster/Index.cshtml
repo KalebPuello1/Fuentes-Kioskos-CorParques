@@ -1,0 +1,92 @@
+﻿@model List<CorParques.Negocio.Entidades.ReservaSkycoaster>
+@{
+    ViewBag.Title = "Reserva atracción";
+    var puntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.Puntos;
+}
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="~/Vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="~/Vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+<style>
+    td, th {
+        vertical-align: middle !important;
+        text-align: center;
+    }
+
+    .btn.btn-app {
+        padding: 0px;
+        margin: 0px;
+        height: 47px;
+    }
+</style>
+@{
+    var PuntoNombre = "";
+    var PuntoId = "";
+    if (Session["InfoPunto"] != null && Session["IdPuntoSeleccionado"] != null)
+    {
+        PuntoNombre = Session["InfoPunto"].ToString();
+         PuntoId = Session["IdPuntoSeleccionado"].ToString();
+    }
+
+}
+<div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <select id="ddlPunto" class="form-control">
+
+            @if (puntos != null && puntos.Count() > 0)
+            {
+
+                if (PuntoId != "")
+                {
+                    <option value="@PuntoId" selected>@PuntoNombre</option>
+                }
+                else
+                {
+                    <option value="0">[Seleccione el punto]</option>
+                    foreach (var item in puntos)
+                    {
+                        if (Model != null && Model.Count() > 0)
+                        {
+                            if (Model.First().IdPunto == item.Id)
+                            {
+                                <option value="@item.Id" selected>@item.Nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Nombre</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Nombre</option>
+                        }
+
+                    }
+
+                }
+
+            }
+        </select>
+    </div>
+</div>
+<br />
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" id="listView">
+        @Html.Partial("_Lista", Model)
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Scripts/ReservaSkycoaster.js"></script>
+    <script src="~/Scripts/General.js"></script>
+}
+

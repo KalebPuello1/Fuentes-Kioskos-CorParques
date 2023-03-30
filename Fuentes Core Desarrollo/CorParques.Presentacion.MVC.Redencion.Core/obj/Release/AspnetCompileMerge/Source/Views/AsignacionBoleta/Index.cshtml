@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Cambio boleta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="frmCambioBoleta">
+    <div class="row">
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            <input type="text" placeholder="Código boleta" id="CodBoleta" class="form-control required" />
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12">
+            <input type="text" placeholder="Código boleta asignación" id="CodBoleta2" class="form-control required" disabled />
+        </div>
+    </div>
+</form>
+<br />
+<div class="row">
+    <div class="col-md-10 col-sm-10 col-xs-12">
+        <div style="text-align: right;">
+            <input type="button" class="btn btn-primary" value="Asignar" id="btnAsignar" disabled />
+            <input type="button" class="btn btn-danger" value="Cancelar" id="btnCancelar" />
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/AsignacionBoleta.js"></script>
+}

@@ -55,6 +55,18 @@ namespace CorParques.Datos.Dapper
             attractions.ForEach(x => x.Estado = status.First(y => y.Id.Equals(x.EstadoId)).Nombre);
             return attractions.Where(x => x.IdTipoPunto == IdTipoPunto).ToList();             
         }
+        public IEnumerable<Puntos> ObtenerPuntosXusuario(int IdUsuario)
+        {
+            var rta = _cnn.QueryMultiple("SP_GetPuntosXIdUsuario", param: new { IdUsuario = IdUsuario }, commandType: System.Data.CommandType.StoredProcedure);
+            var attractions = rta.Read<Puntos>().ToList();
+            return attractions;
+        }
+        public IEnumerable<Puntos> ObtenerPuntosXProducto(int IdProducto)
+        {
+            var rta = _cnn.QueryMultiple("SP_GetPuntosXProducto", param: new { IdProducto = IdProducto }, commandType: System.Data.CommandType.StoredProcedure);
+            var attractions = rta.Read<Puntos>().ToList();
+            return attractions;
+        }
 
         public bool EliminarLogica(int id)
         {

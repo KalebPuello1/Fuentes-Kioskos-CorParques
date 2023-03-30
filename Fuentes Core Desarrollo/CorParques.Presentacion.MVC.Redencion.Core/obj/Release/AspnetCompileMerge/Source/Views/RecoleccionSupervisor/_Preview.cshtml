@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Recolección Supervisor";
+    ViewBag.SubTitle = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listTaquillero = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.taquilleros;
+}
+
+
+<div class="form-group">
+    <div class="row">
+        <div class="item col-md-5 col-sm-5 col-xs-12">
+            <select id="ddlTaquillero" onchange="OnChangeEvent(this);" class="form-control required setSelect2">
+                <option value="">Seleccione el taquillero</option>
+                @if (listTaquillero != null && listTaquillero.Count() > 0)
+                {
+                    foreach (var item in listTaquillero)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/RecoleccionSupervisor.js"></script>
+    <script src="~/Scripts/General.js"></script>
+}

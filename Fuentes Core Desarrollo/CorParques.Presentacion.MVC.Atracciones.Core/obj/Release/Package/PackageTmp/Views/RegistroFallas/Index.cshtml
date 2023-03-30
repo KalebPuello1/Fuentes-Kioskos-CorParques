@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "Registro de Fallas";
+    var puntos = (IEnumerable<CorParques.Negocio.Entidades.Puntos>)ViewBag.Puntos;
+    var areas = (IEnumerable<CorParques.Negocio.Entidades.TipoGeneral>)ViewBag.Areas;
+    var orden = (IEnumerable<CorParques.Negocio.Entidades.Orden>)ViewBag.Orden;
+}
+@{
+    var PuntoNombre = "";
+    var PuntoId = "";
+    if (Session["InfoPunto"] != null && Session["IdPuntoSeleccionado"] != null)
+    {
+        PuntoNombre = Session["InfoPunto"].ToString();
+        PuntoId = Session["IdPuntoSeleccionado"].ToString();
+    }
+
+}
+<form id="frmRegistroFallas" class="form-horizontal form-label-left">
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Punto *</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control required setSelect2" name="idPunto" id="idPunto">
+
+                @if (PuntoId != "")
+                {
+                    <option value="@PuntoId" selected>@PuntoNombre</option>
+                }
+                else
+                {
+                    <option value="">* Seleccione</option>
+                    if (puntos != null)
+                    {
+                        foreach (CorParques.Negocio.Entidades.Puntos item in puntos)
+                        {
+                            <option value="@item.Id">@item.Nombre</option>
+                        }
+                    }
+                }
+
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Área Falla *</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control required setSelect2" name="idArea" id="idArea">
+                <option value="">* Seleccione</option>
+                @if (areas != null)
+                {
+                    foreach (CorParques.Negocio.Entidades.TipoGeneral item in areas)
+                    {
+                        <option value="@item.Id">@item.Nombre</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    @*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*@
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-12">Descripción de la falla *</label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <textarea class="form-control required" rows="3" name="descripcion" maxlength="500"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Fecha Falla</label>
+        <label class="control-label col-md-8 col-sm-8 col-xs-6" style="text-align:left;"> @DateTime.Now.ToString("yyyy-MM-dd")</label>
+        <input type="hidden" name="fechaFalla" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+        <div style="clear:both;"></div>
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Hora Falla *</label>
+        <div class="col-md-8 col-sm-8 col-xs-4">
+            <div class="input-group date dateTime">
+                <input class="form-control required" id="HoraInicio" maxlength="8" name="horaFalla" placeholder="HH:MM" type="text" value="">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    @*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*@
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-12">Observación Técnica *</label>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <textarea class="form-control required" rows="3" name="observacionTecnica" maxlength="500"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Fecha Respuesta</label>
+        <label class="control-label col-md-8 col-sm-8 col-xs-6" style="text-align:left;">@DateTime.Now.ToString("yyyy-MM-dd")</label>
+        <input type="hidden" name="fechaRespuesta" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <div style="clear:both;"></div>
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Hora Respuesta</label>
+        <label class="control-label col-md-8 col-sm-8 col-xs-6" style="text-align:left;">@DateTime.Now.ToString("HH:mm")</label>
+        <input type="hidden" name="horaRespuesta" id="horaRespuesta" value="@DateTime.Now.ToString("HH:mm")" />
+    </div>
+
+    <div style="clear:both;"></div>
+
+    @*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*@
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Orden Falla *</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <select class="form-control required setSelect2" name="idOrdenFalla" id="idOrdenFalla">
+                <option value="">* Seleccione</option>
+                @if (orden != null)
+                {
+                    foreach (CorParques.Negocio.Entidades.Orden item in orden)
+                    {
+                        <option value="@item.IdOrden">@item.descripcion</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Fecha Llegada Técnico</label>
+        <label class="control-label col-md-8 col-sm-8 col-xs-6" style="text-align:left;"> @DateTime.Now.ToString("yyyy-MM-dd")</label>
+        <input type="hidden" name="fechaLlegadaTec" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+        <div style="clear:both;"></div>
+        <label class="control-label col-md-4 col-sm-4 col-xs-6">Hora Llegada Técnico *</label>
+        <div class="col-md-8 col-sm-8 col-xs-6">
+            <div class="input-group date dateTime">
+                <input class="form-control required" id="horaLlegadaTec" maxlength="8" name="horaLlegadaTec" placeholder="HH:MM" type="text" value="">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    @*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*@
+
+    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+        <label class="control-label col-md-4 col-sm-4 col-xs-4">Técnico *</label>
+        <div class="col-md-8 col-sm-8 col-xs-8">
+            <input type="text" class="form-control required" id="txtTecnico">
+            <input type="hidden" class="form-control required" name="tecnico" id="hdnTecnico">
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    @*HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*@
+
+    <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:right; margin-top:20px;">
+        <a href="javascript:void(0)" id="btnSalvarRegistro" class="right btn btn-success">Guardar</a>
+        <a href="javascript:void(0)" id="btnCancelarRegistro" class="right btn btn-danger">Cancelar</a>
+    </div>
+</form>
+
+@section scripts{
+    <script src="~/Scripts/RegistroFallas.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+}

@@ -10,7 +10,7 @@ using System.Drawing.Printing;
 using System.Configuration;
 using CorParques.Negocio.Entidades;
 using System.Data;
-
+using System.Text.RegularExpressions;
 
 namespace CorParques.Transversales.Util
 {
@@ -51,6 +51,7 @@ namespace CorParques.Transversales.Util
         private IList<Articulo> objListaArticulos;
         private string strCodigoBarras = string.Empty;
         private string strTituloTicket = string.Empty;
+        private string strDetallePtoEntrega = string.Empty;
         private string strLogoParque = string.Empty;
         private string strPosicionTitulos;
 
@@ -120,6 +121,12 @@ namespace CorParques.Transversales.Util
         {
             get { return strTituloTicket; }
             set { strTituloTicket = value; }
+        }
+
+        public string DetallePtoEntrega
+        {
+            get { return strDetallePtoEntrega; }
+            set { strDetallePtoEntrega = value; }
         }
 
         public DataTable TablaDetalle
@@ -244,6 +251,11 @@ namespace CorParques.Transversales.Util
                     AgregarLinea(LineasTotales(), objFont);
                     AgregarLinea(AgregaTotales("Total", dblTotal), objFont);
                 }
+                if (strDetallePtoEntrega.Trim().Length > 0)
+                {
+                    AgregarLinea(TextoCentro("Pto Entrega:" + strDetallePtoEntrega));
+                }
+              
                 AgregarLinea("");
             }
             catch (Exception ex)
@@ -780,7 +792,7 @@ namespace CorParques.Transversales.Util
         }
         private string LineasTotales()
         {
-            return "                          -----------\n"; ;   // agrega lineas de total
+            return "                            -----------\n"; ;   // agrega lineas de total
 
         }
 
@@ -795,7 +807,7 @@ namespace CorParques.Transversales.Util
             else { parte1 = par1; }                      // **********
             ticket = parte1;
             parte2 = total.ToString("C0");
-            max = 35 - (parte1.Length + parte2.Length);
+            max = 39 - (parte1.Length + parte2.Length);
             for (int i = 0; i < max; i++)                // **********
             {
                 ticket += " ";                           // Agrega espacios para poner el valor de moneda al final
@@ -2267,15 +2279,16 @@ namespace CorParques.Transversales.Util
         public string ImprimirTicketPreFactura()
         {
             string strRetorno = string.Empty;
+            string printerPath = ConfigurationManager.AppSettings["ServidorImpresora"].ToString();
 
             try
             {
-                if (PrinterExists(strImpresora))
+                if (PrinterExists(printerPath))
                 {
                     this.printFont = new Font(this.fontName, (float)this.fontSize, FontStyle.Regular);
                     PrintDocument document = new PrintDocument
                     {
-                        PrinterSettings = { PrinterName = strImpresora }
+                        PrinterSettings = { PrinterName = printerPath }
                     };
                     document.PrintPage += new PrintPageEventHandler(this.pr_PrintPageTicketPreFactura);
                     document.Print();
@@ -2305,14 +2318,14 @@ namespace CorParques.Transversales.Util
         {
             try
             {
-                if (strLogoParque.Trim().Length > 0)
-                    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
-
-                AgregarLinea(TextoCentro("PRE-FACTURA"), new Font(this.fontName, 12, FontStyle.Bold));
+                //if (strLogoParque.Trim().Length > 0)
+                //    AgregarImagen(Utilidades.RetornarImagen(strLogoParque), 70, 20, 1);
+                AgregarLinea(TextoCentro("PRE-FACTURA"), new Font(this.fontName, 9, FontStyle.Bold));
                 Espacio();
                 AgregarLinea(TextoCentro("Restaurante Arazá"));
                 AgregarLinea(TextoCentro("C O R P A R Q U E S"));
                 AgregarLinea(TextoCentro("Nit. 830008059-1"));
+                AgregarLinea(TextoCentro(string.Concat("Mesa: ", strTituloTicket)));
                 Espacio();
                 AgregarLinea(TextoExtremos(string.Concat("Fecha ", Utilidades.ObtenerFechaActual()), string.Concat("Hora ", Utilidades.ObtenerHoraActual())));
                 Espacio();
@@ -2325,7 +2338,6 @@ namespace CorParques.Transversales.Util
         private void GenerarPiePaginaTicketPreFactura()
         {
             AgregarLinea(string.Concat("Atendido por: ", strUsuario));
-            AgregarLinea(string.Concat("Mesa: ", strTituloTicket));
         }
 
         #endregion
